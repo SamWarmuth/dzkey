@@ -1,0 +1,56 @@
+!!! Strict
+%html{:lang => "cs", "xml:lang" => "cs", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
+    %meta{:content => "text/css", "http-equiv" => "content-style-type"}/
+    %meta{:content => "text/javascript", "http-equiv" => "content-script-type"}/
+    %title Log in · Boxie Admin
+    %link{:href => "css/blue.css", :media => "screen, projection, tv", :rel => "stylesheet", :type => "text/css"}/
+    /[if lte IE 7.0] <link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection, tv" />
+    /[if IE 8.0]
+      <style type="text/css">
+      form.fields fieldset {margin-top: -10px;}
+      </style>
+    %script{:src => "js/jquery-1.3.2.min.js", :type => "text/javascript"}
+    / Adding support for transparent PNGs in IE6:
+    /[if lte IE 6]
+      <script type="text/javascript" src="js/ddpng.js"></script>
+      <script type="text/javascript">
+      DD_belatedPNG.fix('h3 img');
+      </script>
+  %body#login
+    .box.box-50.altbox
+      .boxin
+        .header
+          %h3
+            %img{:alt => "Boxie Admin", :src => "css/img/logo-login.png"}/
+          %ul
+            %li
+              %a.active{:href => "#"} login
+            / .active for active tab
+            %li
+              %a{:href => "#"} lost password
+        %form.table{:action => "index", :method => "get"}
+          / Default forms (table layout)
+          .inner-form
+            .msg.msg-info
+              %p
+                Just click
+                = succeed "." do
+                  %strong Log in
+            %table{:cellspacing => "0"}
+              %tr
+                %th
+                  %label{:for => "some1"} Name:
+                %td
+                  %input#some1.txt{:name => "some1", :type => "text"}/
+              %tr
+                %th
+                  %label{:for => "some3"} Password:
+                %td
+                  %input#some3.txt.pwd{:name => "some3", :type => "password"}/
+                / class error for wrong filled inputs
+              %tr
+                %th
+                %td.tr.proceed
+                  %input.button{:type => "submit", :value => "Log in"}/

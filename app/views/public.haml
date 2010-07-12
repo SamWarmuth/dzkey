@@ -1,0 +1,69 @@
+!!!
+%head
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  %title Swoop: Manage your Dropzone.
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />    
+  <link rel="stylesheet" href="css/prettyGallery.css" type="text/css" media="screen" charset="utf-8" />  
+    
+  <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.func.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+  
+  <!--[if IE 6]>
+  <script src="js/DD_belatedPNG_0.0.7a-min.js"></script>
+  <script> DD_belatedPNG.fix('.pp_left,.pp_right,a.pp_close,a.pp_arrow_next,a.pp_arrow_previous,.pp_content,.pp_middle'); </script>
+  <![endif]-->
+
+  :javascript
+    $(document).ready(function(){
+      $("a[rel^='prettyPhoto']").prettyPhoto();
+    });
+  <!--[if lte IE 6]><link rel="stylesheet" href="css/ie7.css" type="text/css" media="all" /><![endif]-->
+  <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" type="text/css" media="all" /><![endif]-->
+%body
+  -if @big_header
+    .frame
+      #header
+        .shell
+          %h1#logo
+            %a{:href => "#"}
+              %br
+              %span
+                SWOOP
+          #right-area
+            #navigation
+              %ul
+                %li <a href="/" class="home" style="">home</a>
+                %li <a href="/about" class="about" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">about</a>
+                %li <a href="sub-page-services.html" class="services" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">services</a>
+                %li <a href="media.html" class="media" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">media</a>
+                %li <a href="blog.html" class="blog" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">blog</a>
+                %li#login-nav                
+                %li <a href="#" class="signup green" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em; font-weight: bold;">signup</a>
+                %li <a href="/login" class="login green" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em; font-weight: bold;">login</a>
+            .cl &nbsp;
+            .slogan
+              %h2{:style => "font-family: Helvetiker, Arial; font-size: 2.4em; line-height: 30px;"} Manage your dropzone with Swoop
+              %h3{:style => "font-family: Helvetiker, Arial; font-size: 1.3em; line-height: 19px;"} Manifests, Members, and Monitors
+        .cl &nbsp;
+  -else
+    #header
+      .shell
+        %h1#logo <a href="#">iconic</a></h1>
+        #right-area
+          #navigation
+            %ul
+              <li><a href="home.html" class="home" style="">home</a></li>
+              <li><a href="sub-page.html" class="about" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">about</a></li>
+              <li><a href="sub-page-services.html" class="services" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">services</a></li>
+              <li><a href="media.html" class="media" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">media</a></li>
+              <li><a href="blog.html" class="blog" style="font-family: Helvetica, Arial; text-transform: uppercase; font-size: 0.8em;">blog</a></li>
+          #sub-nav
+            %ul
+              %li <a href="#">SubPage 01</a>
+              %li <a href="#">SubPage 02</a>
+              %li <a href="#">SubPage 03</a>
+  =yield

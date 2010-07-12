@@ -1,0 +1,63 @@
+#members.pagediv
+  .box.box-50.altbox
+    / .altbox for alternative box's color
+    .boxin
+      .header
+        %h3 Members
+        %a.button{:href => "#"} New &nbsp;»
+        / Action button in the header of the box
+        %ul
+          / Tabs in the box's header
+          %li
+            %a.active{:href => "#"} Upcoming
+          / .active for active tab
+          %li
+            %a{:href => "#"} All
+      .content
+        %table{:cellspacing => "0"}
+          %thead
+            %tr
+              %th Article
+              %td.tc Comments
+              %td.tc Jump Date
+              %td
+          %tbody
+            -10.times do |i|
+              %tr{:class => ( i == 0 ? "first" : "")}
+                %th
+                  %a{:href => "#"} John Doe
+                %td.tc
+                  %a.ico-comms{:href => "#"}= i*16
+                %td 7/24/2011
+                %td
+                  %a{:href => "#"} edit
+  .box.box-50.altbox
+    / .altbox for alternative box's color
+    .boxin
+      .header
+        %h3 Students
+        %ul
+          %li
+            %a.active{:href => "#"} All
+          %li
+            %a{:href => "#"} Members
+          %li
+            %a{:href => "#"} Students
+      .content
+        %table{:cellspacing => "0"}
+          %thead
+            %tr
+              %th Name
+              %td.tc Rank
+              %td.tc Last Jump
+              %td Add
+          %tbody
+            -10.times do |i|
+              %tr{:class => ( i == 0 ? "first" : "")}
+                %th
+                  %a{:href => "#"} Peter Francis Geraci
+                %td.tc
+                  %a.ico-comms{:href => "#"}= i*16
+                %td July #{11 - i/3}th
+                %td
+                  %a.ico-plus{:href => "#"}
