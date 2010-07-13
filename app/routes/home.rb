@@ -14,11 +14,11 @@ class Main
     content_type 'text/css', :charset => 'utf-8'
     sass :blue
   end
+  get "/index" do
+    haml :framed, :layout => false
+  end
   get "/login" do
     haml :login, :layout => false
-  end
-  get "/index" do
-    haml :dashboard
   end
   get "/dashboard" do
     haml :dashboard, :layout => false
