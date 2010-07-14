@@ -6,6 +6,9 @@ class Main
   get "/about" do
     haml :'public/about', :layout => :public
   end
+  get "/pricing" do
+    haml :'public/pricing', :layout => false
+  end
   get "/css/style.css" do
     content_type 'text/css', :charset => 'utf-8'
     sass :style
@@ -13,6 +16,10 @@ class Main
   get "/css/blue.css" do
     content_type 'text/css', :charset => 'utf-8'
     sass :blue
+  end
+  get "/css/grid.css" do
+    content_type 'text/css', :charset => 'utf-8'
+    sass :grid
   end
   get "/index" do
     haml :framed, :layout => false
