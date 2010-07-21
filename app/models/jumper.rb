@@ -3,7 +3,11 @@ class Jumper < CouchRest::ExtendedDocument
   
   property :name
   property :nickname
-  property :total_jumps #keep as a hash? {:"june 3 2010" => 4} ?
+  property :password_hash
+  
+  property :type
+  property :certifications #array of Certifications? (USPA, A 47290, ?)
+  property :jumps #keep as a hash? {:"june 3 2010" => 4} ?
   property :balance
   property :available
 end

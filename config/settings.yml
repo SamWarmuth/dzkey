@@ -2,15 +2,15 @@ defaults: &defaults
  
 :development:
   :couchdb:
-    :url: http://localhost:5984/APP_NAME_development
+    :url: http://localhost:5984/dzkey_development
   <<: *defaults
   
 :test:
   :couchdb:
-    :url: http://localhost:5984/APP_NAME_test
+    :url: http://localhost:5984/dzkey_test
     <<: *defaults
 
 :production:
   :couchdb:
-    :url: http://localhost:5984/APP_NAME_production
+    :url: http://samwarmuth:calculo@samwarmuth.couchone.com/dzkey_production
     <<: *defaults

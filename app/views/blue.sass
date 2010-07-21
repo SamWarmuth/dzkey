@@ -403,17 +403,17 @@ a img
 /* content styling
  *--------------------------------------
  
-.swoop-small
+.dzkey-small
   clear: both
   position: absolute
   left: 0px
-  top: 10px
-  padding: 32px 32px 30px 32px
-  background: #fff url("/images/swoop-small.png") no-repeat
-.swoop-medium
-  background-image: url("/images/swoop-med.png")
-.swoop-large
-  background-image: url("/images/swoop.png")
+  top: 25px
+  padding: 32px 100px 30px 32px
+  background: #fff url("/images/dzkey-small.png") no-repeat
+.dzkey-medium
+  background-image: url("/images/dzkey-medium.png")
+.dzkey-large
+  background-image: url("/images/dzkey-large.png")
   
 .user-ico
   clear: both
@@ -423,7 +423,7 @@ a img
   padding: 23px
   padding-top: 25px
   background: url("img/user.png") 100% 100% no-repeat
-.logout-ico
+.logout-ico  
   clear: both
   position: absolute
   left: 175px
@@ -789,7 +789,12 @@ ul.actions
 
 .altbox .content table tbody
   color: #00305d
-
+a.ico-plus
+  border: 0
+  background: url("img/ico-plus.png") no-repeat
+  padding: 15px
+  padding-top: 8px
+  color: #fff
 .box .content
   table
     a.ico-comms
@@ -797,12 +802,30 @@ ul.actions
       background: url("img/ico-tablecomms.gif") 50% 60% no-repeat
       padding: 10px
       color: #fff
-    a.ico-plus
+    a.stat
       border: 0
-      background: url("img/ico-plus.png") no-repeat
-      padding: 15px
-      padding-top: 8px
+      border-radius: 2px
+      -moz-border-radius: 2px
+      -webkit-border-radius: 2px
+      padding: 5px
+      
+      
       color: #fff
+      &.blue
+        background: #69C4FF
+      &.red
+        background: #D00
+        &:hover
+          background: #B00
+      &.yellow
+        background: #FB0
+        &:hover
+          background: #d90
+      &.green
+        background: green
+        &:hover
+          background: #060
+    
     tfoot
       th, td
         border-top: 1px solid #ccc
@@ -935,6 +958,79 @@ table.calendar
   div.items a
     border: 0
     margin: 0 1px
+    
+.awesome, .awesome:visited 
+  border: none
+  background: #222 url(/images/alert-overlay.png) repeat-x
+  display: inline-block 
+  padding: 5px 10px 6px 
+  color: #fff 
+  text-decoration: none
+  -moz-border-radius: 5px 
+  -webkit-border-radius: 5px
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5)
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5)
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25)
+  position: relative
+  cursor: pointer
+
+.awesome:hover
+  background-color: #111
+  color: #fff
+.awesome:active
+  top: 1px
+.small.awesome, .small.awesome:visited
+  font-size: 11px
+  padding: 0
+.medium.awesome, .medium.awesome:visited
+  font-size: 13px
+  font-weight: bold
+  padding: 5px 10px 3px
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25)
+.large.awesome, .large.awesome:visited
+  font-size: 14px
+  padding: 8px 14px 9px
+.huge.awesome, .huge.awesome:visited
+  font-size: 18px
+  padding: 15px 30px 15px
+.green.awesome, .green.awesome:visited
+  background-color: #33CC33
+.green.awesome:hover
+  background-color: #22BB22
+.blue.awesome, .blue.awesome:visited
+  background-color: #00669D
+.blue.awesome:hover
+  background-color: #00467D
+.cyan.awesome, .blue.awesome:visited
+  background-color: #69C4FF
+.cyan.awesome:hover
+  background-color: #69C4FF
+.red.awesome, .red.awesome:visited
+  background-color: #e31100
+.red.awesome:hover
+  background-color: #871300
+.magenta.awesome, .magenta.awesome:visited
+  background-color: #a9014b
+.magenta.awesome:hover
+  background-color: #630030
+.orange.awesome, .orange.awesome:visited
+  background-color: #ff5c00
+.orange.awesome:hover
+  background-color: #d45500
+.yellow.awesome, .yellow.awesome:visited
+  background-color: #ffb515
+.yellow.awesome:hover
+  background-color: #fc9200
+.gray.awesome, .gray.awesome:visited, .grey.awesome, .grey.awesome:visited
+  background-color: #888
+.gray.awesome:hover, .grey.awesome:hover
+  background-color: #777
+
+  
+.disabled.awesome
+  background-color: #ccc
+.disabled.awesome:hover
+  background-color: #DDD
 
 /* login page
 
@@ -966,3 +1062,30 @@ table.calendar
       margin: 0
   input.txt
     width: 260px
+.checkcontainer
+  padding: 10px
+  display: inline
+  margin: 10px
+  background: #EEE
+  -moz-border-radius: 8px
+  -webkit-border-radius: 8px
+  border-radius: 8px
+  &:hover
+    background: #DDD
+    
+p#vtip
+  display: none
+  position: absolute
+  margin-top: 10px
+  padding: 10px
+  left: 5px
+  font-size: 0.8em
+  background-color: white
+  border: 1px solid #a6c9e2
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  z-index: 9999
+p#vtip #vtipArrow
+  position: absolute
+  top: -10px
+  left: 5px 

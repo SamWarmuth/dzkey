@@ -22,10 +22,15 @@ class Main
     sass :grid
   end
   get "/index" do
+    @current_page = params[:p] || "dashboard"
     haml :framed, :layout => false
   end
   get "/login" do
     haml :login, :layout => false
+  end
+  post "/login" do
+    #verify user
+    redirect "/index?p=members"
   end
   get "/dashboard" do
     haml :dashboard, :layout => false
@@ -33,5 +38,15 @@ class Main
   get "/manifest" do
     haml :manifest, :layout => false
   end
-    
+  
+  
+  post "/ajax/new-jumper" do
+    jumper = Jumper.new
+    jumper.name = params[:full_name]
+    jumper.nickname = params[:nickname] unless params[:nickname].empty?
+    jumper.type = params[:type]
+    jumper.balance = params[:balance]
+    jumper.save
+    return "success"
+  end
 end

@@ -14,6 +14,7 @@ require "haml"
 require "sass"
 require "json"
 
+
 class Main < Monk::Glue
   set :app_file, __FILE__
   use Rack::Session::Cookie

@@ -11,5 +11,5 @@ spawn git://github.com/soveran/spawn.git
 stories git://github.com/citrusbyte/stories.git
 webrat git://github.com/brynary/webrat.git
 couchrest git://github.com/couchrest/couchrest.git
-json git://github.com/genki/json.git
+json 1.4.2 git://github.com/genki/json.git
 haml git://github.com/nex3/haml.git

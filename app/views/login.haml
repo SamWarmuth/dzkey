@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
     %meta{:content => "text/css", "http-equiv" => "content-style-type"}/
     %meta{:content => "text/javascript", "http-equiv" => "content-script-type"}/
-    %title Log in · Boxie Admin
+    %title Log in · DZKey
     %link{:href => "css/blue.css", :media => "screen, projection, tv", :rel => "stylesheet", :type => "text/css"}/
     /[if lte IE 7.0] <link rel="stylesheet" type="text/css" href="css/ie.css" media="screen, projection, tv" />
     /[if IE 8.0]
@@ -23,14 +23,14 @@
       .boxin
         .header
           %h3
-            %img{:alt => "Boxie Admin", :src => "css/img/logo-login.png"}/
+            %img{:alt => "DZKey Logo", :src => "images/dzkey-medium.png"}/
           %ul
             %li
               %a.active{:href => "#"} login
             / .active for active tab
             %li
               %a{:href => "#"} lost password
-        %form.table{:action => "index", :method => "get"}
+        %form.table{:action => "login", :method => "post"}
           / Default forms (table layout)
           .inner-form
             .msg.msg-info
