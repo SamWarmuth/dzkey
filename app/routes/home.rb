@@ -30,7 +30,7 @@ class Main
   end
   post "/login" do
     #verify user
-    redirect "/index?p=members"
+    redirect "/index?p=jumpers"
   end
   get "/dashboard" do
     haml :dashboard, :layout => false

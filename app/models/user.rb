@@ -8,8 +8,8 @@ class User < CouchRest::ExtendedDocument
   property :can_edit_finances
   property :can_view_manifests
   property :can_edit_manifests
-  property :can_view_members
-  property :can_edit_members
+  property :can_view_jumpers
+  property :can_edit_jumpers
   
   property :available
 end

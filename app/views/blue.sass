@@ -141,6 +141,9 @@ a img
 .ttop
   vertical-align: top !important
 
+.bold
+  font-weight: bold
+
 /* for buttons etc.
 
 .hand
@@ -292,6 +295,8 @@ a img
       background-image: url("img/color.png")
     .ico-edit
       background-image: url("img/edit.png")
+    .ico-schedule
+      background-image: url("img/schedule.png")
     .ico-media
       background-image: url("img/media.png")
     .ico-syndication
@@ -594,7 +599,15 @@ input.txt, textarea
   border: 1px solid #999
   background: url("img/txt.gif") repeat-x
   padding: 5px 2px
-
+  
+input.search
+  border: none
+  border-radius: 5px
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  background: #fff
+  padding: 5px 2px
+  
 form.basic
   input.txt, textarea
     width: 100%
@@ -802,17 +815,27 @@ a.ico-plus
       background: url("img/ico-tablecomms.gif") 50% 60% no-repeat
       padding: 10px
       color: #fff
-    a.stat
+    .stat
+      display: inline
       border: 0
-      border-radius: 2px
-      -moz-border-radius: 2px
-      -webkit-border-radius: 2px
+      border-radius: 5px
+      -moz-border-radius: 5px
+      -webkit-border-radius: 5px
       padding: 5px
       
       
       color: #fff
+      &.outline
+        background: #fff
+        font-weight: bold
+        color: #555
+        border: 1px solid #CCC
+        &:hover
+          background: #EEE
       &.blue
         background: #69C4FF
+        &:hover
+          background: #49A4DF
       &.red
         background: #D00
         &:hover
@@ -821,10 +844,29 @@ a.ico-plus
         background: #FB0
         &:hover
           background: #d90
+      &.purple
+        background: #7D26CD
+        &:hover
+          background: #5D06AD
       &.green
-        background: green
+        background: #2DBA5F
         &:hover
           background: #060
+      &.merge-left
+        border-top-left-radius: 0
+        -moz-border-radius-topleft: 0
+        -webkit-border-top-left-radius: 0
+        border-bottom-left-radius: 0
+        -moz-border-radius-bottomleft: 0
+        -webkit-border-bottom-left-radius: 0
+        margin-left: -4px
+      &.flat-right
+        border-top-right-radius: 0
+        -moz-border-radius-topright: 0
+        -webkit-border-top-right-radius: 0
+        border-bottom-right-radius: 0
+        -moz-border-radius-bottomright: 0
+        -webkit-border-bottom-right-radius: 0
     
     tfoot
       th, td
@@ -836,7 +878,10 @@ a.ico-plus
     overflow: hidden
   table tr.even th, ul.simple li.even
     background: #f5f5f5
-
+    
+.legend
+  text-shadow: none
+  
 /* boxes' content types – simple list
 
 .altbox .content
@@ -955,9 +1000,16 @@ table.calendar
     font-size: 140%
   .inactive
     color: #aaa
-  div.items a
+  div.items
+    font-size: 20px
     border: 0
     margin: 0 1px
+
+.dragaway
+  tr:hover
+    background: #eee
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5)
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5)
     
 .awesome, .awesome:visited 
   border: none
@@ -990,6 +1042,9 @@ table.calendar
 .large.awesome, .large.awesome:visited
   font-size: 14px
   padding: 8px 14px 9px
+.giant.awesome, .huge.awesome:visited
+  font-size: 16px
+  padding: 10px 20px 11px
 .huge.awesome, .huge.awesome:visited
   font-size: 18px
   padding: 15px 30px 15px
@@ -1004,7 +1059,7 @@ table.calendar
 .cyan.awesome, .blue.awesome:visited
   background-color: #69C4FF
 .cyan.awesome:hover
-  background-color: #69C4FF
+  background-color: #59B4EF
 .red.awesome, .red.awesome:visited
   background-color: #e31100
 .red.awesome:hover
@@ -1072,6 +1127,8 @@ table.calendar
   border-radius: 8px
   &:hover
     background: #DDD
+.expander tr:hover
+  background: #eee
     
 p#vtip
   display: none
@@ -1079,7 +1136,7 @@ p#vtip
   margin-top: 10px
   padding: 10px
   left: 5px
-  font-size: 0.8em
+  font-size: 1.2em
   background-color: white
   border: 1px solid #a6c9e2
   -moz-border-radius: 5px

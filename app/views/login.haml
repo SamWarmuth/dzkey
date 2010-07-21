@@ -21,23 +21,12 @@
   %body#login
     .box.box-50.altbox
       .boxin
-        .header
-          %h3
+        .headr{:style => "background: #EEE; border-top-left-radius: 10px; border-top-right-radius: 10px; padding: 30px"}
+          .tc
             %img{:alt => "DZKey Logo", :src => "images/dzkey-medium.png"}/
-          %ul
-            %li
-              %a.active{:href => "#"} login
-            / .active for active tab
-            %li
-              %a{:href => "#"} lost password
         %form.table{:action => "login", :method => "post"}
           / Default forms (table layout)
           .inner-form
-            .msg.msg-info
-              %p
-                Just click
-                = succeed "." do
-                  %strong Log in
             %table{:cellspacing => "0"}
               %tr
                 %th
@@ -50,7 +39,5 @@
                 %td
                   %input#some3.txt.pwd{:name => "some3", :type => "password"}/
                 / class error for wrong filled inputs
-              %tr
-                %th
-                %td.tr.proceed
-                  %input.button{:type => "submit", :value => "Log in"}/
+            %br
+            %input.awesome.green.giant{:type => "submit", :value => "Log in", :style => "margin-left: 55px; width: 325px"}/
