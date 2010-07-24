@@ -5,6 +5,13 @@ class Jumper < CouchRest::ExtendedDocument
   property :nickname
   property :password_hash
   
+  property :can_view_finances
+  property :can_edit_finances
+  property :can_view_manifests
+  property :can_edit_manifests
+  property :can_view_jumpers
+  property :can_edit_jumpers
+  
   property :street
   property :city
   property :state
