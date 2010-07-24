@@ -19,7 +19,7 @@
     %b View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     %p
-      %label{:style => "font-weight: bold;"} Financial Data
+      %label{:style => "font-weight: bold;"} Jumper Data
       %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
       %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
 
@@ -28,7 +28,7 @@
       %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
       %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
     %p
-      %label{:style => "font-weight: bold;"} Jumper Data
+      %label{:style => "font-weight: bold;"} Financial Data
       %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
       %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
    
@@ -50,24 +50,26 @@
       %table{:cellspacing => "0"}
         %thead
           %tr
-            %th{:style => "width: 8px"} &nbsp;
-            %td Full Name
-            %td Balance
-            %td.tc{:colspan => 2} Jumpers
-            %td.tc{:colspan => 2} Manifest
-            %td.tc{:colspan => 2} Finance
+            %th{:style => "width: 8px", :rowspan => 2} &nbsp;
+            %td{:rowspan => 2} <br/><br/>Name
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/><br/>Pilot
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/>Tandem Instructor
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/><br/>Videographer
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/><br/>AFF Instructor
+            
+            %td.tc{:style => "width: 50px", :rowspan => 2} <br/><br/>Balance 
+            %td.tc.bold{:colspan => 2} Jumpers
+            %td.tc.bold{:colspan => 2} Manifest
+            %td.tc.bold{:colspan => 2} Finance
             
           %tr
-            %th{:style => "width: 8px"} &nbsp;
-            %td 
-            %td{:style => "width: 50px"}= #balance
-            %td.tc{:style => "width: 20px"} View
-            %td.tc{:style => "width: 20px"} Edit
-            %td.tc{:style => "width: 20px"} View
-            %td.tc{:style => "width: 20px"} Edit
+            %td.tc{:style => "width: 25px; padding-left: 10px"} View
+            %td.tc{:style => "width: 25px"} Edit
+            %td.tc{:style => "width: 25px"} View
+            %td.tc{:style => "width: 25px"} Edit
             
-            %td.tc{:style => "width: 20px"} View
-            %td.tc{:style => "width: 20px"} Edit
+            %td.tc{:style => "width: 25px"} View
+            %td.tc{:style => "width: 25px"} Edit
             
         %tbody.striped
           -30.times do |i|
@@ -79,40 +81,62 @@
                   %img.vtip{:title => "On click: Are You sure you want to allow 'username' this permission?",:src => "/css/img/unavailable.png"}
               %td
                 %a{:href => "#"} Kent McCullough
+              %td.tc
+                -if rand(2) > 0
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tc
+                -if rand(2) > 0
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tc
+                -if rand(2) > 0
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tc
+                -if rand(2) > 0
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
               %td.tr
                 -balance = (rand(10000) - 3000)/50.0
                 
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
-              %td.tc
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "This doesn't make a lot of sense here, but I want to break up the two banks of permissions", :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
+              %td.tr
                 -if rand(2) > 0
-                  %img.vtip{:title => "On click: Are You sure you want to remove 'username's permission?", :src => "/css/img/available.png"}
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
                 -else
-                  %img.vtip{:title => "On click: Are You sure you want to allow 'username' this permission?",:src => "/css/img/unavailable.png"}
-              %td.tc
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tl
                 -if rand(2) > 0
-                  %img.vtip{:title => "On click: Are You sure you want to remove 'username's permission?", :src => "/css/img/available.png"}
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
                 -else
-                  %img.vtip{:title => "On click: Are You sure you want to allow 'username' this permission?",:src => "/css/img/unavailable.png"}
-              %td.tc
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tr
                 -if rand(2) > 0
-                  %img.vtip{:title => "On click: Are You sure you want to remove 'username's permission?", :src => "/css/img/available.png"}
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
                 -else
-                  %img.vtip{:title => "On click: Are You sure you want to allow 'username' this permission?",:src => "/css/img/unavailable.png"}
-              %td.tc
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tl
                 -if rand(2) > 0
-                  %img.vtip{:title => "On click: Are You sure you want to remove 'username's permission?", :src => "/css/img/available.png"}
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
                 -else
-                  %img.vtip{:title => "On click: Are You sure you want to allow 'username' this permission?",:src => "/css/img/unavailable.png"} 
-              %td.tc
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tr
                 -if rand(2) > 0
-                  %img.vtip{:title => "On click: Are You sure you want to remove 'username's permission?", :src => "/css/img/available.png"}
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
                 -else
-                  %img.vtip{:title => "On click: Are You sure you want to allow 'username' this permission?",:src => "/css/img/unavailable.png"}
-              %td.tc
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tl
                 -if rand(2) > 0
-                  %img.vtip{:title => "On click: Are You sure you want to remove 'username's permission?", :src => "/css/img/available.png"}
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
                 -else
-                  %img.vtip{:title => "On click: Are You sure you want to allow 'username' this permission?",:src => "/css/img/unavailable.png"}
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+
+
 :javascript
   function createstaff(button){
     var form_data = $('.newstaffform:last').serialize();  
