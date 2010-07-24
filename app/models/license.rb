@@ -3,4 +3,6 @@ class License < CouchRest::ExtendedDocument
   
   property :type
   property :number
+  property :expiration_date
+
 end

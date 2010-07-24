@@ -3,5 +3,6 @@ class Rig < CouchRest::ExtendedDocument
   property :type
   
   property :jumper_id
-  property :last_repack
+  property :last_main_repack #or next needed? Are all packs the same?
+  property :last_reserve_repack #or next needed.
 end

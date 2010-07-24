@@ -5,6 +5,7 @@ class Transaction < CouchRest::ExtendedDocument
   property :date
   
   property :jumper_id
-  property :user_id
+  property :receiving_jumper #if it's a transfer to another account. Come up with a better name.
+  property :user_id #staff that created the transaction
   property :amount
 end

@@ -104,6 +104,8 @@
                 %span Schedule
               %span#jumpers-title.menu-title.h-ico.ico-users{:style => "width: 169px"}
                 %span Jumpers
+              %span#staff-title.menu-title.h-ico.ico-staff{:style => "width: 169px"}
+                %span Staff
               %span#store-title.menu-title.h-ico.ico-cash{:style => "width: 169px"}
                 %span Store
               %span#settings-title.menu-title.h-ico.ico-advanced{:style => "width: 169px"}
@@ -125,6 +127,9 @@
               %li
                 %a#store-item.menu-item.h-ico.ico-cash{:href => "#store"}
                   %span Store
+              %li
+                %a#settings-item.menu-item.h-ico.ico-staff{:href => "#staff"}
+                  %span Staff
               %li
                 %a#settings-item.menu-item.h-ico.ico-advanced{:href => "#settings"}
                   %span Settings
@@ -186,6 +191,8 @@
           = haml :jumpers, :layout => false
         #settings.pagediv{:style => (@current_page == "settings" ? "" : "display: none")}
           = haml :settings, :layout => false
+        #staff.pagediv{:style => (@current_page == "staff" ? "" : "display: none")}
+          = haml :staff, :layout => false
         #store.pagediv{:style => (@current_page == "store" ? "" : "display: none")}
           = haml :store, :layout => false
       #footer

@@ -1,16 +1,11 @@
 class Jumper < CouchRest::ExtendedDocument
   use_database COUCHDB_SERVER
+  property :available
   
   property :name
   property :nickname
-  property :password_hash
   
-  property :can_view_finances
-  property :can_edit_finances
-  property :can_view_manifests
-  property :can_edit_manifests
-  property :can_view_jumpers
-  property :can_edit_jumpers
+  property :weight
   
   property :street
   property :city
@@ -22,13 +17,26 @@ class Jumper < CouchRest::ExtendedDocument
   property :secondary_contact, :cast_as => 'Contact'
   
   
+  property :type #just student/not student? everything else is in the next couple props.
   
-  property :type
   property :is_experienced
   property :licenses #array of Certifications? (USPA, A 47290, ?)
-  property :manifest_ids #auto-filled.
+  property :manifest_ids #auto-filled from manifests.
+  
   property :balance
-  property :available
+  
+  #member properties
+  property :password_hash
+  property :logins #array of dates (e.g. ["7/9/11 3:00PM", "7/10/11 2:35PM"]) For usage logs
+  
+  #staff properties
+  property :can_view_finances
+  property :can_edit_finances
+  property :can_view_manifests
+  property :can_edit_manifests
+  property :can_view_jumpers
+  property :can_edit_jumpers
+  
 end
 
 class Contact < Hash

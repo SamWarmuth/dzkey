@@ -1,0 +1,109 @@
+#new-staff{:style => "display: none; width: 600px; text-align: center"}
+  
+  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New staff
+  %form.newstaffform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+    %p
+      %label{:style => "font-weight: bold"} Existing User? (autocomplete?)
+      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+        %option Kent
+        %option Todd
+        %option Joe
+    %p
+      %label{:style => "font-weight: bold"} Full Name
+      %input{:type => "text", :size => "30", :name => "full_name", :style => "margin-left: 20px"}
+    %p
+      %label{:style => "font-weight: bold"} Nickname
+      %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
+    %br
+    %br
+    %b View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    %p
+      %label{:style => "font-weight: bold;"} Financial Data
+      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
+      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
+
+    %p
+      %label{:style => "font-weight: bold;"} Manifest Data
+      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
+      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
+    %p
+      %label{:style => "font-weight: bold;"} Jumper Data
+      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
+      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
+   
+
+    %br
+    .left{:style => "display: inline; margin-right: 12px"}        
+      %a.awesome.giant.green{:href => "#create-staff", :onClick => "createstaff(this);"} Create Staff
+    .left{:style => "display: inline;margin-right: -13px"}
+      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
+.box.box-100.altbox
+  / .altbox for alternative box's color
+  .boxin
+    .header
+      %h3 Staff
+      %a.ico-plus{:href => "#new-staff", :rel => "facebox", :style => "margin-left: 5px"}
+      / Action button in the header of the box
+      %input.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "staffsearch", :placeholder => "Filter Staff..."}
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th{:style => "width: 8px"} &nbsp;
+            %td Full Name
+            %td Nickname
+            %td.tc{:style => "width: 60px"} Balance ($)
+            %td.tc Type
+            %td.tc{:style => "width: 80px"} Cert. Expires
+            %td.tc{:style => "width: 60px"} Rigs
+            
+            %td.tc Last Jump
+            %td.tc Total Jumps
+        %tbody.striped
+          -30.times do |i|
+            %tr{:class => ( i == 0 ? "first" : "")}
+              %th
+                -if rand(2) > 0
+                  %img{:src => "/css/img/available.png"}
+                -else
+                  %img{:src => "/css/img/unavailable.png"}
+              %td
+                %a{:href => "#"} Kent McCullough
+              %td
+                %a{:href => "#"} Kent
+              %td.tr
+                -balance = (rand(10000) - 3000)/50.0
+                
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
+              %td.tc Member
+              %td.tc 2/9/13           
+              %td.tc
+                - good_rigs = rand(4)
+                - caution_rigs = rand(3)
+                - bad_rigs = rand(2)
+                %a.stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
+                %a.stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
+                %a.stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs 
+              %td.tc July 21st
+              %td.tc= rand(42)**2
+
+:javascript
+  function createstaff(button){
+    var form_data = $('.newstaffform:last').serialize();  
+    alert(form_data);  
+    $.post(('/ajax/new-staff?'+form_data), function(data) {
+      $.facebox.close();
+      $('#staff').html(data);
+    });
+    return false;
+  }
+  function toggleAvailable(){
+    box = $('.available')
+    if (box.attr('checked')){
+      $('.available').attr('checked', '');
+    }else{
+      $('.available').attr('checked', 'checked');
+      
+    }
+  }

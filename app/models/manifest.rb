@@ -4,8 +4,6 @@ class Manifest < CouchRest::ExtendedDocument
   property :jump_date
   property :plane_id
   
-  property :jump_length
   property :jump_type
-  
   property :jumper_ids
 end
