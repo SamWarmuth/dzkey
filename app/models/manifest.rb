@@ -3,6 +3,7 @@ class Manifest < CouchRest::ExtendedDocument
   
   property :jump_date
   property :plane_id
+  property :flight_number
   
   property :jump_type
   property :jumper_ids
