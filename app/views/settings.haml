@@ -1,129 +1,125 @@
-#settings.pagediv{:style => (@current_page == "settings" ? "" : "display: none")}
-  .box.box-50
-    .boxin
-      .header
-        %h3 Forms, basic layout
-      %form.basic{:action => "", :enctype => "multipart/form-data", :method => "post"}
-        / Default basic forms
-        .inner-form
-          / error and information messages
-          .msg.msg-ok
-            %p
-              I'm a
-              %strong success
-              message and I'm proud of it!
-          .msg.msg-error
-            %p
-              I'm an
-              %strong error
-              message and I'm proud of it!
-          .msg.msg-warn
-            %p
-              I'm a
-              %strong warning
-              message and I'm proud of it!
-          .msg.msg-info
-            %p
-              I'm an
-              %strong info
-              message and I'm proud of it!
-          %dl
-            %dt
-              %label{:for => "some1"} Input field:
-            %dd
-              %input#some1.txt{:name => "some1", :type => "text"}/
-              %small A little description.
-            %dt
-              %label.error{:for => "some3"} Input field:
-            %dd
-              %input#some3.txt.error{:name => "some3", :type => "text", :value => "error"}/
-              / class error for wrong filled inputs
-              %small An error description.
-            %dt.ttop
-              %label{:for => "some2"} Textarea:
-            / .ttop for vertical-align: top
-            %dd
-              %textarea#some2{:cols => "20", :name => "some2", :rows => "5"}
-            %dt
-              %label{:for => "some4"} File input:
-            %dd
-              %input#some4.file{:name => "some4", :type => "file"}/
-              %span.loading uploading…
-              / OR <img src="css/img/upload.gif" alt="" />
-              / uploading animation
-            %dt
-              %label{:for => "some10"} Select box:
-            %dd
-              %select#some10{:name => "some10"}
-                %option{:value => "val1"} select …
-                %option{:value => "val1"} … something
-            %dt
-            %dd
-              %label.check
-                %input#some5.check{:checked => "checked", :name => "some5", :type => "checkbox", :value => "true"}>/
-                Checkbox 1
-              %label.check
-                %input#some6.check{:name => "some6", :type => "checkbox", :value => "true"}>/
-                Checkbox 2
-            %dt
-            %dd
-              %label.radio
-                %input#some7.radio{:name => "some78", :type => "radio", :value => "true"}>/
-                Radio 1
-              %label.radio
-                %input#some8.radio{:name => "some78", :type => "radio", :value => "true"}>/
-                Radio 2
-            %dt
-            %dd
-              %input.button{:type => "submit", :value => "Submit emphasized"}/
-              %input.button.altbutton{:type => "submit", :value => "Submit"}/
-  .box.box-50.altbox
-    .boxin
-      .header
-        %h3 Forms with fieldsets, plain layout
-      %form.fields{:action => "", :enctype => "multipart/form-data", :method => "post"}
-        / Forms (plain layout, cleaner)
-        %fieldset
-          %legend
-            %strong Legend
-          .msg.msg-ok
-            %p
-              I'm a
-              %strong success
-              message and I'm proud of it!
-          %label{:for => "some21"} Input field:
-          %input#some21.txt{:name => "some21", :size => "30", :type => "text"}/
-          %small A little description.
-          %label.error{:for => "some23"} Input field:
-          %input#some23.txt.error{:name => "some23", :size => "30", :type => "text", :value => "error"}/
-          %small An error description.
-          %label{:for => "some22"} Textarea:
-          %textarea#some22{:cols => "40", :name => "some22", :rows => "5"}
-          %label{:for => "some24"} File input:
-          %input#some24.file{:name => "some24", :type => "file"}/
-          %span.loading uploading…
-          / OR <img src="css/img/upload.gif" alt="" />
-          %label{:for => "some210"} Select box:
-          %select#some210{:name => "some210"}
-            %option{:value => "val1"} select …
-            %option{:value => "val1"} … something
-          .sep
+.box.box-50
+  .boxin
+    .header
+      %h3 Forms, basic layout
+    %form.basic{:action => "", :enctype => "multipart/form-data", :method => "post"}
+      / Default basic forms
+      .inner-form
+        / error and information messages
+        .msg.msg-ok
+          %p
+            I'm a
+            %strong success
+            message and I'm proud of it!
+        .msg.msg-error
+          %p
+            I'm an
+            %strong error
+            message and I'm proud of it!
+        .msg.msg-warn
+          %p
+            I'm a
+            %strong warning
+            message and I'm proud of it!
+        .msg.msg-info
+          %p
+            I'm an
+            %strong info
+            message and I'm proud of it!
+        %dl
+          %dt
+            %label{:for => "some1"} Input field:
+          %dd
+            %input#some1.txt{:name => "some1", :type => "text"}/
+            %small A little description.
+          %dt
+            %label.error{:for => "some3"} Input field:
+          %dd
+            %input#some3.txt.error{:name => "some3", :type => "text", :value => "error"}/
+            / class error for wrong filled inputs
+            %small An error description.
+          %dt.ttop
+            %label{:for => "some2"} Textarea:
+          / .ttop for vertical-align: top
+          %dd
+            %textarea#some2{:cols => "20", :name => "some2", :rows => "5"}
+          %dt
+            %label{:for => "some4"} File input:
+          %dd
+            %input#some4.file{:name => "some4", :type => "file"}/
+            %span.loading uploading…
+            / OR <img src="css/img/upload.gif" alt="" />
+            / uploading animation
+          %dt
+            %label{:for => "some10"} Select box:
+          %dd
+            %select#some10{:name => "some10"}
+              %option{:value => "val1"} select …
+              %option{:value => "val1"} … something
+          %dt
+          %dd
             %label.check
-              %input#some25.check{:checked => "checked", :name => "some25", :type => "checkbox", :value => "true"}>/
+              %input#some5.check{:checked => "checked", :name => "some5", :type => "checkbox", :value => "true"}>/
               Checkbox 1
             %label.check
-              %input#some26.check{:name => "some26", :type => "checkbox", :value => "true"}>/
+              %input#some6.check{:name => "some6", :type => "checkbox", :value => "true"}>/
               Checkbox 2
-          .sep
+          %dt
+          %dd
             %label.radio
-              %input#some27.radio{:name => "some278", :type => "radio", :value => "true"}>/
+              %input#some7.radio{:name => "some78", :type => "radio", :value => "true"}>/
               Radio 1
             %label.radio
-              %input#some28.radio{:name => "some278", :type => "radio", :value => "true"}>/
+              %input#some8.radio{:name => "some78", :type => "radio", :value => "true"}>/
               Radio 2
-          .sep
-            %input.button{:type => "submit", :value => "Submit"}/
-            %input.button.altbutton{:type => "submit", :value => "Submit emphasized"}/
-  #footer
-    %p
-      © DZKey 2010
+          %dt
+          %dd
+            %input.button{:type => "submit", :value => "Submit emphasized"}/
+            %input.button.altbutton{:type => "submit", :value => "Submit"}/
+.box.box-50.altbox
+  .boxin
+    .header
+      %h3 Forms with fieldsets, plain layout
+    %form.fields{:action => "", :enctype => "multipart/form-data", :method => "post"}
+      / Forms (plain layout, cleaner)
+      %fieldset
+        %legend
+          %strong Legend
+        .msg.msg-ok
+          %p
+            I'm a
+            %strong success
+            message and I'm proud of it!
+        %label{:for => "some21"} Input field:
+        %input#some21.txt{:name => "some21", :size => "30", :type => "text"}/
+        %small A little description.
+        %label.error{:for => "some23"} Input field:
+        %input#some23.txt.error{:name => "some23", :size => "30", :type => "text", :value => "error"}/
+        %small An error description.
+        %label{:for => "some22"} Textarea:
+        %textarea#some22{:cols => "40", :name => "some22", :rows => "5"}
+        %label{:for => "some24"} File input:
+        %input#some24.file{:name => "some24", :type => "file"}/
+        %span.loading uploading…
+        / OR <img src="css/img/upload.gif" alt="" />
+        %label{:for => "some210"} Select box:
+        %select#some210{:name => "some210"}
+          %option{:value => "val1"} select …
+          %option{:value => "val1"} … something
+        .sep
+          %label.check
+            %input#some25.check{:checked => "checked", :name => "some25", :type => "checkbox", :value => "true"}>/
+            Checkbox 1
+          %label.check
+            %input#some26.check{:name => "some26", :type => "checkbox", :value => "true"}>/
+            Checkbox 2
+        .sep
+          %label.radio
+            %input#some27.radio{:name => "some278", :type => "radio", :value => "true"}>/
+            Radio 1
+          %label.radio
+            %input#some28.radio{:name => "some278", :type => "radio", :value => "true"}>/
+            Radio 2
+        .sep
+          %input.button{:type => "submit", :value => "Submit"}/
+          %input.button.altbutton{:type => "submit", :value => "Submit emphasized"}/

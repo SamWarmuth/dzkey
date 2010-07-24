@@ -1,151 +1,158 @@
-#manifest.pagediv{:style => (@current_page == "manifest" ? "" : "display: none")}
-  #new-manifest{:style => "display: none; width: 600px; text-align: center"}
-    
-    %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'}  New Manifest
-    %form.newmanifestform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
-      %p
-        %label{:style => "font-weight: bold"} Jump Date
-        %input{:type => "text", :size => "30", :name => "full_name", :style => "margin-left: 20px", :value => Time.now.strftime("%m/%d/%y")}
-      %p
-        %label{:style => "font-weight: bold"} Jump Time
-        %input{:type => "text", :size => "30", :name => "full_name", :style => "margin-left: 20px", :value => Time.now.strftime("%H:%M")}
-      %br
-      %p
-        %label{:style => "font-weight: bold"} Plane
-        %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
-          %option Cessna 182
-          %option Otter
-          %option Temp. Plane
-      %br
-      %p
-        %label{:style => "font-weight: bold"} Jump Type
-        %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
-          %option Mixed
-          %option Tandem
-          %option FS
-          %option Competition
+.box.box-100.altbox
+  / .altbox for alternative box's color
+  .boxin
+    .header
+      %h3 Available Aircraft
+    .content
+      
+#new-manifest{:style => "display: none; width: 600px; text-align: center"}
+  
+  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'}  New Flight
+  %form.newmanifestform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+    %p
+      %label{:style => "font-weight: bold"} Jump Date
+      %input{:type => "text", :size => "30", :name => "full_name", :style => "margin-left: 20px", :value => Time.now.strftime("%m/%d/%y")}
+    %p
+      %label{:style => "font-weight: bold"} Jump Time
+      %input{:type => "text", :size => "30", :name => "full_name", :style => "margin-left: 20px", :value => Time.now.strftime("%H:%M")}
+    %br
+    %p
+      %label{:style => "font-weight: bold"} Plane
+      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+        %option Cessna 182
+        %option Otter
+        %option Temp. Plane
+    %br
+    %p
+      %label{:style => "font-weight: bold"} Jump Type
+      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+        %option Mixed
+        %option Tandem
+        %option FS
+        %option Competition
 
-      %br
+    %br
 
-      %p
-        %label{:style => "font-weight: bold"} Height
-        %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "height", :value => "14000"}
-      %br
-      %p
-        .left{:style => "display: inline; margin-right: 20px"}        
-          %a.awesome.large.green{:href => "#create-manifest", :onClick => "createManifest(this);"} Create Manifest
-        .left{:style => "display: inline;margin-right: 0px"}
-          %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
-  .box.box-60.altbox
-    / .altbox for alternative box's color
-    .boxin
-      .header
-        %h3 Manifests
-        %a.ico-plus{:href => "#new-manifest", :rel => "facebox", :style => "margin-left: 5px"}
-        %ul
-          %li
-            %a.active{:href => "#"} Upcoming
-          %li
-            %a{:href => "#"} All
-      .content
-        %table{:cellspacing => "0"}
-          %thead
-            %tr
-              %th Name
-              %td.tc Plane
-              %td.tc Jump Date
-              %td.tc Jumpers
-              %td.tc Weight (lbs.)
-          %tbody.expander
-            -5.times do |i|
-              %b
-              %tr{:class => (i == 0 ? "first" : "")}
-                %th
-                  %a{:href => "#"} Flight 112
-                %td.tc Cessna 182
-                %td.tc 7/24/2011
-                %td.tc
-                  -cleared_jumpers = rand(10)
-                  -fail_jumpers = rand(2)
-                  %a.stat.green{:href => "#", :style => (cleared_jumpers > 0 ? "" : "visibility: hidden")}= cleared_jumpers
-                  %a.stat.red.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
-                %td.tc= rand(3000)
-              %tr{:style => "background: #F7F7F7;"}
-                %td{:colspan => 5, :style => "border-bottom: 1px solid #BBB;"}
-                  %table{:style => "border-bottom: 10px solid #DDD;"}
-                    %thead
+    %p
+      %label{:style => "font-weight: bold"} Height
+      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "height", :value => "14000"}
+    %br
+    .left{:style => "display: inline; margin-right: 20px"}        
+      %a.awesome.large.green{:href => "#create-manifest", :onClick => "createManifest(this);"} Create Flight
+    .left{:style => "display: inline;margin-right: 0px"}
+      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
+.box.box-60.altbox
+  / .altbox for alternative box's color
+  .boxin
+    .header
+      %h3 Flights
+      %a.ico-plus{:href => "#new-manifest", :rel => "facebox", :style => "margin-left: 5px"}
+      %ul
+        %li
+          %a.active{:href => "#"} Upcoming
+        %li
+          %a{:href => "#"} All
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %td{:style => "width: 15px"} 
+            %th Name
+            %td.tc Plane
+            %td.tc Jump Date
+            %td.tc Jumpers
+            %td.tc Weight (lbs.)
+        %tbody.expander
+          -5.times do |i|
+            %tr{:class => (i == 0 ? "first" : "")}
+              %td &#9658;
+              %td
+                %a{:href => "#"} Flight #{123-i}
+              %td.tc Cessna 182
+              %td.tc 7/24/2011
+              %td.tc
+                -cleared_jumpers = rand(10)
+                -fail_jumpers = rand(2)
+                %a.stat.green{:href => "#", :style => (cleared_jumpers > 0 ? "" : "visibility: hidden")}= cleared_jumpers
+                %a.stat.red.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
+              %td.tc= rand(3000)
+            %tr{:style => "background: #F3F3F3;"}
+              %td{:style => "border-bottom: 1px solid #BBB;"}
+              %td{:colspan => 5, :style => "border-bottom: 1px solid #BBB;"}
+                %table{:style => "border-bottom: 10px solid #DDD;"}
+                  %thead
+                    %tr
+                      %th{:style => "width: 8px"} &nbsp;
+                      %td{:style => "width: 80px"} Name
+                      %td.tc{:style => "width: 60px"} Balance ($)
+                      %td.tc{:style => "width: 60px"} Type
+                      %td.tc{:style => "width: 60px"} Rigs
+                  %tbody.manifest.connectedSortable
+                    %tr
+                      %td
+                      %td
+                      %td{:style => "text-align: center"} Drag Jumpers Here.
+                      %td
+                      %td
+                    -0.times do |i|
                       %tr
-                        %th{:style => "width: 8px"} &nbsp;
-                        %td{:style => "width: 80px"} Name
-                        %td.tc{:style => "width: 60px"} Balance ($)
-                        %td.tc{:style => "width: 60px"} Type
-                        %td.tc{:style => "width: 60px"} Rigs
-                    %tbody.manifest.connectedSortable
-                      %tr
-                        %td
-                        %td
-                        %td{:style => "text-align: center"} Drag Jumpers Here.
-                        %td
-                        %td
-                      -0.times do |i|
-                        %tr
-                          %td{:style => "width: 8px"}
-                            -if rand(2) > 0
-                              %img{:src => "/css/img/available.png"}
-                            -else
-                              %img{:src => "/css/img/unavailable.png"}
-                          %td{:style => "width: 80px"}
-                            Kent
-                          %td.tr{:style => "width: 60px"}
-                            -balance = (rand(10000) - 3000)/50.0
+                        %td{:style => "width: 8px"}
+                          -if rand(2) > 0
+                            %img{:src => "/css/img/available.png"}
+                          -else
+                            %img{:src => "/css/img/unavailable.png"}
+                        %td{:style => "width: 80px"}
+                          Kent
+                        %td.tr{:style => "width: 60px"}
+                          -balance = (rand(10000) - 3000)/50.0
 
-                            .stat{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
-                          %td.tc{:style => "width: 60px"} Member
-                          %td.tc{:style => "width: 60px"}
-                            - good_rigs = rand(4)
-                            - caution_rigs = rand(3)
-                            - bad_rigs = rand(2)
-                            .stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                            .stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                            .stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
+                          .stat{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
+                        %td.tc{:style => "width: 60px"} Member
+                        %td.tc{:style => "width: 60px"}
+                          - good_rigs = rand(4)
+                          - caution_rigs = rand(3)
+                          - bad_rigs = rand(2)
+                          .stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
+                          .stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
+                          .stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
+              
+.box.box-40.altbox
+  / .altbox for alternative box's color
+  .boxin
+    .header
+      %h3 Jumpers
+      %input.search{:type => "text", :size => "25", :style => "margin-left: 123px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th{:style => "width: 8px"} &nbsp;
+            %td{:style => "width: 80px"} Name
+            %td.tc{:style => "width: 60px"} Balance ($)
+            %td.tc{:style => "width: 60px"} Type
+            %td.tc{:style => "width: 60px"} Rigs
+        %tbody.jumpers.connectedSortable
+          -30.times do |i|
+            %tr{:style => "width: 365px"}
+              %td{:style => "width: 8px"}
+                -if rand(2) > 0
+                  %img{:src => "/css/img/available.png"}
+                -else
+                  %img{:src => "/css/img/unavailable.png"}
+              %td{:style => "width: 80px"}
+                Kent
+              %td.tr{:style => "width: 60px"}
+                -balance = (rand(10000) - 3000)/50.0
                 
-  .box.box-40.altbox
-    / .altbox for alternative box's color
-    .boxin
-      .header
-        %h3 Jumpers
-        %input.search{:type => "text", :size => "25", :style => "margin-left: 123px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
-      .content
-        %table{:cellspacing => "0"}
-          %thead
-            %tr
-              %th{:style => "width: 8px"} &nbsp;
-              %td{:style => "width: 80px"} Name
-              %td.tc{:style => "width: 60px"} Balance ($)
-              %td.tc{:style => "width: 60px"} Type
-              %td.tc{:style => "width: 60px"} Rigs
-          %tbody.jumpers.connectedSortable
-            -30.times do |i|
-              %tr{:style => "width: 365px"}
-                %td{:style => "width: 8px"}
-                  -if rand(2) > 0
-                    %img{:src => "/css/img/available.png"}
-                  -else
-                    %img{:src => "/css/img/unavailable.png"}
-                %td{:style => "width: 80px"}
-                  Kent
-                %td.tr{:style => "width: 60px"}
-                  -balance = (rand(10000) - 3000)/50.0
-                  
-                  .stat{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
-                %td.tc{:style => "width: 60px"} Member
-                %td.tc{:style => "width: 60px"}
-                  - good_rigs = rand(4)
-                  - caution_rigs = rand(2)
-                  - bad_rigs = rand(2)
-                  .stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                  .stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                  .stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs 
+                .stat{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
+              %td.tc{:style => "width: 60px"} Member
+              %td.tc{:style => "width: 60px"}
+                - good_rigs = rand(4)
+                - caution_rigs = rand(2)
+                - bad_rigs = rand(2)
+                .stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
+                .stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
+                .stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs 
 :javascript
   $(document).ready(function(){
     $(".jumpers, .manifest").sortable({

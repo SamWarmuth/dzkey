@@ -816,12 +816,13 @@ a.ico-plus
       padding: 10px
       color: #fff
     .stat
-      display: inline
+      display: inline-block
       border: 0
       border-radius: 5px
       -moz-border-radius: 5px
       -webkit-border-radius: 5px
-      padding: 5px
+      padding: 0 5px
+      
       
       
       color: #fff
@@ -851,7 +852,7 @@ a.ico-plus
       &.green
         background: #2DBA5F
         &:hover
-          background: #060
+          background: #0D9A3F
       &.merge-left
         border-top-left-radius: 0
         -moz-border-radius-topleft: 0
@@ -991,6 +992,8 @@ table.calendar
   th, td
     width: 14.3%
     text-align: center
+  td
+    height: 60px
   tbody
     td, th
       border: 1px solid #ddd
@@ -1004,6 +1007,8 @@ table.calendar
     font-size: 14px
     border: 0
     margin: 0 1px
+    margin-top: 10px
+    
 
 .jumpers
   tr:hover

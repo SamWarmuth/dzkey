@@ -1,7 +1,10 @@
 class Plane < CouchRest::ExtendedDocument
   property :name
-  property :max_weight
+  property :type
+  property :flight_prefix
+  property :cycle_minutes
+  property :capacity
   
-  property :jump_ids
+  property :manifest_ids
   property :available
 end

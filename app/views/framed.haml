@@ -61,9 +61,9 @@
         $('tbody.striped tr:even').addClass('even');
         $('tbody.expander tr:even').click(function(){
           if ($(this).next().is(':visible')){
-            $(this).next().fadeOut();
+            $(this).next().fadeOut("fast");
           }else{
-            $(this).next().fadeIn();
+            $(this).next().fadeIn("fast");
           }
         });
         
@@ -99,7 +99,7 @@
               %span#dashboard-title.menu-title.h-ico.ico-dashboard{:style => "width: 169px"}
                 %span Dashboard
               %span#manifest-title.menu-title.h-ico.ico-edit{:style => "width: 169px"}
-                %span Manifests
+                %span Manifest
               %span#schedule-title.menu-title.h-ico.ico-schedule{:style => "width: 169px"}
                 %span Schedule
               %span#jumpers-title.menu-title.h-ico.ico-users{:style => "width: 169px"}
@@ -115,7 +115,7 @@
                   %span Dashboard
               %li
                 %a#manifest-item.menu-item.h-ico.ico-edit{:href => "#manifest"}
-                  %span Manifests
+                  %span Manifest
               %li
                 %a#schedule-item.menu-item.h-ico.ico-schedule{:href => "#schedule"}
                   %span Schedule
@@ -176,9 +176,18 @@
           %a#logout.logout-ico{:href => "#", :title => "Log Out"}
     #container
       .inner-container
-        = haml :dashboard, :layout => false
-        = haml :manifest, :layout => false
-        = haml :schedule, :layout => false
-        = haml :jumpers, :layout => false
-        = haml :settings, :layout => false
-        = haml :store, :layout => false
+        #dashboard.pagediv{:style => (@current_page == "dashboard" ? "" : "display: none")}
+          = haml :dashboard, :layout => false
+        #manifest.pagediv{:style => (@current_page == "manifest" ? "" : "display: none")}
+          = haml :manifest, :layout => false
+        #schedule.pagediv{:style => (@current_page == "schedule" ? "" : "display: none")}
+          = haml :schedule, :layout => false
+        #jumpers.pagediv{:style => (@current_page == "jumpers" ? "" : "display: none")}
+          = haml :jumpers, :layout => false
+        #settings.pagediv{:style => (@current_page == "settings" ? "" : "display: none")}
+          = haml :settings, :layout => false
+        #store.pagediv{:style => (@current_page == "store" ? "" : "display: none")}
+          = haml :store, :layout => false
+      #footer
+        %p
+          © DZKey 2010        
