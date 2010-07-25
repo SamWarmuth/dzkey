@@ -77,7 +77,7 @@
                 - good_rigs = rand(4)
                 - caution_rigs = rand(3)
                 - bad_rigs = rand(2)
-                .stat-cover.vtip{:title => "Click to edit rigs"}
+                .stat-cover.vtip{:title => "Click to edit rigs."}
                 %a.stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
                 %a.stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
                 %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs

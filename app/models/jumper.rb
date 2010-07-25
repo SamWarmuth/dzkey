@@ -6,6 +6,7 @@ class Jumper < CouchRest::ExtendedDocument
   property :nickname
   
   property :weight
+  property :rig_ids
   
   property :street
   property :city

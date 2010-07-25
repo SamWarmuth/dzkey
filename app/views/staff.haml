@@ -138,6 +138,15 @@
 
 
 :javascript
+  $(document).ready(function(){
+    $(".black-dot, .no-dot").click(function(){
+      if ($(this).hasClass("no-dot")){
+        $(this).removeClass("no-dot").addClass("black-dot");
+      } else {
+        $(this).removeClass("black-dot").addClass("no-dot");
+      }
+    });
+  });
   function createstaff(button){
     var form_data = $('.newstaffform:last').serialize();  
     alert(form_data);  
