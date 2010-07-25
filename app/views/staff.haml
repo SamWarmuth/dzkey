@@ -5,6 +5,7 @@
     %p
       %label{:style => "font-weight: bold"} Existing User? (autocomplete?)
       %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+        %option{:value => ""}
         %option Kent
         %option Todd
         %option Joe
@@ -14,6 +15,10 @@
     %p
       %label{:style => "font-weight: bold"} Nickname
       %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
+    %br
+    %p
+      %label{:style => "font-weight: bold"} Password
+      %input{:type => "text", :size => "30", :name => "password", :style => "margin-left: 20px"}
     %br
     %br
     %b View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -72,7 +77,7 @@
             %td.tc{:style => "width: 25px"} Edit
             
         %tbody.striped
-          -30.times do |i|
+          -10.times do |i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th.tc
                 -if rand(2) > 0
