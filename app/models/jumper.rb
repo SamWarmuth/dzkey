@@ -30,6 +30,9 @@ class Jumper < CouchRest::ExtendedDocument
   property :password_hash
   property :logins #array of dates (e.g. ["7/9/11 3:00PM", "7/10/11 2:35PM"]) For usage logs
   
+
+  property :is_staff
+  
   #instructor Properties
   property :pilot
   property :tandem_instructor
