@@ -2,7 +2,12 @@ class Jumper < CouchRest::ExtendedDocument
   use_database COUCHDB_SERVER
   property :available
   
-  property :name
+  property :first_name
+  property :last_name
+  
+  def name
+    return self.first_name.to_s + " " + self.last_name.to_s
+  end
   property :nickname
   
   property :weight

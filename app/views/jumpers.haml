@@ -2,26 +2,46 @@
   
   %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New Jumper
   %form.newjumperform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+    %p.bold
+      %label Name
+      %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
+      %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px"}
     %p
-      %label{:style => "font-weight: bold"} Full Name
-      %input{:type => "text", :size => "30", :name => "full_name", :style => "margin-left: 20px"}
-    %p
-      %label{:style => "font-weight: bold"} Nickname
+      %label Nickname
       %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
     %br
     %p
-      %label{:style => "font-weight: bold"} Type
+      %label Type
       %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
         %option Student
         %option USPA Member
         %option Other
     %p
-      %label{:style => "font-weight: bold"} Last Certified
+      %label Last Certified
       %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "last_certified"}
     %br
     %p
-      %label{:style => "font-weight: bold"} Initial Balance
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "balance"}
+      %label Address
+      %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px"}
+    %p
+      %label City
+      %input{:type => "text", :size => "30", :name => "city", :style => "margin-left: 20px"}
+    %p
+      %label State
+      %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
+        %option{:value => "AL"} AL - Alabama
+        %option{:value => "AK"} AK - Alaska
+        %option Other
+    %p
+      %label ZIP Code
+      %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
+    %p
+      %label Country
+      %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
+    %br
+    %p.bold
+      %label Initial Balance
+      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "balance", :value => "0.00"}
     %br
     %div
       .checkcontainer{:onClick => "toggleAvailable();", :style => 'margin-right: 78px; position: relative'}
