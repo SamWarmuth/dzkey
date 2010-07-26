@@ -42,22 +42,41 @@ class Main
   
   post "/ajax/new-jumper" do
     jumper = Jumper.new
-    jumper.name = params[:full_name]
+    jumper.first_name = params[:first_name]
+    jumper.first_name = params[:last_name]
+    
     jumper.nickname = params[:nickname] unless params[:nickname].empty?
+    
+    jumper.first_name = params[:first_name]
+    jumper.last_name = params[:last_name]
+    jumper.address = params[:address]
+    jumper.city = params[:city]
+    jumper.state = params[:state]
+    jumper.country = params[:country]
+    
     jumper.type = params[:type]
-    jumper.balance = params[:balance]
+    jumper.balance = params[:balance].to_f
+    jumper.available = (params[:available]=="on")
     jumper.save
     haml :jumpers, :layout => false
   end
+  
   post "/ajax/new-staff" do
     staff = Jumper.new
     staff.is_staff = true
-    staff.name = params[:full_name]
+    staff.first_name = params[:first_name]
+    staff.last_name = params[:last_name]
+    staff.address = params[:address]
+    staff.city = params[:city]
+    staff.state = params[:state]
+    staff.country = params[:country]
+    
     staff.nickname = params[:nickname] unless params[:nickname].empty?
 
     staff.pilot = (params[:pilot]=="on")
     staff.tandem_instructor = (params[:tandem_instructor]=="on")
     staff.aff_instructor = (params[:aff_instructor]=="on")
+    staff.videographer = (params[:videographer]=="on")
     
     staff.can_view_jumpers = (params[:can_view_jumpers]=="on")
     staff.can_edit_jumpers = (params[:can_edit_jumpers]=="on")

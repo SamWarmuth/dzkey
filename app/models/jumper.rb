@@ -13,7 +13,7 @@ class Jumper < CouchRest::ExtendedDocument
   property :weight
   property :rig_ids
   
-  property :street
+  property :address
   property :city
   property :state
   property :zip

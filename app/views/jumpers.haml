@@ -76,23 +76,23 @@
             %td.tc Last Jump
             %td.tc Total Jumps
         %tbody.striped
-          -30.times do |i|
+          -Jumper.all.each_with_index do |jumper, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th
-                -if rand(2) > 0
+                -if jumper.available
                   %img{:src => "/css/img/available.png"}
                 -else
                   %img{:src => "/css/img/unavailable.png"}
               %td
-                %a{:href => "#"} Kent McCullough
+                %a{:href => "#"}= jumper.name
               %td
-                %a{:href => "#"} Kent
+                %a{:href => "#"}= jumper.nickname
               %td.tr
-                -balance = (rand(10000) - 3000)/50.0
+                -balance = jumper.balance.to_f || 0
                 
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
-              %td.tc Member
-              %td.tc 2/9/13           
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
+              %td.tc= jumper.type
+              %td.tc= "?"
               %td.tc
                 - good_rigs = rand(4)
                 - caution_rigs = rand(3)

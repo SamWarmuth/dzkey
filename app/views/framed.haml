@@ -55,7 +55,7 @@
             $(this).toggleClass('active');
             $("#h-wrap ul").css('display', 'none');
         });
-        $('tbody.expander tr:odd').toggle();
+        $('tbody.expander tr:odd').fadeOut();
         
         // Handling with tables (adding first and last classes for borders and adding alternate bgs)
         $('tbody.striped tr:even').addClass('even');

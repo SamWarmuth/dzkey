@@ -6,12 +6,12 @@
       %label{:style => "font-weight: bold"} Existing User? (autocomplete?)
       %select{:style => "width: 177px; margin-left: 20px", :name => "existing"}
         %option{:value => ""}
-        %option Kent
-        %option Todd
-        %option Joe
-    %p
-      %label{:style => "font-weight: bold"} Full Name
-      %input{:type => "text", :size => "30", :name => "full_name", :style => "margin-left: 20px"}
+        -Jumper.all.find_all{|j| !j.is_staff}.each do |jumper|
+          %option{:value => jumper.id}= jumper.name
+    %p.bold
+      %label Name
+      %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
+      %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px"}
     %p
       %label{:style => "font-weight: bold"} Nickname
       %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
@@ -19,6 +19,25 @@
     %p
       %label{:style => "font-weight: bold"} Password
       %input{:type => "text", :size => "30", :name => "password", :style => "margin-left: 20px"}
+    %br
+    %p
+      %label Address
+      %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px"}
+    %p
+      %label City
+      %input{:type => "text", :size => "30", :name => "city", :style => "margin-left: 20px"}
+    %p
+      %label State
+      %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
+        %option{:value => "AL"} AL - Alabama
+        %option{:value => "AK"} AK - Alaska
+        %option Other
+    %p
+      %label ZIP Code
+      %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
+    %p
+      %label Country
+      %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
     %br
     %p
       %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "pilot", :checked => "checked"}
@@ -29,7 +48,9 @@
     %p
       %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "aff_instructor", :checked => "checked"}
       %label{:style => "font-weight: bold; margin-right: 68px"} AFF Instructor
-      
+    %p
+      %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "videographer", :checked => "checked"}
+      %label{:style => "font-weight: bold; margin-right: 70px"} Videographer 
     %br
     %br
     %b View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
