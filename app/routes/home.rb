@@ -47,6 +47,28 @@ class Main
     jumper.type = params[:type]
     jumper.balance = params[:balance]
     jumper.save
-    return "success"
+    haml :jumpers, :layout => false
+  end
+  post "/ajax/new-staff" do
+    staff = Jumper.new
+    staff.is_staff = true
+    staff.name = params[:full_name]
+    staff.nickname = params[:nickname] unless params[:nickname].empty?
+
+    staff.pilot = (params[:pilot]=="on")
+    staff.tandem_instructor = (params[:tandem_instructor]=="on")
+    staff.aff_instructor = (params[:aff_instructor]=="on")
+    
+    staff.can_view_jumpers = (params[:can_view_jumpers]=="on")
+    staff.can_edit_jumpers = (params[:can_edit_jumpers]=="on")
+    
+    staff.can_view_manifests = (params[:can_view_manifests]=="on")
+    staff.can_edit_manifests = (params[:can_edit_manifests]=="on")
+    
+    staff.can_view_finances = (params[:can_view_finances]=="on")
+    staff.can_edit_finances = (params[:can_edit_finances]=="on")
+    
+    staff.save
+    haml :staff, :layout => false
   end
 end

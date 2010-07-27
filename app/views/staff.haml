@@ -4,7 +4,8 @@
   %form.newstaffform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
     %p
       %label{:style => "font-weight: bold"} Existing User? (autocomplete?)
-      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+      %select{:style => "width: 177px; margin-left: 20px", :name => "existing"}
+        %option{:value => ""}
         %option Kent
         %option Todd
         %option Joe
@@ -15,27 +16,41 @@
       %label{:style => "font-weight: bold"} Nickname
       %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
     %br
+    %p
+      %label{:style => "font-weight: bold"} Password
+      %input{:type => "text", :size => "30", :name => "password", :style => "margin-left: 20px"}
+    %br
+    %p
+      %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "pilot", :checked => "checked"}
+      %label{:style => "font-weight: bold; margin-right: 135px"} Pilot
+    %p
+      %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "tandem_instructor", :checked => "checked"}
+      %label{:style => "font-weight: bold; margin-right: 36px"} Tandem Instructor
+    %p
+      %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "aff_instructor", :checked => "checked"}
+      %label{:style => "font-weight: bold; margin-right: 68px"} AFF Instructor
+      
+    %br
     %br
     %b View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     %p
-      %label{:style => "font-weight: bold;"} Financial Data
-      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
-      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
+      %label{:style => "font-weight: bold;"} Jumper Data
+      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "can_view_jumpers", :checked => "checked"}
+      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "can_edit_jumpers", :checked => "checked"}
 
     %p
       %label{:style => "font-weight: bold;"} Manifest Data
-      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
-      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
+      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "can_view_manifests", :checked => "checked"}
+      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "can_edit_manifests", :checked => "checked"}
     %p
-      %label{:style => "font-weight: bold;"} Jumper Data
-      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "available", :checked => "checked"}
-      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "available", :checked => "checked"}
-   
+      %label{:style => "font-weight: bold;"} Financial Data
+      %input{:type => "checkbox", :style => "margin-left: 68px; margin-right: 70px;", :name => "can_view_finances", :checked => "checked"}
+      %input{:type => "checkbox", :style => "margin-right: 30px;", :name => "can_edit_finances", :checked => "checked"}
 
     %br
     .left{:style => "display: inline; margin-right: 12px"}        
-      %a.awesome.giant.green{:href => "#create-staff", :onClick => "createstaff(this);"} Create Staff
+      %a.awesome.giant.green{:href => "#create-staff", :onClick => "createStaff(this);"} Create Staff
     .left{:style => "display: inline;margin-right: -13px"}
       %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
 .box.box-100.altbox
@@ -50,46 +65,104 @@
       %table{:cellspacing => "0"}
         %thead
           %tr
-            %th{:style => "width: 8px"} &nbsp;
-            %td Full Name
-            %td Nickname
-            %td.tc{:style => "width: 60px"} Balance ($)
-            %td.tc Type
-            %td.tc{:style => "width: 80px"} Cert. Expires
-            %td.tc{:style => "width: 60px"} Rigs
+            %th{:style => "width: 8px", :rowspan => 2} &nbsp;
+            %td{:rowspan => 2} <br/><br/>Name 
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/><br/>Pilot
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/>Tandem Instructor
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/><br/>Videographer
+            %td.tc{:style => "width: 75px", :rowspan => 2} <br/><br/>AFF Instructor
             
-            %td.tc Last Jump
-            %td.tc Total Jumps
+            %td.tc{:style => "width: 50px", :rowspan => 2} <br/><br/>Balance 
+            %td.tc.bold{:colspan => 2} Jumpers
+            %td.tc.bold{:colspan => 2} Manifest
+            %td.tc.bold{:colspan => 2} Finance
+            
+          %tr
+            %td.tc{:style => "width: 25px; padding-left: 10px"} View
+            %td.tc{:style => "width: 25px"} Edit
+            %td.tc{:style => "width: 25px"} View
+            %td.tc{:style => "width: 25px"} Edit
+            
+            %td.tc{:style => "width: 25px"} View
+            %td.tc{:style => "width: 25px"} Edit
+            
         %tbody.striped
-          -30.times do |i|
+          -Jumper.all.find_all{|j| j.is_staff}.each_with_index do |staff, i|
             %tr{:class => ( i == 0 ? "first" : "")}
-              %th
-                -if rand(2) > 0
-                  %img{:src => "/css/img/available.png"}
+              %th.tc
+                -if staff.available
+                  %img.vtip{:title => "On click: Are You sure you want to check staff member out?", :src => "/css/img/available.png"}
                 -else
-                  %img{:src => "/css/img/unavailable.png"}
+                  %img.vtip{:title => "On click: Check staff member in?",:src => "/css/img/unavailable.png"}
               %td
-                %a{:href => "#"} Kent McCullough
-              %td
-                %a{:href => "#"} Kent
-              %td.tr
-                -balance = (rand(10000) - 3000)/50.0
-                
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
-              %td.tc Member
-              %td.tc 2/9/13           
+                %a{:href => "#"}= staff.name
               %td.tc
-                - good_rigs = rand(4)
-                - caution_rigs = rand(3)
-                - bad_rigs = rand(2)
-                %a.stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                %a.stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                %a.stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs 
-              %td.tc July 21st
-              %td.tc= rand(42)**2
+                -if staff.pilot
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tc
+                -if staff.tandem_instructor
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tc
+                -if staff.videographer
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tc
+                -if staff.aff_instructor
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tr
+                -balance = staff.balance || 0
+                
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "This doesn't make a lot of sense here, but I want to break up the two banks of permissions", :class => (balance >= 0 ? "green" : "red")}= "%5.2f" % balance
+              %td.tr
+                -if staff.can_view_jumpers
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tl
+                -if staff.can_edit_jumpers
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tr
+                -if staff.can_view_manifests
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tl
+                -if staff.can_edit_manifests
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tr
+                -if staff.can_view_finances
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+              %td.tl
+                -if staff.can_edit_finances
+                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                -else
+                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+
 
 :javascript
-  function createstaff(button){
+  $(document).ready(function(){
+    $(".black-dot, .no-dot").click(function(){
+      if ($(this).hasClass("no-dot")){
+        $(this).removeClass("no-dot").addClass("black-dot");
+      } else {
+        $(this).removeClass("black-dot").addClass("no-dot");
+      }
+    });
+  });
+  function createStaff(button){
     var form_data = $('.newstaffform:last').serialize();  
     alert(form_data);  
     $.post(('/ajax/new-staff?'+form_data), function(data) {
