@@ -40,12 +40,8 @@
   .boxin
     .header
       %h3 Flights
-      %a.ico-plus{:href => "#new-manifest", :rel => "facebox", :style => "margin-left: 5px"}
-      %ul
-        %li
-          %a.active{:href => "#"} Upcoming
-        %li
-          %a{:href => "#"} All
+      =# %a.ico-plus{:href => "#new-manifest", :rel => "facebox", :style => "margin-left: 5px"}
+
     .content
       %table{:cellspacing => "0"}
         %thead
@@ -88,27 +84,6 @@
                       %td{:style => "text-align: center"} Drag Jumpers Here.
                       %td
                       %td
-                    -0.times do |i|
-                      %tr
-                        %td{:style => "width: 8px"}
-                          -if rand(2) > 0
-                            %img{:src => "/css/img/available.png"}
-                          -else
-                            %img{:src => "/css/img/unavailable.png"}
-                        %td{:style => "width: 80px"}
-                          Kent
-                        %td.tr{:style => "width: 60px"}
-                          -balance = (rand(10000) - 3000)/50.0
-
-                          .stat{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
-                        %td.tc{:style => "width: 60px"} Member
-                        %td.tc{:style => "width: 60px"}
-                          - good_rigs = rand(4)
-                          - caution_rigs = rand(3)
-                          - bad_rigs = rand(2)
-                          .stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                          .stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                          .stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
               
 .box.box-40.altbox
   / .altbox for alternative box's color
@@ -126,27 +101,26 @@
             %td.tc{:style => "width: 60px"} Type
             %td.tc{:style => "width: 60px"} Rigs
         %tbody.jumpers.connectedSortable
-          -30.times do |i|
+          -Jumper.all.each_with_index do |jumper, i|
             %tr{:style => "width: 365px"}
               %td{:style => "width: 8px"}
-                -if rand(2) > 0
+                -if jumper.available
                   %img{:src => "/css/img/available.png"}
                 -else
                   %img{:src => "/css/img/unavailable.png"}
-              %td{:style => "width: 80px"}
-                Kent
+              %td{:style => "width: 80px"}= jumper.nickname
               %td.tr{:style => "width: 60px"}
-                -balance = (rand(10000) - 3000)/50.0
+                -balance = jumper.balance.to_f || (rand(10000) - 3000)/50.0
                 
                 .stat{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
-              %td.tc{:style => "width: 60px"} Member
+              %td.tc{:style => "width: 60px"}= jumper.type.to_s
               %td.tc{:style => "width: 60px"}
                 - good_rigs = rand(4)
                 - caution_rigs = rand(2)
                 - bad_rigs = rand(2)
-                .stat.green{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                .stat.yellow{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                .stat.red{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs 
+                %a.stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
+                %a.stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
+                %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
 :javascript
   $(document).ready(function(){
     $(".jumpers, .manifest").sortable({

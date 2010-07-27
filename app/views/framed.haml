@@ -12,7 +12,7 @@
       form.fields fieldset {margin-top: -10px;}
       </style>
     %script{:src => "js/jquery-1.3.2.min.js", :type => "text/javascript"}
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js", :type => "text/javascript"}
+    %script{:src => "js/jquery-ui-1.8.2.min.js", :type => "text/javascript"}
     %script{:src => "js/vtip-min.js", :type => "text/javascript"}
     %link{:href => "css/blue.css", :media => "screen, projection, tv", :rel => "stylesheet", :type => "text/css"}/
     
@@ -96,25 +96,27 @@
         #h-wrap{:style => "margin-left: 365px"}
           .inner
             %h2
-              %span#dashboard-title.menu-title.h-ico.ico-dashboard{:style => "width: 169px"}
-                %span Dashboard
+              %span#manager-title.menu-title.h-ico.ico-library{:style => "width: 169px"}
+                %span Manager
               %span#manifest-title.menu-title.h-ico.ico-edit{:style => "width: 169px"}
                 %span Manifest
               %span#schedule-title.menu-title.h-ico.ico-schedule{:style => "width: 169px"}
                 %span Schedule
               %span#jumpers-title.menu-title.h-ico.ico-users{:style => "width: 169px"}
                 %span Jumpers
-              %span#staff-title.menu-title.h-ico.ico-staff{:style => "width: 169px"}
-                %span Staff
               %span#store-title.menu-title.h-ico.ico-cash{:style => "width: 169px"}
                 %span Store
+              %span#staff-title.menu-title.h-ico.ico-staff{:style => "width: 169px"}
+                %span Staff
+              %span#aircraft-title.menu-title.h-ico.ico-refresh{:style => "width: 169px"}
+                %span Aircraft
               %span#settings-title.menu-title.h-ico.ico-advanced{:style => "width: 169px"}
                 %span Settings
               %span.h-arrow
             %ul.clearfix
               %li
-                %a#dashboard-item.menu-item.h-ico.ico-dashboard{:href => "#dashboard"}
-                  %span Dashboard
+                %a#manager-item.menu-item.h-ico.ico-library{:href => "#manager"}
+                  %span Manager
               %li
                 %a#manifest-item.menu-item.h-ico.ico-edit{:href => "#manifest"}
                   %span Manifest
@@ -130,6 +132,9 @@
               %li
                 %a#settings-item.menu-item.h-ico.ico-staff{:href => "#staff"}
                   %span Staff
+              %li
+                %a#aircraft-item.menu-item.h-ico.ico-refresh{:href => "#aircraft"}
+                  %span Aircraft
               %li
                 %a#settings-item.menu-item.h-ico.ico-advanced{:href => "#settings"}
                   %span Settings
@@ -181,20 +186,22 @@
           %a#logout.logout-ico{:href => "#", :title => "Log Out"}
     #container
       .inner-container
-        #dashboard.pagediv{:style => (@current_page == "dashboard" ? "" : "display: none")}
-          = haml :dashboard, :layout => false
+        #manager.pagediv{:style => (@current_page == "manager" ? "" : "display: none")}
+          = haml :manager, :layout => false
         #manifest.pagediv{:style => (@current_page == "manifest" ? "" : "display: none")}
           = haml :manifest, :layout => false
         #schedule.pagediv{:style => (@current_page == "schedule" ? "" : "display: none")}
           = haml :schedule, :layout => false
         #jumpers.pagediv{:style => (@current_page == "jumpers" ? "" : "display: none")}
           = haml :jumpers, :layout => false
-        #settings.pagediv{:style => (@current_page == "settings" ? "" : "display: none")}
-          = haml :settings, :layout => false
-        #staff.pagediv{:style => (@current_page == "staff" ? "" : "display: none")}
-          = haml :staff, :layout => false
         #store.pagediv{:style => (@current_page == "store" ? "" : "display: none")}
           = haml :store, :layout => false
+        #staff.pagediv{:style => (@current_page == "staff" ? "" : "display: none")}
+          = haml :staff, :layout => false
+        #aircraft.pagediv{:style => (@current_page == "aircraft" ? "" : "display: none")}
+          = haml :aircraft, :layout => false
+        #settings.pagediv{:style => (@current_page == "settings" ? "" : "display: none")}
+          = haml :settings, :layout => false
       #footer
         %p
           © DZKey 2010        

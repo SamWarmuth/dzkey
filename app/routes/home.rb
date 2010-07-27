@@ -32,8 +32,8 @@ class Main
     #verify user
     redirect "/index?p=jumpers"
   end
-  get "/dashboard" do
-    haml :dashboard, :layout => false
+  get "/manager" do
+    haml :manager, :layout => false
   end
   get "/manifest" do
     haml :manifest, :layout => false
