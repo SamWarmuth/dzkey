@@ -1,0 +1,157 @@
+.box.box-60
+  .boxin
+    .header
+      %h3 Events
+    .content
+      %table.calendar{:cellspacing => "0"}
+        %thead
+          %tr
+            %th.tc.month{:colspan => "7"}
+              %a{:href => "#", :title => "Go to October 2009"}
+                %img{:alt => "Go to October 2009", :src => "css/img/cal-left.png"}/
+              July 2011
+              %a{:href => "#", :title => "Go to January 2010"}
+                %img{:alt => "Go to January 2010", :src => "css/img/cal-right.png"}/
+          %tr
+            %th.tc Monday
+            %th.tc Tuesday
+            %th.tc Wednesday
+            %th.tc Thursday
+            %th.tc Friday
+            %th.tc Saturday
+            %th.tc Sunday
+        %tbody
+          %tr.first
+            / .first for first row of the table (only if there is thead)
+            %td.inactive
+              %strong 28
+            / inactive days (month past or month after)
+            %td.inactive
+              %strong 29
+            %td.inactive
+              %strong 30
+              .items
+                / spots indicating due items or something like that
+                %a{:href => "#", :title => "Your due item"}
+                  %img{:alt => "Your due item", :src => "css/img/cal-due.png"}/
+                %a{:href => "#", :title => "Your due item"}
+                  %img{:alt => "Your due item", :src => "css/img/cal-due.png"}/
+                %a{:href => "#", :title => "Your due item"}
+                  %img{:alt => "Your due item", :src => "css/img/cal-due.png"}/
+            %td
+              %strong 1
+            %td
+              %strong 2
+              .items
+                / spots indicating items to do or something
+                %a{:href => "#", :title => "Your item"}
+                  %img{:alt => "Your item", :src => "css/img/cal-item.png"}/
+                %a{:href => "#", :title => "Your item"}
+                  %img{:alt => "Your item", :src => "css/img/cal-item.png"}/
+            %td
+              %strong 3
+            %td
+              %strong 4
+              .items
+                %a{:href => "#", :title => "Your item"}
+                  %img{:alt => "Your item", :src => "css/img/cal-item.png"}/
+                %a{:href => "#", :title => "Your item"}
+                  %img{:alt => "Your item", :src => "css/img/cal-item.png"}/
+                %a{:href => "#", :title => "Your item"}
+                  %img{:alt => "Your item", :src => "css/img/cal-item.png"}/
+          %tr
+            %td
+              %strong 5
+            %td
+              %strong 6
+              .items
+                %a{:href => "#", :title => "Your item"}
+                  %img{:alt => "Your item", :src => "css/img/cal-item.png"}/
+                %a{:href => "#", :title => "Your item"}
+                  %img{:alt => "Your item", :src => "css/img/cal-item.png"}/
+            %td
+              %strong 7
+            %td
+              %strong 8
+            %td
+              %strong 9
+            %td
+              %strong 10
+            %td
+              %strong 11
+          %tr
+            %td
+              %strong 12
+            %td
+              %strong 13
+            %td
+              %strong 14
+            %td
+              %strong 15
+            %td
+              %strong 16
+            %td
+              %strong 17
+            %td
+              %strong 18
+          %tr
+            %td
+              %strong 19
+            %td
+              %strong 20
+            %td
+              %strong 21
+            %td
+              %strong 22
+            %td
+              %strong 23
+            %td
+              %strong 24
+            %td
+              %strong 25
+          %tr
+            %td
+              %strong 26
+            %td
+              %strong 27
+            %td
+              %strong 28
+            %td
+              %strong 29
+            %td
+              %strong 30
+            %td
+              %strong 31
+            %td.inactive
+              %strong 1
+.box.box-40.altbox
+  / .altbox for alternative box's color
+  .boxin
+    .header
+      %h3 Top Jumpers
+      %ul
+        / Tabs in the box's header
+        %li
+          %a.active{:href => "#"} Today
+        %li
+          %a{:href => "#"} Month
+        %li
+          %a{:href => "#"} Year
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th Name
+            %td.tc Rank
+            %td.tc Last Jump
+            %td
+        %tbody
+          -10.times do |i|
+            %tr{:class => ( i == 0 ? "first" : "")}
+              %th
+                %a{:href => "#"} Kent McCullough
+              %td.tc
+                %a.ico-comms{:href => "#"}= i*16
+              %td July #{11 - i/3}th
+              %td
+                %a{:href => "#"} ADD
