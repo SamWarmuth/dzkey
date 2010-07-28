@@ -19,7 +19,7 @@
           -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th
-                %a.ico-plus.vtip{:href => "#new-flight", :rel => "facebox", :title => "New flight with this aircraft", :style => "margin: 0 -5px"}
+                %a.ico-plus.vtip{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')" :title => "New flight with this aircraft", :style => "margin: 0 -5px"}
               %td
                 %a{:href => "#"}= aircraft.name
               %td
@@ -32,36 +32,6 @@
               %td.tc= rand(42)**2
         
       
-#new-manifest{:style => "display: none; width: 600px; text-align: center"}
-  
-  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'}  New Flight
-  %form.newmanifestform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
-    %br
-    %p
-      %label{:style => "font-weight: bold"} Plane
-      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
-        %option Cessna 182
-        %option Otter
-        %option Temp. Plane
-    %br
-    %p
-      %label{:style => "font-weight: bold"} Jump Type
-      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
-        %option Mixed
-        %option Tandem
-        %option FS
-        %option Competition
-
-    %br
-
-    %p
-      %label{:style => "font-weight: bold"} Height
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "height", :value => "14000"}
-    %br
-    .left{:style => "display: inline; margin-right: 20px"}        
-      %a.awesome.large.green{:href => "#create-manifest", :onClick => "createManifest(this);"} Create Flight
-    .left{:style => "display: inline;margin-right: 0px"}
-      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
 .box.box-60.altbox
   / .altbox for alternative box's color
   .boxin
@@ -155,3 +125,6 @@
                     connectWith: ['.connectedSortable'], dropOnEmpty: true
             }).disableSelection();
   });
+  function newFlight(aircraft_id){
+    alert("not implemented yet.");
+  }
