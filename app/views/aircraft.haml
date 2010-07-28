@@ -22,6 +22,9 @@
     %p
       %label Capacity
       %input{:type => "text", :size => "30", :name => "capacity", :style => "margin-left: 20px"}
+    %p
+      %label Weight Limit
+      %input{:type => "text", :size => "30", :name => "weight_limit", :style => "margin-left: 20px"}
     %br
     %div
       .checkcontainer{:onClick => "toggleAircraft();", :style => 'margin-right: 78px; position: relative'}
@@ -50,6 +53,7 @@
             %td Flight Prefix
             %td Type
             %td.tc{:style => "width: 60px"} Capacity
+            %td.tc{:style => "width: 80px"} Weight limit
             %td.tc{:style => "width: 80px"} Cycle Minutes
             %td.tc{:style => "width: 60px"} Last Flight
             %td.tc{:style => "width: 80px"} Total Flights
@@ -67,6 +71,7 @@
                 %a{:href => "#"}= aircraft.flight_prefix
               %td.tc= aircraft.type
               %td.tc= aircraft.capacity
+              %td.tc= aircraft.weight_limit
               %td.tc= aircraft.cycle_minutes
               
               %td.tc July 21st

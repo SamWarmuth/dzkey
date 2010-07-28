@@ -99,6 +99,8 @@ class Main
     aircraft.cycle_minutes = params[:cycle_minutes] unless params[:cycle_minutes].empty?
     aircraft.type = params[:type]
     aircraft.capacity = params[:capacity] unless params[:capacity].empty?
+    aircraft.weight_limit = params[:weight_limit] unless params[:weight_limit].empty?
+    
     
     aircraft.available = (params[:available]=="on")
     
