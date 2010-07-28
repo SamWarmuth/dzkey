@@ -3,7 +3,7 @@ class Aircraft < CouchRest::ExtendedDocument
   
   property :name
   property :type
-  property :flight_prefix #nickname?
+  property :flight_prefix
   property :cycle_minutes
   property :capacity #Passengers. Do we want weight as well?
   

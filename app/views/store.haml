@@ -104,6 +104,7 @@
     }
   }
   $(document).ready(function(){
+    $('a[rel*=facebox]').facebox();
     $(".items, .store").sortable({
       connectWith: ['.connectedSortable']
     }).disableSelection();

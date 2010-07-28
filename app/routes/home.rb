@@ -90,4 +90,19 @@ class Main
     staff.save
     haml :staff, :layout => false
   end
+  
+  post "/ajax/new-aircraft" do
+    aircraft = Aircraft.new
+    aircraft.name = params[:name]
+    
+    aircraft.flight_prefix = params[:flight_prefix] unless params[:flight_prefix].empty?
+    aircraft.cycle_minutes = params[:cycle_minutes] unless params[:cycle_minutes].empty?
+    aircraft.type = params[:type]
+    aircraft.capacity = params[:capacity] unless params[:capacity].empty?
+    
+    aircraft.available = (params[:available]=="on")
+    
+    aircraft.save
+    haml :aircraft, :layout => false
+  end
 end

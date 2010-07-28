@@ -175,6 +175,7 @@
 
 :javascript
   $(document).ready(function(){
+    $('a[rel*=facebox]').facebox();
     $(".black-dot, .no-dot").click(function(){
       if ($(this).hasClass("no-dot")){
         $(this).removeClass("no-dot").addClass("black-dot");

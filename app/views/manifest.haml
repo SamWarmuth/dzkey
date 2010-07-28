@@ -4,6 +4,33 @@
     .header
       %h3 Available Aircraft
     .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th{:style => "width: 8px"} &nbsp;
+            %td Name
+            %td Flight Prefix
+            %td Type
+            %td.tc{:style => "width: 60px"} Capacity
+            %td.tc{:style => "width: 80px"} Cycle Minutes
+            %td.tc{:style => "width: 60px"} Next Departure
+            %td.tc{:style => "width: 80px"} Remaining Flights
+        %tbody.striped
+          -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
+            %tr{:class => ( i == 0 ? "first" : "")}
+              %th
+                %a.ico-plus.vtip{:href => "#new-flight", :rel => "facebox", :title => "New flight with this aircraft", :style => "margin: 0 -5px"}
+              %td
+                %a{:href => "#"}= aircraft.name
+              %td
+                %a{:href => "#"}= aircraft.flight_prefix
+              %td.tc= aircraft.type
+              %td.tc= aircraft.capacity
+              %td.tc= aircraft.cycle_minutes
+              
+              %td.tc July 21st
+              %td.tc= rand(42)**2
+        
       
 #new-manifest{:style => "display: none; width: 600px; text-align: center"}
   
@@ -123,6 +150,7 @@
                 %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
 :javascript
   $(document).ready(function(){
+    $('a[rel*=facebox]').facebox();
     $(".jumpers, .manifest").sortable({
                     connectWith: ['.connectedSortable'], dropOnEmpty: true
             }).disableSelection();

@@ -1,53 +1,33 @@
 #new-aircraft{:style => "display: none; width: 600px; text-align: center"}
   
-  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New Aircraft
+  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New Aircraft ' #{Aircraft.all.length.to_s}' HI!
   %form.newaircraftform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
     %p.bold
       %label Name
-      %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
-      %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px"}
+      %input{:type => "text", :size => "30", :name => "name", :style => "margin-left: 20px"}
     %p
-      %label Nickname
-      %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
+      %label Flight Prefix
+      %input{:type => "text", :size => "30", :name => "flight_prefix", :style => "margin-left: 20px"}
     %br
     %p
-      %label Type
+      %label Model
       %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
-        %option Student
-        %option USPA Member
-        %option Other
-    %p
-      %label Last Certified
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "last_certified"}
+        %option{:value => "Cessna 182"} Cessna 182
+        %option{:value => "Twin Otter"} Twin Otter
+        %option{:value => "Other"} Other
     %br
     %p
-      %label Address
-      %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px"}
+      %label Cycle Minutes
+      %input{:type => "text", :size => "30", :name => "cycle_minutes", :style => "margin-left: 20px"}
     %p
-      %label City
-      %input{:type => "text", :size => "30", :name => "city", :style => "margin-left: 20px"}
-    %p
-      %label State
-      %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
-        %option{:value => "AL"} AL - Alabama
-        %option{:value => "AK"} AK - Alaska
-        %option Other
-    %p
-      %label ZIP Code
-      %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
-    %p
-      %label Country
-      %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
-    %br
-    %p.bold
-      %label Initial Balance
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "balance", :value => "0.00"}
+      %label Capacity
+      %input{:type => "text", :size => "30", :name => "capacity", :style => "margin-left: 20px"}
     %br
     %div
-      .checkcontainer{:onClick => "toggleAvailable();", :style => 'margin-right: 78px; position: relative'}
+      .checkcontainer{:onClick => "toggleAircraft();", :style => 'margin-right: 78px; position: relative'}
         .cover{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;"}
-        %input.available{:type => "checkbox", :style => "margin-right: 10px;", :name => "available", :checked => "checked"}
-        %label{:style => "font-weight: bold;"} Check In
+        %input.aircraftavailable{:type => "checkbox", :style => "margin-right: 10px;", :name => "available", :checked => "checked"}
+        %label{:style => "font-weight: bold;"} Available
     %br
     .left{:style => "display: inline; margin-right: 12px"}        
       %a.awesome.giant.green{:href => "#create-aircraft", :onClick => "createAircraft(this);"} Create Aircraft
@@ -66,15 +46,13 @@
         %thead
           %tr
             %th{:style => "width: 8px"} &nbsp;
-            %td Full Name
-            %td Nickname
-            %td.tc{:style => "width: 60px"} Balance ($)
-            %td.tc Type
-            %td.tc{:style => "width: 80px"} Cert. Expires
-            %td.tc{:style => "width: 60px"} Rigs
-            
-            %td.tc Last Jump
-            %td.tc Total Jumps
+            %td Name
+            %td Flight Prefix
+            %td Type
+            %td.tc{:style => "width: 60px"} Capacity
+            %td.tc{:style => "width: 80px"} Cycle Minutes
+            %td.tc{:style => "width: 60px"} Last Flight
+            %td.tc{:style => "width: 80px"} Total Flights
         %tbody.striped
           -Aircraft.all.each_with_index do |aircraft, i|
             %tr{:class => ( i == 0 ? "first" : "")}
@@ -86,40 +64,33 @@
               %td
                 %a{:href => "#"}= aircraft.name
               %td
-                %a{:href => "#"}= aircraft.nickname
-              %td.tr
-                -balance = aircraft.balance.to_f || 0
-                
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
+                %a{:href => "#"}= aircraft.flight_prefix
               %td.tc= aircraft.type
-              %td.tc= "?"
-              %td.tc
-                - good_rigs = rand(4)
-                - caution_rigs = rand(3)
-                - bad_rigs = rand(2)
-                .stat-cover.vtip{:title => "Click to edit rigs."}
-                %a.stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                %a.stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
+              %td.tc= aircraft.capacity
+              %td.tc= aircraft.cycle_minutes
+              
               %td.tc July 21st
               %td.tc= rand(42)**2
 
 :javascript
+  $(document).ready(function(){
+    $('a[rel*=facebox]').facebox();
+  });
   function createAircraft(button){
     var form_data = $('.newaircraftform:last').serialize();  
     alert(form_data);  
     $.post(('/ajax/new-aircraft?'+form_data), function(data) {
       $.facebox.close();
-      $('#aircrafts').html(data);
+      $('#aircraft').html(data);
     });
     return false;
   }
-  function toggleAvailable(){
-    box = $('.available')
+  function toggleAircraft(){
+    box = $('.aircraftavailable')
     if (box.attr('checked')){
-      $('.available').attr('checked', '');
+      box.attr('checked', '');
     }else{
-      $('.available').attr('checked', 'checked');
+      box.attr('checked', 'checked');
       
     }
   }
