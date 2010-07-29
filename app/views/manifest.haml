@@ -19,7 +19,7 @@
           -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th
-                %a.ico-plus.vtip{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :title => "New flight with this aircraft", :style => "margin: 0 -5px"}
+                %a.ico-plus.vtip{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :title => "New flight with this aircraft", :style => "margin: 0 -5px"} &nbsp;
               %td
                 %a{:href => "#"}= aircraft.name
               %td
