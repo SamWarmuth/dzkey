@@ -13,8 +13,8 @@
             %td Type
             %td.tc{:style => "width: 60px"} Capacity
             %td.tc{:style => "width: 80px"} Cycle Minutes
-            %td.tc{:style => "width: 60px"} Next Departure
-            %td.tc{:style => "width: 80px"} Remaining Flights
+            %td.tc{:style => "width: 100px"} Next Departure
+            %td.tc{:style => "width: 100px"} Remaining Flights
         %tbody.striped
           -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
             %tr{:class => ( i == 0 ? "first" : "")}
