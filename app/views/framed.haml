@@ -11,9 +11,11 @@
       <style type="text/css">
       form.fields fieldset {margin-top: -10px;}
       </style>
-    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", :type => "text/javascript"}
+    %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
     %script{:src => "js/jquery-ui-1.8.2.min.js", :type => "text/javascript"}
     %script{:src => "js/vtip-min.js", :type => "text/javascript"}
+    %script{:src => "js/facebox.js", :type => "text/javascript"}
+        
     %link{:href => "css/blue.css", :media => "screen, projection, tv", :rel => "stylesheet", :type => "text/css"}/
     
     
@@ -28,7 +30,6 @@
       DD_belatedPNG.fix('table.calendar thead th.month a img');
       DD_belatedPNG.fix('table.calendar tbody img');
       </script>
-    <script src="js/facebox.js" type="text/javascript"></script>
     :javascript
       $(document).ready(function() {
         $('a[rel*=facebox]').facebox();
@@ -104,8 +105,8 @@
                 %span Schedule
               %span#jumpers-title.menu-title.h-ico.ico-users{:style => "width: 169px"}
                 %span Jumpers
-              %span#store-title.menu-title.h-ico.ico-cash{:style => "width: 169px"}
-                %span Store
+              %span#accounts-title.menu-title.h-ico.ico-cash{:style => "width: 169px"}
+                %span Accounts
               %span#staff-title.menu-title.h-ico.ico-staff{:style => "width: 169px"}
                 %span Staff
               %span#aircraft-title.menu-title.h-ico.ico-aircraft{:style => "width: 169px"}
@@ -127,8 +128,8 @@
                 %a#jumpers-item.menu-item.h-ico.ico-users{:href => "#jumpers"}
                   %span Jumpers
               %li
-                %a#store-item.menu-item.h-ico.ico-cash{:href => "#store"}
-                  %span Store
+                %a#accounts-item.menu-item.h-ico.ico-cash{:href => "#accounts"}
+                  %span Accounts
               %li
                 %a#settings-item.menu-item.h-ico.ico-staff{:href => "#staff"}
                   %span Staff
@@ -194,8 +195,8 @@
           = haml :schedule, :layout => false
         #jumpers.pagediv{:style => (@current_page == "jumpers" ? "" : "display: none")}
           = haml :jumpers, :layout => false
-        #store.pagediv{:style => (@current_page == "store" ? "" : "display: none")}
-          = haml :store, :layout => false
+        #accounts.pagediv{:style => (@current_page == "accounts" ? "" : "display: none")}
+          = haml :accounts, :layout => false
         #staff.pagediv{:style => (@current_page == "staff" ? "" : "display: none")}
           = haml :staff, :layout => false
         #aircraft.pagediv{:style => (@current_page == "aircraft" ? "" : "display: none")}

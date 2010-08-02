@@ -1,0 +1,105 @@
+#new-transaction{:style => "display: none; width: 600px; text-align: center"}
+  
+  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New Transaction
+  %form.newtransactionform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+    %p
+      %label{:style => "font-weight: bold"} Transaction Number
+      %label{:type => "text", :style => "margin-left: 158px"}= "%05.0f" % Transaction.count
+    %p
+      %label{:style => "font-weight: bold"} Customer
+      %select{:style => "width: 177px; margin-left: 20px", :name => "jumper_id"}
+        -Jumper.all.each do |jumper|
+          %option{:value => jumper.id}= jumper.name
+    
+    %br
+    %br
+    %p
+      %label{:style => "font-weight: bold"} Payment Type
+      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+        %option Withdrawl
+        %option Debit
+        %option Transfer
+    %p
+      %label{:style => "font-weight: bold"} Amount
+      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "amount"}
+    %br
+    %div
+      .checkcontainer{:onClick => "togglePaid();", :style => 'margin-right: 78px; position: relative'}
+        .cover.vtip{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;", :title => "For withdrawls, this adds a mirror debit that pays it off."}
+        %input.paid{:type => "checkbox", :style => "margin-right: 10px;", :name => "paid", :checked => false}
+        %label{:style => "font-weight: bold;"} Paid
+    %br
+    .left{:style => "display: inline; margin-right: 12px"}        
+      %a.awesome.giant.green{:href => "#create-transaction", :onClick => "createTransaction(this);"} Create Transaction
+    .left{:style => "display: inline;margin-right: -13px"}
+      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
+.box.box-100.altbox
+  / .altbox for alternative box's color
+  .boxin
+    .header
+      %h3 Transactions
+      %a.ico-plus{:href => "#new-transaction", :rel => "facebox", :style => "margin-left: 0px"} &nbsp;
+      %input.search{:type => "text", :size => "45", :style => "margin-left: 525px", :name => "transactionsearch", :placeholder => "Filter transactions..."}
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th{:style => "width: 20px; padding-left: 10px"} Valid
+            %td.tc{:style => "width: 40px"} #
+            %td.tc{:style => "width: 60px"} Date
+            %td{:style => "width: 100px"} Customer Name
+            %td{:style => "width: 80px"} Payment Type
+            %td.tc{:style => "width: 60px"} Amount ($)
+            %td.tc Details
+            %td.tc{:style => "width: 120px"} Account Balance
+        %tbody.striped
+          -30.times do |i|
+            %tr{:class => ( i == 0 ? "first" : "")}
+              %th
+                -if rand > 0.1
+                  %img{:src => "/css/img/available.png"}
+                -else
+                  %img{:src => "/css/img/unavailable.png"}
+              %td.tc= 143-i
+              %td.tc 8/13/10           
+              
+              %td
+                %a{:href => "#"} Kent McCullough
+              %td
+                -amount = (rand(1000) - 500)/4.0
+                
+                %a{:href => "#"}= amount >= 0 ? "Debit" : "Withdrawl"
+            
+              %td.tr
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
+              %td Tandem Purchase
+              %td.tr
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
+
+
+
+:javascript
+  function createOrder(button){
+    var form_data = $('.newjumperform:last').serialize();  
+    alert(form_data);  
+    $.post(('/ajax/new-jumper?'+form_data), function(data) {
+      $.facebox.close();
+      $('#jumpers').html(data);
+    });
+    return false;
+  }
+  function togglePaid(){
+    box = $('.paid')
+    if (box.attr('checked')){
+      $('.paid').attr('checked', '');
+    }else{
+      $('.paid').attr('checked', 'checked');
+      
+    }
+  }
+  $(document).ready(function(){
+    $('a[rel*=facebox]').facebox();
+    $(".items, .store").sortable({
+      connectWith: ['.connectedSortable']
+    }).disableSelection();
+  });

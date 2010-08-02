@@ -134,8 +134,8 @@
       if (klass) $('#facebox .content').addClass(klass)
       $('#facebox .content').append(data)
       $('#facebox .loading').remove()
-      $('#facebox .body').children().fadeIn('normal')
-      $('#facebox').css('left', $(window).width() / 2 - ($('#facebox table').width() / 2) - 15)
+      $('#facebox .body').children().fadeIn("normal")
+      $('#facebox').css('left', $(window).width() / 2 - ($('#facebox table').width() / 2) - 150)
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
     },
 
