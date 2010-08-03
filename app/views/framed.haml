@@ -168,6 +168,7 @@
                   $(".menu-item").click(function(){
                     $("#h-wrap ul").css('display', 'none');
                     var newID = $(this).attr("href");
+                    window.history.replaceState("", "", "index?p="+newID.slice(1));
                     $("#current_page").html(newID);
                     $(".menu-title").hide();
                     $(newID + "-title").show();
