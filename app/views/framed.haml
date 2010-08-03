@@ -131,14 +131,15 @@
                 %a#accounts-item.menu-item.h-ico.ico-cash{:href => "#accounts"}
                   %span Accounts
               %li
-                %a#settings-item.menu-item.h-ico.ico-staff{:href => "#staff"}
+                %a#staff-item.menu-item.h-ico.ico-staff{:href => "#staff"}
                   %span Staff
               %li
                 %a#aircraft-item.menu-item.h-ico.ico-aircraft{:href => "#aircraft"}
                   %span Aircraft
-              %li
-                %a#settings-item.menu-item.h-ico.ico-advanced{:href => "#settings"}
-                  %span Settings
+              /
+                %li
+                  %a#settings-item.menu-item.h-ico.ico-advanced{:href => "#settings"}
+                    %span Settings
               /
                 %li
                   %a.h-ico.ico-comments{:href => "#"}
@@ -158,8 +159,7 @@
               :javascript
                 $(document).ready(function(){
                   var curPageID = $("#current_page").html();
-                  $(".menu-title").hide();
-                  $(curPageID + "-title").show();
+                  $(".menu-title").not(curPageID + "-title").hide();
                   $(curPageID + "-item").hide();
                   
                   $(".menu-item").click(function(){
@@ -171,7 +171,7 @@
                     $(".menu-item").show();
                     $(newID + "-item").hide();
                     $(".pagediv").hide();
-                    $(newID).show();
+                    $(newID).fadeIn(100);
                     return false;
                   });
                 });

@@ -153,6 +153,9 @@
               %td.tc= rand(42)**2
 
 :javascript
+  $(document).ready(function(){
+    $('a[rel*=facebox]').facebox();
+  });
   function createJumper(button){
     var form_data = $('.newjumperform:last').serialize();  
     alert(form_data);  
