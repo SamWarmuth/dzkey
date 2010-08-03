@@ -53,7 +53,12 @@
   -else
     #header
       .shell
-        %h1#logo <a href="#">iconic</a></h1>
+        %h1#logo
+          %a{:href => "#"}
+            %br
+            %br
+            %span
+              DZKEY
         #right-area
           #navigation
             %ul
