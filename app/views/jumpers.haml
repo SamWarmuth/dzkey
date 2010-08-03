@@ -110,23 +110,22 @@
       / Action button in the header of the box
       %input.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
     .content
-      %table{:cellspacing => "0"}
+      %table#jumpertable{:cellspacing => "0"}
         %thead
           %tr
             %th{:style => "width: 8px"} &nbsp;
-            %td Full Name
-            %td Nickname
-            %td.tc{:style => "width: 60px"} Balance ($)
-            %td.tc Type
-            %td.tc{:style => "width: 80px"} Cert. Expires
-            %td.tc{:style => "width: 60px"} Rigs
-            
-            %td.tc Last Jump
-            %td.tc Total Jumps
+            %th Full Name
+            %th Nickname
+            %th.tc{:style => "width: 80px"} Balance ($)
+            %th.tc Type
+            %th.tc{:style => "width: 80px"} Cert. Expires
+            %th.tc{:style => "width: 60px"} Rigs
+            %th.tc{:style => "width: 100px"} Last Jump
+            %th.tc{:style => "width: 100px"} Total Jumps
         %tbody.striped
           -Jumper.all.each_with_index do |jumper, i|
-            %tr{:class => ( i == 0 ? "first" : "")}
-              %th
+            %tr
+              %td
                 -if jumper.available
                   %img{:src => "/css/img/available.png"}
                 -else
@@ -154,6 +153,13 @@
 
 :javascript
   $(document).ready(function(){
+    $('#jumpertable').dataTable({
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bSort": true,
+      "bInfo": false,
+      "bAutoWidth": false } );
     $('a[rel*=facebox]').facebox();
   });
   function createJumper(button){
