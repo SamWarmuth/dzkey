@@ -10,7 +10,7 @@
             %th{:style => "width: 8px"} &nbsp;
             %td Name
             %td Flight Prefix
-            %td Type
+            %td.tc Type
             %td.tc{:style => "width: 60px"} Capacity
             %td.tc{:style => "width: 80px"} Cycle Minutes
             %td.tc{:style => "width: 100px"} Next Departure
@@ -60,8 +60,8 @@
               %td.tc
                 -cleared_jumpers = rand(10)
                 -fail_jumpers = rand(2)
-                %a.stat.green{:href => "#", :style => (cleared_jumpers > 0 ? "" : "visibility: hidden")}= cleared_jumpers
-                %a.stat.red.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
+                %a.stat.green.flat-right{:href => "#", :style => (cleared_jumpers > 0 ? "" : "visibility: hidden")}= cleared_jumpers
+                %a.stat.red.merge-left.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
               %td.tc= rand(3000)
             %tr{:style => "background: #F3F3F3;"}
               %td{:style => "border-bottom: 1px solid #BBB;"}
@@ -94,7 +94,7 @@
           %tr
             %th{:style => "width: 8px"} &nbsp;
             %td{:style => "width: 80px"} Name
-            %td.tc{:style => "width: 60px"} Balance ($)
+            %td.tc{:style => "width: 70px"} Balance ($)
             %td.tc{:style => "width: 60px"} Type
             %td.tc{:style => "width: 60px"} Rigs
         %tbody.jumpers.connectedSortable
@@ -109,7 +109,7 @@
               %td.tr{:style => "width: 60px"}
                 -balance = jumper.balance.to_f || (rand(10000) - 3000)/50.0
                 
-                .stat{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
+                .stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
               %td.tc{:style => "width: 60px"}= jumper.type.to_s
               %td.tc{:style => "width: 60px"}
                 - good_rigs = rand(4)
@@ -121,7 +121,7 @@
 :javascript
   $(document).ready(function(){
     $('a[rel*=facebox]').facebox();
-    $(".jumpers, .manifest").sortable({
+    $(".jumpers, .manifest").draggable().sortable({
                     connectWith: ['.connectedSortable'], dropOnEmpty: true
             }).disableSelection();
   });
