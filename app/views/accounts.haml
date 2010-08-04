@@ -51,7 +51,7 @@
             %td{:style => "width: 80px"} Payment Type
             %td.tc{:style => "width: 60px"} Amount ($)
             %td.tc Details
-            %td.tc{:style => "width: 120px"} Account Balance
+            %td.tc{:style => "width: 80px"} Account Balance
         %tbody.striped
           -30.times do |i|
             %tr{:class => ( i == 0 ? "first" : "")}
@@ -71,10 +71,10 @@
                 %a{:href => "#"}= amount >= 0 ? "Debit" : "Withdrawl"
             
               %td.tr
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
               %td Tandem Purchase
               %td.tr
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
 
 
 
