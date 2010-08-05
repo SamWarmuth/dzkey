@@ -10,7 +10,6 @@
       %select{:style => "width: 177px; margin-left: 20px", :name => "jumper_id"}
         -Jumper.all.each do |jumper|
           %option{:value => jumper.id}= jumper.name
-    
     %br
     %br
     %p
@@ -23,11 +22,9 @@
       %label{:style => "font-weight: bold"} Amount
       %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "amount"}
     %br
-    %div
-      .checkcontainer{:onClick => "togglePaid();", :style => 'margin-right: 78px; position: relative'}
-        .cover.vtip{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;", :title => "For withdrawls, this adds a mirror debit that pays it off."}
-        %input.paid{:type => "checkbox", :style => "margin-right: 10px;", :name => "paid", :checked => false}
-        %label{:style => "font-weight: bold;"} Paid
+    %p
+      %label{:style => "font-weight: bold"} Notes
+      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "notes"}
     %br
     .left{:style => "display: inline; margin-right: 12px"}        
       %a.awesome.giant.green{:href => "#create-transaction", :onClick => "createTransaction(this);"} Create Transaction
@@ -46,45 +43,47 @@
           %tr
             %th{:style => "width: 20px; padding-left: 10px"} Valid
             %td.tc{:style => "width: 40px"} #
-            %td.tc{:style => "width: 60px"} Date
+            %td.tc{:style => "width: 180px"} Date
             %td{:style => "width: 100px"} Customer Name
             %td{:style => "width: 80px"} Payment Type
             %td.tc{:style => "width: 60px"} Amount ($)
             %td.tc Details
             %td.tc{:style => "width: 80px"} Balance
         %tbody.striped
-          -30.times do |i|
+          -Transaction.all.sort_by{|t| t.transaction_number}.reverse.each_with_index do |transaction, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th
-                -if rand > 0.1
+                -if transaction.valid
                   %img{:src => "/css/img/available.png"}
                 -else
                   %img{:src => "/css/img/unavailable.png"}
-              %td.tc= 143-i
-              %td.tc 8/13/10           
+              %td.tc= "%05.0f" % transaction.transaction_number
+              %td.tc= transaction.date
               
               %td
-                %a{:href => "#"} Kent McCullough
+                -jumper = Jumper.get(transaction.jumper_id)
+                %a{:href => "#"}= jumper.name
               %td
-                -amount = (rand(1000) - 500)/4.0
+                -amount = transaction.amount.to_f
+                -amount = 10.15 if amount.nil?
                 
                 %a{:href => "#"}= amount >= 0 ? "Debit" : "Withdrawl"
             
               %td.tr
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
-              %td Tandem Purchase
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
+              %td= transaction.notes
               %td.tr
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
+                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (amount > 0 ? "green" : "red")}= "%5.2f" % jumper.balance.to_f if jumper&&jumper.balance
 
 
 
 :javascript
-  function createOrder(button){
-    var form_data = $('.newjumperform:last').serialize();  
+  function createTransaction(button){
+    var form_data = $('.newtransactionform:last').serialize();  
     alert(form_data);  
-    $.post(('/ajax/new-jumper?'+form_data), function(data) {
+    $.post(('/ajax/transaction?'+form_data), function(data) {
       $.facebox.close();
-      $('#jumpers').html(data);
+      $('#accounts').html(data);
     });
     return false;
   }

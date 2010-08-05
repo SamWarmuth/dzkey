@@ -142,7 +142,7 @@
 
     close: function() {
       $(document).trigger('close.facebox')
-      return false
+      return false;
     }
   })
 

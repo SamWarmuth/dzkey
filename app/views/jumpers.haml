@@ -138,7 +138,7 @@
               %td.tr
                 -balance = jumper.balance.to_f || 0
                 
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "<b>Last 5 Transactions</b> <br> <b>7/21/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-30.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . .-10.00<br/><b>7/20/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 10.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 30.00<br/><b>7/18/10</b> PAC Jump  (<b>$20.00</b>) . . . . . . 50.00<br/>", :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
+                %a.stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
               %td.tc= jumper.type
               %td.tc= "?"
               %td.tc
@@ -166,7 +166,7 @@
   function createJumper(button){
     var form_data = $('.newjumperform:last').serialize();  
     alert(form_data);  
-    $.post(('/ajax/new-jumper?'+form_data), function(data) {
+    $.post(('/ajax/jumper?'+form_data), function(data) {
       $.facebox.close();
       $('#jumpers').html(data);
     });

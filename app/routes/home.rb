@@ -39,9 +39,14 @@ class Main
     haml :manifest, :layout => false
   end
   
-  
-  post "/ajax/new-jumper" do
-    jumper = Jumper.new
+  post "/ajax/jumper/?" do
+    unless params[:id].nil?
+      jumper = Jumper.all.find{|j| j.id == params[:id]}
+      return "Tried to update a jumper that didn't exist (params[:id] != any jumper id)" if jumper.nil?
+    else
+      jumper = Jumper.new
+    end
+    
     jumper.first_name = params[:first_name]
     jumper.first_name = params[:last_name]
     
@@ -56,13 +61,20 @@ class Main
     
     jumper.type = params[:type]
     jumper.balance = params[:balance].to_f
-    jumper.available = (params[:available]=="on")
+    jumper.available = (params[:available] == "on")
     jumper.save
     haml :jumpers, :layout => false
   end
   
-  post "/ajax/new-staff" do
-    staff = Jumper.new
+  
+  post "/ajax/staff/?" do
+    unless params[:id].nil?
+      staff = Jumper.all.find{|j| j.id == params[:id]}
+      return "Tried to update a staff member / jumper that didn't exist (params[:id] != any jumper id)" if staff.nil?
+    else
+      staff = Jumper.new
+    end
+    
     staff.is_staff = true
     staff.first_name = params[:first_name]
     staff.last_name = params[:last_name]
@@ -91,8 +103,14 @@ class Main
     haml :staff, :layout => false
   end
   
-  post "/ajax/new-aircraft" do
-    aircraft = Aircraft.new
+  post "/ajax/aircraft/?" do
+    unless params[:id].nil?
+      aircraft = Aircraft.all.find{|j| j.id == params[:id]}
+      return "Tried to update a aircraft that didn't exist (params[:id] != any aircraft id)" if aircraft.nil?
+    else
+      aircraft = Aircraft.new
+    end
+    
     aircraft.name = params[:name]
     
     aircraft.flight_prefix = params[:flight_prefix] unless params[:flight_prefix].empty?
@@ -106,5 +124,36 @@ class Main
     
     aircraft.save
     haml :aircraft, :layout => false
+  end
+  
+  post "/ajax/transaction/?" do
+    transaction = Transaction.new
+    
+    transaction.transaction_number = Transaction.count
+    transaction.date = Time.now.to_s
+    transaction.valid = true
+    
+    transaction.jumper_id = params[:jumper_id]
+    transaction.type = params[:type]
+    
+    transaction.amount = params[:amount].to_f
+    transaction.notes = params[:notes]
+    
+    #transaction.staff_id = @current_user.id
+    transaction.save
+    haml :accounts, :layout => false
+  end
+  
+  post "/ajax/void-transaction/?" do
+    transaction = Transaction.all.find{|j| j.id == params[:id]}
+    return "Tried to void a transaction that doesn't exist (params[:id] != any transaction id)" if transaction.nil?
+    
+    transaction.staff_id = @current_user.id
+    
+    
+    transaction.available = (params[:available]=="on")
+    
+    transaction.save
+    haml :accounts, :layout => false
   end
 end
