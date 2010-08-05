@@ -66,7 +66,7 @@
             %tr{:style => "background: #F3F3F3;"}
               %td{:style => "border-bottom: 1px solid #BBB;"}
               %td{:colspan => 5, :style => "border-bottom: 1px solid #BBB;"}
-                %table{:style => "border-bottom: 10px solid #DDD;"}
+                %table.manifest{:style => "border-bottom: 10px solid #DDD;"}
                   %thead
                     %tr
                       %th{:style => "width: 8px"} &nbsp;
@@ -74,7 +74,7 @@
                       %td.tc{:style => "width: 60px"} Balance ($)
                       %td.tc{:style => "width: 60px"} Type
                       %td.tc{:style => "width: 60px"} Rigs
-                  %tbody.manifest.connectedSortable
+                  %tbody
                     %tr
                       %td
                       %td
@@ -86,44 +86,67 @@
   / .altbox for alternative box's color
   .boxin
     .header
-      %h3 Jumpers
-      %input.search{:type => "text", :size => "25", :style => "margin-left: 123px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
+      %h3 Students
+      %input.search{:type => "text", :size => "25", :style => "margin-left: 115px", :name => "jumpersearch", :placeholder => "Filter students..."}
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th{:style => "width: 8px"} &nbsp;
+            %td Name
+            %td.tc{:style => "width: 60px"} Type
+        %tbody
+          -Jumper.all.each_with_index do |jumper, i|
+            %tr.student{:style => "width: 365px; cursor: move;"}
+              %td{:style => "width: 8px"}
+                -if jumper.available
+                  %img{:src => "/css/img/available.png"}
+                -else
+                  %img{:src => "/css/img/unavailable.png"}
+              %td{:style => "width: 80px"}= jumper.name
+              %td.tc{:style => "width: 60px"}= jumper.type.to_s
+.box.box-40.altbox{:style => "float: right"}
+  / .altbox for alternative box's color
+  .boxin
+    .header
+      %h3 Members
+      %input.search{:type => "text", :size => "25", :style => "margin-left: 110px", :name => "jumpersearch", :placeholder => "Filter members..."}
     .content
       %table{:cellspacing => "0"}
         %thead
           %tr
             %th{:style => "width: 8px"} &nbsp;
             %td{:style => "width: 80px"} Name
-            %td.tc{:style => "width: 70px"} Balance ($)
             %td.tc{:style => "width: 60px"} Type
-            %td.tc{:style => "width: 60px"} Rigs
-        %tbody.jumpers.connectedSortable
+        %tbody
           -Jumper.all.each_with_index do |jumper, i|
-            %tr{:style => "width: 365px"}
+            %tr.member{:style => "width: 365px; cursor: move;"}
               %td{:style => "width: 8px"}
                 -if jumper.available
                   %img{:src => "/css/img/available.png"}
                 -else
                   %img{:src => "/css/img/unavailable.png"}
-              %td{:style => "width: 80px"}= jumper.nickname
-              %td.tr{:style => "width: 60px"}
-                -balance = jumper.balance.to_f || (rand(10000) - 3000)/50.0
-                
-                .stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : "red")}= "%5.2f" % balance
+              %td{:style => "width: 80px"}= jumper.name
               %td.tc{:style => "width: 60px"}= jumper.type.to_s
-              %td.tc{:style => "width: 60px"}
-                - good_rigs = rand(4)
-                - caution_rigs = rand(2)
-                - bad_rigs = rand(2)
-                %a.stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                %a.stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
 :javascript
   $(document).ready(function(){
     $('a[rel*=facebox]').facebox();
-    $(".jumpers, .manifest").draggable().sortable({
-                    connectWith: ['.connectedSortable'], dropOnEmpty: true
-            }).disableSelection();
+    $(".student, .member").draggable({
+      stop: function(event, ui) {
+        var tr = $(event.target).closest('tr');
+        $(tr).unbind('mousedown mouseup');
+        $(document).unbind('selectstart');
+      },
+      helper: function(event){
+        return $('<div class="drag-jumper" style="cursor: move">Hello!</div>')
+        .find('table').append($(event.target).closest('tr').clone()).end().appendTo('body');
+      },
+      cursor: 'move',
+      cursorAt: {left:75,top:10}
+    });
+    
+    $(".manifest").droppable({ drop: function(event, ui) { alert("dropped!"); });
+    
   });
   function newFlight(aircraft_id){
     alert("not implemented yet.");
