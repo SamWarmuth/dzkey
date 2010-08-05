@@ -134,7 +134,7 @@
       drop: function(event, ui) {
         var dropTo = this
         if ($(this).hasClass("title-row")) {
-          dropTo = $(this).next();
+          dropTo = $(this).next().find("ul");
         }
         $(dropTo).find(".placeholder").remove();
         $("<li></li>").text(ui.draggable.children().filter('.name').text()).appendTo(dropTo)
