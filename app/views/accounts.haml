@@ -15,9 +15,9 @@
     %p
       %label{:style => "font-weight: bold"} Payment Type
       %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
-        %option Withdrawl
-        %option Debit
-        %option Transfer
+        %option{:value => "withdrawl"} Withdrawl
+        %option{:value => "debit"} Debit
+        %option{:value => "transfer"} Transfer
     %p
       %label{:style => "font-weight: bold"} Amount
       %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "amount"}
@@ -43,8 +43,8 @@
           %tr
             %th{:style => "width: 20px; padding-left: 10px"} Valid
             %td.tc{:style => "width: 40px"} #
-            %td.tc{:style => "width: 180px"} Date
-            %td{:style => "width: 100px"} Customer Name
+            %td.tc{:style => "width: 100px"} Date
+            %td{:style => "width: 120px"} Customer Name
             %td{:style => "width: 80px"} Payment Type
             %td.tc{:style => "width: 60px"} Amount ($)
             %td.tc Details
@@ -58,7 +58,7 @@
                 -else
                   %img{:src => "/css/img/unavailable.png"}
               %td.tc= "%05.0f" % transaction.transaction_number
-              %td.tc= transaction.date
+              %td.tc= Time.parse(transaction.date).strftime("%m/%d/%y %I:%M%p")
               
               %td
                 -jumper = Jumper.get(transaction.jumper_id)
@@ -67,13 +67,13 @@
                 -amount = transaction.amount.to_f
                 -amount = 10.15 if amount.nil?
                 
-                %a{:href => "#"}= amount >= 0 ? "Debit" : "Withdrawl"
+                %a{:href => "#"}= transaction.type.capitalize
             
               %td.tr
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
+                %a.stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (amount > 0 ? "green" : "red")}= "%5.2f" % amount.abs
               %td= transaction.notes
               %td.tr
-                %a.stat.vtip{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (amount > 0 ? "green" : "red")}= "%5.2f" % jumper.balance.to_f if jumper&&jumper.balance
+                %a.stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (amount > 0 ? "green" : "red")}= "%5.2f" % jumper.balance.to_f if jumper&&jumper.balance
 
 
 
