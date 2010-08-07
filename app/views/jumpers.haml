@@ -103,13 +103,11 @@
     .left{:style => "display: inline;margin-right: -13px"}
       %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
 .box.box-100.altbox
-  / .altbox for alternative box's color
   .boxin
     .header
       %h3 Jumpers
       %a.ico-plus{:href => "#new-jumper", :rel => "facebox", :style => "margin-left: 5px"} &nbsp;
-      / Action button in the header of the box
-      %input.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
+      %input.dataTables_filter.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
     .content
       %table#jumpertable{:cellspacing => "0"}
         %thead
@@ -160,7 +158,7 @@
       "bFilter": true,
       "bSort": true,
       "bInfo": false,
-      "bAutoWidth": false } );
+      "bAutoWidth": false} );
     $('a[rel*=facebox]').facebox();
   });
   function createJumper(button){

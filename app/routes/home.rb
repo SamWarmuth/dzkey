@@ -70,14 +70,9 @@ class Main
     })
     redirect "/login"
   end
-  get "/manager" do
-    haml :manager, :layout => false
-  end
-  get "/manifest" do
-    haml :manifest, :layout => false
-  end
   
   post "/ajax/jumper/?" do
+    return false unless logged_in?
     unless params[:id].nil?
       jumper = Jumper.all.find{|j| j.id == params[:id]}
       return "Tried to update a jumper that didn't exist (params[:id] != any jumper id)" if jumper.nil?
@@ -106,6 +101,8 @@ class Main
   
   
   post "/ajax/staff/?" do
+    return false unless logged_in?
+    
     unless params[:id].nil?
       staff = Jumper.all.find{|j| j.id == params[:id]}
       return "Tried to update a staff member / jumper that didn't exist (params[:id] != any jumper id)" if staff.nil?
@@ -142,6 +139,8 @@ class Main
   end
   
   post "/ajax/aircraft/?" do
+    return false unless logged_in?
+    
     unless params[:id].nil?
       aircraft = Aircraft.all.find{|j| j.id == params[:id]}
       return "Tried to update a aircraft that didn't exist (params[:id] != any aircraft id)" if aircraft.nil?
@@ -165,6 +164,8 @@ class Main
   end
   
   post "/ajax/transaction/?" do
+    return false unless logged_in?
+    
     transaction = Transaction.new
     
     transaction.transaction_number = Transaction.count
@@ -183,6 +184,8 @@ class Main
   end
   
   post "/ajax/void-transaction/?" do
+    return false unless logged_in?
+    
     transaction = Transaction.all.find{|j| j.id == params[:id]}
     return "Tried to void a transaction that doesn't exist (params[:id] != any transaction id)" if transaction.nil?
     

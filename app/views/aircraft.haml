@@ -84,7 +84,7 @@
   function createAircraft(button){
     var form_data = $('.newaircraftform:last').serialize();  
     alert(form_data);  
-    $.post(('/ajax/new-aircraft?'+form_data), function(data) {
+    $.post(('/ajax/aircraft?'+form_data), function(data) {
       $.facebox.close();
       $('#aircraft').html(data);
     });
