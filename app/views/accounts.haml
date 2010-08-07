@@ -36,9 +36,9 @@
     .header
       %h3 Transactions
       %a.ico-plus{:href => "#new-transaction", :rel => "facebox", :style => "margin-left: 0px"} &nbsp;
-      %input.search{:type => "text", :size => "45", :style => "margin-left: 525px", :name => "transactionsearch", :placeholder => "Filter transactions..."}
+      %input#transactionsearch.search{:type => "text", :size => "45", :style => "margin-left: 525px", :name => "transactionsearch", :placeholder => "Filter transactions..."}
     .content
-      %table{:cellspacing => "0"}
+      %table#transactiontable{:cellspacing => "0"}
         %thead
           %tr
             %th{:style => "width: 20px; padding-left: 10px"} Valid
@@ -97,6 +97,9 @@
     }
   }
   $(document).ready(function(){
+    $("#transactionsearch").keyup(function() {
+      $.uiTableFilter( $("#transactiontable"), this.value );
+    })
     $('a[rel*=facebox]').facebox();
     $(".items, .store").sortable({
       connectWith: ['.connectedSortable']

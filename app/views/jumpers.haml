@@ -113,16 +113,17 @@
         %thead
           %tr
             %th{:style => "width: 8px"} &nbsp;
-            %th Full Name
+            %th First
+            %th Last
             %th{:style => "width: 80px"} Nickname
-            %th.tc{:style => "width: 80px"} Balance ($)
+            %th.tc{:style => "width: 70px"} Balance ($)
             %th.tc{:style => "width: 80px"} Type
             %th.tc{:style => "width: 80px"} Cert. Expires
             %th.tc{:style => "width: 60px"} Rigs
             %th.tc{:style => "width: 100px"} Last Jump
             %th.tc{:style => "width: 100px"} Total Jumps
         %tbody.striped
-          -Jumper.all.each_with_index do |jumper, i|
+          -Jumper.all.sort_by{|j| j.last_name}.each_with_index do |jumper, i|
             %tr
               %td
                 -if jumper.available
@@ -130,7 +131,9 @@
                 -else
                   %img{:src => "/css/img/unavailable.png"}
               %td
-                %a{:href => "#"}= jumper.name
+                %a{:href => "#"}= jumper.first_name
+              %td
+                %a{:href => "#"}= jumper.last_name 
               %td
                 %a{:href => "#"}= jumper.nickname
               %td.tr
@@ -147,7 +150,7 @@
                 %a.stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
                 %a.stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
                 %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
-              %td.tc July 21st
+              %td.tc July #{rand(26)+1}
               %td.tc= rand(42)**2
 
 :javascript
