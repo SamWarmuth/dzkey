@@ -28,6 +28,15 @@
         %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
       %br
       %p
+        %label Country
+        %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
+          %option{:value => "USA"} USA
+          %option{:value => "Canada"} Canada
+          %option{:value => "Mexico"} Mexico
+          %option{:value => "England"} England
+          %option{:value => "Germany"} Germany
+          
+      %p
         %label Address
         %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px"}
       %p
@@ -90,9 +99,6 @@
       %p
         %label ZIP Code
         %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
-      %p
-        %label Country
-        %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
     %br
     %p
       %label{:style => "font-weight: bold"} Email Address

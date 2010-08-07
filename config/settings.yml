@@ -12,5 +12,5 @@ defaults: &defaults
 
 :production:
   :couchdb:
-    :url: http://samwarmuth:calculo@samwarmuth.couchone.com/dzkey_production
+    :url: http://localhost:5984/dzkey
     <<: *defaults
