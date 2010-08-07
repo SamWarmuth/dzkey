@@ -121,9 +121,6 @@
               .h-arrow
             %ul.clearfix
               %li
-                %a#manager-item.menu-item.h-ico.ico-library{:href => "#manager", :style => "display: block"}
-                  %span Manager
-              %li
                 %a#manifest-item.menu-item.h-ico.ico-edit{:href => "#manifest", :style => "display: block"}
                   %span Manifest
               %li
@@ -141,6 +138,9 @@
               %li
                 %a#aircraft-item.menu-item.h-ico.ico-aircraft{:href => "#aircraft", :style => "display: block"}
                   %span Aircraft
+              %li
+                %a#manager-item.menu-item.h-ico.ico-library{:href => "#manager", :style => "display: block"}
+                  %span Manager
               /
                 %li
                   %a#settings-item.menu-item.h-ico.ico-advanced{:href => "#settings", :style => "display: block"}
@@ -169,7 +169,8 @@
                   $(".menu-item").click(function(){
                     $("#h-wrap ul").css('display', 'none');
                     var newID = $(this).attr("href");
-                    window.history.replaceState("", "", "index?p="+newID.slice(1));
+                    //causes weird page refresh issues
+                    //window.history.replaceState("", "", "app?p="+newID.slice(1));
                     $("#current_page").html(newID);
                     $(".menu-title").hide();
                     $(newID + "-title").show();
@@ -185,17 +186,15 @@
         #userbox{:style => "margin-top: -15px; margin-bottom: -15px"}
           .inner
             .user-ico
-            %strong Kent McCullough
+            %strong= @user.name
             %ul.clearfix
               %li
                 %a{:href => "#"} profile
               %li
                 %a{:href => "#"} settings
-          %a#logout.logout-ico{:href => "#", :title => "Log Out"}
+          %a#logout.logout-ico{:href => "/logout", :title => "Log Out"}
     #container
       .inner-container
-        #manager.pagediv{:style => (@current_page == "manager" ? "" : "display: none")}
-          = haml :manager, :layout => false
         #manifest.pagediv{:style => (@current_page == "manifest" ? "" : "display: none")}
           = haml :manifest, :layout => false
         #schedule.pagediv{:style => (@current_page == "schedule" ? "" : "display: none")}
@@ -208,8 +207,10 @@
           = haml :staff, :layout => false
         #aircraft.pagediv{:style => (@current_page == "aircraft" ? "" : "display: none")}
           = haml :aircraft, :layout => false
-        #settings.pagediv{:style => (@current_page == "settings" ? "" : "display: none")}
-          = haml :settings, :layout => false
+        #manager.pagediv{:style => (@current_page == "manager" ? "" : "display: none")}
+          = haml :manager, :layout => false
+        -#settings.pagediv{:style => (@current_page == "settings" ? "" : "display: none")}
+          =# haml :settings, :layout => false
       #footer
         %p
           © DZKey 2010        

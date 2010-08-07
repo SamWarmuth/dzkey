@@ -30,14 +30,16 @@
             %table{:cellspacing => "0"}
               %tr
                 %th
-                  %label{:for => "some1"} Name:
+                  %label{:for => "some1"} Email:
                 %td
-                  %input#some1.txt{:name => "some1", :type => "text"}/
+                  %input#some1.txt{:name => "email", :type => "text"}/
               %tr
                 %th
                   %label{:for => "some3"} Password:
                 %td
-                  %input#some3.txt.pwd{:name => "some3", :type => "password"}/
+                  %input#some3.txt.pwd{:name => "password", :type => "password"}/
                 / class error for wrong filled inputs
             %br
-            %input.awesome.green.giant{:type => "submit", :value => "Log in", :style => "margin-left: 55px; width: 325px"}/
+            %input.awesome.green.giant{:type => "submit", :value => "Log in", :style => "margin-left: 55px; width: 325px"}
+      %div{:style => 'text-align: center; margin-top: 5px'}
+        %a{:href => "/"} Return to DZKey homepage

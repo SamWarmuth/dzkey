@@ -13,6 +13,7 @@ require "couchrest"
 require "haml"
 require "sass"
 require "json"
+require 'digest/sha2'
 
 
 class Main < Monk::Glue

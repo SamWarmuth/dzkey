@@ -21,16 +21,54 @@ class Main
     content_type 'text/css', :charset => 'utf-8'
     sass :grid
   end
-  get "/index" do
+  get "/app" do
+    redirect("/login") unless logged_in?
     @current_page = params[:p] || "dashboard"
     haml :framed, :layout => false
   end
   get "/login" do
+    redirect "/app?p=jumpers" if logged_in?
     haml :login, :layout => false
   end
   post "/login" do
-    #verify user
-    redirect "/index?p=jumpers"
+    staff = Jumper.all.find{|u| u.email == params[:email].downcase}
+    
+    if staff && staff.valid_password?(params[:password])
+      staff.challenges ||= []
+      staff.challenges << (Digest::SHA2.new(512) << (64.times.map{|l|('a'..'z').to_a[rand(25)]}.join)).to_s
+      staff.save
+      
+      response.set_cookie("staff", {
+        :path => "/",
+        :expires => Time.now + 2**20, #two weeks
+        :httponly => true,
+        :value => staff.id
+      })
+      response.set_cookie("staff_challenge", {
+        :path => "/",
+        :expires => Time.now + 2**20,
+        :httponly => true,
+        :value => staff.challenges.last
+      })
+      redirect "/app?p=jumpers"
+    else
+      redirect "/login" #TODO show an error
+    end
+  end
+  get "/logout" do
+    response.set_cookie("staff", {
+      :path => "/",
+      :expires => Time.now, #two weeks
+      :httponly => true,
+      :value => ""
+    })
+    response.set_cookie("staff_challenge", {
+      :path => "/",
+      :expires => Time.now,
+      :httponly => true,
+      :value => ""
+    })
+    redirect "/login"
   end
   get "/manager" do
     haml :manager, :layout => false

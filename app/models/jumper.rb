@@ -31,8 +31,19 @@ class Jumper < CouchRest::ExtendedDocument
   
   property :balance
   
+  def set_password(password)
+    self.salt = 64.times.map{|l|('a'..'z').to_a[rand(25)]}.join
+    self.password_hash = (Digest::SHA2.new(512) << (self.salt + password + "rofosggnxrrwwiwk")).to_s
+  end
+  def valid_password?(password)
+    return false if (self.password_hash.nil? || self.salt.nil?)
+    return ((Digest::SHA2.new(512) << (self.salt + password + "rofosggnxrrwwiwk")).to_s == password_hash)
+  end
   #member properties
+  property :email
   property :password_hash
+  property :salt
+  property :challenges #array of challeneges....really shouldn't keep these forever.
   property :logins #array of dates (e.g. ["7/9/11 3:00PM", "7/10/11 2:35PM"]) For usage logs
   
 
