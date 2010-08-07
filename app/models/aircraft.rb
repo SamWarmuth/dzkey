@@ -11,4 +11,5 @@ class Aircraft < CouchRest::ExtendedDocument
   
   property :manifest_ids
   property :available
+  property :hold
 end

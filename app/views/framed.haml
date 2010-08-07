@@ -69,10 +69,14 @@
         // Handling with tables (adding first and last classes for borders and adding alternate bgs)
         $('tbody.striped tr:even').addClass('even');
         $('tbody.expander tr:even').click(function(){
-          if ($(this).next().is(':visible')){
-            $(this).next().fadeOut("fast");
+          var nextRow = $(this).next();
+          var arrow = $(this).find(".arrow");
+          if (nextRow.is(':visible')){
+            arrow.html("&#9658;")
+            nextRow.fadeOut("fast");
           }else{
-            $(this).next().fadeIn("fast");
+            arrow.html("&#9660;")
+            nextRow.fadeIn("fast");
           }
         });
         
@@ -173,7 +177,7 @@
                     $("#h-wrap ul").css('display', 'none');
                     var newID = $(this).attr("href");
                     //causes weird page refresh issues
-                    //window.history.replaceState("", "", "app?p="+newID.slice(1));
+                    window.history.replaceState("", "", "app?p="+newID.slice(1));
                     $("#current_page").html(newID);
                     $(".menu-title").hide();
                     $(newID + "-title").show();
