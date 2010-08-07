@@ -107,7 +107,7 @@
     .header
       %h3 Jumpers
       %a.ico-plus{:href => "#new-jumper", :rel => "facebox", :style => "margin-left: 5px"} &nbsp;
-      %input.dataTables_filter.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
+      %input#jumpersearch.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
     .content
       %table#jumpertable{:cellspacing => "0"}
         %thead
@@ -152,13 +152,16 @@
 
 :javascript
   $(document).ready(function(){
-    jumpertable = $('#jumpertable').dataTable({
-      "bPaginate": false,
-      "bLengthChange": false,
-      "bFilter": true,
-      "bSort": true,
-      "bInfo": false,
-      "bAutoWidth": false} );
+    var jumpertable = $("#jumpertable")
+    jumpertable.tablesorter({
+      cssHeader: "",
+      cssAsc: "table-header-asc",
+      cssDesc: "table-header-desc"
+    });
+    $("#jumpersearch").keyup(function() {
+      $.uiTableFilter( jumpertable, this.value );
+    })
+    jumpersearch
     $('a[rel*=facebox]').facebox();
   });
   function createJumper(button){
@@ -176,7 +179,6 @@
       $('.available').attr('checked', '');
     }else{
       $('.available').attr('checked', 'checked');
-      
     }
   }
                 
