@@ -178,7 +178,7 @@ class Main
     transaction.amount = params[:amount].to_f
     transaction.notes = params[:notes]
     
-    #transaction.staff_id = @current_user.id
+    transaction.staff_id = @user.id
     transaction.save
     haml :accounts, :layout => false
   end
@@ -187,14 +187,28 @@ class Main
     return false unless logged_in?
     
     transaction = Transaction.all.find{|j| j.id == params[:id]}
-    return "Tried to void a transaction that doesn't exist (params[:id] != any transaction id)" if transaction.nil?
+    return "Tried to void a transaction that doesn't exist (params[:id] != any transaction id)" if transaction.nil? #debug
     
-    transaction.staff_id = @current_user.id
-    
+    transaction.staff_id = @user.id
     
     transaction.available = (params[:available]=="on")
     
     transaction.save
     haml :accounts, :layout => false
+  end
+  
+  post "/ajax/new-flight/?" do
+    return false unless logged_in?
+    
+    aircraft = Aircraft.get(params[:aircraft])
+    return false if aircraft.nil?
+    
+    flight = Flight.new
+    flight.aircraft_id = aircraft.id
+    flight.jump_date = Time.now.strftime("%m/%d/%y")
+    flight.number = Flight.count
+    flight.status = "unscheduled"
+    flight.save
+    haml :manifest, :layout => false
   end
 end

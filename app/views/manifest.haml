@@ -10,21 +10,21 @@
             %th{:style => "width: 8px"} &nbsp;
             %td Name
             %td.tc{:style => "width: 80px"} Next Flight
-            %td.tc Departure Time
+            %td.tc{:style => 'width: 300px'} Departure Time
             %td.tc{:style => "width: 100px"} Remaining Flights
         %tbody.striped
           -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th
-                %a.ico-plus.vtip{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :title => "New flight with this aircraft", :style => "margin: 0 -5px"} &nbsp;
+                %a.ico-plus{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :style => "margin: 0 -5px"} &nbsp;
               %td
-                %a.stat{:href => "#", :class => (aircraft.hold == true ? "red" : "green"), :style => "font-size: 125%"}= aircraft.name
-                  
-              %td.tc{:style => "font-size: 125%"}= aircraft.flight_prefix + (rand(20)+100).to_s
+                .stat{:href => "#", :class => (aircraft.hold == true ? "red" : "green"), :style => "font-size: 150%"}= aircraft.name
+                %a.awesome.small.gray-red{:href => "#", :style => "color: white; padding: 0 4px; font-size: 110%; margin-bottom: 3px"} &#10073;&#8202;&#8202;&#10073;
+              %td.tc{:style => "font-size: 125%"}= aircraft.flight_prefix + "003"
               %td.tc{:style => "font-size: 125%"}
                 %a.stat.red.flat-right{:href => "#"} -5
                 %a.stat.red.flat-right{:href => "#"} -1
-                %a.stat.gray.vtip{:style => "background-color: #444; font-size: 125%; width: 175px", :title => "3:15pm"} #{rand(50)+2} Minutes
+                %a.stat.gray.vtip{:style => "background-color: #444; font-size: 125%; width: 150px", :title => "3:15pm"} #{rand(50)+2} Minutes
                 %a.stat.green.flat-left{:href => "#"} +1
                 %a.stat.green.flat-left{:href => "#"} +5
               %td.tc= rand(4)
@@ -47,23 +47,25 @@
             %td.tc Weight (lbs.)
             %td.tc Estimated Takeoff
         %tbody.expander
-          -5.times do |i|
+          -Flight.all.find_all{|f| f.status != "landed" && f.status != "cancelled"}.each_with_index do |flight, i|
             %tr.manifest.title-row{:class => (i == 0 ? "first" : "")}
               %td.arrow &#9658;
               %td
-                %a{:href => "#", :style => "font-size: 125%"} CE1#{123-i}
-              %td.tc Cessme
+                %a{:href => "#", :style => "font-size: 125%"} CE#{105-i}
+              -plane = Aircraft.get(flight.aircraft_id)
+              -plane = plane.name unless plane.nil?
+              %td.tc= plane
               %td.tc
                 -cleared_jumpers = rand(10)
                 -fail_jumpers = rand(2)
                 %a.stat.green.flat-right{:href => "#", :style => (cleared_jumpers > 0 ? "" : "visibility: hidden")}= cleared_jumpers
                 %a.stat.red.merge-left.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
               %td.tc= rand(3000)
-              %td #{5-i}:#{rand(60)}PM
+              %td.tc #{5-i}:#{rand(60)}PM
             %tr{:style => "background: #F3F3F3;"}
-              %td.tc{:colspan => 6, :style => "border-bottom: 1px solid #BBB; padding: 0"}
+              %td.tc{:colspan => 6, :style => "border-bottom: 1px solid #CCC; padding: 0"}
                 %ul.manifest{:style => "margin: 0; padding: 10px; min-height: 30px;"}
-                  %li.placeholder{:style => "margin: 20px"} Drag Jumpers Here
+                  %li.placeholder{:style => "margin: 20px; padding: 10px; width: 200px; border: 3px dashed #AAA; margin: auto"} Drag Jumpers Here
               
 
 .box.box-40.altbox
@@ -91,6 +93,19 @@
               %td.tc{:style => "width: 60px"}= jumper.type.to_s
 :javascript
   $(document).ready(function(){
+    $('tbody.expander tr:odd').hide();
+    $('tbody.expander tr:even').click(function(){
+      var nextRow = $(this).next();
+      var arrow = $(this).find(".arrow");
+      if (nextRow.is(':visible')){
+        arrow.html("&#9658;")
+        nextRow.fadeOut("fast");
+      }else{
+        arrow.html("&#9660;")
+        nextRow.fadeIn("fast");
+      }
+      return false;
+    });
     $('a[rel*=facebox]').facebox();
     $(".student, .member").draggable({
       stop: function(event, ui) {
@@ -119,5 +134,8 @@
     
   });
   function newFlight(aircraft_id){
-    alert("not implemented yet.");
+    $.post(('/ajax/new-flight?aircraft='+aircraft_id), function(data) {
+      $('#manifest').html(data);
+    });
+    return false;
   }

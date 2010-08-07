@@ -64,21 +64,10 @@
             $(this).toggleClass('active');
             $("#h-wrap ul").css('display', 'none');
         });
-        $('tbody.expander tr:odd').fadeOut();
         
         // Handling with tables (adding first and last classes for borders and adding alternate bgs)
         $('tbody.striped tr:even').addClass('even');
-        $('tbody.expander tr:even').click(function(){
-          var nextRow = $(this).next();
-          var arrow = $(this).find(".arrow");
-          if (nextRow.is(':visible')){
-            arrow.html("&#9658;")
-            nextRow.fadeOut("fast");
-          }else{
-            arrow.html("&#9660;")
-            nextRow.fadeIn("fast");
-          }
-        });
+
         
         
         $('table.grid tbody tr:last-child').addClass('last');
