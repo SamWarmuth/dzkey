@@ -211,4 +211,17 @@ class Main
     flight.save
     haml :manifest, :layout => false
   end
+  
+  post "/ajax/add-jumper-to-flight/?" do
+    return false if params[:jumper].empty? || params[:flight].empty?
+    flight = Flight.get(params[:flight])
+    return false if flight.nil?
+    jumper = Jumper.get(params[:jumper])
+    return false if jumper.nil?
+    flight.jumper_ids ||= []
+    return false if flight.jumper_ids.include?(jumper.id)
+    flight.jumper_ids << jumper.id
+    flight.save
+    return true
+  end
 end

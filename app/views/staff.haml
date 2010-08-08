@@ -251,7 +251,6 @@
   });
   function createStaff(button){
     var form_data = $('.newstaffform:last').serialize();  
-    alert(form_data);  
     $.post(('/ajax/staff?'+form_data), function(data) {
       $.facebox.close();
       $('#staff').html(data);

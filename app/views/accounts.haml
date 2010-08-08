@@ -80,7 +80,6 @@
 :javascript
   function createTransaction(button){
     var form_data = $('.newtransactionform:last').serialize();  
-    alert(form_data);  
     $.post(('/ajax/transaction?'+form_data), function(data) {
       $.facebox.close();
       $('#accounts').html(data);

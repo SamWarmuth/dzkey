@@ -21,14 +21,23 @@
                 .stat{:href => "#", :class => (aircraft.hold == true ? "red" : "green"), :style => "font-size: 150%"}= aircraft.name
                 %a.awesome.small.gray-red{:href => "#", :style => "color: white; padding: 0 4px; font-size: 110%; margin-bottom: 3px"} &#10073;&#8202;&#8202;&#10073;
               %td.tc{:style => "font-size: 125%"}= aircraft.flight_prefix + "003"
-              %td.tc{:style => "font-size: 125%"}
-                %a.stat.red.flat-right{:href => "#"} -&#8202;&#8202;&#8202;5
-                %a.stat.red.flat-right{:href => "#"} -&#8202;&#8202;1
-                %a.stat.gray.vtip{:style => "background-color: #444; font-size: 125%; width: 150px", :title => "3:15pm"} #{rand(50)+2} Minutes
-                %a.stat.green.flat-left{:href => "#"} +1
-                %a.stat.green.flat-left{:href => "#"} +&#8202;5
+              %td.tc{:style => "font-size: 115%"}
+                %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 2px solid #A00"} -&#8202;&#8202;&#8202;5
+                %a.stat.red.flat-right.merge-left{:href => "#", :style => "position: relative; top: -1px;"} -&#8202;&#8202;1
+                %a.flight-time.stat.gray{:style => "margin-left: -5px; background-color: #444; font-size: 135%; width: 150px", :title => "3:15pm"} #{rand(50)+2} Minutes
+                %a.stat.green.merge-left.flat-left.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 2px solid #0A0"} +1
+                %a.stat.green.merge-left{:href => "#", :style => "position: relative; top: -1px;"} +&#8202;5
+                
               %td.tc= rand(4)
-      
+:javascript
+  $(document).ready(function(){
+    $(".flight-time").hover(function(){
+      var old_val = $(this).attr("title");
+      $(this).attr("title", $(this).html());
+      $(this).html(old_val);
+    });
+  });
+  
 .box.box-60.altbox
   / .altbox for alternative box's color
   .boxin
@@ -49,7 +58,8 @@
         %tbody.expander
           -Flight.all.find_all{|f| f.status != "landed" && f.status != "cancelled"}.each_with_index do |flight, i|
             %tr.manifest.title-row{:class => (i == 0 ? "first" : "")}
-              %td.arrow &#9658;
+              %td.info.arrow
+                &#9658;
               %td
                 %a{:href => "#", :style => "font-size: 125%"} CE#{105-i}
               -plane = Aircraft.get(flight.aircraft_id)
@@ -62,14 +72,30 @@
                 %a.stat.red.merge-left.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
               %td.tc= rand(3000)
               %td.tc #{5-i}:#{rand(60)}PM
-            %tr{:style => "background: #F3F3F3;"}
-              %td.tc{:colspan => 6, :style => "border-bottom: 1px solid #CCC; padding: 0"}
-                %ul.manifest{:style => "margin: 0; padding: 10px; min-height: 30px;"}
-                  %li.placeholder{:style => "margin: 20px; padding: 10px; width: 200px; border: 3px dashed #AAA; margin: auto"} Drag Jumpers Here
-              
+            %tr.expander-data{:style => "background: #F5F5F5;"}
+              %td.tc{:colspan => 6, :style => "border-bottom: 1px solid #BBB; padding: 0"}
+                %table.manifest{:style => "padding-left: 25px"}
+                  %thead
+                    %tr
+                      %th Name
+                      %th.tc{:style => "width: 100px"} Type
+                      %th.tc{:style => "width: 100px"} Jump Plan
+                  %tbody{:title => flight.id}
+                    -flight.jumper_ids ||= [] #TODO require array from the start
+                    -flight.jumper_ids.map{|j_id| Jumper.get(j_id)}.each do |jumper|
+                      %tr{:style => "cursor: auto;"}
+                        %td= jumper.name
+                        %td.tc= jumper.type
+                        %td.tc
+                          %select
+                            %option Tandem
+                            %option AFF
+                    -if flight.jumper_ids.empty?
+                      %tr{:style => "cursor: auto;"}
+                        %td.tc{:colspan => 3}
+                          .placeholder Drag Jumpers Here!
 
 .box.box-40.altbox
-  / .altbox for alternative box's color
   .boxin
     .header
       %h3 Members
@@ -84,17 +110,19 @@
         %tbody
           -Jumper.all.each_with_index do |jumper, i|
             %tr.member{:style => "width: 365px; cursor: move;"}
+              %td.jumper-id{:style => 'display: none'}= jumper.id
+              
               %td.tc{:style => "width: 8px"}
                 -if jumper.available
                   %img{:src => "/css/img/available.png"}
                 -else
                   %img{:src => "/css/img/unavailable.png"}
               %td.name{:style => "width: 80px"}= jumper.name
-              %td.tc{:style => "width: 60px"}= jumper.type.to_s
+              %td.type.tc{:style => "width: 60px"}= jumper.type.to_s
 :javascript
   $(document).ready(function(){
-    $('tbody.expander tr:odd').hide();
-    $('tbody.expander tr:even').click(function(){
+    $("tr.expander-data").hide();
+    $('tbody.expander tr.title-row').click(function(){
       var nextRow = $(this).next();
       var arrow = $(this).find(".arrow");
       if (nextRow.is(':visible')){
@@ -124,10 +152,21 @@
       drop: function(event, ui) {
         var dropTo = this
         if ($(this).hasClass("title-row")) {
-          dropTo = $(this).next().find("ul");
+          dropTo = $(this).next().find("table tbody");
+        } else{
+          dropTo = $(this).find("tbody");
         }
-        $(dropTo).find(".placeholder").remove();
-        $("<li></li>").text(ui.draggable.children().filter('.name').text()).appendTo(dropTo)
+        var flightID = $(dropTo).attr("title");
+        
+        var jumperID =  ui.draggable.children().filter('.jumper-id').text();
+        $.post(('/ajax/add-jumper-to-flight/?jumper='+jumperID+"&flight="+flightID), function(data) {
+          
+        });
+        $(dropTo).find(".placeholder").parent().parent().remove();
+        var name = "<td class='first'>" + ui.draggable.children().filter('.name').text() + "</td>";
+        var type = "<td class='tc'>" + ui.draggable.children().filter('.type').text() + "</td>";
+        var options = "<td class='tc'><select><option>Tandem</option><option>AFF</option></td>";
+        $("<tr></tr>").html(name + type + options).appendTo(dropTo)
       },
       hoverClass: 'drop-hover'
     });

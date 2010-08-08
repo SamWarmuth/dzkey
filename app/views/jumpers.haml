@@ -170,7 +170,6 @@
   });
   function createJumper(button){
     var form_data = $('.newjumperform:last').serialize();  
-    alert(form_data);  
     $.post(('/ajax/jumper?'+form_data), function(data) {
       $.facebox.close();
       $('#jumpers').html(data);
