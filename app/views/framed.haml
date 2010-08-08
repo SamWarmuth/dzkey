@@ -17,15 +17,10 @@
     %script{:src => "js/facebox.js", :type => "text/javascript"}
     %script{:src => "js/jquery.tablesorter.min.js", :type => "text/javascript"}  
     %script{:src => "js/jquery.uitablefilter.js", :type => "text/javascript"}    
-      
-    
-    
     
     %link{:href => "http://fonts.googleapis.com/css?family=Droid+Sans", :rel => "stylesheet", :type => "text/css"}
     
     %link{:href => "css/blue.css", :media => "screen, projection, tv", :rel => "stylesheet", :type => "text/css"}
-    
-    
     
     / Adding support for transparent PNGs in IE6:
     /[if lte IE 6]
@@ -92,6 +87,7 @@
       });
   %body
     #current_page{:style => "display: none"}= "#"+@current_page
+    
     #nav
       .inner-container.clearfix
         %a.dzkey-small{:href => "/", :style => "border: none"}
@@ -178,6 +174,11 @@
                   });
                   $(curPageID + "-item").hide();
                   
+                  //poll for new info
+                  $.get(("/ajax/changes?since=#{COUCHDB_SERVER.info['update_seq']}"), function(data){
+                  
+                  });
+                    
                 });
         #userbox{:style => "margin-top: -15px; margin-bottom: -15px"}
           .inner

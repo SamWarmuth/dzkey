@@ -24,7 +24,7 @@
               %td.tc{:style => "font-size: 115%"}
                 %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 2px solid #A00"} -&#8202;&#8202;&#8202;5
                 %a.stat.red.flat-right.merge-left{:href => "#", :style => "position: relative; top: -1px;"} -&#8202;&#8202;1
-                %a.flight-time.stat.gray{:style => "margin-left: -5px; background-color: #444; font-size: 135%; width: 150px", :title => "3:15pm"} #{rand(50)+2} Minutes
+                %a.flight-time.stat.gray{:style => "margin-left: -5px; background-color: #333; font-size: 135%; width: 125px", :title => "3:15pm"} #{rand(50)+2} Minutes
                 %a.stat.green.merge-left.flat-left.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 2px solid #0A0"} +1
                 %a.stat.green.merge-left{:href => "#", :style => "position: relative; top: -1px;"} +&#8202;5
                 
@@ -57,14 +57,13 @@
             %td.tc Estimated Takeoff
         %tbody.expander
           -Flight.all.find_all{|f| f.status != "landed" && f.status != "cancelled"}.each_with_index do |flight, i|
+            -plane = Aircraft.get(flight.aircraft_id)
             %tr.manifest.title-row{:class => (i == 0 ? "first" : "")}
               %td.info.arrow
                 &#9658;
               %td
-                %a{:href => "#", :style => "font-size: 125%"} CE#{105-i}
-              -plane = Aircraft.get(flight.aircraft_id)
-              -plane = plane.name unless plane.nil?
-              %td.tc= plane
+                %a{:href => "#", :style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + flight.number.to_s
+              %td.tc= plane.name if plane
               %td.tc
                 -cleared_jumpers = rand(10)
                 -fail_jumpers = rand(2)
@@ -94,8 +93,31 @@
                       %tr{:style => "cursor: auto;"}
                         %td.tc{:colspan => 3}
                           .placeholder Drag Jumpers Here!
-
 .box.box-40.altbox
+  .boxin
+    .header
+      %h3 Students
+      %input.search{:type => "text", :size => "25", :style => "margin-left: 110px", :name => "jumpersearch", :placeholder => "Filter members..."}
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th{:style => "width: 8px"} &nbsp;
+            %td{:style => "width: 80px"} Name
+            %td.tc{:style => "width: 60px"} Type
+        %tbody
+          -Jumper.all.each_with_index do |jumper, i|
+            %tr.member{:style => "width: 365px; cursor: move;"}
+              %td.jumper-id{:style => 'display: none'}= jumper.id
+              
+              %td.tc{:style => "width: 8px"}
+                -if jumper.available
+                  %img{:src => "/css/img/available.png"}
+                -else
+                  %img{:src => "/css/img/unavailable.png"}
+              %td.name{:style => "width: 80px"}= jumper.name
+              %td.type.tc{:style => "width: 60px"}= jumper.type.to_s
+.box.box-40.altbox{:style => "float: right"}
   .boxin
     .header
       %h3 Members

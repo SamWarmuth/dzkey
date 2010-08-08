@@ -71,6 +71,11 @@ class Main
     redirect "/login"
   end
   
+  get "/ajax/changes?" do
+    couch_out = `curl http://localhost:5984/dzkey_development/_changes?since=#{params[:since]}`
+    return "jumpers,"+(haml :jumpers, :layout => false)+"\nmanifest,"+(haml :manifest, :layout => false)
+  end
+  
   post "/ajax/jumper/?" do
     return false unless logged_in?
     unless params[:id].nil?
