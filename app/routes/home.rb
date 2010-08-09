@@ -6,8 +6,8 @@ class Main
   get "/tour" do
     haml :'public/tour', :layout => false
   end
-  get "/pricing" do
-    haml :'public/pricing', :layout => false
+  get "/signup" do
+    haml :'public/signup', :layout => false
   end
   get "/contact" do
     haml :'public/contact', :layout => false
