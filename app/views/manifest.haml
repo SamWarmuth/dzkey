@@ -7,19 +7,20 @@
       %table{:cellspacing => "0"}
         %thead
           %tr
-            %th{:style => "width: 8px"} &nbsp;
-            %td Name
+            %td.tc Name
             %td.tc{:style => "width: 80px"} Next Flight
-            %td.tc{:style => 'width: 300px'} Departure Time
+            %td.tc{:style => 'width: 300px'} Next Departure
             %td.tc{:style => "width: 100px"} Remaining Flights
         %tbody.striped
           -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
             %tr{:class => ( i == 0 ? "first" : "")}
-              %th
-                %a.ico-plus{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :style => "margin: 0 -5px"} &nbsp;
               %td
-                .stat{:href => "#", :class => (aircraft.hold == true ? "red" : "green"), :style => "font-size: 150%"}= aircraft.name
-                %a.awesome.small.gray-red{:href => "#", :style => "color: white; padding: 0 4px; font-size: 110%; margin-bottom: 3px"} &#10073;&#8202;&#8202;&#10073;
+                %a.awesome.medium.gray-red{:href => "#", :style => "color: white;margin-right: 10px;"} &#10073;&#8202;&#10073;
+                
+                %b{:href => "#", :style => "font-size: 150%"}= aircraft.name
+                %a.awesome.medium.green{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :style => "float: right;color: white"} New Flight
+                
+                
               %td.tc{:style => "font-size: 125%"}= aircraft.flight_prefix + "003"
               %td.tc{:style => "font-size: 115%"}
                 %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 2px solid #A00"} -&#8202;&#8202;&#8202;5

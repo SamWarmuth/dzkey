@@ -1,0 +1,111 @@
+/*
+ * jQuery Nivo Slider v2.0
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2010, Gilbert Pellegrom
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * March 2010
+ */
+ 
+.nivoSlider {
+	position:relative;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:60;
+	display:none;
+}
+/* The slices in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:50;
+	height:100%;
+}
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#000;
+	color:#fff;
+	opacity:0.8; /* Overridden by captionOpacity setting */
+	width:100%;
+	z-index:89;
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+    background: #1D97BC;
+    color: white;
+    padding: 5px;
+	position:absolute;
+	top:45%;
+	z-index:99;
+	cursor:pointer;
+}
+.nivo-prevNav {
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border: 2px solid #0D87AC;
+    border-left: none;
+	left:0px;
+}
+.nivo-nextNav {
+    border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border: 2px solid #0D87AC;
+    border-right: none;
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav{
+    background: #0987AE;
+    padding: 5px;
+    padding-top: 12px;
+    display: inline-block;
+    position:relative;
+	top: 330px;
+	left: 170px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.nivo-controlNav a {
+    color: rgba(0,0,0,0.0);
+    background: url("/images/page.png") no-repeat;
+    padding: 5px;
+    margin: 5px;
+	z-index:99;
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+    background: url("/images/selected_page.png") no-repeat;
+    
+	font-weight:bold;
+}

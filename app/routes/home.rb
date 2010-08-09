@@ -1,4 +1,8 @@
 class Main
+  get "/images/favicon.ico" do
+    content_type 'ico'
+    return ""
+  end
   get "/" do
     @big_header = true
     haml :'public/index', :layout => false
