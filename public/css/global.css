@@ -1,0 +1,10 @@
+
+@import url(reset.css);
+@import url(layout.css);
+@import url(typo.css);
+
+
+/*-----------Ultimate Page Ends-------------------*/
+.valid{border:1px solid #70A41B!important;  margin-right:19px; overflow:hidden; margin-top:8px;} /*#70A41B*/
+.ajax_alert .form_input, .ajax_alert .form_textarea{border-top:1px solid #ffb628!important; margin-top:8px;}
+.error {margin-top:8px; overflow:hidden; margin-right:19px; border:1px solid red!important; }

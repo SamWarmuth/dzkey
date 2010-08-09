@@ -1,0 +1,129 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %title DZKey — Manage Your Dropzone.
+    %meta{:content => "DZKey", :name => "author"}
+    %meta{:content => "Dropzone Management Software", :name => "description"}
+    %meta{:content => "Dropzone Manifest Finance Schedule Aircraft", :name => "keywords"}
+    %meta{:content => "english", :name => "language"}
+    %link{:href => "images/favicon.ico", :rel => "icon", :type => "image/ico"}
+    %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}
+    %script{:src => "js/jquery-1.3.2.min.js", :type => "text/javascript"}
+    %script{:src => "js/jquery.jparallax.js", :type => "text/javascript"}
+    %script{:src => "js/tabsslider.js", :type => "text/javascript"}
+    %script{:src => "js/custom.font.js", :type => "text/javascript"}
+    /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
+  %body
+    .header
+      .header_content
+        %a{:href => "index.html"}
+          %img.logo.png{:alt => "DZKey Logo", :height => "35", :width => "140", :src => "images/logo.png", :title => "Go to Homepage"}/
+        / .logo
+        %ul.main_menu
+          %li.selected_page
+            .selected
+              .selected_left
+              .selected_middle
+                %a.homepage{:href => "index.html"}
+              .selected_right
+          %li
+            %a{:href => "work.html"} Feature Tour
+          %li
+            %a{:href => "services.html"} FAQ
+          %li
+            %a{:href => "contact.html"} Contact
+          %li
+            %a{:href => "services.html"} Log In
+          %li
+            %a.awesome.medium.green{:href => "services.html", :style => "color: white; margin-top: -8px;"} Sign Up
+    .latest_project
+      .project
+        #slide1.tabb.displayslide
+          .project_table
+            .project_text_left
+              %h1{:style => "font-weight: bold; font-size: 1.5em"} Manage Your Dropzone.
+              %p{:style => "font-size: 1.25em"}
+                Flight Manifesting.
+                %br
+                Online Scheduling.
+                %br
+                Manage Finances.
+                %br
+                %br
+                SSL Security.
+                %br
+                %br
+                <b>No</b> setup fees.
+              %br
+              %br
+              %a.awesome.green.huge{:href => "/info", :style => "text-align: center; margin-left: 30px"}
+                %b{:style => "font-size: 1.5em"} More Information
+                %br
+                %em{:style => "color: #AFA; font-size: 0.75em"} Get started in under five minutes.
+            .project_screens
+              .phones.parallax
+                %div{:style => "width: 460; height:370;"}
+                  %object{:width => "460", :height => "370",:style => "background: #18A; border: 2px solid #068; position:absolute; left:-120px; top:-12px; padding: 0"}
+                    %param{:name => "movie", :value => "http://www.youtube.com/v/TjihD9v3e5E&amp;hl=en_US&amp;fs=1?rel=0&amp;color1=0x006699&amp;color2=0x54abd6"}
+                    %param{:name => "allowFullScreen", :value => "true"}
+                    %param{:name => "allowscriptaccess", :value => "always"}
+                    %embed{:src => "http://www.youtube.com/v/TjihD9v3e5E&amp;hl=en_US&amp;fs=1?rel=0&amp;color1=0x006699&amp;color2=0x54abd6",  :type => "application/x-shockwave-flash", :allowscriptaccess => "always", :allowfullscreen => "true", :width => "460", :height => "370"}
+    .sec_menu
+      .sec_menu_content
+        .tabbicos.float_left
+
+          %div{:style => "clear:both;"}
+        .clear_container
+    .content
+      .content_left
+        %img.newspaper_icon.png{:alt => "News &amp; Highlights", :height => "53", :src => "images/newspaper_icon.png", :width => "63"}/
+        %h2 News &amp; Highlights
+        %p.subtitle What we’ve been up to lately
+        .clear_container
+        %h6 @Twitter Commenter
+        %p We’ve just finished the new awesome project. It has been a great time for us these months.
+        %h6 Our new Blog is NOW LIVE
+        %p The new blog is up and running. Enjoy guys!
+      / content_left
+      .content_middle
+        %img.newspaper_icon.png{:alt => "Clients &amp; Testimonials", :height => "53", :src => "images/clients_icon.png", :width => "63"}/
+        %h2 Clients &amp; Testimonials
+        %p.subtitle What others have to say about us
+        .clear_container
+        %img.cite_icon.png{:alt => "Citation", :height => "19", :src => "images/cite_icon.png", :width => "21"}/
+        %cite Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+        %h6.testimonial_name Jonathan Doe, Software Company
+        .clear_container
+      / content_left
+      .content_right
+        %ul
+          %li
+            %a.social_networking_link{:href => "#", :title => "Behance"}
+              %img{:alt => "Behance", :src => "images/behance.jpg"}/
+          %li
+            %a.social_networking_link{:href => "#", :title => "flickr"}
+              %img{:alt => "flickr", :src => "images/flickr.jpg"}/
+          %li
+            %a.social_networking_link{:href => "#", :title => "facebook"}
+              %img{:alt => "facebook", :src => "images/facebook.jpg"}/
+          %li
+            %a.social_networking_link{:href => "#", :title => "LinkediIn"}
+              %img{:alt => "LinkedIn", :src => "images/linkedin.jpg"}/
+          %li
+            %a.social_networking_link{:href => "#", :title => "Krop"}
+              %img{:alt => "Krop", :src => "images/krop.jpg"}/
+          %li
+            %a.social_networking_link{:href => "#", :title => "twitter"}
+              %img{:alt => "twitter", :src => "images/twitter.jpg"}/
+      .clear_container
+    .footer
+      .footer_content
+        .footer_left
+          %p © 2010 DZKey&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
+        .footer_right
+          %p
+            %a{:href => "#"}> privecy statement
+            \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            %a{:href => "#"} terms &amp; conditions

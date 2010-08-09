@@ -1,0 +1,15 @@
+.latest_project{
+ background: url(../images/colors/blue/home_bg.jpg) repeat-x;
+ }
+ 
+.project{
+ background: url(../images/colors/blue/home_latest_project_bg.jpg) no-repeat;
+ }
+ 
+.secondary_page_bg{
+ background: url(../images/colors/blue/secondary_page_bg.jpg) repeat-x;
+ }
+ 
+.category_illustration{
+ background: url(../images/colors/blue/category_illustration_bg.jpg) no-repeat;
+ }

@@ -1,7 +1,7 @@
 class Main
   get "/" do
     @big_header = true
-    haml :'public/home', :layout => :public
+    haml :'public/index', :layout => false
   end
   get "/about" do
     haml :'public/about', :layout => :public
@@ -20,6 +20,10 @@ class Main
   get "/css/grid.css" do
     content_type 'text/css', :charset => 'utf-8'
     sass :grid
+  end
+  get "/css/layout.css" do
+    content_type 'text/css', :charset => 'utf-8'
+    sass :'public/layout'
   end
   get "/app" do
     redirect("/login") unless logged_in?
