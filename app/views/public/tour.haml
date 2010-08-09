@@ -11,9 +11,7 @@
     %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "css/lightbox.css", :rel => "stylesheet", :type => "text/css"}/
-    %script{:src => "js/jquery-1.3.2.min.js", :type => "text/javascript"}
-    %script{:src => "js/cufon-yui.js", :type => "text/javascript"}
-    %script{:src => "js/custom.font.js", :type => "text/javascript"}
+    %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
     %script{:src => "js/lightbox/prototype.js", :type => "text/javascript"}
     %script{:src => "js/lightbox/scriptaculous.js?load=effects,builder", :type => "text/javascript"}
     %script{:src => "js/lightbox/lightbox.js", :type => "text/javascript"}
@@ -22,7 +20,7 @@
     .header
       .header_content
         %a{:href => "/"}
-          %img.logo.png{:alt => "DZKey Logo", :height => "35", :width => "140", :src => "images/logo.png", :title => "Go to Homepage"}/
+          %img#the-top.logo.png{:alt => "DZKey Logo", :height => "35", :width => "140", :src => "images/logo.png", :title => "Go to Homepage"}/
         %ul.main_menu
           %li
             %a.homepage{:href => "/"}
@@ -32,7 +30,6 @@
               .selected_middle
                 %a{:href => "/tour"} Feature Tour
               .selected_right
-            
           %li
             %a{:href => "/faq"} FAQ
           %li
@@ -46,27 +43,53 @@
         %img.laptop.png{:alt => "About us", :height => "113", :src => "images/laptop.png", :width => "379"}/
         .punchline_work
           %h2{:style => "margin-left: 50px"} Learn more about how DZKey works.
-      / .project
-    / .LATEST_PROJECT
-    .sec_menu
-      .sec_menu_content
-        %ul.secondary_menu
-          %li
-            %span Go To
-          %li
-            %a{:href => "#"} Manifest
-          %li.sec_menu_selected
-            .sec_menu_selected_left
-            %a.sec_menu_selected_middle{:href => "#"} Aircraft
-            .sec_menu_selected_right
-          %li
-            %a{:href => "#"} Staff
-          %li
-            %a{:href => "#"} Finance
-          %li
-            %a{:href => "#"} Reports
+    #sticky-anchor
+    #sticky-replacement{:style => 'display: none'}
+      .sec_menu
+        .sec_menu_content
+          %ul.secondary_menu
+
+    #sticky
+      .sec_menu
+        .sec_menu_content
+          %ul.secondary_menu
+            %li
+              %span Go To
+            %li#manifests.sel-li.sec_menu_selected{:style => 'display: none'}
+              .sec_menu_selected_left
+              %a.sec_menu_selected_middle.scroller{:href => "#manifest"} Manifest
+              .sec_menu_selected_right
+            %li#manifestd.desel-li
+              %a.scroller{:href => "#manifest"} Manifest
+            %li#aircrafts.sel-li.sec_menu_selected{:style => 'display: none'}
+              .sec_menu_selected_left
+              %a.sec_menu_selected_middle.scroller{:href => "#aircraft"} Aircraft
+              .sec_menu_selected_right
+            %li#aircraftd.desel-li
+              %a.scroller{:href => "#aircraft"} Aircraft
+            %li#staffs.sel-li.sec_menu_selected{:style => 'display: none'}
+              .sec_menu_selected_left
+              %a.sec_menu_selected_middle.scroller{:href => "#staff"} Staff
+              .sec_menu_selected_right
+            %li#staffd.desel-li
+              %a.scroller{:href => "#staff"} Staff
+            %li#finances.sel-li.sec_menu_selected{:style => 'display: none'}
+              .sec_menu_selected_left
+              %a.sec_menu_selected_middle.scroller{:href => "#finance"} Finance
+              .sec_menu_selected_right
+            %li#financed.desel-li
+              %a.scroller{:href => "#finance"} Finance
+            %li#reportss.sel-li.sec_menu_selected{:style => 'display: none'}
+              .sec_menu_selected_left
+              %a.sec_menu_selected_middle.scroller{:href => "#reports"} Reports
+              .sec_menu_selected_right
+            %li#reportsd.desel-li
+              %a.scroller{:href => "#reports"} Reports
+            %li
+              %a.scroller{:href => "#the-top"} Top
     .content
       .secondary_pages_content
+        %h1#manifest Manifest
         .work_project
           %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip1]", :title => "Online electronics shop"} &nbsp;
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip1]", :title => "Online electronics shop"}
@@ -88,32 +111,33 @@
           %p We’ve just finished the new awesome project. It has been a great time for us these months.
         / .work_project
         .clear_container
-        %br/
-        %br/
+        %br
+        %hr
+        %br
+        %h1#aircraft Aircraft
         .work_project
           %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}
           %img{:alt => "Name of the project", :src => "images/projects/project4.jpg"}/
           %a.project_title{:href => "#"} Software App website
           %p We’ve just finished the new awesome project. It has been a great time for us these months.
-        / .work_project
         .work_project
           %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip5]", :title => "Online electronics shop"}
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip5]", :title => "Online electronics shop"}
           %img{:alt => "Name of the project", :src => "images/projects/project5.jpg"}/
           %a.project_title{:href => "#"} CardCrafters microsite
           %p We’ve just finished the new awesome project. It has been a great time for us these months.
-        / .work_project
         .work_project.last_project
           %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip6]", :title => "Online electronics shop"}
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip6]", :title => "Online electronics shop"}
           %img{:alt => "Name of the project", :src => "images/projects/project6.jpg"}/
           %a.project_title{:href => "#"} Stylish Art Gallery
           %p We’ve just finished the new awesome project. It has been a great time for us these months.
-        / .work_project
         .clear_container
-        %br/
-        %br/
+        %br
+        %hr
+        %br
+        %h1#staff Staff
         .work_project
           %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip7]", :title => "Online electronics shop"}
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip7]", :title => "Online electronics shop"}
@@ -127,10 +151,53 @@
           %img{:alt => "Name of the project", :src => "images/projects/project8.jpg"}/
           %a.project_title{:href => "#"} Mobile app design
           %p We’ve just finished the new awesome project. It has been a great time for us these months.
-        / .work_project
-      / secondary_pages_content
       .clear_container
-    / .CONTENT
+      %hr
+      %br
+      %h1#finance Finance
+      .work_project
+        %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}
+        %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}
+        %img{:alt => "Name of the project", :src => "images/projects/project4.jpg"}/
+        %a.project_title{:href => "#"} Software App website
+        %p We’ve just finished the new awesome project. It has been a great time for us these months.
+      .work_project
+        %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip5]", :title => "Online electronics shop"}
+        %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip5]", :title => "Online electronics shop"}
+        %img{:alt => "Name of the project", :src => "images/projects/project5.jpg"}/
+        %a.project_title{:href => "#"} CardCrafters microsite
+        %p We’ve just finished the new awesome project. It has been a great time for us these months.
+      .work_project.last_project
+        %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip6]", :title => "Online electronics shop"}
+        %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip6]", :title => "Online electronics shop"}
+        %img{:alt => "Name of the project", :src => "images/projects/project6.jpg"}/
+        %a.project_title{:href => "#"} Stylish Art Gallery
+        %p We’ve just finished the new awesome project. It has been a great time for us these months.
+      .clear_container
+      %br
+      %hr
+      %br
+      %h1#reports Reports
+      .work_project
+        %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}
+        %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}
+        %img{:alt => "Name of the project", :src => "images/projects/project4.jpg"}/
+        %a.project_title{:href => "#"} Software App website
+        %p We’ve just finished the new awesome project. It has been a great time for us these months.
+      .work_project
+        %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip5]", :title => "Online electronics shop"}
+        %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip5]", :title => "Online electronics shop"}
+        %img{:alt => "Name of the project", :src => "images/projects/project5.jpg"}/
+        %a.project_title{:href => "#"} CardCrafters microsite
+        %p We’ve just finished the new awesome project. It has been a great time for us these months.
+      .work_project.last_project
+        %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip6]", :title => "Online electronics shop"}
+        %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip6]", :title => "Online electronics shop"}
+        %img{:alt => "Name of the project", :src => "images/projects/project6.jpg"}/
+        %a.project_title{:href => "#"} Stylish Art Gallery
+        %p We’ve just finished the new awesome project. It has been a great time for us these months.
+      .clear_container
+      %br
     .footer
       .footer_content
         .footer_left
@@ -144,6 +211,33 @@
             %a{:href => "#"} terms &amp; conditions
         / .footer_right
         .clear_container
-      / .footer_content
-    / .FOOTER
+:javascript
+  function sticky_relocate() {
+    var window_top = jQuery(window).scrollTop();
+    var div_top = jQuery('#sticky-anchor').offset().top;
+    if (window_top > div_top){
+      jQuery('#sticky').addClass('stick');
+      jQuery('#sticky-replacement').show();
+    } else{
+      jQuery('#sticky').removeClass('stick');
+      jQuery('#sticky-replacement').hide();
+      
+    }
+  }
+  jQuery(document).ready(function(){
+    jQuery("a.scroller").click(function(){
+      var elementClicked = jQuery(this).attr("href");
+      jQuery(".sel-li").hide();
+      jQuery(".desel-li").show();
+      jQuery(elementClicked+"s").show();
+      jQuery(elementClicked+"d").hide();
+      
+      var destination = jQuery(elementClicked).offset().top;
+      jQuery("html,body").animate({ scrollTop: destination-65}, 1000);
+      return false;
+    });
+    jQuery(window).scroll(sticky_relocate);
+    sticky_relocate();
+  });
+  
     
