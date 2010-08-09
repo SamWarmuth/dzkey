@@ -3,11 +3,17 @@ class Main
     @big_header = true
     haml :'public/index', :layout => false
   end
-  get "/about" do
-    haml :'public/about', :layout => :public
+  get "/tour" do
+    haml :'public/tour', :layout => false
   end
   get "/pricing" do
     haml :'public/pricing', :layout => false
+  end
+  get "/contact" do
+    haml :'public/contact', :layout => false
+  end
+  get "/faq" do
+    haml :'public/faq', :layout => false
   end
   get "/css/style.css" do
     content_type 'text/css', :charset => 'utf-8'

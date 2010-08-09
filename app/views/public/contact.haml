@@ -18,27 +18,25 @@
   %body
     .header
       .header_content
-        %a{:href => "index.html"}
-          %img.logo.png{:alt => "Creative Juice", :height => "40", :src => "images/logo.png", :title => "Go to Homepage", :width => "184"}/
-        / .logo
+        %a{:href => "/"}
+          %img.logo.png{:alt => "DZKey Logo", :height => "35", :width => "140", :src => "images/logo.png", :title => "Go to Homepage"}/
         %ul.main_menu
           %li
-            %a.homepage{:href => "index.html"}
+            %a.homepage{:href => "/"}
           %li
-            %a{:href => "about us.html"} About us
+            %a{:href => "/tour"} Feature Tour
           %li
-            %a{:href => "work.html"} Work
-          %li
-            %a{:href => "services.html"} Services
+            %a{:href => "/faq"} FAQ
           %li.selected_page
             .selected
               .selected_left
               .selected_middle
-                %a{:href => "contact.html"} Contact
+                %a{:href => "/contact"} Contact
               .selected_right
-        / .main_menu
-      / .header_content
-    / .HEADER
+          %li
+            %a{:href => "/login"} Log In
+          %li
+            %a.awesome.medium.green{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
     .secondary_page_bg
       .category_illustration
         .punchline_contact
@@ -52,13 +50,13 @@
         %ul.secondary_menu.secondary_menu_contact
           %li
             %span Our Address:
-            345 Lincoln Park Ave. San Jose, CA
+            557 N 17th St. Milwaukee WI 53233
           %li
             %span Phone:
-            (800) 833 - 6687
+            (414) 215 - 0289
           %li
             %span Email:
-            contact@softco.net
+            sam@dzkey.com
       / .sec_menu_content
     / .SEC_MENU
     .content
@@ -142,8 +140,5 @@
       / .footer_content
     / .FOOTER
     :javascript
-		Cufon.replace('h1');
-    	Cufon.replace('h2');
-		Cufon.replace('.category_illustration p');
-		document.getElementById('project_title').style.fontSize='42px';
+      document.getElementById('project_title').style.fontSize='42px';
     

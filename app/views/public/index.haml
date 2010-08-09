@@ -18,26 +18,25 @@
   %body
     .header
       .header_content
-        %a{:href => "index.html"}
+        %a{:href => "/"}
           %img.logo.png{:alt => "DZKey Logo", :height => "35", :width => "140", :src => "images/logo.png", :title => "Go to Homepage"}/
-        / .logo
         %ul.main_menu
           %li.selected_page
             .selected
               .selected_left
               .selected_middle
-                %a.homepage{:href => "index.html"}
+                %a.homepage{:href => "/"}
               .selected_right
           %li
-            %a{:href => "work.html"} Feature Tour
+            %a{:href => "/tour"} Feature Tour
           %li
-            %a{:href => "services.html"} FAQ
+            %a{:href => "/faq"} FAQ
           %li
-            %a{:href => "contact.html"} Contact
+            %a{:href => "/contact"} Contact
           %li
-            %a{:href => "services.html"} Log In
+            %a{:href => "/login"} Log In
           %li
-            %a.awesome.medium.green{:href => "services.html", :style => "color: white; margin-top: -8px;"} Sign Up
+            %a.awesome.medium.green{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
     .latest_project
       .project
         #slide1.tabb.displayslide
@@ -52,11 +51,11 @@
                 Manage Finances.
                 %br
                 %br
+                %img{:src => "/images/padlock.png", :style => 'margin:0; vertical-align: bottom', :width => "25", :height => "25"}
                 SSL Security.
                 %br
                 %br
                 <b>No</b> setup fees.
-              %br
               %br
               %a.awesome.green.huge{:href => "/info", :style => "text-align: center; margin-left: 30px"}
                 %b{:style => "font-size: 1.5em"} More Information

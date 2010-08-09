@@ -17,27 +17,25 @@
   %body
     .header
       .header_content
-        %a{:href => "index.html"}
-          %img.logo.png{:alt => "Creative Juice", :height => "40", :src => "images/logo.png", :title => "Go to Homepage", :width => "184"}/
-        / .logo
+        %a{:href => "/"}
+          %img.logo.png{:alt => "DZKey Logo", :height => "35", :width => "140", :src => "images/logo.png", :title => "Go to Homepage"}/
         %ul.main_menu
           %li
-            %a.homepage{:href => "index.html"}
+            %a.homepage{:href => "/"}
+          %li
+            %a{:href => "/tour"} Feature Tour
           %li.selected_page
             .selected
               .selected_left
               .selected_middle
-                %a{:href => "about us.html"} About us
+                %a{:href => "/faq"} FAQ
               .selected_right
           %li
-            %a{:href => "work.html"} Work
+            %a{:href => "/contact"} Contact
           %li
-            %a{:href => "services.html"} Services
+            %a{:href => "/login"} Log In
           %li
-            %a{:href => "contact.html"} Contact
-        / .main_menu
-      / .header_content
-    / .HEADER
+            %a.awesome.medium.green{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
     .secondary_page_bg
       .category_illustration
         .punchline_about
@@ -144,8 +142,5 @@
       / .footer_content
     / .FOOTER
     :javascript
-		Cufon.replace('h1');
-    	Cufon.replace('h2');
-		Cufon.replace('.category_illustration p');
-		document.getElementById('project_title').style.fontSize='42px';
+      document.getElementById('project_title').style.fontSize='42px';
     
