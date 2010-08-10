@@ -86,26 +86,23 @@
 }
 /* Control nav styles (e.g. 1,2,3...) */
 .nivo-controlNav{
-    background: #0987AE;
     padding: 5px;
     padding-top: 12px;
     display: inline-block;
     position:relative;
-	top: 330px;
+	top: 310px;
 	left: 170px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
 }
 .nivo-controlNav a {
     color: rgba(0,0,0,0.0);
-    background: url("/images/page.png") no-repeat;
+    background: url("/images/slide.png") no-repeat;
     padding: 5px;
     margin: 5px;
 	z-index:99;
 	cursor:pointer;
 }
 .nivo-controlNav a.active {
-    background: url("/images/selected_page.png") no-repeat;
+    background: url("/images/slide-selected.png") no-repeat;
     
 	font-weight:bold;
 }
