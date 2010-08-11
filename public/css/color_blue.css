@@ -1,15 +1,15 @@
 .latest_project{
- background: url(../images/blue-texture2.png) repeat;
+ background: #1D99BC url(../images/blue-texture.png) repeat;
  }
  
 .project{
- background: url(../images/blue-texture.png) repeat;
+ background: #1D99BC url(../images/blue-texture.png) repeat;
  }
  
 .secondary_page_bg{
- background: url(../images/blue-texture2.png) repeat;
+ background: #1D99BC  url(../images/blue-texture.png) repeat;
  }
  
 .category_illustration{
- background: url(../images/blue-texture.png) repeat;
+ background: #1D99BC url(../images/blue-texture.png) repeat;
  }
