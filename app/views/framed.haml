@@ -86,7 +86,9 @@
         });
       });
   %body
-    #current_page{:style => "display: none"}= "#"+@current_page
+    #current_page{:style => "position: absolute; color: rgba(200, 200, 200, 0.0);"}= "#"+@current_page
+    #current_version{:style => "position: absolute; color: rgba(200, 200, 200, 0.0);"}= @current_version
+    
     
     #nav
       .inner-container.clearfix
@@ -162,7 +164,7 @@
                     $("#h-wrap ul").css('display', 'none');
                     var newID = $(this).attr("href");
                     //causes weird page refresh issues
-                    window.history.replaceState("", "", "app?p="+newID.slice(1));
+                    //window.history.replaceState("", "", "app?p="+newID.slice(1));
                     $("#current_page").html(newID);
                     $(".menu-title").hide();
                     $(newID + "-title").show();
@@ -173,13 +175,26 @@
                     return false;
                   });
                   $(curPageID + "-item").hide();
-                  
-                  //poll for new info
-                  $.get(("/ajax/changes?since=#{COUCHDB_SERVER.info['update_seq']}"), function(data){
-                  
-                  });
-                    
+                  var holdTheInterval = setInterval(updatePages, 5000);
+
                 });
+                function updatePages(){
+                  $.get(("/ajax/changes?since="+$('#current_version').html()), function(data){
+                    if (data != ""){
+                      $('#current_version').html(data);
+                      $.get(('/manifest'), function(datum) {$('#manifest').html(datum);});
+                      $.get(('/jumpers'), function(datum) {$('#jumpers').html(datum);});
+                      $.get(('/accounts'), function(datum) {$('#accounts').html(datum);});
+                      $.get(('/staff'), function(datum) {$('#staff').html(datum);});
+                      $.get(('/manager'), function(datum) {$('#manager').html(datum);});
+                      $.get(('/aircraft'), function(datum) {$('#aircraft').html(datum);});
+                      $.get(('/schedule'), function(datum) {$('#schedule').html(datum);});
+                      
+                    }else{
+                      //no updates
+                    }
+                  });
+                }
         #userbox{:style => "margin-top: -15px; margin-bottom: -15px"}
           .inner
             .user-ico

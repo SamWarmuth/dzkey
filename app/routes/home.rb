@@ -7,6 +7,27 @@ class Main
     @big_header = true
     haml :'public/index', :layout => false
   end
+  get "/jumpers" do
+    haml :jumpers, :layout => false
+  end
+  get '/manifest' do
+    haml :manifest, :layout => false
+  end
+  get '/schedule' do
+    haml :schedule, :layout => false
+  end
+  get '/accounts' do
+    haml :accounts, :layout => false
+  end
+  get '/staff' do
+    haml :staff, :layout => false
+  end
+  get "/aircraft" do 
+    haml :aircraft, :layout => false
+  end
+  get '/manager' do
+    haml :manager, :layout => false
+  end
   get "/tour" do
     haml :'public/tour', :layout => false
   end
@@ -37,7 +58,8 @@ class Main
   end
   get "/app" do
     redirect("/login") unless logged_in?
-    @current_page = params[:p] || "dashboard"
+    @current_page = params[:p] || "jumpers"
+    @current_version = db_version = COUCHDB_SERVER.info["update_seq"]
     haml :framed, :layout => false
   end
   get "/login" do
@@ -86,8 +108,8 @@ class Main
   end
   
   get "/ajax/changes?" do
-    couch_out = `curl http://localhost:5984/dzkey_development/_changes?since=#{params[:since]}`
-    return "jumpers,"+(haml :jumpers, :layout => false)+"\nmanifest,"+(haml :manifest, :layout => false)
+    db_version = COUCHDB_SERVER.info["update_seq"].to_s
+    return (params[:since] == db_version ? "" : db_version)
   end
   
   post "/ajax/jumper/?" do
