@@ -53,10 +53,10 @@
         });
         // Switch categories
         $('#h-wrap').hover(function(){
-            $(this).toggleClass('active');
+          $("#h-wrap").addClass('active');
             $("#h-wrap ul").css('display', 'block');
           }, function(){
-            $(this).toggleClass('active');
+            $("#h-wrap").removeClass('active');
             $("#h-wrap ul").css('display', 'none');
         });
         
@@ -157,11 +157,13 @@
                     %span Appearance
               :javascript
                 $(document).ready(function(){
+                  var holdTheInterval = setInterval(updatePages, 5000);
                   var curPageID = $("#current_page").html();
                   $(".menu-title").not(curPageID + "-title").hide();
                   
                   $(".menu-item").click(function(){
-                    $("#h-wrap ul").css('display', 'none');
+                    $("#h-wrap").removeClass('active');
+                    $("#h-wrap ul").hide();
                     var newID = $(this).attr("href");
                     //causes weird page refresh issues
                     //window.history.replaceState("", "", "app?p="+newID.slice(1));
@@ -175,8 +177,6 @@
                     return false;
                   });
                   $(curPageID + "-item").hide();
-                  var holdTheInterval = setInterval(updatePages, 5000);
-
                 });
                 function updatePages(){
                   $.get(("/ajax/changes?since="+$('#current_version').html()), function(data){
