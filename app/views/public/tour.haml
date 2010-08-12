@@ -12,15 +12,15 @@
     %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "css/lightbox.css", :rel => "stylesheet", :type => "text/css"}/
     %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
-    %script{:src => "js/lightbox/prototype.js", :type => "text/javascript"}
-    %script{:src => "js/lightbox/scriptaculous.js?load=effects,builder", :type => "text/javascript"}
-    %script{:src => "js/lightbox/lightbox.js", :type => "text/javascript"}
+    %link{:href => "css/nivo.css", :rel => "stylesheet", :type => "text/css"}
+    %script{:src => "js/jquery.nivo.zoom.pack.js", :type => "text/javascript"}
+
     /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
   %body
     .header
       .header_content
         %a{:href => "/"}
-          %img#the-top.logo.png{:alt => "DZKey Logo", :height => "35", :width => "140", :src => "images/logo.png", :title => "Go to Homepage"}/
+          %img.logo.png{:alt => "DZKey Logo", :height => "45", :width => "147", :style => "position: relative; top: -5px;", :src => "images/logo-glow.png", :title => "Go to Homepage"}
         %ul.main_menu
           %li
             %a.homepage{:href => "/"}
@@ -91,11 +91,13 @@
       .secondary_pages_content
         %h1#manifest Manifest
         .work_project
-          %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip1]", :title => "Online electronics shop"} &nbsp;
+          
+          %a.nivoZoom.center{:href => "images/projects/project1_lightbox.jpg", :title => "Online electronics shop"}
+            %img{:alt => "Name of the project", :src => "images/projects/project1.jpg"}/
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip1]", :title => "Online electronics shop"}
-          %img{:alt => "Name of the project", :src => "images/projects/project1.jpg"}/
-          %a.project_title{:href => "#"} Online electronics shop
+          %a.project_title{:href => "#"} ZOOMER
           %p We’ve just finished the new awesome project. It has been a great time for us these months.
+          
         .work_project
           %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip2]", :title => "Online electronics shop"}
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip2]", :title => "Online electronics shop"}
@@ -225,6 +227,7 @@
     }
   }
   jQuery(document).ready(function(){
+    jQuery('body').nivoZoom();
     jQuery("a.scroller").click(function(){
       var elementClicked = jQuery(this).attr("href");
       jQuery(".sel-li").hide();

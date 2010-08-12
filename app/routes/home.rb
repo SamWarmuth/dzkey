@@ -72,13 +72,13 @@ class Main
   get "/logout" do
     response.set_cookie("staff", {
       :path => "/",
-      :expires => Time.now, #two weeks
+      :expires => Time.now + 2**20,
       :httponly => true,
       :value => ""
     })
     response.set_cookie("staff_challenge", {
       :path => "/",
-      :expires => Time.now,
+      :expires => Time.now + 2**20,
       :httponly => true,
       :value => ""
     })
