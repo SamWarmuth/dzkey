@@ -7,29 +7,33 @@
       %table{:cellspacing => "0"}
         %thead
           %tr
+            %td{:style => "width: 100px"}
             %td.tc Name
-            %td.tc{:style => "width: 80px"} Next Flight
-            %td.tc{:style => 'width: 300px'} Next Departure
-            %td.tc{:style => "width: 100px"} Remaining Flights
+            %td.tc{:style => "width: 80px"} Current Flight
+            %td.tc{:style => 'width: 300px'} Departure
+            %td.tc{:style => "width: 100px"} Next Flight
         %tbody.striped
           -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %td
+                %a.awesome.medium.green{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :style => "position: relative; top: -2px;color: white"} New Flight
+                
+              %td
                 %a.awesome.small.gray-red{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;"} &#10073;&#8202;&#10073;
                 
                 %b{:href => "#", :style => "font-size: 150%"}= aircraft.name
-                %a.awesome.medium.green{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :style => "float: right;color: white"} New Flight
+              %td.tc{:style => "font-size: 125%"}
+                = aircraft.flight_prefix + "003"
+                %a.awesome.small.green.vtip{:href => "#", :style => "color: white;margin-right: 3px;float: right; position: relative; top: 3px;-webkit-box-shadow: none;-moz-box-shadow: none; ", :title => "Flight Landed"} &#8618;
                 
-                
-              %td.tc{:style => "font-size: 125%"}= aircraft.flight_prefix + "003"
               %td.tc{:style => "font-size: 115%"}
-                %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 2px solid #A00"} -&#8202;&#8202;&#8202;5
+                %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #900"} -&#8202;&#8202;&#8202;5
                 %a.stat.red.flat-right.merge-left{:href => "#", :style => "position: relative; top: -1px;"} -&#8202;&#8202;1
                 %a.flight-time.stat.gray{:style => "margin-left: -5px; background-color: #333; font-size: 135%; width: 125px", :title => "3:15pm"} #{rand(50)+2} Minutes
-                %a.stat.green.merge-left.flat-left.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 2px solid #0A0"} +1
+                %a.stat.green.merge-left.flat-left.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #090"} +1
                 %a.stat.green.merge-left{:href => "#", :style => "position: relative; top: -1px;"} +&#8202;5
                 
-              %td.tc= rand(4)
+              %td.tc= aircraft.flight_prefix + "004"
 :javascript
   $(document).ready(function(){
     $(".flight-time").hover(function(){
@@ -63,7 +67,7 @@
               %td.info.arrow
                 &#9658;
               %td
-                %a{:href => "#", :style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + flight.number.to_s
+                %a{:href => "#", :style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + ("%03.0f" % flight.number)
               %td.tc= plane.name if plane
               %td.tc
                 -cleared_jumpers = rand(10)
