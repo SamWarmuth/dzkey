@@ -3,6 +3,7 @@ class Flight < CouchRest::ExtendedDocument
   
   property :number
   property :aircraft_prefix
+  property :cancelled
   
   property :cleared
   property :taken_off
@@ -11,6 +12,5 @@ class Flight < CouchRest::ExtendedDocument
   property :jump_date
   property :aircraft_id
   
-  property :jump_type
   property :jumper_ids
 end

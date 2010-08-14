@@ -246,9 +246,12 @@ class Main
     
     flight = Flight.new
     flight.aircraft_id = aircraft.id
+    flight.aircraft_prefix = aircraft.flight_prefix
     flight.jump_date = Time.now.strftime("%m/%d/%y")
     flight.number = Flight.count
-    flight.status = "unscheduled"
+    flight.cleared = true
+    flight.taken_off = false
+    flight.landed = false
     flight.save
     haml :manifest, :layout => false
   end

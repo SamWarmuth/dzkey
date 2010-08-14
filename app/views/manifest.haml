@@ -91,7 +91,7 @@
             %td.tc Weight (lbs.)
             %td.tc Estimated Takeoff
         %tbody.expander
-          -Flight.all.find_all{|f| f.status != "landed" && f.status != "cancelled"}.each_with_index do |flight, i|
+          -Flight.all.find_all{|f| f.landed != true && f.cancelled != true}.each_with_index do |flight, i|
             - plane = Aircraft.get(flight.aircraft_id)
             %tr.manifest.title-row{:class => (i == 0 ? "first" : "")}
               %td.info.arrow
