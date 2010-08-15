@@ -96,6 +96,7 @@
     }
   }
   $(document).ready(function(){
+    $('tbody.striped tr:even').addClass('even');
     $("#transactionsearch").keyup(function() {
       $.uiTableFilter( $("#transactiontable"), this.value );
     })

@@ -250,13 +250,13 @@ class Main
     flight.jump_date = Time.now.strftime("%m/%d/%y")
     flight.number = Flight.count
     flight.cleared = true
-    flight.taken_off = false
-    flight.landed = false
+    flight.completed = false
     flight.save
     haml :manifest, :layout => false
   end
   
   post "/ajax/add-jumper-to-flight/?" do
+    return false unless logged_in?
     return false if params[:jumper].empty? || params[:flight].empty?
     flight = Flight.get(params[:flight])
     return false if flight.nil?
@@ -267,5 +267,27 @@ class Main
     flight.jumper_ids << jumper.id
     flight.save
     return true
+  end
+  
+  post "/ajax/takeoff" do
+    return false unless logged_in?
+    return false if params[:flight].empty?
+    flight = Flight.get(params[:flight])
+    flight.completed = true
+    flight.save
+    Aircraft.get(flight.aircraft_id).reset_flights
+    return "success"
+  end
+  
+  post "/ajax/edittakeofftime" do
+    return false unless logged_in?
+    return false if params[:aircraft].empty?
+    return false if params[:time].empty?
+    time = params[:time].to_i
+    return false if time.nil?
+    aircraft = Aircraft.get(params[:aircraft])
+    aircraft.departure_time = (Time.parse(aircraft.departure_time) + 60*time).to_s
+    aircraft.save
+    return "success"
   end
 end

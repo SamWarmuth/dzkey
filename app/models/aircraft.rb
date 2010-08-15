@@ -20,13 +20,14 @@ class Aircraft < CouchRest::ExtendedDocument
   def reset_flights
     self.cur_flight = nil
     self.nxt_flight = nil
+    self.departure_time = nil
     self.save
     return true
   end
   
   def current_flight
     return self.cur_flight if self.cur_flight
-    flights = Flight.all.find_all{|f| f.aircraft_id == self.id}
+    flights = Flight.all.find_all{|f| f.aircraft_id == self.id && !f.completed}
     return nil if flights.nil?
     flight = flights.sort_by{|f| f.number}.first
     return nil unless flight && flight.cleared
@@ -39,7 +40,7 @@ class Aircraft < CouchRest::ExtendedDocument
     return self.nxt_flight if self.nxt_flight
     self.cur_flight = self.current_flight unless self.cur_flight
     return nil unless self.cur_flight
-    flights = Flight.all.find_all{|f| f.aircraft_id == self.id}
+    flights = Flight.all.find_all{|f| f.aircraft_id == self.id && !f.completed}
     return nil if flights.nil?
     self.nxt_flight = flights.find_all{|f| f.id != self.cur_flight}.sort_by{|f| f.number}.first.id
     return self.nxt_flight

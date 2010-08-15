@@ -156,6 +156,7 @@
 
 :javascript
   $(document).ready(function(){
+    $('tbody.striped tr:even').addClass('even');
     var jumpertable = $("#jumpertable")
     jumpertable.tablesorter({
       cssHeader: "",

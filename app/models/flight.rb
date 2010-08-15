@@ -3,11 +3,10 @@ class Flight < CouchRest::ExtendedDocument
   
   property :number
   property :aircraft_prefix
-  property :cancelled
-  
   property :cleared
-  property :taken_off
-  property :landed
+  
+  property :completed
+  property :cancelled
   
   property :jump_date
   property :aircraft_id
