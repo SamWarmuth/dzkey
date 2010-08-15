@@ -24,7 +24,6 @@ class Aircraft < CouchRest::ExtendedDocument
     self.save
     return true
   end
-  
   def current_flight
     return self.cur_flight if self.cur_flight
     flights = Flight.all.find_all{|f| f.aircraft_id == self.id && !f.completed}
@@ -32,7 +31,7 @@ class Aircraft < CouchRest::ExtendedDocument
     flight = flights.sort_by{|f| f.number}.first
     return nil unless flight && flight.cleared
     self.cur_flight = flight.id
-    self.departure_time = (Time.now + self.cycle_minutes.to_i*60).to_s
+    self.departure_time = (Time.now + self.cycle_minutes.to_i*60).to_s unless self.on_hold == true
     self.save
     return self.cur_flight
   end
@@ -45,5 +44,4 @@ class Aircraft < CouchRest::ExtendedDocument
     self.nxt_flight = flights.find_all{|f| f.id != self.cur_flight}.sort_by{|f| f.number}.first.id
     return self.nxt_flight
   end
-  
 end

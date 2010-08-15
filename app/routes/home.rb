@@ -301,4 +301,19 @@ class Main
     aircraft.save
     return "success"
   end
+  
+  post "/ajax/hold-aircraft" do
+    return false unless logged_in?
+    return false if params[:aircraft].empty?
+    return false if params[:hold].empty?||!["true", "false"].include?(params[:hold])
+    aircraft = Aircraft.get(params[:aircraft])
+    if params[:hold] == "true"
+      aircraft.on_hold = true
+    else
+      aircraft.on_hold = false
+    end
+    aircraft.reset_flights
+    aircraft.save
+    return "success"
+  end
 end

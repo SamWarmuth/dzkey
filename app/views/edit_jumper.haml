@@ -92,7 +92,7 @@
     %div
       .checkcontainer{:onClick => "toggleAvailable();", :style => 'margin-right: 78px; position: relative'}
         .cover{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;"}
-        %input.available{:type => "checkbox", :style => "margin-right: 10px;", :name => "available", :checked => "checked"}
+        %input.available{:type => "checkbox", :style => "margin-right: 10px;", :name => "available", :checked => (@jumper.available ? "checked" : nil)}
         %label{:style => "font-weight: bold;"} Checked In
     %br
     .left{:style => "display: inline; margin-right: 12px"}        

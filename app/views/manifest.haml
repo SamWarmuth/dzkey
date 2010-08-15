@@ -19,9 +19,12 @@
                 %a.awesome.medium.green{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :style => "position: relative; top: -2px;color: white"} New Flight
                 
               %td
-                %a.awesome.small.gray-red{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;"} &#10073;&#8202;&#10073;
-                
-                %b{:href => "#", :style => "font-size: 150%"}= aircraft.name
+                -if aircraft.on_hold == true
+                  %a.awesome.small.green{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;", :onclick => "holdAircraft('#{aircraft.id}', 'false')"} &#9658;
+                  %b{:href => "#", :style => "font-size: 150%; color: red"}= aircraft.name + " (on hold)"
+                -else
+                  %a.awesome.small.gray-red{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;", :onclick => "holdAircraft('#{aircraft.id}', 'true')"} &#10073;&#8202;&#10073;
+                  %b{:href => "#", :style => "font-size: 150%"}= aircraft.name
               %td.tc{:style => "font-size: 125%"}
                 - if aircraft.current_flight && (current_flight = Flight.get(aircraft.current_flight))
                   = current_flight.aircraft_prefix + ("%03.0f" % current_flight.number)
@@ -60,6 +63,12 @@
     $('#'+aircraftID).text(new_depart);
     $('#'+aircraftID+"prettydepart").html(Math.ceil(new_depart/60))
     $.post(('/ajax/edittakeofftime?aircraft='+aircraftID+'&time='+time), function(data) {
+      updatePages();
+    });
+    return false;
+  }
+  function holdAircraft(aircraftID, hold){
+    $.post(('/ajax/hold-aircraft?aircraft='+aircraftID+'&hold='+hold), function(data) {
       updatePages();
     });
     return false;
