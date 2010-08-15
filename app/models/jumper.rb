@@ -27,7 +27,15 @@ class Jumper < CouchRest::ExtendedDocument
   
   property :is_experienced
   property :licenses #array of Certifications? (USPA, A 47290, ?)
-  property :manifest_ids #auto-filled from manifests.
+  
+  property :man_ids
+  
+  def manifest_ids
+    return self.man_ids if self.man_ids
+    self.man_ids = Flight.all.find_all{|f| f.jumper_ids.include?(self.id)}
+    self.save
+    return self.man_ids
+  end
   
   property :balance
   

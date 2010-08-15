@@ -1,5 +1,4 @@
 #new-transaction{:style => "display: none; width: 600px; text-align: center"}
-  
   %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New Transaction
   %form.newtransactionform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
     %p
@@ -52,7 +51,7 @@
         %tbody.striped
           -Transaction.all.sort_by{|t| t.transaction_number}.reverse.each_with_index do |transaction, i|
             %tr{:class => ( i == 0 ? "first" : "")}
-              %th
+              %th.tc
                 -if transaction.valid
                   %img{:src => "/css/img/available.png"}
                 -else

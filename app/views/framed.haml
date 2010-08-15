@@ -150,7 +150,15 @@
                   %a.h-ico.ico-color{:href => "#"}
                     %span Appearance
               :javascript
+                function updateDeparts(){
+                  $(".absolute_depart").each(function(abs_depart){
+                    var new_depart = parseInt($(this).text()) - 1;
+                    $(this).text(new_depart);
+                    $("#"+this.id+"prettydepart").html(Math.ceil(new_depart/60))
+                  });
+                }
                 $(document).ready(function(){
+                  var departInterval = setInterval(updateDeparts, 1000);
                   var holdTheInterval = setInterval(updatePages, 5000);
                   var curPageID = $("#current_page").html();
                   $(".menu-title").not(curPageID + "-title").hide();

@@ -1,5 +1,4 @@
 #new-jumper{:style => "display: none; width: 600px; text-align: center"}
-  
   %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New Jumper
   %form.newjumperform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
     %p.bold
@@ -113,17 +112,17 @@
         %thead
           %tr
             %th{:style => "width: 8px"} &nbsp;
-            %th First
+            %th{:style => "width: 120px"} First
             %th Last
             %th{:style => "width: 80px"} Nickname
             %th.tc{:style => "width: 70px"} Balance ($)
             %th.tc{:style => "width: 80px"} Type
-            %th.tc{:style => "width: 80px"} Cert. Expires
             %th.tc{:style => "width: 60px"} Rigs
             %th.tc{:style => "width: 100px"} Last Jump
             %th.tc{:style => "width: 100px"} Total Jumps
+            %th.tc{:style => 'width: 60px'} View/Edit
         %tbody.striped
-          -Jumper.all.sort_by{|j| j.last_name}.each_with_index do |jumper, i|
+          -@jumpers.each_with_index do |jumper, i|
             %tr
               %td
                 -if jumper.available
@@ -141,7 +140,6 @@
                 
                 %a.stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
               %td.tc= jumper.type
-              %td.tc= "?"
               %td.tc
                 - good_rigs = rand(4)
                 - caution_rigs = rand(3)
@@ -151,7 +149,10 @@
                 %a.stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
                 %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
               %td.tc July #{rand(26)+1}
-              %td.tc= rand(42)**2
+              %td.tc= jumper.manifest_ids.length
+              %td.tc
+                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-jumper?id="+jumper.id, :rel => 'facebox'}
+                  %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}
                 
 
 :javascript

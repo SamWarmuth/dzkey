@@ -4,10 +4,10 @@ class Main
     return ""
   end
   get "/" do
-    @big_header = true
     haml :'public/index', :layout => false
   end
   get "/jumpers" do
+    @jumpers = Jumper.all.sort_by{|j| j.last_name}
     haml :jumpers, :layout => false
   end
   get '/manifest' do
@@ -58,6 +58,7 @@ class Main
   end
   get "/app" do
     redirect("/login") unless logged_in?
+    @jumpers = Jumper.all.sort_by{|j| j.last_name}
     @current_page = params[:p] || "jumpers"
     @current_version = db_version = COUCHDB_SERVER.info["update_seq"]
     haml :framed, :layout => false
@@ -112,10 +113,19 @@ class Main
     return (params[:since] == db_version ? "" : db_version)
   end
   
+  get "/ajax/edit-jumper" do
+    return false unless logged_in?
+    return false if params[:id].nil?
+    @jumper = Jumper.get(params[:id])
+    return false if @jumper.nil?
+    haml :edit_jumper, :layout => false
+  end
+  
   post "/ajax/jumper/?" do
     return false unless logged_in?
+    @jumpers = Jumper.all.sort_by{|j| j.last_name}
     unless params[:id].nil?
-      jumper = Jumper.all.find{|j| j.id == params[:id]}
+      jumper = @jumpers.find{|j| j.id == params[:id]}
       return "Tried to update a jumper that didn't exist (params[:id] != any jumper id)" if jumper.nil?
     else
       jumper = Jumper.new
@@ -249,6 +259,7 @@ class Main
     flight.aircraft_prefix = aircraft.flight_prefix
     flight.jump_date = Time.now.strftime("%m/%d/%y")
     flight.number = Flight.count
+    flight.jumper_ids = []
     flight.cleared = true
     flight.completed = false
     flight.save

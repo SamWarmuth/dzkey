@@ -26,7 +26,7 @@
                 - if aircraft.current_flight && (current_flight = Flight.get(aircraft.current_flight))
                   = current_flight.aircraft_prefix + ("%03.0f" % current_flight.number)
                 - else
-                  none
+                  &mdash;
                 -unless current_flight.nil?
                   %a.awesome.medium.green{:href => "#", :style => "float: right; color: white;padding: 5px; width: 10px; height: 10px ", :onclick => "takeOff('#{current_flight.id}')"}
                     %img{:src => "/images/takeoff-bigarrow.png", :style => "position: relative; top: -3px; left: -3px;"}
@@ -42,7 +42,7 @@
                       .departure_time{:id => aircraft.id+"prettydepart", :style => "display: inline;"}= (time_left/60.0).ceil.to_s
                       &nbsp;Minutes
                     -else
-                      Airborn
+                      Airborn?
                   -else
                     Unscheduled
                 %a.stat.green.merge-left.flat-left.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #090", :onclick => "editTakeOffTime('#{aircraft.id}', '1')"} +1
@@ -52,7 +52,7 @@
                 -if aircraft.next_flight && (next_flight = Flight.get(aircraft.next_flight))
                   = next_flight.aircraft_prefix + ("%03.0f" % next_flight.number)
                 -else
-                  none
+                  &mdash;
 
 :javascript
   function editTakeOffTime(aircraftID, time){
@@ -70,17 +70,7 @@
     });
     return false;
   }
-  function updateDeparts(){
-    $(".absolute_depart").each(function(abs_depart){
-      var new_depart = parseInt($(this).text()) - 1;
-      $(this).text(new_depart);
-      $("#"+this.id+"prettydepart").html(Math.ceil(new_depart/60))
-    });
-  }
-  $(document).ready(function(){
-    var departInterval = setInterval(updateDeparts, 1000);
-    
-  });
+  
   
 .box.box-60.altbox
   / .altbox for alternative box's color
@@ -110,7 +100,7 @@
               %td.tc
                 -flight.jumper_ids ||= [] #TODO require array from the start
                 -cleared_jumpers = flight.jumper_ids.length
-                -fail_jumpers = rand(2)
+                -fail_jumpers = 1
                 %a.stat.green.flat-right{:href => "#", :style => (cleared_jumpers > 0 ? "" : "visibility: hidden")}= cleared_jumpers
                 %a.stat.red.merge-left.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
               %td.tc= rand(3000)
