@@ -116,8 +116,7 @@
             %tr.manifest.title-row{:class => (i == 0 ? "first" : "")}
               %td.info.arrow
                 &#9658;
-              %td
-                %a{:href => "#", :style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + ("%03.0f" % flight.number)
+              %td{:style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + ("%03.0f" % flight.number)
               %td.tc= plane.name if plane
               %td.tc
                 -flight.jumper_ids ||= [] #TODO require array from the start

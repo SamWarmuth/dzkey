@@ -66,10 +66,8 @@
                   %img{:src => "/css/img/available.png"}
                 -else
                   %img{:src => "/css/img/unavailable.png"}
-              %td
-                %a{:href => "#"}= aircraft.name
-              %td
-                %a{:href => "#"}= aircraft.flight_prefix
+              %td.bold= aircraft.name
+              %td.bold= aircraft.flight_prefix
               %td.tc= aircraft.type
               %td.tc= aircraft.capacity
               %td.tc= aircraft.weight_limit
