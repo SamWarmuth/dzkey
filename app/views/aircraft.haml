@@ -27,13 +27,13 @@
       %input{:type => "text", :size => "30", :name => "weight_limit", :style => "margin-left: 20px"}
     %br
     %div
-      .checkcontainer{:onClick => "toggleAircraft();", :style => 'margin-right: 78px; position: relative'}
+      .checkcontainer{:onClick => "toggleAircraft(); return false;", :style => 'margin-right: 78px; position: relative'}
         .cover{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;"}
         %input.aircraftavailable{:type => "checkbox", :style => "margin-right: 10px;", :name => "available", :checked => "checked"}
         %label{:style => "font-weight: bold;"} Available
     %br
     .left{:style => "display: inline; margin-right: 12px"}        
-      %a.awesome.giant.green{:href => "#create-aircraft", :onClick => "createAircraft(this);"} Create Aircraft
+      %a.awesome.giant.green{:href => "#create-aircraft", :onClick => "createAircraft(this); return false;"} Create Aircraft
     .left{:style => "display: inline;margin-right: -13px"}
       %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
 .box.box-100.altbox
@@ -78,9 +78,6 @@
               %td.tc= rand(42)**2
 
 :javascript
-  $(document).ready(function(){
-    $('a[rel*=facebox]').facebox();
-  });
   function createAircraft(button){
     var form_data = $('.newaircraftform:last').serialize();  
     $.post(('/ajax/aircraft?'+form_data), function(data) {

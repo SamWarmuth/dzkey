@@ -166,9 +166,7 @@
     });
     $("#jumpersearch").keyup(function() {
       $.uiTableFilter( jumpertable, this.value );
-    })
-    jumpersearch
-    $('a[rel*=facebox]').facebox();
+    });
   });
   function createJumper(button){
     var form_data = $('.newjumperform:last').serialize();  

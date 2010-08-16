@@ -26,9 +26,9 @@
       %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "notes"}
     %br
     .left{:style => "display: inline; margin-right: 12px"}        
-      %a.awesome.giant.green{:href => "#create-transaction", :onClick => "createTransaction(this);"} Create Transaction
+      %a.awesome.giant.green{:href => "#create-transaction", :onClick => "createTransaction(this); return false;"} Create Transaction
     .left{:style => "display: inline;margin-right: -13px"}
-      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
+      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close(); return false;"} Cancel
 .box.box-100.altbox
   / .altbox for alternative box's color
   .boxin
@@ -99,7 +99,6 @@
     $("#transactionsearch").keyup(function() {
       $.uiTableFilter( $("#transactiontable"), this.value );
     })
-    $('a[rel*=facebox]').facebox();
     $(".items, .store").sortable({
       connectWith: ['.connectedSortable']
     }).disableSelection();

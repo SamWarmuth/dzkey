@@ -14,42 +14,43 @@
             %td.tc{:style => "width: 70px"} Next Flight
         %tbody.striped
           -Aircraft.all.find_all{|a| a.available}.each_with_index do |aircraft, i|
+            -aircraft_id = aircraft.id
             %tr{:class => ( i == 0 ? "first" : "")}
               %td
-                %a.awesome.medium.green{:href => "#newflight", :onclick => "newFlight('#{aircraft.id}')", :style => "position: relative; top: -2px;color: white"} New Flight
+                %a.awesome.medium{:href => "#newflight", :onclick => "newFlight('#{aircraft_id}'); return false;", :style => "position: relative; top: -2px;color: white", :class => (aircraft.on_hold ? "disabled" : "green"), :id => (aircraft_id+'new')} New Flight
                 
               %td
                 -if aircraft.on_hold == true
-                  %a.awesome.small.green{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;", :onclick => "holdAircraft('#{aircraft.id}', 'false')"} &#9658;
-                  %b{:href => "#", :style => "font-size: 150%; color: red"}= aircraft.name + " (on hold)"
+                  %a.awesome.small.green{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;", :onclick => "holdAircraft('#{aircraft_id}', 'false'); return false;", :id => (aircraft_id+'hold')} &#9658;
+                  %b{:href => "#", :style => "font-size: 150%; color: #D00", :id => (aircraft_id+'name')}= aircraft.name + " (on hold)"
                 -else
-                  %a.awesome.small.gray-red{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;", :onclick => "holdAircraft('#{aircraft.id}', 'true')"} &#10073;&#8202;&#10073;
-                  %b{:href => "#", :style => "font-size: 150%"}= aircraft.name
+                  %a.awesome.small.gray-red{:href => "#", :style => "color: white;margin-right: 3px; position: relative; top: -3px;-webkit-box-shadow: none;-moz-box-shadow: none;", :onclick => "holdAircraft('#{aircraft_id}', 'true'); return false;", :id => (aircraft_id+'hold')} &#10073;&#8202;&#10073;
+                  %b{:href => "#", :style => "font-size: 150%", :id => (aircraft_id+'name')}= aircraft.name
               %td.tc{:style => "font-size: 125%"}
                 - if aircraft.current_flight && (current_flight = Flight.get(aircraft.current_flight))
                   = current_flight.aircraft_prefix + ("%03.0f" % current_flight.number)
                 - else
                   &mdash;
-                -unless current_flight.nil?
-                  %a.awesome.medium.green{:href => "#", :style => "float: right; color: white;padding: 5px; width: 10px; height: 10px ", :onclick => "takeOff('#{current_flight.id}')"}
+                -unless current_flight.nil? || aircraft.on_hold
+                  %a.awesome.medium.green{:href => "#", :style => "float: right; color: white;padding: 5px; width: 10px; height: 10px ", :onclick => "takeOff('#{current_flight.id}'); return false;"}
                     %img{:src => "/images/takeoff-bigarrow.png", :style => "position: relative; top: -3px; left: -3px;"}
                 
               %td.tc{:style => "font-size: 115%"}
-                %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #900", :onclick => "editTakeOffTime('#{aircraft.id}', '-5')"} -&#8202;&#8202;&#8202;5
-                %a.stat.red.flat-right.merge-left{:href => "#", :style => "position: relative; top: -1px;", :onclick => "editTakeOffTime('#{aircraft.id}', '-1')"} -&#8202;&#8202;1
+                %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #900", :onclick => "editTakeOffTime('#{aircraft_id}', '-5'); return false;"} -&#8202;&#8202;&#8202;5
+                %a.stat.red.flat-right.merge-left{:href => "#", :style => "position: relative; top: -1px;", :onclick => "editTakeOffTime('#{aircraft_id}', '-1'); return false;"} -&#8202;&#8202;1
                 %a.vtip.flight-time.stat.gray{:style => "margin-left: -5px; background-color: #333; font-size: 100%; padding: 5px 0; width: 125px", :alt => "Flight Time", :title => (aircraft.departure_time ? Time.parse(aircraft.departure_time).strftime("%I:%M%p") : "Unscheduled")}
                   -if aircraft.departure_time
                     -time_left = (Time.parse(aircraft.departure_time) - Time.now).to_i
                     -if time_left > 0
-                      .absolute_depart{:id => aircraft.id, :style => "position: absolute; visibility: hidden;"}= time_left.to_s
-                      .departure_time{:id => aircraft.id+"prettydepart", :style => "display: inline;"}= (time_left/60.0).ceil.to_s
+                      .absolute_depart{:id => aircraft_id, :style => "position: absolute; visibility: hidden;"}= time_left.to_s
+                      .departure_time{:id => aircraft_id+"prettydepart", :style => "display: inline;"}= (time_left/60.0).ceil.to_s
                       &nbsp;Minutes
                     -else
                       Airborn?
                   -else
                     Unscheduled
-                %a.stat.green.merge-left.flat-left.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #090", :onclick => "editTakeOffTime('#{aircraft.id}', '1')"} +1
-                %a.stat.green.merge-left{:href => "#", :style => "position: relative; top: -1px;", :onclick => "editTakeOffTime('#{aircraft.id}', '5')"} +&#8202;5
+                %a.stat.green.merge-left.flat-left.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #090", :onclick => "editTakeOffTime('#{aircraft_id}', '1'); return false;"} +1
+                %a.stat.green.merge-left{:href => "#", :style => "position: relative; top: -1px;", :onclick => "editTakeOffTime('#{aircraft_id}', '5'); return false;"} +&#8202;5
                 
               %td.tc
                 -if aircraft.next_flight && (next_flight = Flight.get(aircraft.next_flight))
@@ -68,6 +69,18 @@
     return false;
   }
   function holdAircraft(aircraftID, hold){
+    if (hold == "false"){
+      $("#"+aircraftID+'hold').removeClass("green").addClass("gray-red").html("&#10073;&#8202;&#10073;");
+      $("#"+aircraftID+"name").css("color", "#037");
+      $("#"+aircraftID+"name").text($("#"+aircraftID+"name").text().replace(" (on hold)", ""));
+      $("#"+aircraftID+"new").removeClass("disabled").addClass("green");
+    }else{
+      $("#"+aircraftID+"hold").removeClass("gray-red").addClass("green").html("&#9658;");
+      $("#"+aircraftID+"name").css("color", "#D00");
+      $("#"+aircraftID+"name").text($("#"+aircraftID+"name").text()+" (on hold)");
+      $("#"+aircraftID+"new").removeClass("green").addClass("disabled");
+      
+    }
     $.post(('/ajax/hold-aircraft?aircraft='+aircraftID+'&hold='+hold), function(data) {
       updatePages();
     });
@@ -199,7 +212,6 @@
       }
       return false;
     });
-    $('a[rel*=facebox]').facebox();
     $(".student, .member").draggable({
       stop: function(event, ui) {
         var tr = $(event.target).closest('tr');
