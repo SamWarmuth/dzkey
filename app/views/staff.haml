@@ -183,63 +183,65 @@
               %td
                 %a{:href => "#"}= staff.name
               %td.tc
+                
                 -if staff.pilot
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'pilot', 'false');return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'pilot', 'true');return false;"}
               %td.tc
                 -if staff.tandem_instructor
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'tandem_instructor', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'tandem_instructor', 'true'); return false;"}
               %td.tc
                 -if staff.videographer
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'videographer', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'videographer', 'true'); return false;"}
               %td.tc
                 -if staff.aff_instructor
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'aff_instructor', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'aff_instructor', 'true'); return false;"}
               %td.tr
                 -balance = staff.balance || 0
                 
                 %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "This doesn't make a lot of sense here, but I want to break up the two banks of permissions", :class => (balance >= 0 ? "green" : "red")}= "%5.2f" % balance
               %td.tr
                 -if staff.can_view_jumpers
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_jumpers', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_jumpers', 'true'); return false;"}
               %td.tl
                 -if staff.can_edit_jumpers
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_jumpers', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_jumpers', 'true'); return false;"}
               %td.tr
                 -if staff.can_view_manifests
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_manifests', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_manifests', 'true'); return false;"}
               %td.tl
                 -if staff.can_edit_manifests
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_manifests', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_manifests', 'true'); return false;"}
               %td.tr
                 -if staff.can_view_finances
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_finances', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_finances', 'true'); return false;"}
               %td.tl
                 -if staff.can_edit_finances
-                  %a.black-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_finances', 'false'); return false;"}
                 -else
-                  %a.no-dot.vtip{:title => "Click to switch. Pop a warning message."}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_finances', 'true'); return false;"}
 
 
 :javascript
   $(document).ready(function(){
+    $('tbody.striped tr:even').addClass('even');
     $(".black-dot, .no-dot").click(function(){
       if ($(this).hasClass("no-dot")){
         $(this).removeClass("no-dot").addClass("black-dot");
@@ -248,6 +250,9 @@
       }
     });
   });
+  function editPermission(staffID, attribute, value){
+    $.post('/ajax/staff/permission?id='+staffID+"&attribute="+attribute+"&value="+value);
+  }
   function createStaff(button){
     var form_data = $('.newstaffform:last').serialize();  
     $.post(('/ajax/staff?'+form_data), function(data) {

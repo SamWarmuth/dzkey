@@ -1,0 +1,38 @@
+#new-aircraft{:style => "width: 600px; text-align: center"}
+  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} Edit Aircraft
+  %form.newaircraftform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+    %input{:type => "hidden", :name => "id", :value => @aircraft.id}
+    %p.bold
+      %label Name
+      %input{:type => "text", :size => "30", :name => "name", :style => "margin-left: 20px", :value => @aircraft.name}
+    %p
+      %label Flight Prefix
+      %input{:type => "text", :size => "30", :name => "flight_prefix", :style => "margin-left: 20px", :value => @aircraft.flight_prefix}
+    %br
+    %p
+      %label Model
+      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+        %option{:value => "Cessna 182"} Cessna 182
+        %option{:value => "Twin Otter"} Twin Otter
+        %option{:value => "Other"} Other
+    %br
+    %p
+      %label Cycle Minutes
+      %input{:type => "text", :size => "30", :name => "cycle_minutes", :style => "margin-left: 20px", :value => @aircraft.cycle_minutes}
+    %p
+      %label Capacity
+      %input{:type => "text", :size => "30", :name => "capacity", :style => "margin-left: 20px", :value => @aircraft.capacity}
+    %p
+      %label Weight Limit
+      %input{:type => "text", :size => "30", :name => "weight_limit", :style => "margin-left: 20px", :value => @aircraft.weight_limit}
+    %br
+    %div
+      .checkcontainer{:onClick => "toggleAircraft(); return false;", :style => 'margin-right: 78px; position: relative'}
+        .cover{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;"}
+        %input.aircraftavailable{:type => "checkbox", :style => "margin-right: 10px;", :name => "available", :checked => (@aircraft.available == true ? "checked" : nil)}
+        %label{:style => "font-weight: bold;"} Available
+    %br
+    .left{:style => "display: inline; margin-right: 12px"}        
+      %a.awesome.giant.green{:href => "#create-aircraft", :onClick => "createAircraft(this); return false;"} Save Aircraft
+    .left{:style => "display: inline;margin-right: -13px"}
+      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel

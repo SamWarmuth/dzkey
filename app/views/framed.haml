@@ -67,10 +67,7 @@
         
         // Handling with lists (alternate bgs)
         $('ul.simple li:even').addClass('even');
-        // Handling with grid views (adding first and last classes for borders and adding alternate bgs)
-        $('.grid .line:even').addClass('even');
-        $('.grid .line:first-child').addClass('firstline');
-        $('.grid .line:last-child').addClass('lastline');
+
         // Tabs switching
         $('#box1 .content#box1-grid').hide(); // hide content related to inactive tab by default
         $('#box1 .header ul a').click(function(){
@@ -161,7 +158,7 @@
                 }
                 $(document).ready(function(){
                   var departInterval = setInterval(updateDeparts, 1000);
-                  var holdTheInterval = setInterval(updatePages, 5000);
+                  var holdTheInterval = setInterval(updatePages, 2500);
                   var curPageID = $("#current_page").html();
                   $(".menu-title").not(curPageID + "-title").hide();
                   
@@ -194,7 +191,6 @@
                       $.get(('/aircraft'), function(datum) {$('#aircraft').html(datum);});
                       $.get(('/schedule'), function(datum) {$('#schedule').html(datum);});
                       $('a[rel*=facebox]').facebox();
-                      
                       
                     }else{
                       //no updates

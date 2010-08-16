@@ -189,6 +189,25 @@ class Main
     haml :staff, :layout => false
   end
   
+  post "/ajax/staff/permission" do
+    return false unless logged_in?
+    return false if params[:id].nil? || params[:attribute].nil? || params[:value].nil?
+    @staff = Jumper.get(params[:id])
+    return "Staffer Not Found." if @staff.nil?
+    return false unless @staff.respond_to?(params[:attribute].to_sym)
+    @staff[params[:attribute].to_sym] = (params[:value] == "true" ? true : false)
+    @staff.save
+    return "success"
+  end
+  
+  get "/ajax/edit-aircraft" do
+    return false unless logged_in?
+    return false if params[:id].nil?
+    @aircraft = Aircraft.get(params[:id])
+    return false if @aircraft.nil?
+    haml :edit_aircraft, :layout => false
+  end
+  
   post "/ajax/aircraft/?" do
     return false unless logged_in?
     
