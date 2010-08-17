@@ -23,7 +23,7 @@ class Jumper < CouchRest::ExtendedDocument
   property :secondary_contact, :cast_as => 'Contact'
   
   
-  property :type #just student/not student? everything else is in the next couple props.
+  property :type
   
   property :is_experienced
   property :licenses #array of Certifications? (USPA, A 47290, ?)

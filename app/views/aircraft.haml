@@ -40,7 +40,7 @@
   .boxin
     .header
       %h3 Aircraft
-      %a.ico-plus{:href => "#new-aircraft", :rel => "facebox", :style => "margin-left: 5px"} &nbsp;
+      %a.ico-plus{:href => "#new-aircraft", :rel => "aircraftfacebox", :style => "margin-left: 5px"} &nbsp;
       / Action button in the header of the box
       %input.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "aircraftsearch", :placeholder => "Filter aircrafts..."}
     .content
@@ -76,11 +76,12 @@
               %td.tc July 21st
               %td.tc= rand(42)**2
               %td.tc
-                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-aircraft?id="+aircraft.id, :rel => 'facebox'}
+                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-aircraft?id="+aircraft.id, :rel => 'aircraftfacebox'}
                   %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}
 
 :javascript
   $(document).ready(function(){
+    $('a[rel*=aircraftfacebox]').facebox();
     $('tbody.striped tr:even').addClass('even');
   });
   function createAircraft(button){

@@ -3,7 +3,7 @@
   %form.fields.newstaffform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
     %p
       %label{:style => "font-weight: bold"} Existing Jumper
-      %select.existing-dropdown{:style => "width: 177px; margin-left: 20px", :name => "existing"}
+      %select.existing-dropdown{:style => "width: 177px; margin-left: 20px", :name => "id"}
         %option{:value => ""}
         -Jumper.all.find_all{|j| !j.is_staff}.each do |jumper|
           %option{:value => jumper.id}= jumper.name
@@ -144,7 +144,7 @@
   .boxin
     .header
       %h3 Staff
-      %a.ico-plus{:href => "#new-staff", :rel => "facebox", :style => "margin-left: 5px"} &nbsp;
+      %a.ico-plus{:href => "#new-staff", :rel => "stafffacebox", :style => "margin-left: 5px"} &nbsp;
       / Action button in the header of the box
       %input.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "staffsearch", :placeholder => "Filter Staff..."}
     .content
@@ -241,6 +241,7 @@
 
 :javascript
   $(document).ready(function(){
+    $('a[rel*=stafffacebox]').facebox();
     $('tbody.striped tr:even').addClass('even');
     $(".black-dot, .no-dot").click(function(){
       if ($(this).hasClass("no-dot")){

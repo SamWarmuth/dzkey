@@ -154,22 +154,24 @@ class Main
   post "/ajax/staff/?" do
     return false unless logged_in?
     
-    unless params[:id].nil?
+    unless params[:id].nil?||params[:id].empty?
       staff = Jumper.all.find{|j| j.id == params[:id]}
       return "Tried to update a staff member / jumper that didn't exist (params[:id] != any jumper id)" if staff.nil?
     else
       staff = Jumper.new
+      staff.first_name = params[:first_name]
+      staff.last_name = params[:last_name]
+      staff.address = params[:address]
+      staff.city = params[:city]
+      staff.state = params[:state]
+      staff.country = params[:country]
+
+      staff.nickname = params[:nickname] unless params[:nickname].empty?
     end
     
     staff.is_staff = true
-    staff.first_name = params[:first_name]
-    staff.last_name = params[:last_name]
-    staff.address = params[:address]
-    staff.city = params[:city]
-    staff.state = params[:state]
-    staff.country = params[:country]
+    staff.email = params[:email]
     
-    staff.nickname = params[:nickname] unless params[:nickname].empty?
 
     staff.pilot = (params[:pilot]=="on")
     staff.tandem_instructor = (params[:tandem_instructor]=="on")

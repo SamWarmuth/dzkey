@@ -105,7 +105,7 @@
   .boxin
     .header
       %h3 Jumpers
-      %a.ico-plus{:href => "#new-jumper", :rel => "facebox", :style => "margin-left: 5px"} &nbsp;
+      %a.ico-plus{:href => "#new-jumper", :rel => "jumpersfacebox", :style => "margin-left: 5px"} &nbsp;
       %input#jumpersearch.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
     .content
       %table#jumpertable{:cellspacing => "0"}
@@ -148,12 +148,13 @@
               %td.tc July #{rand(26)+1}
               %td.tc= jumper.manifest_ids.length
               %td.tc
-                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-jumper?id="+jumper.id, :rel => 'facebox'}
+                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-jumper?id="+jumper.id, :rel => 'jumpersfacebox'}
                   %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}
                 
 
 :javascript
   $(document).ready(function(){
+    $('a[rel*=jumpersfacebox]').facebox();
     $('tbody.striped tr:even').addClass('even');
     var jumpertable = $("#jumpertable")
     jumpertable.tablesorter({

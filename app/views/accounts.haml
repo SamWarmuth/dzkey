@@ -34,7 +34,7 @@
   .boxin
     .header
       %h3 Transactions
-      %a.ico-plus{:href => "#new-transaction", :rel => "facebox", :style => "margin-left: 0px"} &nbsp;
+      %a.ico-plus{:href => "#new-transaction", :rel => "storefacebox", :style => "margin-left: 0px"} &nbsp;
       %input#transactionsearch.search{:type => "text", :size => "45", :style => "margin-left: 525px", :name => "transactionsearch", :placeholder => "Filter transactions..."}
     .content
       %table#transactiontable{:cellspacing => "0"}
@@ -95,6 +95,7 @@
     }
   }
   $(document).ready(function(){
+    $('a[rel*=storefacebox]').facebox();
     $('tbody.striped tr:even').addClass('even');
     
     $("#transactionsearch").keyup(function() {
