@@ -141,10 +141,10 @@
                 - good_rigs = rand(4)
                 - caution_rigs = rand(3)
                 - bad_rigs = rand(2)
-                .stat-cover.vtip{:title => "Click to edit rigs."}
-                %a.stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                %a.stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                %a.stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
+                %a.stat-cover{:href => "/ajax/edit-rigs?id="+jumper.id, :rel => 'jumpersfacebox'}
+                .stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
+                .stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
+                .stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
               %td.tc July #{rand(26)+1}
               %td.tc= jumper.manifest_ids.length
               %td.tc

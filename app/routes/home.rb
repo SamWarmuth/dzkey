@@ -121,6 +121,14 @@ class Main
     haml :edit_jumper, :layout => false
   end
   
+  get "/ajax/edit-rigs" do
+    return false unless logged_in?
+    return false if params[:id].nil?
+    @jumper = Jumper.get(params[:id])
+    return false if @jumper.nil?
+    haml :edit_rigs, :layout => false
+  end
+  
   post "/ajax/jumper/?" do
     return false unless logged_in?
     @jumpers = Jumper.all.sort_by{|j| j.last_name}

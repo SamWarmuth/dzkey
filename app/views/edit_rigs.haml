@@ -1,0 +1,62 @@
+
+.edit-rigs{:style => "width: 600px; text-align: center", :id => 'edit'+@jumper.id}
+  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} #{@jumper.name}'s Rigs
+  %form.newrigform
+    %input{:type => "hidden", :name => "id", :value => @jumper.id}
+    .box.box-60.box
+      .boxin{:style => "border-top-right-radius: 0; -moz-border-radius-topright: 0; -webkit-border-top-right-radius: 0; border-top-left-radius: 0; -moz-border-radius-topleft: 0; -webkit-border-top-left-radius: 0; border: #AAA"}
+        .content
+          %table{:cellspacing => "0", :style => "width: 100%;"}
+            %thead
+              %tr
+                %th{:style => "padding: 10px;"} &nbsp;
+                %th Name
+                %th Container
+                %th.tc Main
+                %th.tc Main Repack
+                %th.tc Reserve
+                %th.tc Reserve Repack
+                
+            %tbody.striped
+              -Aircraft.all.each_with_index do |aircraft, i|
+                %tr{:class => ( i == 0 ? "first" : "")}
+                  %td.tc{:style => "padding: 0"}
+                    -if aircraft.available
+                      %img{:src => "/css/img/available.png"}
+                    -else
+                      %img{:src => "/css/img/unavailable.png"}
+                  %td.tc.bold= aircraft.name
+                  %td.tc.bold= aircraft.flight_prefix
+                  %td.tc= aircraft.type
+                  %td.tc= aircraft.capacity
+                  
+                  %td.tc July 21st
+                  %td.tc= rand(42)**2
+                  
+    .new-rig-form{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+      %p.bold{:style => 'margin-right: 125px'} New Rig
+      %p
+        %label Name
+        %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
+      %p
+        %label Container Type
+        %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
+      %br
+      %p
+        %label Main Type
+        %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "balance"}
+      %p
+        %label Reserve Type
+        %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "balance"}
+      %p
+        %label Main Repacked
+        %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
+      %p
+        %label Reserve Repacked
+        %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
+      %br
+    %br
+    .left{:style => "display: inline; margin-right: 12px"}        
+      %a.awesome.giant.green{:href => "#create-jumper", :onClick => "createJumper(this);"} Add Rig
+    .left{:style => "display: inline;margin-right: -13px"}
+      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel
