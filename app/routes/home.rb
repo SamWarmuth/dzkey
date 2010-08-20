@@ -167,7 +167,6 @@ class Main
     return "jumper is nil" if @jumper.nil?
     rig = Rig.new
     rig.active = true
-    
     rig.name = params[:name]
     rig.container_type = params[:container_type]
     rig.main_type = params[:main_type]
