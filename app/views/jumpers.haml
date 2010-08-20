@@ -138,9 +138,9 @@
                 %a.stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
               %td.tc= jumper.type
               %td.tc
-                - good_rigs = rand(4)
-                - caution_rigs = rand(3)
-                - bad_rigs = rand(2)
+                - good_rigs = jumper.rig_ids.length
+                - caution_rigs = 0
+                - bad_rigs = 0
                 %a.stat-cover{:href => "/ajax/edit-rigs?id="+jumper.id, :rel => 'jumpersfacebox'}
                 .stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
                 .stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs

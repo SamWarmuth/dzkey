@@ -121,13 +121,6 @@ class Main
     haml :edit_jumper, :layout => false
   end
   
-  get "/ajax/edit-rigs" do
-    return false unless logged_in?
-    return false if params[:id].nil?
-    @jumper = Jumper.get(params[:id])
-    return false if @jumper.nil?
-    haml :edit_rigs, :layout => false
-  end
   
   post "/ajax/jumper/?" do
     return false unless logged_in?
@@ -137,6 +130,7 @@ class Main
       return "Tried to update a jumper that didn't exist (params[:id] != any jumper id)" if jumper.nil?
     else
       jumper = Jumper.new
+      jumper.rig_ids = []
     end
     
     jumper.first_name = params[:first_name]
@@ -158,6 +152,39 @@ class Main
     haml :jumpers, :layout => false
   end
   
+  get "/ajax/edit-rigs" do
+    return false unless logged_in?
+    return false if params[:id].nil?
+    @jumper = Jumper.get(params[:id])
+    return false if @jumper.nil?
+    haml :edit_rigs, :layout => false
+  end
+  
+  post "/ajax/rig/?" do
+    return "not logged in" unless logged_in?
+    return "no jumper id" if params[:jumper_id].nil?
+    @jumper = Jumper.get(params[:jumper_id])
+    return "jumper is nil" if @jumper.nil?
+    rig = Rig.new
+    rig.active = true
+    
+    rig.name = params[:name]
+    rig.container_type = params[:container_type]
+    rig.main_type = params[:main_type]
+    rig.main_repack = params[:main_repack]
+    rig.reserve_type = params[:reserve_type]
+    rig.reserve_repack = params[:reserve_repack]
+    
+    rig.save
+    
+    @jumper.rig_ids ||= []
+    @jumper.rig_ids << rig.id
+    @jumper.save
+    
+    @jumpers = Jumper.all.sort_by{|j| j.last_name}
+    haml :jumpers, :layout => false
+  end
+  
   
   post "/ajax/staff/?" do
     return false unless logged_in?
@@ -167,6 +194,7 @@ class Main
       return "Tried to update a staff member / jumper that didn't exist (params[:id] != any jumper id)" if staff.nil?
     else
       staff = Jumper.new
+      staff.rig_ids = []
       staff.first_name = params[:first_name]
       staff.last_name = params[:last_name]
       staff.address = params[:address]
