@@ -28,7 +28,7 @@
                   %b{:href => "#", :style => "font-size: 150%", :id => (aircraft_id+'name')}= aircraft.name
               %td.tc{:style => "font-size: 125%"}
                 - if aircraft.current_flight && (current_flight = Flight.get(aircraft.current_flight))
-                  = current_flight.aircraft_prefix + ("%03.0f" % current_flight.number)
+                  = current_flight.aircraft_prefix + ("%02.0f" % current_flight.number)
                 - else
                   &mdash;
                 %a.awesome.medium.green{:href => "#", :style => "float: right; color: white;padding: 5px; width: 10px; height: 10px; display: #{((current_flight.nil? || aircraft.on_hold) ? "none" : "auto")} ", :onclick => "takeOff('#{current_flight.id}'); return false;", :id => (aircraft_id+'takeoff')}
@@ -53,7 +53,7 @@
                 
               %td.tc
                 -if aircraft.next_flight && (next_flight = Flight.get(aircraft.next_flight))
-                  = next_flight.aircraft_prefix + ("%03.0f" % next_flight.number)
+                  = next_flight.aircraft_prefix + ("%02.0f" % next_flight.number)
                 -else
                   &mdash;
 
@@ -116,7 +116,7 @@
             %tr.manifest.title-row{:class => (i == 0 ? "first" : "")}
               %td.info.arrow
                 &#9658;
-              %td{:style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + ("%03.0f" % flight.number)
+              %td{:style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + ("%02.0f" % flight.number)
               %td.tc= plane.name if plane
               %td.tc
                 -flight.jumper_ids ||= [] #TODO require array from the start
