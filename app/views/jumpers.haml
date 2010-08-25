@@ -126,9 +126,11 @@
             %tr
               %td
                 -if jumper.available
-                  %img{:src => "/css/img/available.png"}
+                  %a{:href => "#", :style => "border: none"}
+                    %img{:src => "/images/dotbutton-green.png", :style => "vertical-align: middle; position: relative; top: -3px"}
                 -else
-                  %img{:src => "/css/img/unavailable.png"}
+                  %a{:href => "#", :style => "border: none"}
+                    %img{:src => "/images/dotbutton-red.png", :style => "vertical-align: middle; position: relative; top: -3px"}
               %td.bold= jumper.first_name
               %td.bold= jumper.last_name 
               %td= jumper.nickname
