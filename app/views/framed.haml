@@ -164,6 +164,11 @@
                   var holdTheInterval = setInterval(updatePages, 2500);
                   var curPageID = $("#current_page").html();
                   $(".menu-title").not(curPageID + "-title").hide();
+                  $(curPageID + "-item").hide();
+                  
+                  //preload images for hover states, etc
+                  $("<img src='/images/dotbutton-green-hover.png'/>");
+                  $("<img src='/images/dotbutton-red-hover.png'/>");
                   
                   $(".menu-item").click(function(){
                     $("#h-wrap").removeClass('active');
@@ -180,7 +185,6 @@
                     $(newID).fadeIn(200);
                     return false;
                   });
-                  $(curPageID + "-item").hide();
                 });
                 function updatePages(){
                   $.get(("/ajax/changes?since="+$('#current_version').html()), function(data){
