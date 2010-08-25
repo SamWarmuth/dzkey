@@ -177,9 +177,11 @@
             %tr{:class => ( i == 0 ? "first" : "")}
               %th.tc
                 -if staff.available
-                  %img.vtip{:title => "On click: Are You sure you want to check staff member out?", :src => "/css/img/available.png"}
+                  %a{:href => "#", :style => "border: none"}
+                    %img{:src => "/images/dotbutton-green.png", :style => "vertical-align: middle; position: relative; top: -3px; width: 22px; height: 22px;"}
                 -else
-                  %img.vtip{:title => "On click: Check staff member in?",:src => "/css/img/unavailable.png"}
+                  %a{:href => "#", :style => "border: none"}
+                    %img{:src => "/images/dotbutton-red.png", :style => "vertical-align: middle; position: relative; top: -3px; width: 22px; height: 22px;"}
               %td
                 %a{:href => "#"}= staff.name
               %td.tc
