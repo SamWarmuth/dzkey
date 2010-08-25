@@ -185,58 +185,58 @@
               %td.tc
                 
                 -if staff.pilot
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'pilot', 'false');return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'pilot', $(this).attr('class'));return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'pilot', 'true');return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'pilot', $(this).attr('class'));return false;"}
               %td.tc
                 -if staff.tandem_instructor
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'tandem_instructor', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'tandem_instructor', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'tandem_instructor', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'tandem_instructor', $(this).attr('class')); return false;"}
               %td.tc
                 -if staff.videographer
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'videographer', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'videographer', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'videographer', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'videographer', $(this).attr('class')); return false;"}
               %td.tc
                 -if staff.aff_instructor
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'aff_instructor', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'aff_instructor', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'aff_instructor', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'aff_instructor', $(this).attr('class')); return false;"}
               %td.tr
                 -balance = staff.balance || 0
                 
                 %a.stat.vtip{:href => "#", :style => 'display: block; width: 50px; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :title => "This doesn't make a lot of sense here, but I want to break up the two banks of permissions", :class => (balance >= 0 ? "green" : "red")}= "%5.2f" % balance
               %td.tr
                 -if staff.can_view_jumpers
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_jumpers', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_jumpers', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_jumpers', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_jumpers', $(this).attr('class')); return false;"}
               %td.tl
                 -if staff.can_edit_jumpers
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_jumpers', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_jumpers', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_jumpers', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_jumpers', $(this).attr('class')); return false;"}
               %td.tr
                 -if staff.can_view_manifests
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_manifests', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_manifests', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_manifests', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_manifests', $(this).attr('class')); return false;"}
               %td.tl
                 -if staff.can_edit_manifests
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_manifests', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_manifests', $(this).attr('class')', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_manifests', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_manifests', $(this).attr('class')); return false;"}
               %td.tr
                 -if staff.can_view_finances
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_finances', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_finances', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_finances', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_view_finances', $(this).attr('class')); return false;"}
               %td.tl
                 -if staff.can_edit_finances
-                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_finances', 'false'); return false;"}
+                  %a.black-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_finances', $(this).attr('class')); return false;"}
                 -else
-                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_finances', 'true'); return false;"}
+                  %a.no-dot{:href => "#", :onclick => "editPermission('#{staff.id}', 'can_edit_finances', $(this).attr('class')); return false;"}
 
 
 :javascript
@@ -255,7 +255,13 @@
       $.uiTableFilter( stafftable, this.value );
     });
   });
-  function editPermission(staffID, attribute, value){
+  function editPermission(staffID, attribute, dotclass){
+    //dotclass == *current* dot state
+    if (dotclass == "no-dot"){
+      var value = "true";
+    }else{
+      var value = "false";
+    }
     $.post('/ajax/staff/permission?id='+staffID+"&attribute="+attribute+"&value="+value);
   }
   function createStaff(button){
