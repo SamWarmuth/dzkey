@@ -17,7 +17,7 @@
 
     /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
   %body
-    .header
+    .header#the-top
       .header_content
         %a{:href => "/"}
           %img.logo.png{:alt => "DZKey Logo", :height => "45", :width => "147", :style => "position: relative; top: -5px;", :src => "images/logo-glow.png", :title => "Go to Homepage"}
@@ -30,8 +30,9 @@
               .selected_middle
                 %a{:href => "/tour"} Feature Tour
               .selected_right
-          %li
-            %a{:href => "/faq"} FAQ
+          /
+            %li
+              %a{:href => "/faq"} FAQ
           %li
             %a{:href => "/contact"} Contact
           %li
@@ -61,12 +62,12 @@
               .sec_menu_selected_right
             %li#manifestd.desel-li
               %a.scroller{:href => "#manifest"} Manifest
-            %li#aircrafts.sel-li.sec_menu_selected{:style => 'display: none'}
+            %li#schedules.sel-li.sec_menu_selected{:style => 'display: none'}
               .sec_menu_selected_left
-              %a.sec_menu_selected_middle.scroller{:href => "#aircraft"} Aircraft
+              %a.sec_menu_selected_middle.scroller{:href => "#schedule"} Schedule
               .sec_menu_selected_right
-            %li#aircraftd.desel-li
-              %a.scroller{:href => "#aircraft"} Aircraft
+            %li#scheduled.desel-li
+              %a.scroller{:href => "#schedule"} Schedule
             %li#staffs.sel-li.sec_menu_selected{:style => 'display: none'}
               .sec_menu_selected_left
               %a.sec_menu_selected_middle.scroller{:href => "#staff"} Staff
@@ -116,7 +117,7 @@
         %br
         %hr
         %br
-        %h1#aircraft Aircraft
+        %h1#schedule Schedule
         .work_project
           %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}
           %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip4]", :title => "Online electronics shop"}

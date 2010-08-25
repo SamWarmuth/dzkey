@@ -25,8 +25,9 @@
             %a.homepage{:href => "/"}
           %li
             %a{:href => "/tour"} Feature Tour
-          %li
-            %a{:href => "/faq"} FAQ
+          /
+            %li
+              %a{:href => "/faq"} FAQ
           %li.selected_page
             .selected
               .selected_left
@@ -41,7 +42,6 @@
       .category_illustration
         .punchline_contact
           %h2 Please contact us using the form below
-          %p We answer every single message. We promise.
         %img.phone{:alt => "Contact", :height => "159", :src => "images/phone.png", :width => "216"}/
       / .project
     / .LATEST_PROJECT
@@ -88,9 +88,8 @@
     / .SEC_MENU
     .content
       .secondary_pages_content
-        %h1 Have a project for us?
-        %p.subtitle Get in touch and we'll send you a quote
-        %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Ever since the 1500s, when an unknown printer took. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Ever since the 1500s, when an unknown printer took.
+        %h1 Have a question or comment for us?
+        %p.subtitle Fill out this form and we'll respond as soon as we can.
         .contact_box
           .contact_box_top
           .contact_box_middle
@@ -123,19 +122,6 @@
                       %input#company.input_middle{:name => "company", :type => "text"}/
                       .input_right
                 %tr
-                  %td{:style => "width:461px"}
-                    %label{:for => "budget"} Your budget:
-                    .form_input.odd
-                      .input_left
-                      %input#budget.input_middle{:name => "Budget", :type => "text"}/
-                      .input_right
-                  %td{:style => "width:461px"}
-                    %label{:for => "deadline"} Deadline:
-                    .form_input
-                      .input_left
-                      %input#deadline.input_middle{:name => "Deadline", :type => "text"}/
-                      .input_right
-                %tr
                   %td{:colspan => "2", :style => "width:922px"}
                     %label{:for => "deadline"} Your message:
                     .form_textarea
@@ -146,26 +132,17 @@
                   %td{:colspan => "2", :style => "width:922px"}
                     %input#send.submit{:type => "submit", :value => ""}/
           .contact_box_bottom
-        / contact_box
-      / secondary_pages_content
       .clear_container
-      %br/
-      %br/
-    / .CONTENT
+      %br
+      %br
     .footer
       .footer_content
         .footer_left
-          %p SITE DESIGN © 2009-2010 Creative juice, inc&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
-          %a.rss{:href => ""} subscribe to our rss feed
-        / .footer_left
         .footer_right
           %p
             %a{:href => "#"}> Privacy statement
             \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             %a{:href => "#"} terms &amp; conditions
-        / .footer_right
-      / .footer_content
-    / .FOOTER
     :javascript
       document.getElementById('project_title').style.fontSize='42px';
     
