@@ -198,6 +198,7 @@
               %td.type.tc{:style => "width: 60px"}= jumper.type.to_s
 :javascript
   $(document).ready(function(){
+    vtip();
     $('tbody.striped tr:even').addClass('even');
     $("tr.expander-data").hide();
     $('tbody.expander tr.title-row').click(function(){

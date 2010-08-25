@@ -33,7 +33,7 @@
               %td= ["Phone", "Online", "In Person"][rand(3)]
               %td= (rand > 0.8 ? "Groupon" : "")
               %td.tr
-                %a.stat.green{:href => "#", :style => "margin-right: 20px"}= rand(20)+1
+                .stat.green{:href => "#", :style => "margin-right: 20px"}= rand(20)+1
               %td.tc #{8 + i/3}AM
               %td.tc July #{rand(11)+1}th
               %td
