@@ -16,6 +16,9 @@ class Main
   get '/schedule' do
     haml :schedule, :layout => false
   end
+  get '/checkin' do
+    haml :checkin, :layout => false
+  end
   get '/accounts' do
     haml :accounts, :layout => false
   end

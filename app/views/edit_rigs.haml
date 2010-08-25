@@ -4,14 +4,13 @@
   .box.box-60.box{:style => "margin: 15px"}
     .boxin{:style => "border-top-right-radius: 0; -moz-border-radius-topright: 0; -webkit-border-top-right-radius: 0; border-top-left-radius: 0; -moz-border-radius-topleft: 0; -webkit-border-top-left-radius: 0; border: #AAA"}
       .content
-        %table{:cellspacing => "0", :style => "width: 100%;"}
+        %table{ :style => "width: 100%;"}
           %thead
             %tr
               %th{:style => "padding: 10px;"} &nbsp;
-              %th Name
-              %th Container
+              %th.tc Name
+              %th.tc Container
               %th.tc Main
-              %th.tc Main Repack
               %th.tc Reserve
               %th.tc Reserve Repack
               
@@ -26,40 +25,37 @@
                 %td.tc.bold= rig.name
                 %td.tc.bold= rig.container_type
                 %td.tc= rig.main_type
-                %td.tc= rig.main_repack
                 
                 %td.tc= rig.reserve_type
                 %td.tc= rig.reserve_repack
                 
-  %form.newrigform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
-    %input{:type => "hidden", :name => "jumper_id", :value => @jumper.id}
-    %p.bold{:style => 'margin-right: 125px'} New Rig
-    %p
-      %label Rig Name
-      %input{:type => "text", :size => "30", :name => "name", :style => "margin-left: 20px"}
-    %p
-      %label Container Type
-      %input{:type => "text", :size => "30", :name => "container_type", :style => "margin-left: 20px"}
-    %br
-    %p
-      %label Main Type
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "main_type"}
-    %p
-      %label Reserve Type
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "reserve_type"}
-    %p
-      %label Main Repacked
-      %input{:type => "text", :size => "30", :name => "main_repack", :style => "margin-left: 20px"}
-    %p
-      %label Reserve Repacked
-      %input{:type => "text", :size => "30", :name => "reserve_repack", :style => "margin-left: 20px"}
-    %br
+  %form.newrigform
+    %fieldset{:style => "width: 80%; margin: auto;"}
+      %input{:type => "hidden", :name => "jumper_id", :value => @jumper.id}
+      %label.bold{:style => 'font-size: 16px; text-align: center;background: #eee; display: block; margin: -5px -5px 0px -5px; padding: 5px;border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px;'} New Rig
+      %div{:style => 'text-align: center; padding: 10px;font-size: 16px;'}
+        %label.bold Rig Name
+        %input{:type => "text", :size => "15", :name => "name", :style => "margin-left: 20px"}
+      %table
+        %tr
+          %td{:style => "padding: 5px"}
+            %label Container Type
+            %input{:type => "text", :size => "15", :name => "container_type", :style => "margin-left: 14px"}
+          %td{:style => "padding: 5px"}
+            %label Main Type
+            %input{:type => "text", :size => "15", :style => "margin-left: 20px", :name => "main_type"}
+        %tr
+          %td{:style => "padding: 5px"}
+            %label Reserve Type
+            %input{:type => "text", :size => "15", :style => "margin-left: 20px", :name => "reserve_type"}
+          %td{:style => "padding: 5px"}
+            %label Repacked
+            %input{:type => "text", :size => "15", :name => "reserve_repack", :style => "margin-left: 20px"}
+      %br
+      .left{:style => "display: inline;"}        
+        %a.awesome.giant.green{:href => "#new-rig-form", :onClick => "createRig(this);"} Add Rig
   %br
-  .left{:style => "display: inline; margin-right: 12px"}        
-    %a.awesome.giant.green{:href => "#new-rig-form", :onClick => "createRig(this);"} Add Rig
-  %br
-  %br
-  .left{:style => "display: inline;margin-right: -13px"}
+  .left{:style => "display: inline;"}
     %a.awesome.large.gray{:href => "#", :onClick => "$.facebox.close()"} Close
     
 :javascript

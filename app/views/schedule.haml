@@ -1,17 +1,41 @@
-.box.box-100
-  .boxin{:style => "border-top-right-radius: 0; -moz-border-radius-topright: 0; -webkit-border-top-right-radius: 0; border-top-left-radius: 0; -moz-border-radius-topleft: 0; -webkit-border-top-left-radius: 0; border: #AAA"}
+.box.box-40.altbox
+  .boxin
+    .header
+      %h3 Reservations Made Today
+    .content
+      %table{:cellspacing => "0"}
+        %thead
+          %tr
+            %th Group Name
+            %td.tc Date
+            %td.tc # Jumpers
+            %td.tc View/Edit
+        %tbody
+          -10.times do |i|
+            %tr{:class => ( i == 0 ? "first" : "")}
+              %th
+                %a{:href => "#"} Kent McCullough
+              %td.tc July #{11 - i/3}th
+              %td.tr
+                %a.stat.green{:href => "#", :style => "margin-right: 20px"}= i*16
+              %td.tc
+                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-schedule?id=HELLO!", :rel => 'jumpersfacebox'}
+                  %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}
+.box.box-60
+  .boxin{:style => "border: #AAA"}
     .content
       %table.calendar{:cellspacing => "0"}
         %thead
           %tr
             %th.tc.month{:colspan => "7"}
+              .spacer{:style => "display: inline; margin-left: 150px"}
               %a{:href => "#", :title => "Go to June 2011"}
-                %img{:alt => "Go to October 2009", :src => "css/img/cal-left.png"}/
-              July 2011
+                %img{:alt => "Go to October 2009", :src => "css/img/cal-left.png", :style => "height: 18px; width: 18px"}
+              = Time.now.strftime("%B %Y")
               %a{:href => "#", :title => "Go to August 2011"}
-                %img{:alt => "Go to January 2010", :src => "css/img/cal-right.png"}/
-              .legend{:style => "position: absolute; top: 33px; left: 720px"}
-                .stat.outline Manifest
+                %img{:alt => "Go to January 2010", :src => "css/img/cal-right.png", :style => "height: 18px; width: 18px"}
+              .legend{:style => "display: inline; margin-left: 30px"}
+                .stat.outline Sport
                 .stat.green.flat-right.flat-right Tandem 
                 .stat.purple.merge-left AFF
           %tr
@@ -24,7 +48,6 @@
             %th.tc Sunday
         %tbody
           %tr.first
-            / .first for first row of the table (only if there is thead)
             %td.inactive
               %strong 28
             / inactive days (month past or month after)
@@ -32,12 +55,14 @@
               %strong 29
               .items
                 .stat.outline= rand(4) + 20
+                %br
                 .stat.green.flat-right= rand(8) + 20
                 .stat.purple.merge-left= rand(25)+20
             %td.inactive
               %strong 30
               .items
                 .stat.outline= rand(4) + 2
+                %br
                 .stat.green.flat-right= rand(8) + 2
                 .stat.purple.merge-left= rand(25)
             %td
@@ -46,6 +71,7 @@
               %strong 2
               .items
                 .stat.outline= rand(4) + 2
+                %br
                 .stat.green.flat-right= rand(8) + 2
                 .stat.purple.merge-left= rand(25)
             %td
@@ -54,6 +80,7 @@
               %strong 4
               .items
                 .stat.outline= rand(4) + 2
+                %br
                 .stat.green.flat-right= rand(8) + 2
                 .stat.purple.merge-left= rand(25)
           %tr
@@ -63,6 +90,7 @@
               %strong 6
               .items
                 .stat.outline= rand(4) + 2
+                %br
                 .stat.green.flat-right= rand(8) + 2
                 .stat.purple.merge-left= rand(25)
             %td

@@ -293,6 +293,8 @@ a img
       background-image: url("img/comments.png")
     .ico-color
       background-image: url("img/color.png")
+    .ico-plus
+      background-image: url("img/plus.png")
     .ico-edit
       background-image: url("img/edit.png")
     .ico-refresh
@@ -652,12 +654,9 @@ fieldset
   -webkit-border-radius: 5px
   -moz-border-radius: 5px
   border: 1px solid #ccc
-  margin-left: 125px
   margin-right: -5px
   padding: 5px
-/* plain and clean layout for forms
 
-/* lists for actions (remove, modify)
 
 ul.actions
   margin: 0
@@ -817,7 +816,7 @@ ul.actions
 
 .altbox .content table tbody
   color: #00305d
-a.ico-plus
+a.plus
   vertical-align: middle
   border: 0
   background: url("img/ico-plus.png") no-repeat
@@ -1121,10 +1120,13 @@ table.calendar
   .inactive
     color: #aaa
   div.items
-    font-size: 14px
+    text-align: center
     border: 0
     margin: 0 1px
-    margin-top: 10px
+    margin-left: 5px
+    margin-top: 3px
+    .stat.outline
+      margin-bottom: 3px
     
 
 .jumpers
@@ -1178,7 +1180,7 @@ table.calendar
   background-color: #00669D
 .blue.awesome:hover
   background-color: #00467D
-.cyan.awesome, .blue.awesome:visited
+.cyan.awesome, .cyan.awesome:visited
   background-color: #69C4FF
 .cyan.awesome:hover
   background-color: #59B4EF

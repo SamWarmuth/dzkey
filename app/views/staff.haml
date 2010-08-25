@@ -18,7 +18,7 @@
           });
         });
     %br
-    %fieldset.new-jumper
+    %fieldset.new-jumper{:style => "margin-left: 125px"}
       %p.bold
         %label Name
         %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
@@ -144,11 +144,11 @@
   .boxin
     .header
       %h3 Staff
-      %a.ico-plus{:href => "#new-staff", :rel => "stafffacebox", :style => "margin-left: 5px"} &nbsp;
+      %a.plus{:href => "#new-staff", :rel => "stafffacebox", :style => "margin-left: 5px"} &nbsp;
       / Action button in the header of the box
-      %input.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "staffsearch", :placeholder => "Filter Staff..."}
+      %input#staffsearch.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "staffsearch", :placeholder => "Filter Staff..."}
     .content
-      %table{:cellspacing => "0"}
+      %table#stafftable{:cellspacing => "0"}
         %thead
           %tr
             %th{:style => "width: 8px", :rowspan => 2} &nbsp;
@@ -249,6 +249,10 @@
       } else {
         $(this).removeClass("black-dot").addClass("no-dot");
       }
+    });
+    var stafftable = $('#stafftable');
+    $("#staffsearch").keyup(function() {
+      $.uiTableFilter( stafftable, this.value );
     });
   });
   function editPermission(staffID, attribute, value){

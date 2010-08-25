@@ -111,9 +111,10 @@
             %td.tc{:style => "width: 50px"}  Weight
             %td.tc{:style => "width: 80px"}  Est. Takeoff
         %tbody.expander
-          -Flight.all.find_all{|f| f.completed != true && f.cancelled != true}.sort_by{|f| f.number}.reverse.each_with_index do |flight, i|
+          -today = Time.now.strftime("%m/%d/%y")
+          -Flight.all.find_all{|f| f.jump_date == today}.sort_by{|f| f.number}.reverse.each_with_index do |flight, i|
             - plane = Aircraft.get(flight.aircraft_id)
-            %tr.manifest.title-row{:class => (i == 0 ? "first" : "")}
+            %tr.manifest.title-row{:class => (i == 0 ? "first" : ""), :style => "color: #{(flight.completed || flight.cancelled) ? "#BBB" : "#036"}"}
               %td.info.arrow
                 &#9658;
               %td{:style => "font-size: 125%"}= (plane ? plane.flight_prefix : "AA") + ("%02.0f" % flight.number)
