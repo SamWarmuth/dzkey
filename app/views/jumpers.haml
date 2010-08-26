@@ -105,8 +105,8 @@
   .boxin
     .header
       %h3 Jumpers
-      %a.plus{:href => "#new-jumper", :rel => "jumpersfacebox", :style => "margin-left: 5px"} &nbsp;
-      %input#jumpersearch.search{:type => "text", :size => "45", :style => "margin-left: 575px", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
+      %a.plus{:href => "#new-jumper", :rel => "jumpersfacebox", :style => "margin-left: 5px;"} &nbsp;
+      %input#jumpersearch.search{:type => "text", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
     .content
       %table#jumpertable{:cellspacing => "0"}
         %thead
@@ -141,10 +141,11 @@
                 - good_rigs = jumper.rig_ids.length
                 - caution_rigs = 0
                 - bad_rigs = 0
-                %a.stat-cover{:href => "/ajax/edit-rigs?id="+jumper.id, :rel => 'jumpersfacebox'}
-                .stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
-                .stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                .stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
+                .cover-cover{:style => "position: relative"}
+                  %a.stat-cover{:href => "/ajax/edit-rigs?id="+jumper.id, :rel => 'jumpersfacebox'}
+                  .stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
+                  .stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
+                  .stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
               %td.tc July #{rand(26)+1}
               %td.tc= jumper.manifest_ids.length
               %td.tc

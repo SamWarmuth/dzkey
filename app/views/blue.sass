@@ -63,6 +63,7 @@ a
 
 a
   &:hover, &:active, &:focus
+    outline: none
     border-color: #d0e4f5
     color: #0a80cf
   &.alt
@@ -636,6 +637,11 @@ input.search
   -moz-border-radius: 5px
   background: #fff
   padding: 5px 2px
+  float: right
+  margin-right: 20px
+  position: relative
+  top: 2px
+  width: 200px
   
 form.basic
   input.txt, textarea
@@ -817,12 +823,14 @@ ul.actions
 .altbox .content table tbody
   color: #00305d
 a.plus
-  vertical-align: middle
+  display: inline-block
   border: 0
   background: url("img/ico-plus.png") no-repeat
-  padding: 15px
-  padding-top: 8px
   color: #fff
+  width: 24px
+  height: 24px
+  position: relative
+  top: -4px
 .box .content
   table
     a.ico-comms
@@ -921,10 +929,10 @@ a.plus
   border: 1px solid rgba(0,0,0,1.0)
   width: 48px
   height: 17px
-  margin-left: 6px
   padding: 0
   position: absolute
   border-radius: 5px
+  left: 6px
   -moz-border-radius: 5px
   -webkit-border-radius: 5px
   &:hover
@@ -1184,9 +1192,9 @@ table.calendar
   background-color: #69C4FF
 .cyan.awesome:hover
   background-color: #59B4EF
-.red.awesome, .red.awesome:visited
-  background-color: #e31100
-.red.awesome:hover
+.red2.awesome, .red2.awesome:visited
+  background-color: #E31100
+.red2.awesome:hover
   background-color: #871300
 .gray-red.awesome, .red.awesome:visited
   background-color: #BBB

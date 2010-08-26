@@ -356,6 +356,7 @@ class Main
     time = params[:time].to_i
     return false if time.nil?
     aircraft = Aircraft.get(params[:aircraft])
+    return false if aircraft.departure_time.nil?
     aircraft.departure_time = (Time.parse(aircraft.departure_time) + 60*time).to_s
     aircraft.save
     return "success"

@@ -106,6 +106,10 @@
               %label ZIP Code
               %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
           %p
+            %label{:style => "font-weight: bold"} Email Address
+            %input{:type => "text", :size => "30", :name => "email", :style => "margin-left: 20px"}
+          %br
+          %p
             %label Jump Type
             %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
               %option Tandem
@@ -165,7 +169,7 @@
                   %strong= day_number
                   -unless (non_modulo > Time.now.day + 30) || (day == 0) #not future or monday
                     .items
-                      .stat.outline= rand(20) +10
+                      .stat.outline= rand(10) +2
                       %br
                       .stat.green.flat-right= rand(3) + 5
                       .stat.purple.merge-left= rand(6)+10
