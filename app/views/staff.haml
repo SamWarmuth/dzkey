@@ -177,9 +177,9 @@
             %tr{:class => ( i == 0 ? "first" : "")}
               %th.tc
                 -if staff.available
-                  %a.checkin.green{:href => "#"}
+                  %a.available.checkin.green{:href => "#"}
                 -else
-                  %a.checkin.red{:href => "#"}
+                  %a.available.checkin.red{:href => "#"}
               %td
                 %a{:href => "#"}= staff.name
               %td.tc

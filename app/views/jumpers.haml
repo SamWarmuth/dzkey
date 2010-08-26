@@ -117,7 +117,7 @@
             %th{:style => "width: 80px"} Nickname
             %th.tc{:style => "width: 70px"} Balance ($)
             %th.tc{:style => "width: 80px"} Type
-            %th.tc{:style => "width: 60px"} Rigs
+            %th.tc{:style => "width: 80px"} Rigs
             %th.tc{:style => "width: 100px"} Last Jump
             %th.tc{:style => "width: 70px"} Total Jumps
             %th.tc{:style => 'width: 60px'} View/Edit
@@ -126,9 +126,9 @@
             %tr
               %td
                 -if jumper.available
-                  %a.checkin.green{:href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
+                  %a.available.checkin.green{:href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
                 -else
-                  %a.checkin.red{:href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
+                  %a.available.checkin.red{:href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
               %td.bold= jumper.first_name
               %td.bold= jumper.last_name 
               %td= jumper.nickname
@@ -138,14 +138,18 @@
                 %a.stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
               %td.tc= jumper.type
               %td.tc
-                - good_rigs = jumper.rig_ids.length
+                - rigs = jumper.rig_ids.map{|r| Rig.get(r)}
+                - good_rigs = rigs.find_all{|r| r.active}.length
                 - caution_rigs = 0
                 - bad_rigs = 0
+                - deactivated_rigs = rigs.find_all{|r| !r.active}.length
+                
                 .cover-cover{:style => "position: relative"}
                   %a.stat-cover{:href => "/ajax/edit-rigs?id="+jumper.id, :rel => 'jumpersfacebox'}
                   .stat.green.flat-right{:href => "#", :style => (good_rigs > 0 ? "" : "visibility: hidden")}= good_rigs
                   .stat.yellow.flat-right.merge-left{:href => "#", :style => (caution_rigs > 0 ? "" : "visibility: hidden")}= caution_rigs
-                  .stat.red.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
+                  .stat.red.flat-right.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
+                  .stat.gray.merge-left{:href => "#", :style => (deactivated_rigs > 0 ? "" : "visibility: hidden")}= deactivated_rigs
               %td.tc July #{rand(26)+1}
               %td.tc= jumper.manifest_ids.length
               %td.tc

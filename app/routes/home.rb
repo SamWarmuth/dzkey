@@ -198,12 +198,29 @@ class Main
     
     rig.save
     
-    @jumper.rig_ids ||= []
     @jumper.rig_ids << rig.id
     @jumper.save
     
     @jumpers = Jumper.all.sort_by{|j| j.last_name}
     haml :jumpers, :layout => false
+  end
+  
+  get "/ajax/rig/active/?" do
+    return false unless logged_in?
+    return false if params[:rigID].nil?
+    rig = Rig.get(params[:rigID])
+    return false if rig.nil?
+    if params[:value] == "true"
+      return false if rig.active
+      rig.active = true
+      rig.save
+      return rig.name + " is now active."
+    else
+      return false unless rig.active
+      rig.active = false
+      rig.save
+      return rig.name + " is no longer active."
+    end
   end
   
   

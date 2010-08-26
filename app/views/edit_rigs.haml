@@ -7,27 +7,27 @@
         %table{ :style => "width: 100%;"}
           %thead
             %tr
-              %th{:style => "padding: 10px;"} &nbsp;
-              %th.tc Name
-              %th.tc Container
-              %th.tc Main
-              %th.tc Reserve
-              %th.tc Reserve Repack
+              %th{:style => "width: 15px"} &nbsp;
+              %th Name
+              %th{:style => "width: 80px"} Container
+              %th{:style => "width: 80px"} Main
+              %th{:style => "width: 80px"} Reserve
+              %th{:style => "width: 100px"} Reserve Repack
               
           %tbody.striped
             -@jumper.rig_ids.map{|j_id| Rig.get(j_id)}.compact.each_with_index do |rig, i|
               %tr{:class => ( i == 0 ? "first" : "")}
-                %td.tc{:style => "padding: 0"}
+                %td.tc{:style => 'padding: 0px 10px 0px;'}
                   -if rig.active
-                    %img{:src => "/css/img/available.png"}
+                    %a.available.activate-rig.green{:href => "#", :onClick => "activateRig('#{rig.id}', $(this)); return false;"}
                   -else
-                    %img{:src => "/css/img/unavailable.png"}
-                %td.tc.bold= rig.name
-                %td.tc.bold= rig.container_type
-                %td.tc= rig.main_type
-                
-                %td.tc= rig.reserve_type
-                %td.tc= rig.reserve_repack
+                    %a.available.activate-rig.red{:href => "#", :onClick => "activateRig('#{rig.id}', $(this)); return false;"}
+                %td.bold{:style => 'padding: 5px 10px 8px;'}= rig.name
+                %td.bold{:style => 'padding: 5px 10px 8px;'}= rig.container_type
+                %td{:style => 'padding: 5px 10px 8px;'}= rig.main_type
+                   
+                %td{:style => 'padding: 5px 10px 8px;'}= rig.reserve_type
+                %td{:style => 'padding: 5px 10px 8px;'}= rig.reserve_repack
                 
   %form.newrigform
     %fieldset{:style => "width: 80%; margin: auto;"}
@@ -59,6 +59,16 @@
     %a.awesome.large.gray{:href => "#", :onClick => "$.facebox.close()"} Close
     
 :javascript
+
+  function activateRig(rigID, button){
+    if (button.hasClass('red')){
+      button.removeClass('red').addClass('green');
+      $.get(("/ajax/rig/active?rigID="+rigID+"&value=true"), function(data){});
+    }else{
+      button.removeClass('green').addClass('red');
+      $.get(("/ajax/rig/active?rigID="+rigID+"&value=false"), function(data){});
+    }
+  }
   function createRig(button){
     var form_data = $('.newrigform:last').serialize();  
     $.post(('/ajax/rig?'+form_data), function(data) {
