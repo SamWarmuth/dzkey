@@ -266,7 +266,7 @@
       jQuery(elementClicked+"d").hide();
       
       var destination = jQuery(elementClicked).offset().top;
-      jQuery("html,body").animate({ scrollTop: destination-65}, 750);
+      jQuery("html,body").animate({ scrollTop: destination-65}, (Math.abs(($("body").scrollTop() - destination))+250));
       return false;
     });
     jQuery(window).scroll(sticky_relocate);
