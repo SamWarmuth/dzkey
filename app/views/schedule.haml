@@ -1,26 +1,134 @@
 .box.box-40.altbox
   .boxin
     .header
-      %h3 Reservations Made Today
+      %h3 New Reservation
     .content
-      %table{:cellspacing => "0"}
-        %thead
-          %tr
-            %th Group Name
-            %td.tc Date
-            %td.tc # Jumpers
-            %td.tc View/Edit
-        %tbody
-          -10.times do |i|
-            %tr{:class => ( i == 0 ? "first" : "")}
-              %th
-                %a{:href => "#"} Kent McCullough
-              %td.tc July #{11 - i/3}th
-              %td.tr
-                .stat.green{:href => "#", :style => "margin-right: 20px"}= i*16
-              %td.tc
-                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-schedule?id=HELLO!", :rel => 'jumpersfacebox'}
-                  %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}
+      .edit-jumper{:style => "text-align: center", :id => 'edit'}
+        %form.newjumperform{:style => " text-align: right; font-size: 16px"}
+          %p
+            %label.existing-label Existing Jumper
+            %select.existing-jumper{:style => "width: 177px; margin-left: 20px", :name => "id"}
+              %option{:value => ""}
+              -Jumper.all.each do |jumper|
+                %option{:value => jumper.id}= jumper.name
+            :javascript
+              $(document).ready(function(){
+                $('.existing-jumper').change(function(){
+                  if ($(this).val() != ""){
+                    $(".existing-label").addClass("bold");
+                    if ($("fieldset.new-jumper").is(":visible")) $("fieldset.new-jumper").hide("blind", 250);
+                  } else {
+                    $(".existing-label").removeClass("bold");
+                    $("fieldset.new-jumper").show("blind", 250);
+                  }
+                });
+              });
+          %input{:type => "hidden", :name => "id"}
+          %fieldset.new-jumper{:style => "margin: 10px -5px;"}
+            %p.bold
+              %label Name
+              %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
+              %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px"}
+            %p
+              %label{:style => "font-weight: bold"} Nickname
+              %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
+            %br
+            %p
+              %label Country
+              %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
+                %option{:value => "USA"} USA
+                %option{:value => "Canada"} Canada
+                %option{:value => "Mexico"} Mexico
+                %option{:value => "England"} England
+                %option{:value => "Germany"} Germany
+
+            %p
+              %label Address
+              %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px"}
+            %p
+              %label City
+              %input{:type => "text", :size => "30", :name => "city", :style => "margin-left: 20px"}
+            %p
+              %label State
+              %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
+                %option{:value => "AL"} AL - Alabama
+                %option{:value => "AK"} AK - Alaska
+                %option{:value => "AZ"} AZ - Arizona
+                %option{:value => "AR"} AR - Arkansas
+                %option{:value => "CA"} CA - California
+                %option{:value => "CO"} CO - Colorado
+                %option{:value => "CT"} CT - Connecticut
+                %option{:value => "DE"} DE - Delaware
+                %option{:value => "FL"} FL - Florida
+                %option{:value => "GA"} GA - Georgia
+                %option{:value => "HI"} HI - Hawaii
+                %option{:value => "ID"} ID - Idaho
+                %option{:value => "IL"} IL - Illinois
+                %option{:value => "IN"} IN - Indiana
+                %option{:value => "IA"} IA - Iowa
+                %option{:value => "KS"} KS - Kansas
+                %option{:value => "KY"} KY - Kentucky
+                %option{:value => "LA"} LA - Louisiana
+                %option{:value => "ME"} ME - Maine
+                %option{:value => "MD"} MD - Maryland
+                %option{:value => "MA"} MA - Massachusetts
+                %option{:value => "MI"} MI - Michigan
+                %option{:value => "MN"} MN - Minnesota
+                %option{:value => "MS"} MS - Mississippi
+                %option{:value => "MO"} MO - Missouri
+                %option{:value => "MT"} MT - Montana
+                %option{:value => "NE"} NE - Nebraska
+                %option{:value => "NV"} NV - Nevada
+                %option{:value => "NH"} NH - New Hampshire
+                %option{:value => "NJ"} NJ - New Jersey
+                %option{:value => "NM"} NM - New Mexico
+                %option{:value => "NY"} NY - New York
+                %option{:value => "NC"} NC - North Carolina
+                %option{:value => "ND"} ND - North Dakota
+                %option{:value => "OH"} OH - Ohio
+                %option{:value => "OK"} OK - Oklahoma
+                %option{:value => "OR"} OR - Oregon
+                %option{:value => "PA"} PA - Pennsylvania
+                %option{:value => "RI"} RI - Rhode Island
+                %option{:value => "SC"} SC - South Carolina
+                %option{:value => "SD"} SD - South Dakota
+                %option{:value => "TN"} TN - Tennessee
+                %option{:value => "TX"} TX - Texas
+                %option{:value => "UT"} UT - Utah
+                %option{:value => "VT"} VT - Vermont
+                %option{:value => "VA"} VA - Virginia
+                %option{:value => "WA"} WA - Washington
+                %option{:value => "WV"} WV - West Virginia
+                %option{:value => "WI"} WI - Wisconsin
+                %option{:value => "WY"} WY - Wyoming
+                %option{:value => "ZZ"} Other
+            %p
+              %label ZIP Code
+              %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
+          %p
+            %label Jump Type
+            %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+              %option Tandem
+              %option AFF
+              %option Member
+              %option Other
+          %p
+            %label No. of Jumpers
+            %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
+          %br
+          %p.bold
+            %label Total Cost
+            %label{:style => "display: inline-block;width: 180px; margin-left: 18px; margin-right: 2px"} $100.00
+          %br
+          
+          %div{:style => "text-align: center"}
+            .checkcontainer{:onClick => "toggleAvailable();", :style => 'position: relative'}
+              .cover{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;"}
+              %input.available{:type => "checkbox", :style => "margin-right: 10px;", :name => "available"}
+              %label{:style => "font-weight: bold;"} Bill Now
+          %br
+          .left{:style => "text-align: center"}        
+            %a.awesome.giant.green{:href => "#create-jumper", :onClick => "createJumper(this);", :style => "color: white"} Create Reservation
 .box.box-60
   .boxin{:style => "border: #AAA"}
     .content
@@ -28,13 +136,13 @@
         %thead
           %tr
             %th.tc.month{:colspan => "7"}
-              .spacer{:style => "display: inline; margin-left: 150px"}
+              .spacer{:style => "display: inline; margin-left: 157px"}
               %a{:href => "#", :title => "Go to June 2011"}
                 %img{:alt => "Go to October 2009", :src => "css/img/cal-left.png", :style => "height: 18px; width: 18px"}
               = Time.now.strftime("%B %Y")
               %a{:href => "#", :title => "Go to August 2011"}
                 %img{:alt => "Go to January 2010", :src => "css/img/cal-right.png", :style => "height: 18px; width: 18px"}
-              .legend{:style => "display: inline; margin-left: 30px"}
+              .legend{:style => "display: inline; margin-left: 7px; font-size: 12px"}
                 .stat.outline Sport
                 .stat.green.flat-right.flat-right Tandem 
                 .stat.purple.merge-left AFF
@@ -47,104 +155,44 @@
             %th.tc Saturday
             %th.tc Sunday
         %tbody
-          %tr.first
-            %td.inactive
-              %strong 28
-            / inactive days (month past or month after)
-            %td.inactive
-              %strong 29
-              .items
-                .stat.outline= rand(4) + 20
-                %br
-                .stat.green.flat-right= rand(8) + 20
-                .stat.purple.merge-left= rand(25)+20
-            %td.inactive
-              %strong 30
-              .items
-                .stat.outline= rand(4) + 2
-                %br
-                .stat.green.flat-right= rand(8) + 2
-                .stat.purple.merge-left= rand(25)
-            %td
-              %strong 1
-            %td
-              %strong 2
-              .items
-                .stat.outline= rand(4) + 2
-                %br
-                .stat.green.flat-right= rand(8) + 2
-                .stat.purple.merge-left= rand(25)
-            %td
-              %strong 3
-            %td
-              %strong 4
-              .items
-                .stat.outline= rand(4) + 2
-                %br
-                .stat.green.flat-right= rand(8) + 2
-                .stat.purple.merge-left= rand(25)
+          - days = []
+          -5.times do |week|
+            %tr
+              -7.times do |day|
+                -day_number = (27 + week*7 + day) % 30 + 1
+                -non_modulo = (28 + week*7 + day)
+                %td{:class => ((non_modulo > 30 && non_modulo < 61) ? "" : "inactive" )}
+                  %strong= day_number
+                  -unless (non_modulo > Time.now.day + 30) || (day == 0) #not future or monday
+                    .items
+                      .stat.outline= rand(20) +10
+                      %br
+                      .stat.green.flat-right= rand(3) + 5
+                      .stat.purple.merge-left= rand(6)+10
+.box.box-100.altbox
+  .boxin
+    .header
+      %h3 Today's Reservations
+    .content
+      %table{:cellspacing => "0"}
+        %thead
           %tr
-            %td
-              %strong 5
-            %td
-              %strong 6
-              .items
-                .stat.outline= rand(4) + 2
-                %br
-                .stat.green.flat-right= rand(8) + 2
-                .stat.purple.merge-left= rand(25)
-            %td
-              %strong 7
-            %td
-              %strong 8
-            %td
-              %strong 9
-            %td
-              %strong 10
-            %td
-              %strong 11
-          %tr
-            %td
-              %strong 12
-            %td
-              %strong 13
-            %td
-              %strong 14
-            %td
-              %strong 15
-            %td
-              %strong 16
-            %td
-              %strong 17
-            %td
-              %strong 18
-          %tr
-            %td
-              %strong 19
-            %td
-              %strong 20
-            %td
-              %strong 21
-            %td
-              %strong 22
-            %td
-              %strong 23
-            %td
-              %strong 24
-            %td
-              %strong 25
-          %tr
-            %td
-              %strong 26
-            %td
-              %strong 27
-            %td
-              %strong 28
-            %td
-              %strong 29
-            %td
-              %strong 30
-            %td
-              %strong 31
-            %td.inactive
-              %strong 1
+            %th Group Name
+            %td.tc{:style => 'width: 60px'} Type
+            %td.tc{:style => 'width: 150px'} Notes
+            %td.tr{:style => 'width: 60px'} # Jumpers
+            %td.tc{:style => 'width: 50px'} Time
+            %td.tc{:style => 'width: 80px'} Booked
+        %tbody
+          -10.times do |i|
+            %tr{:class => ( i == 0 ? "first" : "")}
+              %th
+                %a{:href => "#"} Kent McCullough
+              %td= ["Phone", "Online", "In Person"][rand(3)]
+              %td= (rand > 0.8 ? "Groupon" : "")
+              %td.tr
+                .stat.green{:href => "#", :style => "margin-right: 20px"}= rand(20)+1
+              %td.tc #{8 + i/3}AM
+              %td.tc July #{rand(11)+1}th
+
+                
