@@ -17,6 +17,7 @@ class Main
     haml :schedule, :layout => false
   end
   get '/checkin' do
+    @jumpers = Jumper.all
     haml :checkin, :layout => false
   end
   get '/accounts' do
@@ -122,6 +123,24 @@ class Main
     @jumper = Jumper.get(params[:id])
     return false if @jumper.nil?
     haml :edit_jumper, :layout => false
+  end
+  
+  get "/ajax/jumper/available/?" do
+    return false unless logged_in?
+    return false if (params[:jumper].nil? && params[:jumperID].nil?)
+    @jumper = Jumper.get(params[:jumperID]) unless params[:jumperID].nil? || params[:jumperID].empty?
+    @jumper = Jumper.all.find{|j| j.name == params[:jumper]} unless params[:jumper].nil? || params[:jumper].empty?
+    return false if @jumper.nil?
+    if params[:value] == "true"
+      return false if @jumper.available
+      @jumper.available = true
+      @jumper.save
+    else
+      return false if !@jumper.available
+      @jumper.available = false
+      @jumper.save
+    end
+    return @jumper.name + " is now checked in."
   end
   
   

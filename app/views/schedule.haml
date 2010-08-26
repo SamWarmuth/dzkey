@@ -4,7 +4,7 @@
       %h3 New Reservation
     .content
       .edit-jumper{:style => "text-align: center", :id => 'edit'}
-        %form.newjumperform{:style => " text-align: right; font-size: 16px"}
+        %form.newjumperform{:style => " text-align: right; font-size: 14px"}
           %p
             %label.existing-label Existing Jumper
             %select.existing-jumper{:style => "width: 177px; margin-left: 20px", :name => "id"}
@@ -30,7 +30,7 @@
               %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
               %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px"}
             %p
-              %label{:style => "font-weight: bold"} Nickname
+              %label Nickname
               %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
             %br
             %p
@@ -110,6 +110,10 @@
             %input{:type => "text", :size => "30", :name => "email", :style => "margin-left: 20px"}
           %br
           %p
+            %label{:style => "font-weight: bold"} Date
+            %input{:type => "text", :size => "30", :name => "email", :style => "margin-left: 20px"}
+          %br
+          %p
             %label Jump Type
             %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
               %option Tandem
@@ -139,7 +143,7 @@
       %table.calendar{:cellspacing => "0"}
         %thead
           %tr
-            %th.tc.month{:colspan => "7"}
+            %th.tc.month{:colspan => "7", :style => "border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px;"}
               .spacer{:style => "display: inline; margin-left: 157px"}
               %a{:href => "#", :title => "Go to June 2011"}
                 %img{:alt => "Go to October 2009", :src => "css/img/cal-left.png", :style => "height: 18px; width: 18px"}
@@ -159,20 +163,26 @@
             %th.tc Saturday
             %th.tc Sunday
         %tbody
-          - days = []
+          - days = ["Monday", "Tuesday", "Wedesday", "Thursday", "Friday", "Saturday", "Sunday"]
           -5.times do |week|
             %tr
               -7.times do |day|
                 -day_number = (27 + week*7 + day) % 30 + 1
                 -non_modulo = (28 + week*7 + day)
-                %td{:class => ((non_modulo > 30 && non_modulo < 61) ? "" : "inactive" )}
+                %td.vtip{:class => ((non_modulo > 30 && non_modulo < 61) ? "" : "inactive" ), :title => "<b>#{days[day]} #{Time.now.strftime("%B")} #{day_number}</b><br/> 8am: 3TDM, 1AFF, 2SP<br/> 9am: 3TDM, 1AFF, 2SP<br/> 10am: 3TDM, 1AFF, 2SP<br/> 11am: 3TDM, 1AFF, 2SP<br/>"}
                   %strong= day_number
                   -unless (non_modulo > Time.now.day + 30) || (day == 0) #not future or monday
                     .items
-                      .stat.outline= rand(10) +2
-                      %br
                       .stat.green.flat-right= rand(3) + 5
-                      .stat.purple.merge-left= rand(6)+10
+                      .stat.purple.merge-left= rand(6)+4
+                      %br
+                      .stat.outline{:style => "margin-top: 3px"}= rand(10) +2 
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
 .box.box-100.altbox
   .boxin
     .header
@@ -187,6 +197,7 @@
             %td.tr{:style => 'width: 60px'} # Jumpers
             %td.tc{:style => 'width: 50px'} Time
             %td.tc{:style => 'width: 80px'} Booked
+            %td.tc{:style => 'width: 80px'} View/Edit
         %tbody
           -10.times do |i|
             %tr{:class => ( i == 0 ? "first" : "")}
@@ -198,5 +209,11 @@
                 .stat.green{:href => "#", :style => "margin-right: 20px"}= rand(20)+1
               %td.tc #{8 + i/3}AM
               %td.tc July #{rand(11)+1}th
-
+              %td.tc
+                %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "#", :rel => ''}
+                  %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}
+:javascript
+  $(document).ready(function(){
+    vtip();
+  });
                 

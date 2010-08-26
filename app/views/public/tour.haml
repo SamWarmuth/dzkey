@@ -56,6 +56,12 @@
           %ul.secondary_menu
             %li
               %span Go To
+            %li#overviews.sel-li.sec_menu_selected{:style => 'display: none'}
+              .sec_menu_selected_left
+              %a.sec_menu_selected_middle.scroller{:href => "#overview"} Overview
+              .sec_menu_selected_right
+            %li#overviewd.desel-li
+              %a.scroller{:href => "#overview"} Overview
             %li#manifests.sel-li.sec_menu_selected{:style => 'display: none'}
               .sec_menu_selected_left
               %a.sec_menu_selected_middle.scroller{:href => "#manifest"} Manifest
@@ -90,6 +96,33 @@
               %a.scroller{:href => "#the-top"} Top
     .content
       .secondary_pages_content
+        %h1#overview Overview
+        .work_project
+          
+          %a.nivoZoom.center{:href => "images/projects/project1_lightbox.jpg", :title => "Online electronics shop"}
+            %img{:alt => "Name of the project", :src => "images/projects/project1.jpg"}/
+          %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip1]", :title => "Online electronics shop"}
+          %a.project_title{:href => "#"} ZOOMER
+          %p We’ve just finished the new awesome project. It has been a great time for us these months.
+          
+        .work_project
+          %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip2]", :title => "Online electronics shop"}
+          %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip2]", :title => "Online electronics shop"}
+          %img{:alt => "Name of the project", :src => "images/projects/project2.jpg"}/
+          %a.project_title{:href => "#"} Fresh Foods inc.
+          %p We’ve just finished the new awesome project. It has been a great time for us these months.
+        / .work_project
+        .work_project.last_project
+          %a.project_hover{:href => "images/projects/project1_lightbox.jpg", :rel => "lightbox[roadtrip3]", :title => "Online electronics shop"}
+          %a{:href => "images/projects/project2_lightbox.jpg", :rel => "lightbox[roadtrip3]", :title => "Online electronics shop"}
+          %img{:alt => "Name of the project", :src => "images/projects/project3.jpg"}/
+          %a.project_title{:href => "#"} Interactive company
+          %p We’ve just finished the new awesome project. It has been a great time for us these months.
+        / .work_project
+        .clear_container
+        %br
+        %hr
+        %br
         %h1#manifest Manifest
         .work_project
           
@@ -204,16 +237,12 @@
     .footer
       .footer_content
         .footer_left
-          %p SITE DESIGN © 2009-2010 Creative juice, inc&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
-          %a.rss{:href => ""} subscribe to our rss feed
-        / .footer_left
+          %p © 2010 DZKey&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
         .footer_right
           %p
-            %a{:href => "#"}> Privacy statement
+            %a{:href => "#"}> Privacy Statement
             \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            %a{:href => "#"} terms &amp; conditions
-        / .footer_right
-        .clear_container
+            %a{:href => "#"} Terms &amp; Conditions
 :javascript
   function sticky_relocate() {
     var window_top = jQuery(window).scrollTop();
@@ -237,7 +266,7 @@
       jQuery(elementClicked+"d").hide();
       
       var destination = jQuery(elementClicked).offset().top;
-      jQuery("html,body").animate({ scrollTop: destination-65}, 1000);
+      jQuery("html,body").animate({ scrollTop: destination-65}, 750);
       return false;
     });
     jQuery(window).scroll(sticky_relocate);

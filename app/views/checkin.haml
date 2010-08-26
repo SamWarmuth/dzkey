@@ -6,16 +6,40 @@
           %tr
             %th{:style => "border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin: 0;position: relative; top: 1px;"}
               %b{:style => "font-size: 125%"} Existing Jumper
-              %input#existingjumpers{:type => "text", :style => "height: 22px; width: 300px; margin-left: 135px;font-size: 125%; "}
-              &nbsp;
-              .shift{:style => "display: inline; margin: 0; padding: 0; position: relative; top: -2px;"}
-                %a.awesome.green.medium{:style => 'color: white;'} Check In
+              - if !@jumpers.any? {|j| !j.available}
+                %span{:style => "margin-left: 260px"}All jumpers are available.
+              - else
+                %input#existingjumpers{:type => "text", :style => "height: 22px; width: 300px; margin-left: 135px;font-size: 125%; padding-left: 5px;"}
+                &nbsp;
+                .shift{:style => "display: inline; margin: 0; padding: 0; position: relative; top: -2px;"}
+                  %a#checkin-jumper.awesome.green.medium{:style => 'color: white;'} Check In
     :javascript
       $(document).ready(function(){
-        var availableTags = [#{"'" + Jumper.all.map{|j| j.name}.join("', '") + "'"}];
+        var availableNames = [#{@jumpers.find_all{|j| !j.available}.map{|j| "'"+j.name + "'"}.join(", ")}];
+        $("#existingjumpers").keydown(function(e){
+          if (e.keyCode == 13){
+            var name = $(this).val();
+            if ($.inArray($(this).val(), availableNames) == 0){
+              $.get(("/ajax/jumper/available?jumper="+$(this).val()+"&value=true"), function(data){
+                $(this).val(data);
+              });
+              return false;
+            }
+          }
+          return true;
+        });
         $("#existingjumpers").autocomplete({
-          source: availableTags,
-          delay: 0
+          source: availableNames,
+          delay: 0,
+          minLength: 0
+        });
+        $('#checkin-jumper').click(function(){
+          var field = $("#existingjumpers");
+          var name = field.val();
+          field.val("");
+          $.get(("/ajax/jumper/available?jumper="+name+"&value=true"), function(data){});
+          $(".ui-autocomplete").hide();
+          return false;
         });
       });
 .box.box-100.altbox

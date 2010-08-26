@@ -126,9 +126,9 @@
             %tr
               %td
                 -if jumper.available
-                  %a.checkin.green{:href => "#"}
+                  %a.checkin.green{:href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
                 -else
-                  %a.checkin.red{:href => "#"}
+                  %a.checkin.red{:href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
               %td.bold= jumper.first_name
               %td.bold= jumper.last_name 
               %td= jumper.nickname
@@ -168,6 +168,15 @@
       $.uiTableFilter( jumpertable, this.value );
     });
   });
+  function setAvailable(jumperID, button){
+    if (button.hasClass('red')){
+      button.removeClass('red').addClass('green');
+      $.get(("/ajax/jumper/available?jumperID="+jumperID+"&value=true"), function(data){});
+    }else{
+      button.removeClass('green').addClass('red');
+      $.get(("/ajax/jumper/available?jumperID="+jumperID+"&value=false"), function(data){});
+    }
+  }
   function createJumper(button){
     var form_data = $('.newjumperform:last').serialize();  
     $.post(('/ajax/jumper?'+form_data), function(data) {
