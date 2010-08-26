@@ -89,11 +89,11 @@ h6{
  }
  
 .main_menu li, .main_menu li a, .main_menu li .selected_middle a:hover, .secondary_menu li a:hover{
- color: #bdbdbd;
+ color: #dddddd;
  }
  
 .main_menu li a:hover{
- color: #ededed;
+ color: #fdfdfd;
  }
  
 .project_table h1, .project p, .category_illustration h2{
