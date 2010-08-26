@@ -1,4 +1,4 @@
-.box.box-40.altbox
+.box.box-50.altbox
   .boxin
     .header
       %h3 New Reservation
@@ -137,31 +137,32 @@
           %br
           .left{:style => "text-align: center"}        
             %a.awesome.giant.green{:href => "#create-jumper", :onClick => "createJumper(this);", :style => "color: white"} Create Reservation
-.box.box-60
+.box.box-50
   .boxin{:style => "border: #AAA"}
     .content
       %table.calendar{:cellspacing => "0"}
         %thead
           %tr
             %th.tc.month{:colspan => "7", :style => "border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px;"}
-              .spacer{:style => "display: inline; margin-left: 157px"}
-              %a{:href => "#", :title => "Go to June 2011"}
-                %img{:alt => "Go to October 2009", :src => "css/img/cal-left.png", :style => "height: 18px; width: 18px"}
-              = Time.now.strftime("%B %Y")
-              %a{:href => "#", :title => "Go to August 2011"}
-                %img{:alt => "Go to January 2010", :src => "css/img/cal-right.png", :style => "height: 18px; width: 18px"}
-              .legend{:style => "display: inline; margin-left: 7px; font-size: 12px"}
-                .stat.outline Sport
+              .month-nav{:style => "display: inline; text-align: centerh"}
+                %a{:href => "#", :title => "Go to August 2011"}
+                  %img{:alt => "Go to October 2009", :src => "css/img/cal-left.png", :style => "height: 18px; width: 18px"}
+                = Time.now.strftime("%B %Y")
+                %a{:href => "#", :title => "Go to October 2011"}
+                  %img{:alt => "Go to January 2010", :src => "css/img/cal-right.png", :style => "height: 18px; width: 18px"}
+              .legend{:style => "display: inline; float: right; font-size: 12px; position: relative; top: 3px;"}
                 .stat.green.flat-right.flat-right Tandem 
                 .stat.purple.merge-left AFF
+                .stat.outline Sport
+                
           %tr
-            %th.tc Monday
-            %th.tc Tuesday
-            %th.tc Wednesday
-            %th.tc Thursday
-            %th.tc Friday
-            %th.tc Saturday
-            %th.tc Sunday
+            %th.tc Mon
+            %th.tc Tues
+            %th.tc Wed
+            %th.tc Thurs
+            %th.tc Fri
+            %th.tc Sat
+            %th.tc Sun
         %tbody
           - days = ["Monday", "Tuesday", "Wedesday", "Thursday", "Friday", "Saturday", "Sunday"]
           -5.times do |week|
@@ -177,12 +178,6 @@
                       .stat.purple.merge-left= rand(6)+4
                       %br
                       .stat.outline{:style => "margin-top: 3px"}= rand(10) +2 
-      %br
-      %br
-      %br
-      %br
-      %br
-      %br
 .box.box-100.altbox
   .boxin
     .header

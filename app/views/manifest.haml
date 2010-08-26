@@ -31,8 +31,9 @@
                   = current_flight.aircraft_prefix + ("%02.0f" % current_flight.number)
                 - else
                   &mdash;
-                %a.awesome.medium.green{:href => "#", :style => "float: right; color: white;padding: 5px; width: 10px; height: 10px; display: #{((current_flight.nil? || aircraft.on_hold) ? "none" : "auto")} ", :onclick => "takeOff('#{current_flight.id}'); return false;", :id => (aircraft_id+'takeoff')}
-                  %img{:src => "/images/takeoff-bigarrow.png", :style => "position: relative; top: -3px; left: -3px;"}
+                -unless current_flight.nil?
+                  %a.awesome.medium.green{:href => "#", :style => "float: right; color: white;padding: 5px; width: 10px; height: 10px; display: #{(aircraft.on_hold ? "none" : "auto")} ", :onclick => "takeOff('#{current_flight.id}'); return false;", :id => (aircraft_id+'takeoff')}
+                    %img{:src => "/images/takeoff-bigarrow.png", :style => "position: relative; top: -3px; left: -3px;"}
                 
               %td.tc{:style => "font-size: 115%"}
                 %a.stat.red.flat-right{:href => "#", :style => "position: relative; top: -1px;border-right: 1px solid #900", :onclick => "editTakeOffTime('#{aircraft_id}', '-5'); return false;"} -&#8202;&#8202;&#8202;5
