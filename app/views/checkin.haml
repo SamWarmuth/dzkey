@@ -7,9 +7,9 @@
             %th{:style => "border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin: 0;position: relative; top: 1px;"}
               %b{:style => "font-size: 125%"} Existing Jumper
               - if !@jumpers.any? {|j| !j.available}
-                %span{:style => "margin-left: 260px"}All jumpers are available.
+                %span{:style => "margin-left: 258px"}All jumpers are available.
               - else
-                %input#existingjumpers{:type => "text", :style => "height: 22px; width: 300px; margin-left: 135px;font-size: 125%; padding-left: 5px;"}
+                %input#existingjumpers.firstfocus{:type => "text", :style => "height: 22px; width: 300px; margin-left: 135px;font-size: 125%; padding-left: 5px;"}
                 &nbsp;
                 .shift{:style => "display: inline; margin: 0; padding: 0; position: relative; top: -2px;"}
                   %a#checkin-jumper.awesome.green.medium{:style => 'color: white;'} Check In

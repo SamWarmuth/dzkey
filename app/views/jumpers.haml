@@ -3,11 +3,11 @@
   %form.newjumperform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
     %p.bold
       %label Name
-      %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
-      %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px"}
+      %input{:type => "text", :size => "12", :name => "first_name", :style => "width: 80px; margin-left: 20px"}
+      %input{:type => "text", :size => "12", :name => "last_name", :style => "width: 81px; margin-left: 0px"}
     %p
       %label Nickname
-      %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
+      %input{:type => "text", :name => "nickname", :style => "width: 171px; margin-left: 20px"}
     %br
     %p
       %label Type
@@ -18,14 +18,14 @@
         %option Other
     %p
       %label Last Certified
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "last_certified"}
+      %input{:type => "text", :style => "width: 171px; margin-left: 20px", :name => "last_certified"}
     %br
     %p
       %label Address
-      %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px"}
+      %input{:type => "text", :name => "address", :style => "width: 171px; margin-left: 20px"}
     %p
       %label City
-      %input{:type => "text", :size => "30", :name => "city", :style => "margin-left: 20px"}
+      %input{:type => "text", :name => "city", :style => "width: 171px; margin-left: 20px"}
     %p
       %label State
       %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
@@ -82,14 +82,14 @@
         %option{:value => "ZZ"} Other
     %p
       %label ZIP Code
-      %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
+      %input{:type => "text", :name => "zip", :style => "width: 171px; margin-left: 20px"}
     %p
       %label Country
-      %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px"}
+      %input{:type => "text", :name => "country", :style => "width: 171px; margin-left: 20px"}
     %br
     %p.bold
       %label Initial Balance
-      %input{:type => "text", :size => "30", :style => "margin-left: 20px", :name => "balance", :value => "0.00"}
+      %input{:type => "text", :style => "width: 171px; margin-left: 20px", :name => "balance", :value => "0.00"}
     %br
     %div
       .checkcontainer{:onClick => "toggleAvailable();", :style => 'margin-right: 78px; position: relative'}
@@ -106,7 +106,7 @@
     .header
       %h3 Jumpers
       %a.plus{:href => "#new-jumper", :rel => "jumpersfacebox", :style => "margin-left: 5px;"} &nbsp;
-      %input#jumpersearch.search{:type => "text", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
+      %input#jumpersearch.search.firstfocus{:type => "text", :name => "jumpersearch", :placeholder => "Filter jumpers..."}
     .content
       %table#jumpertable{:cellspacing => "0"}
         %thead

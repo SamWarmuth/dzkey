@@ -1,6 +1,6 @@
 #new-staff{:style => "display: none; width: 600px; text-align: center"}
   %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} New staff
-  %form.fields.newstaffform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+  %form.fields.newstaffform{:style => "margin-right: 150px; margin-left: 50px;text-align: right; font-size: 16px"}
     %p
       %label{:style => "font-weight: bold"} Existing Jumper
       %select.existing-dropdown{:style => "width: 177px; margin-left: 20px", :name => "id"}
@@ -17,15 +17,14 @@
             }
           });
         });
-    %br
-    %fieldset.new-jumper{:style => "margin-left: 125px"}
+    %fieldset.new-jumper{:style => "margin: 10px -5px;"}
       %p.bold
         %label Name
-        %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px"}
-        %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px"}
+        %input{:type => "text", :name => "first_name", :style => "width: 80px; margin-left: 20px"}
+        %input{:type => "text", :name => "last_name", :style => "width: 81px; margin-left: 0px"}
       %p
         %label Nickname
-        %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px"}
+        %input{:type => "text", :name => "nickname", :style => "width: 171px; margin-left: 20px"}
       %br
       %p
         %label Country
@@ -35,13 +34,13 @@
           %option{:value => "Mexico"} Mexico
           %option{:value => "England"} England
           %option{:value => "Germany"} Germany
-          
+
       %p
         %label Address
-        %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px"}
+        %input{:type => "text",:name => "address", :style => "width: 171px; margin-left: 20px"}
       %p
         %label City
-        %input{:type => "text", :size => "30", :name => "city", :style => "margin-left: 20px"}
+        %input{:type => "text", :name => "city", :style => "width: 171px;margin-left: 20px"}
       %p
         %label State
         %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
@@ -98,11 +97,10 @@
           %option{:value => "ZZ"} Other
       %p
         %label ZIP Code
-        %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px"}
-    %br
+        %input{:type => "text", :name => "zip", :style => "width: 171px; margin-left: 20px"}
     %p
       %label{:style => "font-weight: bold"} Email Address
-      %input{:type => "text", :size => "30", :name => "email", :style => "margin-left: 20px"}
+      %input{:type => "text", :name => "email", :style => "width: 171px; margin-left: 20px"}
     %br
     %p
       %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "pilot", :checked => "checked"}
@@ -117,8 +115,8 @@
       %input{:type => "checkbox", :style => "margin-right: 10px;", :name => "videographer", :checked => "checked"}
       %label{:style => "font-weight: bold; margin-right: 70px"} Videographer 
     %br
-    %br
-    %b View &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    %span.bold View 
+    %span.bold{:style => "margin-left: 67px; margin-right: 33px"} Edit
     
     %p
       %label{:style => "font-weight: bold;"} Jumper Data
@@ -146,7 +144,7 @@
       %h3 Staff
       %a.plus{:href => "#new-staff", :rel => "stafffacebox", :style => "margin-left: 5px"} &nbsp;
       / Action button in the header of the box
-      %input#staffsearch.search{:type => "text", :style => "float: right; margin-right: 20px;", :name => "staffsearch", :placeholder => "Filter Staff..."}
+      %input#staffsearch.search.firstfocus{:type => "text", :style => "float: right; margin-right: 20px;", :name => "staffsearch", :placeholder => "Filter Staff..."}
     .content
       %table#stafftable{:cellspacing => "0"}
         %thead
