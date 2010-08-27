@@ -172,15 +172,6 @@
       $.uiTableFilter( jumpertable, this.value );
     });
   });
-  function setAvailable(jumperID, button){
-    if (button.hasClass('red')){
-      button.removeClass('red').addClass('green');
-      $.get(("/ajax/jumper/available?jumperID="+jumperID+"&value=true"), function(data){});
-    }else{
-      button.removeClass('green').addClass('red');
-      $.get(("/ajax/jumper/available?jumperID="+jumperID+"&value=false"), function(data){});
-    }
-  }
   function createJumper(button){
     var form_data = $('.newjumperform:last').serialize();  
     $.post(('/ajax/jumper?'+form_data), function(data) {
@@ -189,12 +180,5 @@
     });
     return false;
   }
-  function toggleAvailable(){
-    box = $('.available')
-    if (box.attr('checked')){
-      $('.available').attr('checked', '');
-    }else{
-      $('.available').attr('checked', 'checked');
-    }
-  }
+
                 

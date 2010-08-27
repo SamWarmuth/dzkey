@@ -11,9 +11,6 @@
     %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
     %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
-    %script{:src => "js/cufon-yui.js", :type => "text/javascript"}
-    %script{:src => "js/custom.font.js", :type => "text/javascript"}
-    %script{:src => "js/custom.js", :type => "text/javascript"}
     /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
   %body
     .header
@@ -37,123 +34,108 @@
     .sec_menu
       .sec_menu_content
         %ul.secondary_menu.secondary_menu_contact
-          %li
-            %span Our Address
+          %li{:style => "margin-left: 240px"}
+            %span Have any questions?
             &nbsp;
-            557 N 17th Street &nbsp; Milwaukee, WI
-          %li
-            %span Phone
+            call us at
             &nbsp;
-            (414) 215 - 0289
-          %li
-            %span Email
-            &nbsp;
-            <script type="text/javascript">
-            //<![CDATA[
-            <!--
-            var x="function f(x,y){var i,o=\"\",l=x.length;for(i=0;i<l;i++){if(i<72)y++;" +
-            "y%=127;o+=String.fromCharCode(x.charCodeAt(i)^(y++));}return o;}f(\"/>#,%::" +
-            "9y=u'H\\030\\023\\006\\033K\\004C\\036NWUU\\024\\021=z*jmdkzx>x+wv'iHKHC\\0" +
-            "00R\\002MXSFuW^Y\\1774j(iyyeomkf\\177#-(\\\"'%ub\\030Z\\016HY\\t]\\032\\013" +
-            "\\010\\036\\010\\004E\\013F\\013\\014\\017\\025\\033\\007^\\036E\\025WJG\\0" +
-            "24@=19j)(/|g\\\"7s\\\"nfnbPf;}<-jj|nnns>p\\016RWAWQT\\017\\030\\005EG\\005\\"+
-            "026SI\\030\\023\\033\\n\\006\\031j\\025\\035\\007\\007\\020`\\037bc\\000uqs" +
-            "\\030\\031\\025\\000\\177{z\\027\\020{|\\177\\014\\ra`d\\t\\n\\016ohj\\007\\"+
-            "000mlo<=]JRTVWX56X\\\\]23C@B/(P$>NKIK !CGo^_046[T<:;PQ8> MN4U\\\"''DE1e*\\\""+
-            ",)\\022\\022\\022\\177x_\\025\\026\\030uv@\\034\\025\\t\\024\\025A_\\001\\0" +
-            "06\\005jk\\030\\032\\022_\\014\\020\\022\\003aurs\\030\\031uila\\177{|\\021" +
-            "\\022\\036\\031\\001\\000\\010\\000geg\\004\\0051hmm\\002\\00330#9UWV;48YY\\"+
-            "\\12[AA./AEF+$;=4!<+Q233XYVJOE_w}tR-8wo({5xemm\\177ia&76\\013\\n[\\013z\\01" +
-            "4O\\017\\\\hOOCn\\\\NXR\\034K\\034PRX{K[S\\177PQM&o%--72\\024ub%p{\\177\\17" +
-            "7ru(iai\\177/~q qbnu`6H\\007\\013\\030MNM\\016S\\005V\\002W]S\\006X\\003\\0" +
-            "35\\025O\\035\\002\\020\\026\\034\\026U\\004@\\022,] _&8i+a)xjzv'v<i:u4{y~l" +
-            "ztnz?7\",72)"                                                                ;
-            while(x=eval(x));
-            //-->
-            //]]>
-            </script>
-            
-      / .sec_menu_content
-    / .SEC_MENU
+            %span{:style => "color: white"} (414) 215 - 0289
     .content
-      .secondary_pages_content
-        %h1 Have a project for us?
-        %p.subtitle Get in touch and we'll send you a quote
-        %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Ever since the 1500s, when an unknown printer took. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Ever since the 1500s, when an unknown printer took.
-        .contact_box
-          .contact_box_top
-          .contact_box_middle
-            %form.ajax_form{:action => "", :enctype => "multipart/form-data", :method => "post"}
-              %table.contact_form{:cellpadding => "0", :cellspacing => "0"}
-                %tr
-                  %td{:style => "width:461px"}
-                    %label{:for => "name"} Your name (required):
-                    .form_input.odd
-                      .input_left
-                      %input#name.input_middle.required{:name => "yourname", :type => "text"}/
-                      .input_right
-                  %td{:style => "width:461px"}
-                    %label{:for => "email"} Your email (required):
-                    .form_input
-                      .input_left
-                      %input#email.input_middle.required{:name => "email", :type => "text"}/
-                      .input_right
-                %tr
-                  %td{:style => "width:461px"}
-                    %label{:for => "phone"} Your phone number:
-                    .form_input.odd
-                      .input_left
-                      %input#phone.input_middle{:name => "phone", :type => "text"}/
-                      .input_right
-                  %td{:style => "width:461px"}
-                    %label{:for => "company"} Your company:
-                    .form_input
-                      .input_left
-                      %input#company.input_middle{:name => "company", :type => "text"}/
-                      .input_right
-                %tr
-                  %td{:style => "width:461px"}
-                    %label{:for => "budget"} Your budget:
-                    .form_input.odd
-                      .input_left
-                      %input#budget.input_middle{:name => "Budget", :type => "text"}/
-                      .input_right
-                  %td{:style => "width:461px"}
-                    %label{:for => "deadline"} Deadline:
-                    .form_input
-                      .input_left
-                      %input#deadline.input_middle{:name => "Deadline", :type => "text"}/
-                      .input_right
-                %tr
-                  %td{:colspan => "2", :style => "width:922px"}
-                    %label{:for => "deadline"} Your message:
-                    .form_textarea
-                      .textarea_left
-                      %textarea#message.textarea_middle.required{:cols => "103", :name => "message", :rows => "5"}
-                      .textarea_right
-                %tr
-                  %td{:colspan => "2", :style => "width:922px"}
-                    %input#send.submit{:type => "submit", :value => ""}/
-          .contact_box_bottom
-        / contact_box
-      / secondary_pages_content
+      .secondary_pages_content{:style => "padding-top: 30px;"}
+        .title{:style => 'text-align: center; padding: 0'}
+          %h1{:style => "font-weight: bold;font-size: 2.1em;"} Sign Up for DZKey
+          Free for 30 days. Register in 60 seconds.
+        %form{:style => "font-size: 14px;  width: 700px; margin: 30px auto; padding: 0 50px; border: 1px solid #ddd;text-align: center; box-shadow: #aaa 0 0 10px; -webkit-box-shadow: #aaa 0 0 10px; -moz-box-shadow: #aaa 0 0 10px;"}
+          %img{:src => "/images/step1.png", :style => 'display: inline-block; margin: 25px auto 15px auto; width: 300px; height: 81px;'}
+          .indent{:style => "text-align: center; margin-right: 20px"}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Dropzone / Club Name
+              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Dropzone Address
+              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} City/State/ZIP
+              %input{:type => "text", :style => 'width: 179px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %input{:type => "text", :style => 'width: 30px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %input{:type => "text", :style => 'width: 55px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Website
+              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+          %img{:src => "/images/step2.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 229px; height: 81px'}
+          .indent{:style => "text-align: center"}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Name
+              %input{:type => "text", :style => 'width: 141px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %input{:type => "text", :style => 'width: 141px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Email Address
+              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Password
+              %input{:type => "password", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+          %img{:src => "/images/step3.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 291px; height: 81px'}
+          .indent{:style => "text-align: center"}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Billing Name
+              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Billing Address
+              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} City/State/ZIP
+              %input{:type => "text", :style => 'width: 179px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %input{:type => "text", :style => 'width: 30px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %input{:type => "text", :style => 'width: 55px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"}
+                %img{:src => "/images/lock.png", :style => "width: 24px; height: 24px; vertical-align: text-top; position: relative; top: -5px;"}
+                Credit Card Number
+                
+                
+              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+            %p
+              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Expiration
+              %select{:style => "margin-right: 5px"}
+                -months = %w{Jan Feb Mar Apr May Jun Jul Aug Sept Oct Nov Dec}
+                -12.times do |i|
+                  %option= (i+1).to_s + " - " + months[i]
+              %select{:style => 'margin-right: 167px'}
+                -10.times do |i|
+                  %option= Time.now.year+i
+          %br
+          %hr{:style => "margin: 20px 70px"}
+          .pricebox{:style => "font-family: Arial Black;"}
+            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #3A3;width: 180px; padding-right: 25px; padding-left: 20px;"} Cost
+            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #3A3;"} $99
+            %div{:style => "display: inline-block; font-weight: bold; font-size: 1.5em; color: #3A3;"}> /month
+            %br
+            
+            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #333;width: 180px; padding-right: 50px"} Due Today
+            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #333;width: 180px;"} $0
+            %br
+            %br
+          %div{:style => "margin: 10px 80px;"} <b>Your 30-day free trial lasts until midnight on #{(Time.now + (60*60*24*30)).strftime("%B %d, %Y")}.</b> If you don't want to continue using DZKey, just cancel and you won't be charged <b>(we'll email you 5 days before the trial ends to remind you)</b>. You can cancel any time.
+          
+          
+          
+          %a.awesome.green.giant{:href => "/signup", :style => "text-align: center;margin: 20px; margin-left: 53px; padding: 15px 25px;"}
+            %b{:style => "font-size: 1.5em"} Sign Up for DZKey
+            
+          %br
+          %br
+          
+          
+            
       .clear_container
       %br/
       %br/
-    / .CONTENT
     .footer
       .footer_content
         .footer_left
-          %p SITE DESIGN © 2009-2010 Creative juice, inc&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
-          %a.rss{:href => ""} subscribe to our rss feed
-        / .footer_left
+          %p © 2010 DZKey&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
         .footer_right
           %p
             %a{:href => "#"}> Privacy Statement
             \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             %a{:href => "#"} Terms &amp; Conditions
-        / .footer_right
-      / .footer_content
-    / .FOOTER
-    :javascript
-      document.getElementById('project_title').style.fontSize='42px';

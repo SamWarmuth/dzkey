@@ -189,6 +189,23 @@
                     return false;
                   });
                 });
+                function setAvailable(jumperID, button){
+                  if (button.hasClass('red')){
+                    button.removeClass('red').addClass('green');
+                    $.get(("/ajax/jumper/available?jumperID="+jumperID+"&value=true"), function(data){});
+                  }else{
+                    button.removeClass('green').addClass('red');
+                    $.get(("/ajax/jumper/available?jumperID="+jumperID+"&value=false"), function(data){});
+                  }
+                }
+                function toggleAvailable(){
+                  box = $('.available')
+                  if (box.attr('checked')){
+                    $('.available').attr('checked', '');
+                  }else{
+                    $('.available').attr('checked', 'checked');
+                  }
+                }
                 function updatePages(){
                   $.get(("/ajax/changes?since="+$('#current_version').html()), function(data){
                     if (data != ""){
