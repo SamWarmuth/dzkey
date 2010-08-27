@@ -1,0 +1,102 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %title DZKey - About Us
+    %meta{:content => "WebCrafters", :name => "author"}/
+    %meta{:content => "A short description of your company", :name => "description"}/
+    %meta{:content => "Some keywords that best describe your business. Try to use these words in the texts from the page", :name => "keywords"}/
+    %meta{:content => "english", :name => "language"}/
+    %link{:href => "images/favicon.ico", :rel => "icon", :type => "image/ico"}/
+    %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
+    /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
+  %body
+    .header
+      .header_content
+        %a{:href => "/"}
+          %img.logo.png{:alt => "DZKey Logo", :height => "45", :width => "147", :style => "position: relative; top: -5px;", :src => "images/dzkey-glow.png", :title => "Go to Homepage"}
+        %ul.main_menu
+          %li
+            %a.homepage{:href => "/"}
+          %li
+            %a{:href => "/tour"} Feature Tour
+          %li
+            %a{:href => "/faq"} FAQ
+          %li.selected_page
+            .selected
+              .selected_left
+              .selected_middle
+                %a{:href => "/contact"} Contact
+              .selected_right
+          %li
+            %a{:href => "/login"} Log In
+          %li
+            %a.awesome.medium.green{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
+    .secondary_page_bg
+      .category_illustration
+        .punchline_contact
+          %h2 A little bit about us
+        %img.phone{:alt => "Contact", :height => "159", :src => "images/phone.png", :width => "216"}/
+      / .project
+    / .LATEST_PROJECT
+    .sec_menu
+      .sec_menu_content
+        %ul.secondary_menu.secondary_menu_contact
+          %li
+            %span Our Address
+            &nbsp;
+            557 N 17th Street &nbsp; Milwaukee, WI
+          %li
+            %span Phone
+            &nbsp;
+            (414) 215 - 0289
+          %li
+            %span Email
+            &nbsp;
+            <script type="text/javascript">
+            //<![CDATA[
+            <!--
+            var x="function f(x){var i,o=\"\",l=x.length;for(i=l-1;i>=0;i--) {try{o+=x.c" +
+            "harAt(i);}catch(e){}}return o;}f(\")\\\"function f(x,y){var i,o=\\\"\\\\\\\""+
+            "\\\\,l=x.length;for(i=0;i<l;i++){y%=127;o+=String.fromCharCode(x.charCodeAt" +
+            "(i)^(y++));}return o;}f(\\\"\\\\4>1&908#v.(2(821HC^\\\\\\\\002D\\\\\\\\r\\\\"+
+            "\\\\024\\\\\\\\002\\\\\\\\016T6I\\\\\\\\001\\\\\\\\014\\\\\\\\007\\\\\\\\00" +
+            "3\\\\\\\\004\\\\\\\\036H\\\\\\\\032\\\\\\\\032\\\\\\\\023\\\\\\\\0317<#1\\\\"+
+            "\\\\036\\\\\\\\005S\\\\\\\\035ol^!$qosdl7W.Nbfsz2g{5Szypv;InB=\\\\\\\\036HL" +
+            "EKeb}cLS\\\\\\\\005OBC\\\\\\\\023\\\\\\\\037P\\\\\\\\014\\\\\\\\021\\\\\\\\" +
+            "035\\\\\\\\016\\\\\\\\006\\\\\\\\014\\\"\\\\,80)\\\"(f};)lo,0(rtsbus.o nrut" +
+            "er};)i(tArahc.x=+o{)--i;0=>i;1-l=i(rof}}{)e(hctac};l=+l;x=+x{yrt{)29=!)31/l" +
+            "(tAedoCrahc.x(elihw;lo=l,htgnel.x=lo,\\\"\\\"=o,i rav{)x(f noitcnuf\")"      ;
+            while(x=eval(x));
+            //-->
+            //]]>
+            </script>
+            
+      / .sec_menu_content
+    / .SEC_MENU
+    .content
+      .secondary_pages_content
+        
+        %img{:src => "/images/about-sam.jpg", :style => "display: inline-block; border: 5px solid #111"}
+        .description{:style => "display: inline-block; width: 500px; vertical-align: top; margin: 20px;"}
+          %h1 Sam Warmuth
+          %p.subtitle Technical
+        %br
+        %br
+        %img{:src => "/images/about-kent.jpg", :style => "display: inline-block; border: 5px solid #111"}
+        .description{:style => "display: inline-block; width: 500px; vertical-align: top; margin: 20px;"}
+          %h1 Kent McCullough
+          %p.subtitle Business / Sales
+      .clear_container
+      %br
+      %br
+    .footer
+      .footer_content
+        .footer_left
+        .footer_right
+          %p
+            %a{:href => "#"}> Privacy Statement
+            \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            %a{:href => "#"} Terms &amp; Conditions

@@ -2,7 +2,7 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %title Creative Portfolio - Contact
+    %title DZKey - Contact
     %meta{:content => "WebCrafters", :name => "author"}/
     %meta{:content => "A short description of your company", :name => "description"}/
     %meta{:content => "Some keywords that best describe your business. Try to use these words in the texts from the page", :name => "keywords"}/
@@ -11,9 +11,6 @@
     %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
     %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
-    %script{:src => "js/cufon-yui.js", :type => "text/javascript"}
-    %script{:src => "js/custom.font.js", :type => "text/javascript"}
-    %script{:src => "js/custom.js", :type => "text/javascript"}
     /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
   %body
     .header
@@ -25,9 +22,8 @@
             %a.homepage{:href => "/"}
           %li
             %a{:href => "/tour"} Feature Tour
-          /
-            %li
-              %a{:href => "/faq"} FAQ
+          %li
+            %a{:href => "/faq"} FAQ
           %li.selected_page
             .selected
               .selected_left
@@ -143,6 +139,3 @@
             %a{:href => "#"}> Privacy Statement
             \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
             %a{:href => "#"} Terms &amp; Conditions
-    :javascript
-      document.getElementById('project_title').style.fontSize='42px';
-    

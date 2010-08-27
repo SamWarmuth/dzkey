@@ -22,9 +22,8 @@
             %a.homepage{:href => "/"}
           %li
             %a{:href => "/tour"} Feature Tour
-          /
-            %li
-              %a{:href => "/faq"} FAQ
+          %li
+            %a{:href => "/faq"} FAQ
           %li
             %a{:href => "/contact"} Contact
           %li
@@ -49,53 +48,51 @@
           %img{:src => "/images/step1.png", :style => 'display: inline-block; margin: 25px auto 15px auto; width: 300px; height: 81px;'}
           .indent{:style => "text-align: center; margin-right: 20px"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Dropzone / Club Name
-              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Dropzone or Club Name
+              %input.signup-textfield{:type => "text"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Dropzone Address
-              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Dropzone Address
+              %input.signup-textfield{:type => "text"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} City/State/ZIP
-              %input{:type => "text", :style => 'width: 179px; height: 30px; font-size: 14px;padding-left: 10px'}
-              %input{:type => "text", :style => 'width: 30px; height: 30px; font-size: 14px;padding-left: 10px'}
-              %input{:type => "text", :style => 'width: 55px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label City/State/ZIP
+              %input.signup-textfield{:type => "text", :style => 'width: 179px;'}
+              %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
+              %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Website
-              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Website
+              %input.signup-textfield{:type => "text"}
           %img{:src => "/images/step2.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 229px; height: 81px'}
           .indent{:style => "text-align: center"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Name
-              %input{:type => "text", :style => 'width: 141px; height: 30px; font-size: 14px;padding-left: 10px'}
-              %input{:type => "text", :style => 'width: 141px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Name
+              %input.signup-textfield{:type => "text", :style => 'width: 141px;'}
+              %input.signup-textfield{:type => "text", :style => 'width: 141px;'}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Email Address
-              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Email Address
+              %input.signup-textfield{:type => "text"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Password
-              %input{:type => "password", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Password
+              %input.signup-textfield{:type => "password"}
           %img{:src => "/images/step3.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 291px; height: 81px'}
           .indent{:style => "text-align: center"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Billing Name
-              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Billing Name
+              %input.signup-textfield{:type => "text"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Billing Address
-              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label Billing Address
+              %input.signup-textfield{:type => "text"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} City/State/ZIP
-              %input{:type => "text", :style => 'width: 179px; height: 30px; font-size: 14px;padding-left: 10px'}
-              %input{:type => "text", :style => 'width: 30px; height: 30px; font-size: 14px;padding-left: 10px'}
-              %input{:type => "text", :style => 'width: 55px; height: 30px; font-size: 14px;padding-left: 10px'}
+              %label.signup-label City/State/ZIP
+              %input.signup-textfield{:type => "text", :style => 'width: 179px;'}
+              %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
+              %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"}
-                %img{:src => "/images/lock.png", :style => "width: 24px; height: 24px; vertical-align: text-top; position: relative; top: -5px;"}
+              %label.signup-label
                 Credit Card Number
-                
-                
-              %input{:type => "text", :style => 'width: 300px; height: 30px; font-size: 14px;padding-left: 10px'}
+                %img{:src => "/images/lock.png", :style => "width: 24px; height: 24px; vertical-align: text-top; position: relative; top: -5px;"}
+              %input.signup-textfield{:type => "text"}
             %p
-              %label{:style => "display: inline-block; width: 180px; text-align: right; padding-right: 50px"} Expiration
+              %label.signup-label Expiration
               %select{:style => "margin-right: 5px"}
                 -months = %w{Jan Feb Mar Apr May Jun Jul Aug Sept Oct Nov Dec}
                 -12.times do |i|

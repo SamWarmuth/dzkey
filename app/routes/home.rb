@@ -44,6 +44,9 @@ class Main
   get "/faq" do
     haml :'public/faq', :layout => false
   end
+  get "/about" do
+    haml :'public/about', :layout => false
+  end
   get "/css/style.css" do
     content_type 'text/css', :charset => 'utf-8'
     sass :style
