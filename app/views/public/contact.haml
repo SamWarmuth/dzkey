@@ -1,141 +1,97 @@
-!!! Strict
-%html{:xmlns => "http://www.w3.org/1999/xhtml"}
-  %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %title DZKey - Contact
-    %meta{:content => "WebCrafters", :name => "author"}/
-    %meta{:content => "A short description of your company", :name => "description"}/
-    %meta{:content => "Some keywords that best describe your business. Try to use these words in the texts from the page", :name => "keywords"}/
-    %meta{:content => "english", :name => "language"}/
-    %link{:href => "images/favicon.ico", :rel => "icon", :type => "image/ico"}/
-    %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
-    %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
-    /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
-  %body
-    .header
-      .header_content
-        %a{:href => "/"}
-          %img.logo.png{:alt => "DZKey Logo", :height => "45", :width => "147", :style => "position: relative; top: -5px;", :src => "images/dzkey-glow.png", :title => "Go to Homepage"}
-        %ul.main_menu
-          %li
-            %a.homepage{:href => "/"}
-          %li
-            %a{:href => "/tour"} Feature Tour
-          %li
-            %a{:href => "/faq"} FAQ
-          %li.selected_page
-            .selected
-              .selected_left
-              .selected_middle
-                %a{:href => "/contact"} Contact
-              .selected_right
-          %li
-            %a{:href => "/login"} Log In
-          %li
-            %a.awesome.medium.green{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
-    .secondary_page_bg
-      .category_illustration
-        .punchline_contact
-          %h2 Please contact us using the form below
-        %img.phone{:alt => "Contact", :height => "159", :src => "images/phone.png", :width => "216"}/
-      / .project
-    / .LATEST_PROJECT
-    .sec_menu
-      .sec_menu_content
-        %ul.secondary_menu.secondary_menu_contact
-          %li
-            %span Our Address
-            &nbsp;
-            557 N 17th Street &nbsp; Milwaukee, WI
-          %li
-            %span Phone
-            &nbsp;
-            (414) 215 - 0289
-          %li
-            %span Email
-            &nbsp;
-            <script type="text/javascript">
-            //<![CDATA[
-            <!--
-            var x="function f(x,y){var i,o=\"\",l=x.length;for(i=0;i<l;i++){if(i<72)y++;" +
-            "y%=127;o+=String.fromCharCode(x.charCodeAt(i)^(y++));}return o;}f(\"/>#,%::" +
-            "9y=u'H\\030\\023\\006\\033K\\004C\\036NWUU\\024\\021=z*jmdkzx>x+wv'iHKHC\\0" +
-            "00R\\002MXSFuW^Y\\1774j(iyyeomkf\\177#-(\\\"'%ub\\030Z\\016HY\\t]\\032\\013" +
-            "\\010\\036\\010\\004E\\013F\\013\\014\\017\\025\\033\\007^\\036E\\025WJG\\0" +
-            "24@=19j)(/|g\\\"7s\\\"nfnbPf;}<-jj|nnns>p\\016RWAWQT\\017\\030\\005EG\\005\\"+
-            "026SI\\030\\023\\033\\n\\006\\031j\\025\\035\\007\\007\\020`\\037bc\\000uqs" +
-            "\\030\\031\\025\\000\\177{z\\027\\020{|\\177\\014\\ra`d\\t\\n\\016ohj\\007\\"+
-            "000mlo<=]JRTVWX56X\\\\]23C@B/(P$>NKIK !CGo^_046[T<:;PQ8> MN4U\\\"''DE1e*\\\""+
-            ",)\\022\\022\\022\\177x_\\025\\026\\030uv@\\034\\025\\t\\024\\025A_\\001\\0" +
-            "06\\005jk\\030\\032\\022_\\014\\020\\022\\003aurs\\030\\031uila\\177{|\\021" +
-            "\\022\\036\\031\\001\\000\\010\\000geg\\004\\0051hmm\\002\\00330#9UWV;48YY\\"+
-            "\\12[AA./AEF+$;=4!<+Q233XYVJOE_w}tR-8wo({5xemm\\177ia&76\\013\\n[\\013z\\01" +
-            "4O\\017\\\\hOOCn\\\\NXR\\034K\\034PRX{K[S\\177PQM&o%--72\\024ub%p{\\177\\17" +
-            "7ru(iai\\177/~q qbnu`6H\\007\\013\\030MNM\\016S\\005V\\002W]S\\006X\\003\\0" +
-            "35\\025O\\035\\002\\020\\026\\034\\026U\\004@\\022,] _&8i+a)xjzv'v<i:u4{y~l" +
-            "ztnz?7\",72)"                                                                ;
-            while(x=eval(x));
-            //-->
-            //]]>
-            </script>
-            
-      / .sec_menu_content
-    / .SEC_MENU
-    .content
-      .secondary_pages_content
-        %h1 Have a question or comment for us?
-        %p.subtitle Fill out this form and we'll respond as soon as we can.
-        .contact_box
-          .contact_box_top
-          .contact_box_middle
-            %form.ajax_form{:action => "", :enctype => "multipart/form-data", :method => "post"}
-              %table.contact_form{:cellpadding => "0", :cellspacing => "0"}
-                %tr
-                  %td{:style => "width:461px"}
-                    %label{:for => "name"} Your name (required):
-                    .form_input.odd
-                      .input_left
-                      %input#name.input_middle.required{:name => "yourname", :type => "text"}/
-                      .input_right
-                  %td{:style => "width:461px"}
-                    %label{:for => "email"} Your email (required):
-                    .form_input
-                      .input_left
-                      %input#email.input_middle.required{:name => "email", :type => "text"}/
-                      .input_right
-                %tr
-                  %td{:style => "width:461px"}
-                    %label{:for => "phone"} Your phone number:
-                    .form_input.odd
-                      .input_left
-                      %input#phone.input_middle{:name => "phone", :type => "text"}/
-                      .input_right
-                  %td{:style => "width:461px"}
-                    %label{:for => "company"} Your company:
-                    .form_input
-                      .input_left
-                      %input#company.input_middle{:name => "company", :type => "text"}/
-                      .input_right
-                %tr
-                  %td{:colspan => "2", :style => "width:922px"}
-                    %label{:for => "deadline"} Your message:
-                    .form_textarea
-                      .textarea_left
-                      %textarea#message.textarea_middle.required{:cols => "103", :name => "message", :rows => "5"}
-                      .textarea_right
-                %tr
-                  %td{:colspan => "2", :style => "width:922px"}
-                    %input#send.submit{:type => "submit", :value => ""}/
-          .contact_box_bottom
-      .clear_container
-      %br
-      %br
-    .footer
-      .footer_content
-        .footer_left
-        .footer_right
-          %p
-            %a{:href => "#"}> Privacy Statement
-            \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            %a{:href => "#"} Terms &amp; Conditions
+.secondary_page_bg
+  .category_illustration
+    .punchline_contact
+      %h2 Please contact us using the form below
+    %img.phone{:alt => "Contact", :height => "159", :src => "images/phone.png", :width => "216"}/
+  / .project
+/ .LATEST_PROJECT
+.sec_menu
+  .sec_menu_content
+    %ul.secondary_menu.secondary_menu_contact
+      %li
+        %span Our Address
+        &nbsp;
+        557 N 17th Street &nbsp; Milwaukee, WI
+      %li
+        %span Phone
+        &nbsp;
+        (414) 215 - 0289
+      %li
+        %span Email
+        &nbsp;
+        <script type="text/javascript">
+        //<![CDATA[
+        <!--
+        var x="function f(x,y){var i,o=\"\",l=x.length;for(i=0;i<l;i++){if(i<72)y++;" +
+        "y%=127;o+=String.fromCharCode(x.charCodeAt(i)^(y++));}return o;}f(\"/>#,%::" +
+        "9y=u'H\\030\\023\\006\\033K\\004C\\036NWUU\\024\\021=z*jmdkzx>x+wv'iHKHC\\0" +
+        "00R\\002MXSFuW^Y\\1774j(iyyeomkf\\177#-(\\\"'%ub\\030Z\\016HY\\t]\\032\\013" +
+        "\\010\\036\\010\\004E\\013F\\013\\014\\017\\025\\033\\007^\\036E\\025WJG\\0" +
+        "24@=19j)(/|g\\\"7s\\\"nfnbPf;}<-jj|nnns>p\\016RWAWQT\\017\\030\\005EG\\005\\"+
+        "026SI\\030\\023\\033\\n\\006\\031j\\025\\035\\007\\007\\020`\\037bc\\000uqs" +
+        "\\030\\031\\025\\000\\177{z\\027\\020{|\\177\\014\\ra`d\\t\\n\\016ohj\\007\\"+
+        "000mlo<=]JRTVWX56X\\\\]23C@B/(P$>NKIK !CGo^_046[T<:;PQ8> MN4U\\\"''DE1e*\\\""+
+        ",)\\022\\022\\022\\177x_\\025\\026\\030uv@\\034\\025\\t\\024\\025A_\\001\\0" +
+        "06\\005jk\\030\\032\\022_\\014\\020\\022\\003aurs\\030\\031uila\\177{|\\021" +
+        "\\022\\036\\031\\001\\000\\010\\000geg\\004\\0051hmm\\002\\00330#9UWV;48YY\\"+
+        "\\12[AA./AEF+$;=4!<+Q233XYVJOE_w}tR-8wo({5xemm\\177ia&76\\013\\n[\\013z\\01" +
+        "4O\\017\\\\hOOCn\\\\NXR\\034K\\034PRX{K[S\\177PQM&o%--72\\024ub%p{\\177\\17" +
+        "7ru(iai\\177/~q qbnu`6H\\007\\013\\030MNM\\016S\\005V\\002W]S\\006X\\003\\0" +
+        "35\\025O\\035\\002\\020\\026\\034\\026U\\004@\\022,] _&8i+a)xjzv'v<i:u4{y~l" +
+        "ztnz?7\",72)"                                                                ;
+        while(x=eval(x));
+        //-->
+        //]]>
+        </script>
+        
+  / .sec_menu_content
+/ .SEC_MENU
+.content
+  .secondary_pages_content
+    %h1 Have a question or comment for us?
+    %p.subtitle Fill out this form and we'll respond as soon as we can.
+    .contact_box
+      .contact_box_top
+      .contact_box_middle
+        %form.ajax_form{:action => "", :enctype => "multipart/form-data", :method => "post"}
+          %table.contact_form{:cellpadding => "0", :cellspacing => "0"}
+            %tr
+              %td{:style => "width:461px"}
+                %label{:for => "name"} Your name (required):
+                .form_input.odd
+                  .input_left
+                  %input#name.input_middle.required{:name => "yourname", :type => "text"}/
+                  .input_right
+              %td{:style => "width:461px"}
+                %label{:for => "email"} Your email (required):
+                .form_input
+                  .input_left
+                  %input#email.input_middle.required{:name => "email", :type => "text"}/
+                  .input_right
+            %tr
+              %td{:style => "width:461px"}
+                %label{:for => "phone"} Your phone number:
+                .form_input.odd
+                  .input_left
+                  %input#phone.input_middle{:name => "phone", :type => "text"}/
+                  .input_right
+              %td{:style => "width:461px"}
+                %label{:for => "company"} Your dropzone:
+                .form_input
+                  .input_left
+                  %input#company.input_middle{:name => "company", :type => "text"}/
+                  .input_right
+            %tr
+              %td{:colspan => "2", :style => "width:922px"}
+                %label{:for => "deadline"} Your message:
+                .form_textarea
+                  .textarea_left
+                  %textarea#message.textarea_middle.required{:cols => "103", :name => "message", :rows => "5"}
+                  .textarea_right
+            %tr
+              %td{:colspan => "2", :style => "width:922px"}
+                %input#send.submit{:type => "submit", :value => ""}/
+      .contact_box_bottom
+  .clear_container
+  %br
+  %br

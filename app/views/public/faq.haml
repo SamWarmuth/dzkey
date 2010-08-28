@@ -1,139 +1,73 @@
-!!! Strict
-%html{:xmlns => "http://www.w3.org/1999/xhtml"}
-  %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %title Creative Portfolio - About us
-    %meta{:content => "WebCrafters", :name => "author"}/
-    %meta{:content => "A short description of your company", :name => "description"}/
-    %meta{:content => "Some keywords that best describe your business. Try to use these words in the texts from the page", :name => "keywords"}/
-    %meta{:content => "english", :name => "language"}/
-    %link{:href => "images/favicon.ico", :rel => "icon", :type => "image/ico"}/
-    %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
-    %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
-    /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
-  %body
-    .header
-      .header_content
-        %a{:href => "/"}
-          %img.logo.png{:alt => "DZKey Logo", :height => "45", :width => "147", :style => "position: relative; top: -5px;", :src => "images/dzkey-glow.png", :title => "Go to Homepage"}
-        %ul.main_menu
-          %li
-            %a.homepage{:href => "/"}
-          %li
-            %a{:href => "/tour"} Feature Tour
-          %li.selected_page
-            .selected
-              .selected_left
-              .selected_middle
-                %a{:href => "/faq"} FAQ
-              .selected_right
-          %li
-            %a{:href => "/contact"} Contact
-          %li
-            %a{:href => "/login"} Log In
-          %li
-            %a.awesome.medium.green{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
-    .secondary_page_bg
-      .category_illustration
-        .punchline_about
-          %h2 We’ve got creativity coming out of our noses
-          %p Exceptional Ideas and execution are our trademarks
-        %img.drawing_tablet{:alt => "FAQ", :height => "159", :src => "images/drawing_tablet.png", :width => "317"}/
-      / .project
-    / .LATEST_PROJECT
-    .sec_menu
-      .sec_menu_content
-        .social_header_links
-          .follow_us Follow us on:
-          %ul.about_social_network
-            %li
-              %a.behance_header{:href => "#"}
-            %li
-              %a.flickr_header{:href => "#"}
-            %li
-              %a.linkedin_header{:href => "#"}
-            %li
-              %a.facebook_header{:href => "#"}
-            %li
-              %a.krop_header{:href => "#"}
-            %li
-              %a.twitter_header{:href => "#"}
-      / .sec_menu_content
-    / .SEC_MENU
-    .content
-      .secondary_pages_content
-        %img.newspaper_icon.png{:alt => "About us", :height => "67", :src => "images/ps_ai_icons.jpg", :width => "83"}/
-        %h1 Hello, we are Creative Studio
-        %p.subtitle But you probably knew that already :)
-        .clear_container
-        .two_columns
-          .text
-            %h5 About out team
-            %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
-            %p But also the leap into electronic typesetting, remaining essentially unchanged orem Ipsum has been the industry's standard dummy text ever since the beggining. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing.
-          .services_we_offer
-            %h5 The services we offer
-            %p We can help you in the following domains:
-            .box
-              .box_top
-              .box_middle
-                %ul.third_menu
-                  %li.first
-                    %a{:href => "services.html"} Internet Marketing
-                  %li
-                    %a{:href => "services.html"} Website Design
-                  %li
-                    %a{:href => "services.html"} Brand Identity
-                  %li.last
-                    %a{:href => "services.html"} Print &amp; Old Media
-              .box_bottom
-            / box
-        / two_columns
-        .clear_container
-        %br/
-        %br/
-        .one_column
-          %h1 We do things by the book
-          %p.subtitle Here is the tedious process we follow:
-          %img.the_process{:alt => "The process we follow", :src => "images/the_process.jpg", :title => "The process"}/
-        .clear_container
-        %br/
-        %br/
-        %img.newspaper_icon.png{:alt => "Awards", :height => "67", :src => "images/award_icon.jpg", :width => "83"}/
-        %h1 Awards &amp; Recognition
-        %p.subtitle We hate awards but we had to win a few for our clients :p
-        .clear_container
-        .two_columns
-          .text
-            %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
-            %p Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
-          .services_we_offer
-            %h5 Client Testimonials
-            .box
-              .box_top
-              .box_middle
-                .testimonials
-                  %img.cite_icon.png{:alt => "Citation", :height => "19", :src => "images/cite_icon.png", :width => "21"}/
-                  %cite Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-                  %h6.testimonial_name Jonathan Doe, Software Company
-                  .clear_container
-              .box_bottom
-            / box
-        / two_columns
-        .clear_container
-      / secondary_pages_content
-      .clear_container
-    / .CONTENT
-    .footer
-      .footer_content
-        .footer_left
-          %p SITE DESIGN © 2009-2010 Creative juice, inc&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
-          %a.rss{:href => ""} subscribe to our rss feed
-        / .footer_left
-        .footer_right
-          %p
-            %a{:href => "#"}> Privacy Statement
-            \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            %a{:href => "#"} Terms &amp; Conditions
-    
+.sec_menu
+  .sec_menu_content
+    %ul.secondary_menu.secondary_menu_contact
+      %li{:style => "margin-left: 240px"}
+        %span Still Have Questions?
+        &nbsp;
+        call us at
+        &nbsp;
+        %span{:style => "color: white"} (414) 215 - 0289
+.content
+  .secondary_pages_content{:style => "padding-top: 20px"}
+    .title{:style => 'text-align: center; padding: 0;'}
+      %h1{:style => "font-weight: bold;font-size: 2.1em;"} Frequently Asked Questions
+      Free for 30 days. Register in 60 seconds.
+    %br
+    .clear_container
+    .two_columns
+      .text
+        %h5 About out team
+        %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+        %p But also the leap into electronic typesetting, remaining essentially unchanged orem Ipsum has been the industry's standard dummy text ever since the beggining. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing.
+      .services_we_offer
+        %h5 The services we offer
+        %p We can help you in the following domains:
+        .box
+          .box_top
+          .box_middle
+            %ul.third_menu
+              %li.first
+                %a{:href => "services.html"} Internet Marketing
+              %li
+                %a{:href => "services.html"} Website Design
+              %li
+                %a{:href => "services.html"} Brand Identity
+              %li.last
+                %a{:href => "services.html"} Print &amp; Old Media
+          .box_bottom
+        / box
+    / two_columns
+    .clear_container
+    %br/
+    %br/
+    .one_column
+      %h1 We do things by the book
+      %p.subtitle Here is the tedious process we follow:
+      %img.the_process{:alt => "The process we follow", :src => "images/the_process.jpg", :title => "The process"}/
+    .clear_container
+    %br/
+    %br/
+    %img.newspaper_icon.png{:alt => "Awards", :height => "67", :src => "images/award_icon.jpg", :width => "83"}/
+    %h1 Awards &amp; Recognition
+    %p.subtitle We hate awards but we had to win a few for our clients :p
+    .clear_container
+    .two_columns
+      .text
+        %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+        %p Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
+      .services_we_offer
+        %h5 Client Testimonials
+        .box
+          .box_top
+          .box_middle
+            .testimonials
+              %img.cite_icon.png{:alt => "Citation", :height => "19", :src => "images/cite_icon.png", :width => "21"}/
+              %cite Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+              %h6.testimonial_name Jonathan Doe, Software Company
+              .clear_container
+          .box_bottom
+        / box
+    / two_columns
+    .clear_container
+  / secondary_pages_content
+  .clear_container

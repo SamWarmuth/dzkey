@@ -1,138 +1,98 @@
-!!! Strict
-%html{:xmlns => "http://www.w3.org/1999/xhtml"}
-  %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %title DZKey - Sign Up
-    %meta{:content => "WebCrafters", :name => "author"}/
-    %meta{:content => "A short description of your company", :name => "description"}/
-    %meta{:content => "Some keywords that best describe your business. Try to use these words in the texts from the page", :name => "keywords"}/
-    %meta{:content => "english", :name => "language"}/
-    %link{:href => "images/favicon.ico", :rel => "icon", :type => "image/ico"}/
-    %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}/
-    %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
-    /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
-  %body
-    .header
-      .header_content
-        %a{:href => "/"}
-          %img.logo.png{:alt => "DZKey Logo", :height => "45", :width => "147", :style => "position: relative; top: -5px;", :src => "images/dzkey-glow.png", :title => "Go to Homepage"}
-        %ul.main_menu
-          %li
-            %a.homepage{:href => "/"}
-          %li
-            %a{:href => "/tour"} Feature Tour
-          %li
-            %a{:href => "/faq"} FAQ
-          %li
-            %a{:href => "/contact"} Contact
-          %li
-            %a{:href => "/login"} Log In
-          %li
-            %a.awesome.medium.black{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
-    .sec_menu
-      .sec_menu_content
-        %ul.secondary_menu.secondary_menu_contact
-          %li{:style => "margin-left: 240px"}
-            %span Have any questions?
-            &nbsp;
-            call us at
-            &nbsp;
-            %span{:style => "color: white"} (414) 215 - 0289
-    .content
-      .secondary_pages_content{:style => "padding-top: 30px;"}
-        .title{:style => 'text-align: center; padding: 0'}
-          %h1{:style => "font-weight: bold;font-size: 2.1em;"} Sign Up for DZKey
-          Free for 30 days. Register in 60 seconds.
-        %form{:style => "font-size: 14px;  width: 700px; margin: 30px auto; padding: 0 50px; border: 1px solid #ddd;text-align: center; box-shadow: #aaa 0 0 10px; -webkit-box-shadow: #aaa 0 0 10px; -moz-box-shadow: #aaa 0 0 10px;"}
-          %img{:src => "/images/step1.png", :style => 'display: inline-block; margin: 25px auto 15px auto; width: 300px; height: 81px;'}
-          .indent{:style => "text-align: center; margin-right: 20px"}
-            %p
-              %label.signup-label Dropzone or Club Name
-              %input.signup-textfield{:type => "text"}
-            %p
-              %label.signup-label Dropzone Address
-              %input.signup-textfield{:type => "text"}
-            %p
-              %label.signup-label City/State/ZIP
-              %input.signup-textfield{:type => "text", :style => 'width: 179px;'}
-              %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
-              %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
-            %p
-              %label.signup-label Website
-              %input.signup-textfield{:type => "text"}
-          %img{:src => "/images/step2.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 229px; height: 81px'}
-          .indent{:style => "text-align: center"}
-            %p
-              %label.signup-label Name
-              %input.signup-textfield{:type => "text", :style => 'width: 141px;'}
-              %input.signup-textfield{:type => "text", :style => 'width: 141px;'}
-            %p
-              %label.signup-label Email Address
-              %input.signup-textfield{:type => "text"}
-            %p
-              %label.signup-label Password
-              %input.signup-textfield{:type => "password"}
-          %img{:src => "/images/step3.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 291px; height: 81px'}
-          .indent{:style => "text-align: center"}
-            %p
-              %label.signup-label Billing Name
-              %input.signup-textfield{:type => "text"}
-            %p
-              %label.signup-label Billing Address
-              %input.signup-textfield{:type => "text"}
-            %p
-              %label.signup-label City/State/ZIP
-              %input.signup-textfield{:type => "text", :style => 'width: 179px;'}
-              %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
-              %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
-            %p
-              %label.signup-label
-                Credit Card Number
-                %img{:src => "/images/lock.png", :style => "width: 24px; height: 24px; vertical-align: text-top; position: relative; top: -5px;"}
-              %input.signup-textfield{:type => "text"}
-            %p
-              %label.signup-label Expiration
-              %select{:style => "margin-right: 5px"}
-                -months = %w{Jan Feb Mar Apr May Jun Jul Aug Sept Oct Nov Dec}
-                -12.times do |i|
-                  %option= (i+1).to_s + " - " + months[i]
-              %select{:style => 'margin-right: 167px'}
-                -10.times do |i|
-                  %option= Time.now.year+i
-          %br
-          %hr{:style => "margin: 20px 70px"}
-          .pricebox{:style => "font-family: Arial Black;"}
-            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #3A3;width: 180px; padding-right: 25px; padding-left: 20px;"} Cost
-            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #3A3;"} $99
-            %div{:style => "display: inline-block; font-weight: bold; font-size: 1.5em; color: #3A3;"}> /month
-            %br
-            
-            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #333;width: 180px; padding-right: 50px"} Due Today
-            %div{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #333;width: 180px;"} $0
-            %br
-            %br
-          %div{:style => "margin: 10px 80px;"} <b>Your 30-day free trial lasts until midnight on #{(Time.now + (60*60*24*30)).strftime("%B %d, %Y")}.</b> If you don't want to continue using DZKey, just cancel and you won't be charged <b>(we'll email you 5 days before the trial ends to remind you)</b>. You can cancel any time.
-          
-          
-          
-          %a.awesome.green.giant{:href => "/signup", :style => "text-align: center;margin: 20px; margin-left: 53px; padding: 15px 25px;"}
-            %b{:style => "font-size: 1.5em"} Sign Up for DZKey
-            
-          %br
-          %br
-          
-          
-            
-      .clear_container
-      %br/
-      %br/
-    .footer
-      .footer_content
-        .footer_left
-          %p © 2010 DZKey&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
-        .footer_right
-          %p
-            %a{:href => "#"}> Privacy Statement
-            \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            %a{:href => "#"} Terms &amp; Conditions
+.sec_menu
+  .sec_menu_content
+    %ul.secondary_menu.secondary_menu_contact
+      %li{:style => "margin-left: 240px"}
+        %span Have any questions?
+        &nbsp;
+        call us at
+        &nbsp;
+        %span{:style => "color: white"} (414) 215 - 0289
+.content
+  .secondary_pages_content{:style => "padding-top: 30px;"}
+    .title{:style => 'text-align: center; padding: 0'}
+      %h1{:style => "font-weight: bold;font-size: 2.1em;"} Sign Up for DZKey
+      Free for 30 days. Register in 60 seconds.
+    %form{:style => "font-size: 14px;  width: 700px; margin: 30px auto; padding: 0 50px; border: 1px solid #ddd;text-align: center; box-shadow: #aaa 0 0 10px; -webkit-box-shadow: #aaa 0 0 10px; -moz-box-shadow: #aaa 0 0 10px;"}
+      %img{:src => "/images/step1.png", :style => 'display: inline-block; margin: 25px auto 15px auto; width: 300px; height: 81px;'}
+      .indent{:style => "text-align: center; margin-right: 20px"}
+        %p
+          %label.signup-label{:for => "dz_name"} Dropzone or Club Name
+          %input.signup-textfield#dz_name{:type => "text", :name => "dz_name"}
+        %p
+          %label.signup-label{:for => "dz_address"} Dropzone Address
+          %input.signup-textfield#dz_address{:type => "text"}
+        %p
+          %label.signup-label{:for => "dz_city"} City/State/ZIP
+          %input.signup-textfield#dz_city{:type => "text", :style => 'width: 179px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
+        %p
+          %label.signup-label{:for => "website"} Website
+          %input.signup-textfield#website{:type => "text"}
+      %img{:src => "/images/step2.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 229px; height: 81px'}
+      .indent{:style => "text-align: center"}
+        %p
+          %label.signup-label{:for => "name"} Name
+          %input.signup-textfield#name{:type => "text", :style => 'width: 141px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 141px;'}
+        %p
+          %label.signup-label{:for => "email"} Email Address
+          %input.signup-textfield#email{:type => "text"}
+        %p
+          %label.signup-label{:for => "password"} Password
+          %input.signup-textfield#password{:type => "password"}
+      %img{:src => "/images/step3.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 291px; height: 81px'}
+      .indent{:style => "text-align: center"}
+        %p
+          %label.signup-label Billing Name
+          %input.signup-textfield{:type => "text"}
+        %p
+          %label.signup-label Billing Address
+          %input.signup-textfield{:type => "text"}
+        %p
+          %label.signup-label City/State/ZIP
+          %input.signup-textfield{:type => "text", :style => 'width: 179px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
+        %p
+          %label.signup-label
+            Credit Card Number
+            %img{:src => "/images/lock.png", :style => "width: 24px; height: 24px; vertical-align: text-top; position: relative; top: -5px;"}
+          %input.signup-textfield{:type => "text"}
+        %p
+          %label.signup-label Expiration
+          %select{:style => "margin-right: 5px"}
+            -months = %w{Jan Feb Mar Apr May Jun Jul Aug Sept Oct Nov Dec}
+            -12.times do |i|
+              %option= (i+1).to_s + " - " + months[i]
+          %select{:style => 'margin-right: 167px'}
+            -10.times do |i|
+              %option= Time.now.year+i
+      %br
+      %hr{:style => "margin: 20px 70px"}
+      .pricebox{:style => "font-family: Arial Black;"}
+        .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #0091D3;width: 180px;"} Cost
+        .signup-label{:style => "display: inline-block; font-weight: bold; font-size: 1.5em; color: #0091D3;"}
+          %span{:style => 'font-size: 2em'} $99
+          \/month
+        %br
+        
+        .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #00587B;width: 180px;"} Due Today
+        .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 3em; color: #00587B;width: 180px;"} $0
+        %br
+        %br
+      %div{:style => "margin: 10px 80px;"} <b>Your 30-day free trial lasts until midnight on #{(Time.now + (60*60*24*30)).strftime("%B %d, %Y")}.</b> If you don't want to continue using DZKey, just cancel and you won't be charged <b>(we'll email you 5 days before the trial ends to remind you)</b>. You can cancel any time.
+      
+      
+      
+      %a.awesome.green.giant{:href => "/signup", :style => "text-align: center;margin: 20px; margin-left: 53px; padding: 15px 25px;"}
+        %b{:style => "font-size: 1.5em"} Create Your Account
+        
+      %br
+      %br
+      
+      
+        
+  .clear_container
+  %br/
+  %br/

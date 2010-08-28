@@ -4,7 +4,8 @@ class Main
     return ""
   end
   get "/" do
-    haml :'public/index', :layout => false
+    @current_page = ""
+    haml :'public/index', :layout => :"public/layout"
   end
   get "/jumpers" do
     @jumpers = Jumper.all.sort_by{|j| j.last_name}
@@ -33,19 +34,24 @@ class Main
     haml :manager, :layout => false
   end
   get "/tour" do
-    haml :'public/tour', :layout => false
+    @current_page = "Feature Tour"
+    haml :'public/tour', :layout => :"public/layout"
   end
   get "/signup" do
-    haml :'public/signup', :layout => false
+    @current_page = "Sign Up"
+    haml :'public/signup', :layout => :"public/layout"
   end
   get "/contact" do
-    haml :'public/contact', :layout => false
+    @current_page = "Contact Us"
+    haml :'public/contact', :layout => :"public/layout"
   end
   get "/faq" do
-    haml :'public/faq', :layout => false
+    @current_page = "FAQ"
+    haml :'public/faq', :layout => :"public/layout"
   end
   get "/about" do
-    haml :'public/about', :layout => false
+    @current_page = "About Us"
+    haml :'public/about', :layout => :"public/layout"
   end
   get "/css/style.css" do
     content_type 'text/css', :charset => 'utf-8'

@@ -1,146 +1,83 @@
-!!! Strict
-%html{:xmlns => "http://www.w3.org/1999/xhtml"}
-  %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
-    %title DZKey — Manage Your Dropzone.
-    %meta{:content => "DZKey", :name => "author"}
-    %meta{:content => "Dropzone Management Software", :name => "description"}
-    %meta{:content => "Dropzone Manifest Finance Schedule Aircraft", :name => "keywords"}
-    %meta{:content => "english", :name => "language"}
-    %link{:href => "images/favicon.ico", :rel => "icon", :type => "image/ico"}
-    %link{:href => "css/global.css", :rel => "stylesheet", :type => "text/css"}
-    %link{:href => "css/color_blue.css", :rel => "stylesheet", :type => "text/css"}
-    %link{:href => "css/nivo.css", :rel => "stylesheet", :type => "text/css"}
-    
-    %script{:src => "js/jquery-1.4.2.min.js", :type => "text/javascript"}
-    %script{:src => "js/jquery.nivo.slider.pack.js", :type => "text/javascript"}
-    /[if IE 6] <link type="text/css" rel="stylesheet" href="css/ie6.css" />
-    
-    :javascript
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-7002972-4']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-  %body
-    .header
-      .header_content
-        %a{:href => "/"}
-          %img.logo.png{:alt => "DZKey Logo", :height => "45", :width => "147", :style => "position: relative; top: -5px;", :src => "images/dzkey-glow.png", :title => "Go to Homepage"}
-        %ul.main_menu
-          %li.selected_page
-            .selected
-              .selected_left
-              .selected_middle
-                %a.homepage{:href => "/"}
-              .selected_right
-          %li
-            %a{:href => "/tour"} Feature Tour
-          
-          %li
-            %a{:href => "/faq"} FAQ
-          %li
-            %a{:href => "/about"} About Us
-          %li
-            %a{:href => "/contact"} Contact
-          %li
-            %a{:href => "/login"} Log In
-          %li
-            %a.awesome.medium.green{:href => "/signup", :style => "color: white; margin-top: -8px;"} Sign Up
-    .latest_project
-      .project
-        #slide1.tabb.displayslide
-          .project_table
-            .project_text_left
-              %h1{:style => "font-size: 1.95em; margin-bottom: 5px; text-align: center;"} Manage Your Dropzone.
-              .center
-                .info-bullet{:style => "margin-top: 30px"}
-                  %img{:src => "/css/img/edit.png", :style => 'vertical-align: middle', :width => "32", :height => "32"}
-                  %span{:style => "position: relative; top: 2px"} Manifest Flights
-                .info-bullet
-                  %img{:src => "/css/img/schedule.png", :style => 'margin:0; vertical-align: middle;', :width => "32", :height => "32"}
-                  %span{:style => "position: relative; top: 2px"} Schedule Online                
-                .info-bullet
-                  %img{:src => "/css/img/cash.png", :style => 'margin:0; vertical-align: middle', :width => "32", :height => "32"}
-                  %span{:style => "position: relative; top: 2px"} Accept Payments
-                .info-bullet
-                  %img{:src => "/images/lock.png", :style => 'margin:0; vertical-align: middle', :width => "32", :height => "32"}
-                  %span{:style => "position: relative; top: 2px"} Bank-Grade Security
-                %br
-              %p{:style => "font-size: 1.5em; text-align: center"}
-                <b>No setup fees.</b>
-              %a.awesome.green.giant{:href => "/signup", :style => "text-align: center; margin-left: 53px;"}
-                %b{:style => "font-size: 1.5em"} Apply for an Invitation
-                %br
-                %em{:style => "color: #AFA; font-size: 0.85em"} Get in before the official launch.
-              %a.awesome.medium.gray{:href => "/tour", :style => "width: 200px; margin: auto;display: block;  margin-top: 5px; text-align: center;"} Or, check out the product tour
-            .project_screens
-              .phones.parallax
-                %div#slider{:style=>"width: 460px; height: 300px;  background: #18A;position:; left:-160px; top:30px; padding: 0;"}
-                  %img{:src => "images/screen1.png", :alt => ""}
-                  %img{:src => "images/screen2.png", :alt => ""}
-                  %img{:src => "images/screen3.png", :alt => ""}
-                  %img{:src => "images/screen4.png", :alt => ""}
-    .sec_menu
-      .sec_menu_content
-        %ul.secondary_menu.secondary_menu_contact
-          %div{:style => "clear:both;"}
-        .clear_container
-    .content
-      .content_left
-        %img.newspaper_icon.png{:alt => "News &amp; Highlights", :height => "53", :src => "images/newspaper_icon.png", :width => "63"}/
-        %h2 News &amp; Highlights
-        %p.subtitle What we’ve been up to lately
-        .clear_container
-        %h6 @Twitter Commenter
-        %p We’ve just finished the new awesome project. It has been a great time for us these months.
-        %h6 Our new Blog is NOW LIVE
-        %p The new blog is up and running. Enjoy guys!
-      / content_left
-      .content_middle
-        %img.newspaper_icon.png{:alt => "Clients &amp; Testimonials", :height => "53", :src => "images/clients_icon.png", :width => "63"}/
-        %h2 Clients &amp; Testimonials
-        %p.subtitle What others have to say about us
-        .clear_container
-        %img.cite_icon.png{:alt => "Citation", :height => "19", :src => "images/cite_icon.png", :width => "21"}/
-        %cite Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-        %h6.testimonial_name Jonathan Doe, Software Company
-        .clear_container
-      / content_left
-      .content_right
-        %ul
-          %li
-            %a.social_networking_link{:href => "#", :title => "Behance"}
-              %img{:alt => "Behance", :src => "images/behance.jpg"}/
-          %li
-            %a.social_networking_link{:href => "#", :title => "flickr"}
-              %img{:alt => "flickr", :src => "images/flickr.jpg"}/
-          %li
-            %a.social_networking_link{:href => "#", :title => "facebook"}
-              %img{:alt => "facebook", :src => "images/facebook.jpg"}/
-          %li
-            %a.social_networking_link{:href => "#", :title => "LinkediIn"}
-              %img{:alt => "LinkedIn", :src => "images/linkedin.jpg"}/
-          %li
-            %a.social_networking_link{:href => "#", :title => "Krop"}
-              %img{:alt => "Krop", :src => "images/krop.jpg"}/
-          %li
-            %a.social_networking_link{:href => "#", :title => "twitter"}
-              %img{:alt => "twitter", :src => "images/twitter.jpg"}/
-      .clear_container
-    .footer
-      .footer_content
-        .footer_left
-          %p © 2010 DZKey&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;all rights reserved
-        .footer_right
-          %p
-            %a{:href => "#"}> Privacy Statement
-            \&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            %a{:href => "#"} Terms &amp; Conditions
+.latest_project
+  .project
+    #slide1.tabb.displayslide
+      .project_table
+        .project_text_left
+          %h1{:style => "font-size: 1.95em; margin-bottom: 5px; text-align: center;"} Manage Your Dropzone.
+          .center
+            .info-bullet{:style => "margin-top: 20px"}
+              %img{:src => "/css/img/edit.png", :style => 'vertical-align: middle', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Manifest Flights
+            .info-bullet
+              %img{:src => "/css/img/schedule.png", :style => 'margin:0; vertical-align: middle;', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Schedule Online                
+            .info-bullet
+              %img{:src => "/css/img/cash.png", :style => 'margin:0; vertical-align: middle', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Accept Payments
+            .info-bullet
+              %img{:src => "/images/lock.png", :style => 'margin:0; vertical-align: middle', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Bank-Grade Security
+          %p{:style => "display: block; margin: 20px auto; font-size: 1.5em; text-align: center"}
+            <b>No setup fees.</b>
+          %a.awesome.green.giant{:href => "/signup", :style => "display: block; width: 280px; text-align: center; margin: auto;"}
+            %b{:style => "font-size: 1.6em"} See Plans and Pricing
+            %br
+            %em{:style => "color: #AFA; font-size: 0.85em"} 30 day free trial. Register in 60 seconds.
+          %a.awesome.medium.gray{:href => "/tour", :style => "width: 200px; margin: auto; display: block;  margin-top: 5px; text-align: center;"} Or, check out the product tour
+        .project_screens
+          .phones.parallax
+            %div#slider{:style=>"width: 460px; height: 300px;  background: #18A;position:; left:-160px; top:30px; padding: 0;"}
+              %img{:src => "images/screen1.png", :alt => ""}
+              %img{:src => "images/screen2.png", :alt => ""}
+              %img{:src => "images/screen3.png", :alt => ""}
+              %img{:src => "images/screen4.png", :alt => ""}
+.sec_menu
+  .sec_menu_content
+    %ul.secondary_menu.secondary_menu_contact
+      %div{:style => "clear:both;"}
+    .clear_container
+.content
+  .content_left
+    %img.newspaper_icon.png{:alt => "News &amp; Highlights", :height => "53", :src => "images/newspaper_icon.png", :width => "63"}/
+    %h2 News &amp; Highlights
+    %p.subtitle What we’ve been up to lately
+    .clear_container
+    %h6 @Twitter Commenter
+    %p We’ve just finished the new awesome project. It has been a great time for us these months.
+    %h6 Our new Blog is NOW LIVE
+    %p The new blog is up and running. Enjoy guys!
+  / content_left
+  .content_middle
+    %img.newspaper_icon.png{:alt => "Clients &amp; Testimonials", :height => "53", :src => "images/clients_icon.png", :width => "63"}/
+    %h2 Clients &amp; Testimonials
+    %p.subtitle What others have to say about us
+    .clear_container
+    %img.cite_icon.png{:alt => "Citation", :height => "19", :src => "images/cite_icon.png", :width => "21"}/
+    %cite Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+    %h6.testimonial_name Jonathan Doe, Software Company
+    .clear_container
+  / content_left
+  .content_right
+    %ul
+      %li
+        %a.social_networking_link{:href => "#", :title => "Behance"}
+          %img{:alt => "Behance", :src => "images/behance.jpg"}/
+      %li
+        %a.social_networking_link{:href => "#", :title => "flickr"}
+          %img{:alt => "flickr", :src => "images/flickr.jpg"}/
+      %li
+        %a.social_networking_link{:href => "#", :title => "facebook"}
+          %img{:alt => "facebook", :src => "images/facebook.jpg"}/
+      %li
+        %a.social_networking_link{:href => "#", :title => "LinkediIn"}
+          %img{:alt => "LinkedIn", :src => "images/linkedin.jpg"}/
+      %li
+        %a.social_networking_link{:href => "#", :title => "Krop"}
+          %img{:alt => "Krop", :src => "images/krop.jpg"}/
+      %li
+        %a.social_networking_link{:href => "#", :title => "twitter"}
+          %img{:alt => "twitter", :src => "images/twitter.jpg"}/
+  .clear_container
 :javascript
   $(document).ready(function(){
     $('#slider').nivoSlider({directionNav:false, animSpeed:150, effect: 'fade'});
