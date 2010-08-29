@@ -10,7 +10,7 @@
 .content
   .secondary_pages_content{:style => "padding-top: 30px;"}
     .title{:style => 'text-align: center; padding: 0'}
-      %h1{:style => "font-weight: bold;font-size: 2.1em;"} Sign Up for DZKey #{params[:plan].nil? ? " Standard" : " "+params[:plan]}
+      %h1{:style => "font-weight: bold;font-size: 2.1em;"} Sign Up for DZKey #{params[:plan].nil? ? " Standard" : " "+params[:plan].capitalize}
       Free for 30 days. Register in 60 seconds.
     %form{:style => "font-size: 14px;  width: 700px; margin: 30px auto; padding: 0 50px; border: 1px solid #ddd;text-align: center; box-shadow: #aaa 0 0 10px; -webkit-box-shadow: #aaa 0 0 10px; -moz-box-shadow: #aaa 0 0 10px;"}
       %img{:src => "/images/step1.png", :style => 'display: inline-block; margin: 25px auto 15px auto; width: 300px; height: 81px;'}
