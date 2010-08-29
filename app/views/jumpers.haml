@@ -138,6 +138,7 @@
                 %a.stat{:href => "#", :style => 'display: block; width: 100%; padding: 0; padding-right: 5px; margin: 0;margin-bottom: -5px; float: right', :class => (balance > 0 ? "green" : balance == 0 ? "gray" : "red")}= "%5.2f" % balance
               %td.tc= jumper.type
               %td.tc
+                - jumper.rig_ids ||= []
                 - rigs = jumper.rig_ids.map{|r| Rig.get(r)}
                 - good_rigs = rigs.find_all{|r| r.active}.length
                 - caution_rigs = 0
