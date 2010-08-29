@@ -1,7 +1,7 @@
 .sec_menu
   .sec_menu_content
     %ul.secondary_menu.secondary_menu_contact
-      %li{:style => "margin-left: 240px"}
+      %li{:style => "margin-left: 280px"}
         %span Have any questions?
         &nbsp;
         call us at
@@ -72,16 +72,16 @@
       %hr{:style => "margin: 20px 70px"}
       .pricebox{:style => "font-family: Arial Black;"}
         .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #0091D3;width: 180px;"} Cost
-        .signup-label{:style => "display: inline-block; font-weight: bold; font-size: 1.5em; color: #0091D3;"}
-          %span{:style => 'font-size: 2em'} $99
+        .signup-label{:style => "display: inline-block; font-weight: bold; font-size: 1.3em; color: #0091D3;"}
+          %span{:style => 'font-size: 2em'}= (params[:plan].nil? ? "$99" : params[:plan] == "basic" ? "$49" : "$199")
           \/month
         %br
         
         .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #00587B;width: 180px;"} Due Today
-        .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 3em; color: #00587B;width: 180px;"} $0
+        .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 2.6em; color: #00587B;width: 180px;"} $0
         %br
         %br
-      %div{:style => "margin: 10px 80px;"} <b>Your 30-day free trial lasts until midnight on #{(Time.now + (60*60*24*30)).strftime("%B %d, %Y")}.</b> If you don't want to continue using DZKey, just cancel and you won't be charged <b>(we'll email you 5 days before the trial ends to remind you)</b>. You can cancel any time.
+      %div{:style => "margin: 10px 80px;"} <b>Your 30-day free trial lasts until midnight on #{(Time.now + (60*60*24*31)).strftime("%B %d, %Y")}.</b> If you don't want to continue using DZKey, just cancel and you won't be charged <b>(we'll email you 5 days before the trial ends to remind you)</b>. You can cancel any time.
       
       
       

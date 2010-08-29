@@ -37,10 +37,6 @@ class Main
     @current_page = "Feature Tour"
     haml :'public/tour', :layout => :"public/layout"
   end
-  get "/signup" do
-    @current_page = "Sign Up"
-    haml :'public/signup', :layout => :"public/layout"
-  end
   get "/contact" do
     @current_page = "Contact Us"
     haml :'public/contact', :layout => :"public/layout"
@@ -53,6 +49,14 @@ class Main
     @current_page = "About Us"
     haml :'public/about', :layout => :"public/layout"
   end
+  get "/pricing" do
+    @current_page = "Sign Up"
+    haml :"public/pricing", :layout => :"public/layout"
+  end
+  get "/signup" do
+    @current_page = "Sign Up"
+    haml :'public/signup', :layout => :"public/layout"
+  end
   get "/css/style.css" do
     content_type 'text/css', :charset => 'utf-8'
     sass :style
@@ -60,10 +64,6 @@ class Main
   get "/css/blue.css" do
     content_type 'text/css', :charset => 'utf-8'
     sass :blue
-  end
-  get "/css/grid.css" do
-    content_type 'text/css', :charset => 'utf-8'
-    sass :grid
   end
   get "/css/layout.css" do
     content_type 'text/css', :charset => 'utf-8'

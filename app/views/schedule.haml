@@ -161,23 +161,23 @@
                 .stat.outline Sport
                 
           %tr
+            %th.tc Sun
             %th.tc Mon
             %th.tc Tues
             %th.tc Wed
             %th.tc Thurs
             %th.tc Fri
             %th.tc Sat
-            %th.tc Sun
         %tbody
-          - days = ["Monday", "Tuesday", "Wedesday", "Thursday", "Friday", "Saturday", "Sunday"]
+          - days = ["Sunday", "Monday", "Tuesday", "Wedesday", "Thursday", "Friday", "Saturday"]
           -5.times do |week|
             %tr
               -7.times do |day|
                 -day_number = (27 + week*7 + day) % 30 + 1
                 -non_modulo = (28 + week*7 + day)
-                %td.vtip{:class => ((non_modulo > 30 && non_modulo < (30+1)) ? "" : "inactive" ), :title => "<b>#{days[day]} #{Time.now.strftime("%B")} #{day_number}</b><br/> 8am: 3TDM, 1AFF, 2SP<br/> 9am: 3TDM, 1AFF, 2SP<br/> 10am: 3TDM, 1AFF, 2SP<br/> 11am: 3TDM, 1AFF, 2SP<br/>"}
+                %td.vtip{:class => ((non_modulo > 30 && non_modulo < (61)) ? "" : "inactive" ), :title => "<b>#{days[day]} #{Time.now.strftime("%B")} #{day_number}</b><br/> 8am: 3TDM, 1AFF, 2SP<br/> 9am: 3TDM, 1AFF, 2SP<br/> 10am: 3TDM, 1AFF, 2SP<br/> 11am: 3TDM, 1AFF, 2SP<br/>"}
                   %strong= day_number
-                  -unless (non_modulo > Time.now.day + 30) || (day == 0) #not future or monday
+                  -unless (non_modulo > Time.now.day + 30) || (days[day] == "Monday") #not future or monday
                     .items
                       .stat.green.flat-right= rand(3) + 5
                       .stat.purple.merge-left= rand(6)+4
