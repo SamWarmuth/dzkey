@@ -179,9 +179,9 @@
             %tr{:class => ( i == 0 ? "first" : "")}
               %th.tc
                 -if staff.available
-                  %a.available.checkin.green{:href => "#", :onClick => "setAvailable('#{staff.id}', $(this)); return false;"}
+                  %a.available.checkin.green{:class => "p-#{staff.id}-available", :href => "#", :onClick => "setAvailable('#{staff.id}', $(this)); return false;"}
                 -else
-                  %a.available.checkin.red{:href => "#", :onClick => "setAvailable('#{staff.id}', $(this)); return false;"}
+                  %a.available.checkin.red{:class => "p-#{staff.id}-available", :href => "#", :onClick => "setAvailable('#{staff.id}', $(this)); return false;"}
               %td
                 %a{:href => "#"}= staff.name
               %td.tc
