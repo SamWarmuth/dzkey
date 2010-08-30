@@ -17,52 +17,55 @@
       .indent{:style => "text-align: center; margin-right: 20px"}
         %p
           %label.signup-label{:for => "dz_name"} Dropzone or Club Name
-          %input.signup-textfield#dz_name{:type => "text", :name => "dz_name"}
+          %input.signup-textfield#dz_name.any_text{:type => "text", :name => "dz_name"}
         %p
           %label.signup-label{:for => "dz_address"} Dropzone Address
-          %input.signup-textfield#dz_address{:type => "text"}
+          %input.signup-textfield#dz_address.any_text{:type => "text"}
         %p
           %label.signup-label{:for => "dz_city"} City/State/ZIP
-          %input.signup-textfield#dz_city{:type => "text", :style => 'width: 169px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 20px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 45px;'}
+          %input.signup-textfield#dz_city.any_text{:type => "text", :style => 'width: 159px;'}
+          %input.signup-textfield.any_text{:type => "text", :style => 'width: 30px;'}
+          %input.signup-textfield.zip_code{:type => "text", :style => 'width: 45px;'}
         %p
           %label.signup-label{:for => "website"} Website
-          %input.signup-textfield#website{:type => "text"}
+          %input.signup-textfield#website.any_text{:type => "text"}
       %img{:src => "/images/step2.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 229px; height: 81px'}
       .indent{:style => "text-align: center"}
         %p
           %label.signup-label{:for => "name"} Name
-          %input.signup-textfield#name{:type => "text", :style => 'width: 131px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 131px;'}
+          %input.signup-textfield#name.any_text{:type => "text", :style => 'width: 131px;'}
+          %input.signup-textfield.any_text{:type => "text", :style => 'width: 131px;'}
         %p
           %label.signup-label{:for => "email"} Email Address
-          %input.signup-textfield#email{:type => "text"}
+          %input.signup-textfield#email.any_text{:type => "text"}
         %p
           %label.signup-label{:for => "password"} Password
-          %input.signup-textfield#password{:type => "password"}
+          %input.signup-textfield#password.any_text{:type => "password"}
+        %p
+          %label.signup-label{:for => "password"} Repeat Password
+          %input.signup-textfield#password.any_text{:type => "password"}
       %img{:src => "/images/step3.png", :style => 'display: inline-block; margin: 50px auto 15px auto; width: 291px; height: 81px'}
       .indent{:style => "text-align: center"}
         %p
           %label.signup-label Billing Name
-          %input.signup-textfield{:type => "text"}
+          %input.signup-textfield.any_text{:type => "text"}
         %p
           %label.signup-label Billing Address
-          %input.signup-textfield{:type => "text"}
+          %input.signup-textfield.any_text{:type => "text"}
         %p
           %label.signup-label City/State/ZIP
-          %input.signup-textfield{:type => "text", :style => 'width: 169px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 20px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 45px;'}
+          %input.signup-textfield.any_text{:type => "text", :style => 'width: 159px;'}
+          %input.signup-textfield.any_text{:type => "text", :style => 'width: 30px;'}
+          %input.signup-textfield.any_text{:type => "text", :style => 'width: 45px;'}
         %p
           %label.signup-label
             Credit Card Number
             %img{:src => "/images/lock.png", :style => "width: 24px; height: 24px; vertical-align: text-top; position: relative; top: -5px;"}
-          %input.signup-textfield{:type => "text", :style => "width: 150px"}
+          %input.signup-textfield.cc_text{:type => "text", :style => "width: 150px"}
           %label.signup-label{:style => 'padding: 0 5px 0px 14px; width: 60px; text-align: center'}
             CVV
             %a{:href => "#", :style => "color: blue"} (?)
-          %input.signup-textfield{:type => "text", :style => "width: 30px"}
+          %input.signup-textfield.cvv_text{:type => "text", :style => "width: 30px"}
           .credit-cards{:style => "text-align: right; padding-right: 100px"}
             .credit-card.visa
             .credit-card.mastercard
@@ -81,7 +84,7 @@
       %br
       %hr{:style => "margin: 20px 70px"}
       .pricebox{:style => "font-family: Arial Black;"}
-        .signup-label{:style => " display: inline-block; font-weight: bold; font-size: 2em; color: #0091D3;width: 180px;"} Cost
+        .signup-label{:style => "display: inline-block; font-weight: bold; font-size: 2em; color: #0091D3;width: 180px;"} Cost
         .signup-label{:style => "display: inline-block; font-weight: bold; font-size: 1.3em; color: #0091D3;"}
           %span{:style => 'font-size: 2em'}= (params[:plan].nil? ? "$99" : params[:plan] == "basic" ? "$49" : "$199")
           \/month
@@ -106,3 +109,14 @@
   .clear_container
   %br/
   %br/
+:javascript
+  $(document).ready(function(){
+    $(".any_text").blur(function(){
+      if ($(this).val() != "") {
+        $(this).removeClass("invalid-input").addClass("valid-input");
+      } else {
+        $(this).removeClass("valid-input").addClass("invalid-input");
+      }
+      
+    });
+  });
