@@ -23,9 +23,9 @@
           %input.signup-textfield#dz_address{:type => "text"}
         %p
           %label.signup-label{:for => "dz_city"} City/State/ZIP
-          %input.signup-textfield#dz_city{:type => "text", :style => 'width: 179px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
+          %input.signup-textfield#dz_city{:type => "text", :style => 'width: 169px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 20px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 45px;'}
         %p
           %label.signup-label{:for => "website"} Website
           %input.signup-textfield#website{:type => "text"}
@@ -33,8 +33,8 @@
       .indent{:style => "text-align: center"}
         %p
           %label.signup-label{:for => "name"} Name
-          %input.signup-textfield#name{:type => "text", :style => 'width: 141px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 141px;'}
+          %input.signup-textfield#name{:type => "text", :style => 'width: 131px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 131px;'}
         %p
           %label.signup-label{:for => "email"} Email Address
           %input.signup-textfield#email{:type => "text"}
@@ -51,14 +51,24 @@
           %input.signup-textfield{:type => "text"}
         %p
           %label.signup-label City/State/ZIP
-          %input.signup-textfield{:type => "text", :style => 'width: 179px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 30px;'}
-          %input.signup-textfield{:type => "text", :style => 'width: 55px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 169px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 20px;'}
+          %input.signup-textfield{:type => "text", :style => 'width: 45px;'}
         %p
           %label.signup-label
             Credit Card Number
             %img{:src => "/images/lock.png", :style => "width: 24px; height: 24px; vertical-align: text-top; position: relative; top: -5px;"}
-          %input.signup-textfield{:type => "text"}
+          %input.signup-textfield{:type => "text", :style => "width: 150px"}
+          %label.signup-label{:style => 'padding: 0 5px 0px 14px; width: 60px; text-align: center'}
+            CVV
+            %a{:href => "#", :style => "color: blue"} (?)
+          %input.signup-textfield{:type => "text", :style => "width: 30px"}
+          .credit-cards{:style => "text-align: right; padding-right: 100px"}
+            .credit-card.visa
+            .credit-card.mastercard
+            .credit-card.amex
+            .credit-card.discover
+            .credit-card.dinersclub
         %p
           %label.signup-label Expiration
           %select{:style => "margin-right: 5px"}

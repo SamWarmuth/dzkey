@@ -1,0 +1,20 @@
+%td.tc{:colspan => 6, :style => "border-bottom: 1px solid #BBB; padding: 0"}
+  %table.manifest{:style => "padding-left: 25px"}
+    %thead
+      %tr
+        %th Name
+        %th.tc{:style => "width: 100px"} Type
+        %th.tc{:style => "width: 100px"} Jump Plan
+    %tbody{:title => @flight.id}
+      -@flight.jumper_ids.map{|j_id| Jumper.get(j_id)}.each do |jumper|
+        %tr{:style => "cursor: auto;"}
+          %td= jumper.name
+          %td.tc= jumper.type
+          %td.tc
+            %select
+              %option Tandem
+              %option AFF
+      -if @flight.jumper_ids.empty?
+        %tr{:style => "cursor: auto;"}
+          %td.tc{:colspan => 3}
+            .placeholder Drag Jumpers Here

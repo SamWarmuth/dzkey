@@ -128,7 +128,7 @@
                 %a.stat.red.merge-left.vtip{:href => "#", :title => "Kent McCullough's Rig expired on 7/18/10", :style => (fail_jumpers > 0 ? "" : "visibility: hidden")}= fail_jumpers
               %td.tc= rand(3000)
               %td.tc #{5-i}:#{rand(60)}PM
-            %tr.expander-data{:style => "background: #F5F5F5;"}
+            %tr.expander-data{:class => "p-#{flight.id}-expander", :style => "background: #F5F5F5;"}
               %td.tc{:colspan => 6, :style => "border-bottom: 1px solid #BBB; padding: 0"}
                 %table.manifest{:style => "padding-left: 25px"}
                   %thead

@@ -112,7 +112,7 @@ h1, h2, .testimonials h6.testimonial_name, .project_title, label{
  color: #191919;
  }
  
-h5, h6, .third_menu li a:hover, .follow_us, .project_title:hover, .secondary_menu li span, .sec_menu_selected_middle, .related_projects:hover, .input_middle, textarea{
+h5, h6, .third_menu li a:hover, .follow_us, .project_title:hover, .secondary_menu li span, .sec_menu_selected_middle, .related_projects:hover, .input_middle{
  color : #00a7f3;
  }
  

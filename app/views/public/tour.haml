@@ -1,7 +1,36 @@
-.secondary_page_bg
-  .category_illustration
-    .punchline_work
-      %h2{:style => "margin-left: 50px"} Overview here!
+.latest_project
+  .project
+    #slide1.tabb.displayslide
+      .project_table
+        .project_text_left
+          %h1{:style => "font-size: 1.95em; margin-bottom: 5px; text-align: center;"} Manage Your Dropzone.
+          .center
+            .info-bullet{:style => "margin-top: 20px"}
+              %img{:src => "/css/img/edit.png", :style => 'vertical-align: middle', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Manifest Flights
+            .info-bullet
+              %img{:src => "/css/img/schedule.png", :style => 'margin:0; vertical-align: middle;', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Schedule Online                
+            .info-bullet
+              %img{:src => "/css/img/cash.png", :style => 'margin:0; vertical-align: middle', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Accept Payments
+            .info-bullet
+              %img{:src => "/images/lock.png", :style => 'margin:0; vertical-align: middle', :width => "32", :height => "32"}
+              %span{:style => "position: relative; top: 2px"} Bank-Grade Security
+          %p{:style => "display: block; margin: 20px auto; font-size: 1.5em; text-align: center"}
+            <b>No setup fees.</b>
+          %a.awesome.green.giant{:href => "/pricing", :style => "display: block; width: 280px; text-align: center; margin: auto;"}
+            %b{:style => "font-size: 1.6em"} See Plans and Pricing
+            %br
+            %em{:style => "color: #AFA; font-size: 0.85em"} 30 day free trial. Register in 60 seconds.
+          %a.awesome.medium.gray{:href => "/tour", :style => "width: 200px; margin: auto; display: block;  margin-top: 5px; text-align: center;"} Or, check out the product tour
+        .project_screens
+          .phones.parallax
+            %div#slider{:style=>"width: 460px; height: 300px;  background: #18A;position:; left:-160px; top:30px; padding: 0;"}
+              %img{:src => "images/screen1.png", :alt => ""}
+              %img{:src => "images/screen2.png", :alt => ""}
+              %img{:src => "images/screen3.png", :alt => ""}
+              %img{:src => "images/screen4.png", :alt => ""}
 #sticky-anchor
 #sticky-replacement{:style => 'display: none'}
   .sec_menu

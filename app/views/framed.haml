@@ -47,7 +47,10 @@
         } else{
           buttons.removeClass('green').addClass('red');
         }
-        
+      });
+      
+      server.bind('flight_expander', function(data) {
+        $(".p-"+data.id+"-expander").html(data.html);
       });
       
     

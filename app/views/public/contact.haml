@@ -50,48 +50,21 @@
   .secondary_pages_content
     %h1 Have a question or comment for us?
     %p.subtitle Fill out this form and we'll respond as soon as we can.
-    .contact_box
-      .contact_box_top
-      .contact_box_middle
-        %form.ajax_form{:action => "", :enctype => "multipart/form-data", :method => "post"}
-          %table.contact_form{:cellpadding => "0", :cellspacing => "0"}
-            %tr
-              %td{:style => "width:461px"}
-                %label{:for => "name"} Your name (required):
-                .form_input.odd
-                  .input_left
-                  %input#name.input_middle.required{:name => "yourname", :type => "text"}/
-                  .input_right
-              %td{:style => "width:461px"}
-                %label{:for => "email"} Your email (required):
-                .form_input
-                  .input_left
-                  %input#email.input_middle.required{:name => "email", :type => "text"}/
-                  .input_right
-            %tr
-              %td{:style => "width:461px"}
-                %label{:for => "phone"} Your phone number:
-                .form_input.odd
-                  .input_left
-                  %input#phone.input_middle{:name => "phone", :type => "text"}/
-                  .input_right
-              %td{:style => "width:461px"}
-                %label{:for => "company"} Your dropzone:
-                .form_input
-                  .input_left
-                  %input#company.input_middle{:name => "company", :type => "text"}/
-                  .input_right
-            %tr
-              %td{:colspan => "2", :style => "width:922px"}
-                %label{:for => "deadline"} Your message:
-                .form_textarea
-                  .textarea_left
-                  %textarea#message.textarea_middle.required{:cols => "103", :name => "message", :rows => "5"}
-                  .textarea_right
-            %tr
-              %td{:colspan => "2", :style => "width:922px"}
-                %input#send.submit{:type => "submit", :value => ""}/
-      .contact_box_bottom
+    %form{:style => "font-size: 14px;  width: 345px; margin: 30px auto; padding: 30px 80px; border: 1px solid #ddd;text-align: center; box-shadow: #aaa 0 0 10px; -webkit-box-shadow: #aaa 0 0 10px; -moz-box-shadow: #aaa 0 0 10px;"}
+      %p
+        %label.signup-label{:for => "name", :style => "display: block; padding: 8px 0;"} Your Name (required)
+        %input#name.signup-textfield{:type => "text", :style => 'width: 330px;display: block;'}
+      %p
+        %label.signup-label{:for => "email", :style => "width: 200px; display: block; padding: 8px 0;"} Your Email Address (required)
+        %input#email.signup-textfield{:type => "text", :style => 'width: 330px;display: block;'}
+      %p
+        %label.signup-label{:for => "dz_name", :style => "width: 200px;display: block; padding: 8px 0;"} Your Dropzone / Club Name
+        %input.signup-textfield{:type => "text", :style => 'width: 330px;display: block;'}
+      %p
+        %label.signup-label{:for => "dz_name", :style => "width: 200px;display: block; padding: 8px 0px;"} Your Message
+        %textarea{:style => "width: 320px; height: 100px; display: block; color: black; padding: 12px"}
+      %br
+      .awesome.green.huge Send Message
   .clear_container
   %br
   %br
