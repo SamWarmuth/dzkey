@@ -144,10 +144,12 @@ class Main
       return false if @jumper.available
       @jumper.available = true
       @jumper.save
+      Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => true})
     else
       return false if !@jumper.available
       @jumper.available = false
       @jumper.save
+      Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => false})
     end
     return @jumper.name + " is now checked in."
   end
@@ -180,6 +182,7 @@ class Main
     jumper.balance = params[:balance].to_f
     jumper.available = (params[:available] == "on")
     jumper.save
+    Pusher['main'].trigger('refresh', {})
     haml :jumpers, :layout => false
   end
   
@@ -209,7 +212,7 @@ class Main
     
     @jumper.rig_ids << rig.id
     @jumper.save
-    
+    Pusher['main'].trigger('refresh', {})
     @jumpers = Jumper.all.sort_by{|j| j.last_name}
     haml :jumpers, :layout => false
   end
@@ -223,11 +226,13 @@ class Main
       return false if rig.active
       rig.active = true
       rig.save
+      Pusher['main'].trigger('refresh', {})
       return rig.name + " is now active."
     else
       return false unless rig.active
       rig.active = false
       rig.save
+      Pusher['main'].trigger('refresh', {})
       return rig.name + " is no longer active."
     end
   end
@@ -271,6 +276,7 @@ class Main
     staff.can_edit_finances = (params[:can_edit_finances]=="on")
     
     staff.save
+    Pusher['main'].trigger('refresh', {})
     haml :staff, :layout => false
   end
   
@@ -282,6 +288,7 @@ class Main
     return false unless @staff.respond_to?(params[:attribute].to_sym)
     @staff[params[:attribute].to_sym] = (params[:value] == "true" ? true : false)
     @staff.save
+    Pusher['main'].trigger('refresh', {})
     return "success"
   end
   
@@ -315,6 +322,7 @@ class Main
     aircraft.available = (params[:available]=="on")
     
     aircraft.save
+    Pusher['main'].trigger('refresh', {})
     haml :aircraft, :layout => false
   end
   
@@ -335,6 +343,7 @@ class Main
     
     transaction.staff_id = @user.id
     transaction.save
+    Pusher['main'].trigger('refresh', {})
     haml :accounts, :layout => false
   end
   
@@ -349,6 +358,7 @@ class Main
     transaction.available = (params[:available]=="on")
     
     transaction.save
+    Pusher['main'].trigger('refresh', {})
     haml :accounts, :layout => false
   end
   
@@ -367,6 +377,7 @@ class Main
     flight.cleared = true
     flight.completed = false
     flight.save
+    Pusher['main'].trigger('refresh', {})
     haml :manifest, :layout => false
   end
   
@@ -381,6 +392,7 @@ class Main
     return false if flight.jumper_ids.include?(jumper.id)
     flight.jumper_ids << jumper.id
     flight.save
+    Pusher['main'].trigger('refresh', {})
     return true
   end
   
@@ -391,6 +403,7 @@ class Main
     flight.completed = true
     flight.save
     Aircraft.get(flight.aircraft_id).reset_flights
+    Pusher['main'].trigger('refresh', {})
     return "success"
   end
   
@@ -404,6 +417,7 @@ class Main
     return false if aircraft.departure_time.nil?
     aircraft.departure_time = (Time.parse(aircraft.departure_time) + 60*time).to_s
     aircraft.save
+    Pusher['main'].trigger('refresh', {})
     return "success"
   end
   
@@ -419,6 +433,7 @@ class Main
     end
     aircraft.reset_flights
     aircraft.save
+    Pusher['main'].trigger('refresh', {})
     return "success"
   end
 end

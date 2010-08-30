@@ -21,10 +21,35 @@
     %script{:src => "js/facebox.js", :type => "text/javascript"}
     %script{:src => "js/jquery.tablesorter.min.js", :type => "text/javascript"}  
     %script{:src => "js/jquery.uitablefilter.js", :type => "text/javascript"}
-    
-     
-
     %link{:href => "css/blue.css", :media => "screen, projection, tv", :rel => "stylesheet", :type => "text/css"}
+    
+    
+    %script{:src => "http://js.pusherapp.com/1.6/pusher.min.js", :type => "text/javascript"}
+    :javascript
+      // Create a Pusher server object with your app's key
+      var server = new Pusher('1231959769d3387d5565', 'main');
+      // Bind to server events
+      server.bind('refresh', function(data) {
+        $.get(('/manifest'), function(datum) {$('#manifest').html(datum);});
+        $.get(('/jumpers'), function(datum) {$('#jumpers').html(datum);});
+        $.get(('/accounts'), function(datum) {$('#accounts').html(datum);});
+        $.get(('/staff'), function(datum) {$('#staff').html(datum);});
+        $.get(('/manager'), function(datum) {$('#manager').html(datum);});
+        $.get(('/aircraft'), function(datum) {$('#aircraft').html(datum);});
+        $.get(('/schedule'), function(datum) {$('#schedule').html(datum);});
+        $.get(('/checkin'), function(datum) {$('#checkin').html(datum);});
+      });  
+      
+      server.bind('jumper_available', function(data) {
+        buttons = $(".p-"+data.id+"-available");
+        if (data.available){
+          buttons.removeClass('red').addClass('green');
+        } else{
+          buttons.removeClass('green').addClass('red');
+        }
+      });
+      
+    
     
     / Adding support for transparent PNGs in IE6:
     /[if lte IE 6]
@@ -164,7 +189,7 @@
                 }
                 $(document).ready(function(){                  
                   var departInterval = setInterval(updateDeparts, 1000);
-                  var holdTheInterval = setInterval(updatePages, 2500);
+                  //var updateInterval = setInterval(updatePages, 2500);
                   var curPageID = $("#current_page").html();
                   $(".menu-title").not(curPageID + "-title").hide();
                   $(curPageID + "-item").hide();

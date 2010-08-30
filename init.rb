@@ -14,6 +14,7 @@ require "haml"
 require "sass"
 require "json"
 require 'digest/sha2'
+require 'pusher'
 
 
 class Main < Monk::Glue
@@ -24,6 +25,11 @@ end
 # Connect to couchdb.
 couchdb_url = monk_settings(:couchdb)[:url]
 COUCHDB_SERVER = CouchRest.database!(couchdb_url)
+
+#set up push notifications
+Pusher.app_id = '1502'
+Pusher.key = '1231959769d3387d5565'
+Pusher.secret = '17702481847af120a02e'
 
 
 # Load all application files.

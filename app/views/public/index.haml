@@ -37,7 +37,7 @@
       %div{:style => "clear:both;"}
     .clear_container
 .content
-  .content_left
+  .content_left{:style => "width: 395px"}
     %img.newspaper_icon.png{:alt => "News &amp; Highlights", :height => "53", :src => "images/newspaper_icon.png", :width => "63"}/
     %h2 News &amp; Highlights
     %p.subtitle What we’ve been up to lately
@@ -47,7 +47,7 @@
     %h6 Our new Blog is NOW LIVE
     %p The new blog is up and running. Enjoy guys!
   / content_left
-  .content_middle
+  .content_wide_right{:style => "width: 395px"}
     %img.newspaper_icon.png{:alt => "Clients &amp; Testimonials", :height => "53", :src => "images/clients_icon.png", :width => "63"}/
     %h2 Clients &amp; Testimonials
     %p.subtitle What others have to say about us
@@ -57,26 +57,6 @@
     %h6.testimonial_name Jonathan Doe, Software Company
     .clear_container
   / content_left
-  .content_right
-    %ul
-      %li
-        %a.social_networking_link{:href => "#", :title => "Behance"}
-          %img{:alt => "Behance", :src => "images/behance.jpg"}/
-      %li
-        %a.social_networking_link{:href => "#", :title => "flickr"}
-          %img{:alt => "flickr", :src => "images/flickr.jpg"}/
-      %li
-        %a.social_networking_link{:href => "#", :title => "facebook"}
-          %img{:alt => "facebook", :src => "images/facebook.jpg"}/
-      %li
-        %a.social_networking_link{:href => "#", :title => "LinkediIn"}
-          %img{:alt => "LinkedIn", :src => "images/linkedin.jpg"}/
-      %li
-        %a.social_networking_link{:href => "#", :title => "Krop"}
-          %img{:alt => "Krop", :src => "images/krop.jpg"}/
-      %li
-        %a.social_networking_link{:href => "#", :title => "twitter"}
-          %img{:alt => "twitter", :src => "images/twitter.jpg"}/
   .clear_container
 :javascript
   $(document).ready(function(){
