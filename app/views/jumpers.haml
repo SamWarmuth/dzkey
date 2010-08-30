@@ -125,10 +125,7 @@
           -@jumpers.each_with_index do |jumper, i|
             %tr
               %td
-                -if jumper.available
-                  %a.available.checkin.green{:class => "p-#{jumper.id}-available", :href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
-                -else
-                  %a.available.checkin.red{:class => "p-#{jumper.id}-available", :href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
+                %a.dotbutton{:class => "p-#{jumper.id}-available #{jumper.available ? "green" : "red"}", :href => "#", :onClick => "setAvailable('#{jumper.id}', $(this)); return false;"}
               %td.bold= jumper.first_name
               %td.bold= jumper.last_name 
               %td= jumper.nickname

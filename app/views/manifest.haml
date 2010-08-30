@@ -167,10 +167,7 @@
               %td.jumper-id{:style => 'display: none'}= jumper.id
               
               %td.tc{:style => "width: 8px"}
-                -if jumper.available
-                  %img{:src => "/css/img/available.png"}
-                -else
-                  %img{:src => "/css/img/unavailable.png"}
+                .dot{:class => "p-#{jumper.id}-available #{jumper.available ? "green" : "red"}"}
               %td.name{:style => "width: 80px"}= jumper.name
               %td.type.tc{:style => "width: 60px"}= jumper.type.to_s
 .box.box-40.altbox{:style => "float: right"}
@@ -191,10 +188,7 @@
               %td.jumper-id{:style => 'display: none'}= jumper.id
               
               %td.tc{:style => "width: 8px"}
-                -if jumper.available
-                  %img{:src => "/css/img/available.png"}
-                -else
-                  %img{:src => "/css/img/unavailable.png"}
+                .dot{:class => "p-#{jumper.id}-available #{jumper.available ? "green" : "red"}"}
               %td.name{:style => "width: 80px"}= jumper.name
               %td.type.tc{:style => "width: 60px"}= jumper.type.to_s
 :javascript

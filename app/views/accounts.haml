@@ -52,10 +52,7 @@
           -Transaction.all.sort_by{|t| t.transaction_number}.reverse.each_with_index do |transaction, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th.tc
-                -if transaction.valid
-                  %img{:src => "/css/img/available.png"}
-                -else
-                  %img{:src => "/css/img/unavailable.png"}
+                .dot{:class => "p-#{transaction.id}-valid {transaction.valid ? 'green' : 'red'}"}
               %td.tc= "%05.0f" % transaction.transaction_number
               %td.tc= Time.parse(transaction.date).strftime("%m/%d/%y %I:%M%p")
               

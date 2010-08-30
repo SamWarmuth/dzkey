@@ -178,10 +178,7 @@
           -Jumper.all.find_all{|j| j.is_staff}.each_with_index do |staff, i|
             %tr{:class => ( i == 0 ? "first" : "")}
               %th.tc
-                -if staff.available
-                  %a.available.checkin.green{:class => "p-#{staff.id}-available", :href => "#", :onClick => "setAvailable('#{staff.id}', $(this)); return false;"}
-                -else
-                  %a.available.checkin.red{:class => "p-#{staff.id}-available", :href => "#", :onClick => "setAvailable('#{staff.id}', $(this)); return false;"}
+                %a.dotbutton{:class => "p-#{staff.id}-available #{staff.available ? "green" : "red"}", :href => "#", :onClick => "setAvailable('#{staff.id}', $(this)); return false;"}
               %td
                 %a{:href => "#"}= staff.name
               %td.tc
