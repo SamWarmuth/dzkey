@@ -107,8 +107,8 @@
       
         
   .clear_container
-  %br/
-  %br/
+  %br
+  %br
 :javascript
   $(document).ready(function(){
     $(".any_text").blur(function(){
@@ -117,6 +117,29 @@
       } else {
         $(this).removeClass("valid-input").addClass("invalid-input");
       }
-      
+    });
+    $(".cc_text").keyup(function(){
+      cc_num = $(this).val();
+      if (cc_num == ""){
+        $(".credit-card").stop().fadeTo('slow', 1.0);
+      }else if (cc_num[0] == "4"){
+        selectCard("visa");
+      }else if (cc_num.slice(0,2) == "34" || cc_num.slice(0,2) == "37"){
+        selectCard("amex");
+      }else if (cc_num.slice(0,2) == "30" || cc_num.slice(0,2) == "36" || cc_num.slice(0,2) == "38"){
+        selectCard("dinersclub");
+      }else if (cc_num[0] == "5"){
+        selectCard("mastercard");
+      }else if (cc_num.slice(0,4) == "6011" || cc_num.slice(0,4) == "622" || cc_num.slice(0,3) == "644" || cc_num.slice(0,2) == "65"){
+        selectCard("discover");
+      }else{  
+        $(".credit-card").stop().fadeTo('slow', 1.0);
+      }
     });
   });
+  function selectCard(card){
+    $("."+card).stop().fadeTo('slow', 1.0);
+    if ($(".credit-card").not("."+card).first().css("opacity") != 0.15){
+      $(".credit-card").not("."+card).stop().fadeTo('slow', 0.15);
+    }
+  }

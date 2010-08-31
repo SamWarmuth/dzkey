@@ -1,6 +1,5 @@
 
 .box.box-50.altbox
-  / .altbox for alternative box's color
   .boxin
     .header
       %h3 Jump Types
@@ -15,9 +14,9 @@
             %td.tc Jump Qty.
             %td
         %tbody
-          -10.times do |i|
-            %tr{:class => ( i == 0 ? "first" : "")}
-              %th AFF Level 3
+          -JumpTypes.each do |type|
+            %tr
+              %th= type.name
               %td.tr
                 .stat.green{:href => "#"}= i*16
               %td.tr
@@ -26,7 +25,6 @@
                 %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-jumper?id=", :rel => 'jumpersfacebox'}
                   %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}
 .box.box-50.altbox
-  / .altbox for alternative box's color
   .boxin
     .header
       %h3 Jumper Categories
