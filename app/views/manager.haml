@@ -14,7 +14,7 @@
             %td.tc Jump Qty.
             %td
         %tbody
-          -JumpTypes.each do |type|
+          -JumpType.all.each do |type|
             %tr
               %th= type.name
               %td.tr
@@ -38,9 +38,9 @@
             %td.tc Number of Jumpers
             %td
         %tbody
-          -5.times do |i|
+          -JumperCategory.all.each do |category|
             %tr{:class => ( i == 0 ? "first" : "")}
-              %th AFF
+              %th= category
               %td.tr
                 .stat.green{:href => "#"}= i*16
               %td.tc

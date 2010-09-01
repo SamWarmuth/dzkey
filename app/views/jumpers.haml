@@ -10,7 +10,7 @@
       %input{:type => "text", :name => "nickname", :style => "width: 171px; margin-left: 20px"}
     %br
     %p
-      %label Type
+      %label Categories
       %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
         %option Tandem
         %option AFF Student
@@ -116,10 +116,9 @@
             %th Last
             %th{:style => "width: 80px"} Nickname
             %th.tc{:style => "width: 70px"} Balance ($)
-            %th.tc{:style => "width: 80px"} Type
+            %th.tc{:style => "width: 150px"} Categories
             %th.tc{:style => "width: 80px"} Rigs
             %th.tc{:style => "width: 100px"} Last Jump
-            %th.tc{:style => "width: 70px"} Total Jumps
             %th.tc{:style => 'width: 60px'} View/Edit
         %tbody.striped
           -@jumpers.each_with_index do |jumper, i|
@@ -149,7 +148,6 @@
                   .stat.red.flat-right.merge-left{:href => "#", :style => (bad_rigs > 0 ? "" : "visibility: hidden")}= bad_rigs
                   .stat.gray.merge-left{:href => "#", :style => (deactivated_rigs > 0 ? "" : "visibility: hidden")}= deactivated_rigs
               %td.tc July #{rand(26)+1}
-              %td.tc= jumper.manifest_ids.length
               %td.tc
                 %a.awesome.yellow.medium{:style => 'padding: 2px 5px', :href => "/ajax/edit-jumper?id="+jumper.id, :rel => 'jumpersfacebox'}
                   %img{:src => "/css/img/led-ico/pencil.png", :width => "16", :height => "16", :style => 'vertical-align: text-top'}

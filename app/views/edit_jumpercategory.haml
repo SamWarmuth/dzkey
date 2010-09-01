@@ -1,0 +1,101 @@
+.edit-jumper{:style => "width: 600px; text-align: center", :id => 'edit'+@jumper.id}
+  %b{:style => 'font-size: 24px; text-align: center;background: #eee; display: block; margin: -10px -10px 0px -10px; padding: 5px'} Edit Jumper
+  %form.newjumperform{:style => "margin-right: 150px; text-align: right; font-size: 16px"}
+    %input{:type => "hidden", :name => "id", :value => @jumper.id}
+    %p.bold
+      %label Name
+      %input{:type => "text", :size => "12", :name => "first_name", :style => "margin-left: 20px", :value => @jumper.first_name}
+      %input{:type => "text", :size => "12", :name => "last_name", :style => "margin-left: 0px", :value => @jumper.last_name}
+    %p
+      %label Nickname
+      %input{:type => "text", :size => "30", :name => "nickname", :style => "margin-left: 20px", :value => @jumper.nickname}
+    %br
+    %p
+      %label Type
+      %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
+        %option Tandem
+        %option AFF Student
+        %option USPA Member
+        %option Other
+    %br
+    %p
+      %label Address
+      %input{:type => "text", :size => "30", :name => "address", :style => "margin-left: 20px", :value => @jumper.address}
+    %p
+      %label City
+      %input{:type => "text", :size => "30", :name => "city", :style => "margin-left: 20px", :value => @jumper.city}
+    %p
+      %label State
+      %select{:style => "width: 177px; margin-left: 20px", :name => "state"}
+        %option{:value => "AL"} AL - Alabama
+        %option{:value => "AK"} AK - Alaska
+        %option{:value => "AZ"} AZ - Arizona
+        %option{:value => "AR"} AR - Arkansas
+        %option{:value => "CA"} CA - California
+        %option{:value => "CO"} CO - Colorado
+        %option{:value => "CT"} CT - Connecticut
+        %option{:value => "DE"} DE - Delaware
+        %option{:value => "FL"} FL - Florida
+        %option{:value => "GA"} GA - Georgia
+        %option{:value => "HI"} HI - Hawaii
+        %option{:value => "ID"} ID - Idaho
+        %option{:value => "IL"} IL - Illinois
+        %option{:value => "IN"} IN - Indiana
+        %option{:value => "IA"} IA - Iowa
+        %option{:value => "KS"} KS - Kansas
+        %option{:value => "KY"} KY - Kentucky
+        %option{:value => "LA"} LA - Louisiana
+        %option{:value => "ME"} ME - Maine
+        %option{:value => "MD"} MD - Maryland
+        %option{:value => "MA"} MA - Massachusetts
+        %option{:value => "MI"} MI - Michigan
+        %option{:value => "MN"} MN - Minnesota
+        %option{:value => "MS"} MS - Mississippi
+        %option{:value => "MO"} MO - Missouri
+        %option{:value => "MT"} MT - Montana
+        %option{:value => "NE"} NE - Nebraska
+        %option{:value => "NV"} NV - Nevada
+        %option{:value => "NH"} NH - New Hampshire
+        %option{:value => "NJ"} NJ - New Jersey
+        %option{:value => "NM"} NM - New Mexico
+        %option{:value => "NY"} NY - New York
+        %option{:value => "NC"} NC - North Carolina
+        %option{:value => "ND"} ND - North Dakota
+        %option{:value => "OH"} OH - Ohio
+        %option{:value => "OK"} OK - Oklahoma
+        %option{:value => "OR"} OR - Oregon
+        %option{:value => "PA"} PA - Pennsylvania
+        %option{:value => "RI"} RI - Rhode Island
+        %option{:value => "SC"} SC - South Carolina
+        %option{:value => "SD"} SD - South Dakota
+        %option{:value => "TN"} TN - Tennessee
+        %option{:value => "TX"} TX - Texas
+        %option{:value => "UT"} UT - Utah
+        %option{:value => "VT"} VT - Vermont
+        %option{:value => "VA"} VA - Virginia
+        %option{:value => "WA"} WA - Washington
+        %option{:value => "WV"} WV - West Virginia
+        %option{:value => "WI"} WI - Wisconsin
+        %option{:value => "WY"} WY - Wyoming
+        %option{:value => "ZZ"} Other
+    %p
+      %label ZIP Code
+      %input{:type => "text", :size => "30", :name => "zip", :style => "margin-left: 20px", :value => @jumper.zip}
+    %p
+      %label Country
+      %input{:type => "text", :size => "30", :name => "country", :style => "margin-left: 20px", :value => @jumper.country}
+    %br
+    %p.bold
+      %label Balance
+      %input{:type => "text", :disabled => true, :size => "30", :style => "margin-left: 20px", :name => "balance", :value => @jumper.balance}
+    %br
+    %div
+      .checkcontainer{:onClick => "toggleAvailable();", :style => 'margin-right: 65px; position: relative'}
+        .cover{:style => "display: block; position: absolute; margin: 0; width: 110px; height: 30px; opacity: 0;"}
+        %input.available{:type => "checkbox", :style => "margin-right: 10px;", :name => "available", :checked => (@jumper.available ? "checked" : nil)}
+        %label{:style => "font-weight: bold;"} Checked In
+    %br
+    .left{:style => "display: inline; margin-right: 12px"}        
+      %a.awesome.giant.green{:href => "#create-jumper", :onClick => "createJumper(this);"} Save Jumper
+    .left{:style => "display: inline;margin-right: -13px"}
+      %a.awesome.medium.gray{:href => "#", :onClick => "$.facebox.close()"} Cancel

@@ -12,7 +12,7 @@ class Transaction < CouchRest::ExtendedDocument
   
   property :staff_id
   
-  save_callback :after, :update_jumper_balance
+  set_callback :save, :after, :update_jumper_balance
   
   def update_jumper_balance
     return false if self.jumper_id.nil?

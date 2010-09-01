@@ -144,12 +144,16 @@ class Main
       return false if @jumper.available
       @jumper.available = true
       @jumper.save
-      Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => true})
+      Pusher['main'].trigger('refresh', {})
+      
+      #Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => true})
     else
       return false if !@jumper.available
       @jumper.available = false
       @jumper.save
-      Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => false})
+      Pusher['main'].trigger('refresh', {})
+      
+      #Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => false})
     end
     return @jumper.name + " is now checked in."
   end

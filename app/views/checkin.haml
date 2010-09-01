@@ -5,43 +5,45 @@
         %thead
           %tr
             %th{:style => "border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin: 0;position: relative; top: 1px;"}
-              %b{:style => "font-size: 125%"} Existing Jumper
-              - if !@jumpers.any? {|j| !j.available}
-                %span{:style => "margin-left: 258px"}All jumpers are available.
-              - else
-                %input#existingjumpers.firstfocus{:type => "text", :style => "height: 22px; width: 300px; margin-left: 135px;font-size: 125%; padding-left: 5px;"}
-                &nbsp;
-                .shift{:style => "display: inline; margin: 0; padding: 0; position: relative; top: -2px;"}
-                  %a#checkin-jumper.awesome.green.medium{:style => 'color: white;'} Check In
+              %form#checkin-jumper{:style => "margin: 0; padding: 0; height: 30px; position: relative;"}
+                %b{:style => "font-size: 125%;position: absolute; left: 20px; top: 3px"} Existing Jumper
+                - unavailable_jumpers = @jumpers.find_all{|j| !j.available}
+                - if unavailable_jumpers.empty?
+                  %span{:style => "position: absolute; left: 375px; top: 5px"} All jumpers are available.
+                - else
+                  .selectbox{:style => "position: absolute; left: 280px; top: 0"}
+                    %select#existing_jumper_checkin
+                      %option#empty_selection
+                      - unavailable_jumpers.each do |jumper|
+                        %option= jumper.name
+                  %ul#existing_jumper_added{:style => "position: absolute; left: 620px; top: 0"}
     :javascript
       $(document).ready(function(){
-        var availableNames = [#{@jumpers.find_all{|j| !j.available}.map{|j| "'"+j.name + "'"}.join(", ")}];
-        $("#existingjumpers").keydown(function(e){
-          if (e.keyCode == 13){
-            var name = $(this).val();
-            if ($.inArray($(this).val(), availableNames) == 0){
-              $.get(("/ajax/jumper/available?jumper="+$(this).val()+"&value=true"), function(data){
-                $(this).val(data);
-              });
-              return false;
-            }
+        // var availableNames = [#{@jumpers.find_all{|j| !j.available}.map{|j|"{'title': '" + j.name + "', 'value': '"+j.name + "'}"}.join(", ")}];
+
+        $("#existing_jumper_checkin").fcbkcomplete({
+          firstselected: true
+        });
+        $(".bit-box[rel=]").hide();
+        
+        $(".maininput").keypress(function(e){
+          if (e.which == 13){
+            alert('Hi!');
           }
-          return true;
+          
         });
-        $("#existingjumpers").autocomplete({
-          source: availableNames,
-          delay: 0,
-          minLength: 0
-        });
-        $('#checkin-jumper').click(function(){
+        
+        $('#checkin-jumper').submit(function(){
           var field = $("#existingjumpers");
           var name = field.val();
           field.val("");
           $.get(("/ajax/jumper/available?jumper="+name+"&value=true"), function(data){});
-          $(".ui-autocomplete").hide();
           return false;
         });
       });
+      function testme(item){
+        alert("hi!");
+      }
 .box.box-100.altbox
   .boxin
     .header
