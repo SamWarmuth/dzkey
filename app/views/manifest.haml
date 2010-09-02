@@ -149,32 +149,12 @@
                       %tr{:style => "cursor: auto;"}
                         %td.tc{:colspan => 3}
                           .placeholder Drag Jumpers Here
-.box.box-40.altbox
-  .boxin
-    .header
-      %h3 Students
-      %input.search{:type => "text", :size => "25", :style => "float: right; margin-right: 20px;", :name => "jumpersearch", :placeholder => "Filter members..."}
-    .content
-      %table{:cellspacing => "0"}
-        %thead
-          %tr
-            %th{:style => "width: 8px"} &nbsp;
-            %td Name
-            %td.tc{:style => "width: 60px"} Type
-        %tbody
-          -Jumper.all.each_with_index do |jumper, i|
-            %tr.member{:style => "width: 365px; cursor: move;"}
-              %td.jumper-id{:style => 'display: none'}= jumper.id
-              
-              %td.tc{:style => "width: 8px"}
-                .dot{:class => "p-#{jumper.id}-available #{jumper.available ? "green" : "red"}"}
-              %td.name{:style => "width: 80px"}= jumper.name
-              %td.type.tc{:style => "width: 60px"}= jumper.type.to_s
+
 .box.box-40.altbox{:style => "float: right"}
   .boxin
     .header
-      %h3 Members
-      %input.search{:type => "text", :size => "25", :style => "float: right; margin-right: 20px;", :name => "jumpersearch", :placeholder => "Filter members..."}
+      %h3 Jumpers
+      %input.search{:type => "text", :size => "25", :style => "float: right; margin-right: 20px;", :name => "jumpersearch", :placeholder => "Filter Jumpers..."}
     .content
       %table{:cellspacing => "0"}
         %thead

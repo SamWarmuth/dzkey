@@ -26,7 +26,6 @@ class Jumper < CouchRest::ExtendedDocument
   property :type
   
   property :is_experienced
-  property :licenses #array of Certifications? (USPA, A 47290, ?)
   
   property :man_ids
   

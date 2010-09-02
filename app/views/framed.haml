@@ -54,7 +54,6 @@
       server.bind('flight_expander', function(data) {
         $(".p-"+data.id+"-expander").html(data.html);
       });
-      
     
     
     / Adding support for transparent PNGs in IE6:
@@ -100,7 +99,7 @@
         // Handling with lists (alternate bgs)
         $('ul.simple li:even').addClass('even');
 
-        // Tabs switching
+        // Tab switching
         $('#box1 .content#box1-grid').hide(); // hide content related to inactive tab by default
         $('#box1 .header ul a').click(function(){
           $('#box1 .header ul a').removeClass('active');
@@ -218,6 +217,18 @@
                     $(".pagediv").hide();
                     $(newID).fadeIn(200);
                     $(newID).find(".firstfocus").focus();
+                    
+                    //some pages need to be setup when they appear:
+                    switch(newID){
+                      case "#checkin":
+                        if (!$(newID).find(".holder").is(':visible')){
+                          $("#existing_jumper_checkin").fcbkcomplete({
+                            firstselected: true
+                          });
+                        }
+                        break;
+                    }
+                    
                     return false;
                   });
                 });
@@ -250,8 +261,6 @@
                       $.get(('/aircraft'), function(datum) {$('#aircraft').html(datum);});
                       $.get(('/schedule'), function(datum) {$('#schedule').html(datum);});
                       $.get(('/checkin'), function(datum) {$('#checkin').html(datum);});
-                      
-                      
                     }else{
                       //no updates
                     }

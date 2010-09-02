@@ -140,6 +140,6 @@
   function selectCard(card){
     $("."+card).stop().fadeTo('slow', 1.0);
     if ($(".credit-card").not("."+card).first().css("opacity") != 0.15){
-      $(".credit-card").not("."+card).stop().fadeTo('slow', 0.15);
+      $(".credit-card").not("."+card).stop().fadeTo('medium', 0.15);
     }
   }

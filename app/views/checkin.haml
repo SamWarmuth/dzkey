@@ -19,11 +19,12 @@
                   %ul#existing_jumper_added{:style => "position: absolute; left: 620px; top: 0"}
     :javascript
       $(document).ready(function(){
-        // var availableNames = [#{@jumpers.find_all{|j| !j.available}.map{|j|"{'title': '" + j.name + "', 'value': '"+j.name + "'}"}.join(", ")}];
-
-        $("#existing_jumper_checkin").fcbkcomplete({
-          firstselected: true
-        });
+        if ($("#existing_jumper_checkin").is(":visible")){
+          $("#existing_jumper_checkin").fcbkcomplete({
+            firstselected: true
+          });
+        }
+        
         $(".bit-box[rel=]").hide();
         
         $(".maininput").keypress(function(e){

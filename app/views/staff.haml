@@ -11,16 +11,16 @@
           %option{:value => ""}
           -existing_nonstaff.each do |jumper|
             %option{:value => jumper.id}= jumper.name
-      :javascript
-        $(document).ready(function(){
-          $('.existing-dropdown').change(function(){
-            if ($(this).val() != ""){
-              if ($("fieldset.new-jumper").is(":visible")) $("fieldset.new-jumper").hide("blind", 250);
-            } else {
-              $("fieldset.new-jumper").show("blind", 250);
-            }
-          });
+    :javascript
+      $(document).ready(function(){
+        $('.existing-dropdown').change(function(){
+          if ($(this).val() != ""){
+            if ($("fieldset.new-jumper").is(":visible")) $("fieldset.new-jumper").hide("blind", 250);
+          } else {
+            $("fieldset.new-jumper").show("blind", 250);
+          }
         });
+      });
     %fieldset.new-jumper{:style => "margin: 10px -5px;"}
       %p.bold
         %label Name

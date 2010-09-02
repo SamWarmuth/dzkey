@@ -151,9 +151,9 @@ class Main
       return false if !@jumper.available
       @jumper.available = false
       @jumper.save
-      Pusher['main'].trigger('refresh', {})
+      #Pusher['main'].trigger('refresh', {})
       
-      #Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => false})
+      Pusher['main'].trigger('jumper_available', {:id => @jumper.id, :available => false})
     end
     return @jumper.name + " is now checked in."
   end
@@ -183,7 +183,7 @@ class Main
     jumper.country = params[:country]
     
     jumper.type = params[:type]
-    jumper.balance = params[:balance].to_f
+    jumper.balance ||= 0.00
     jumper.available = (params[:available] == "on")
     jumper.save
     Pusher['main'].trigger('refresh', {})

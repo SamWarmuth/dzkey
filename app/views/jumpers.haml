@@ -5,20 +5,14 @@
       %label Name
       %input{:type => "text", :size => "12", :name => "first_name", :style => "width: 80px; margin-left: 20px"}
       %input{:type => "text", :size => "12", :name => "last_name", :style => "width: 81px; margin-left: 0px"}
-    %p
-      %label Nickname
-      %input{:type => "text", :name => "nickname", :style => "width: 171px; margin-left: 20px"}
     %br
     %p
-      %label Categories
+      %label Category
       %select{:style => "width: 177px; margin-left: 20px", :name => "type"}
         %option Tandem
         %option AFF Student
         %option USPA Member
         %option Other
-    %p
-      %label Last Certified
-      %input{:type => "text", :style => "width: 171px; margin-left: 20px", :name => "last_certified"}
     %br
     %p
       %label Address
@@ -86,10 +80,6 @@
     %p
       %label Country
       %input{:type => "text", :name => "country", :style => "width: 171px; margin-left: 20px"}
-    %br
-    %p.bold
-      %label Initial Balance
-      %input{:type => "text", :style => "width: 171px; margin-left: 20px", :name => "balance", :value => "0.00"}
     %br
     %div
       .checkcontainer{:onClick => "toggleAvailable();", :style => 'margin-right: 78px; position: relative'}
