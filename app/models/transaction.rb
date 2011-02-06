@@ -11,6 +11,6 @@ class Transaction < CouchRest::ExtendedDocument
   property :notes
   
   property :staff_id
-  save_callback :after, :update_jumper_balance
+  #save_callback :after, :update_jumper_balance
   
 end
